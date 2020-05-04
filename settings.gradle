@@ -1,0 +1,2 @@
+rootProject.name='LDS Temple Virtualization'
+include ':app'
