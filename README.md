@@ -8,7 +8,7 @@
 
   <body>
 
-<p>There are two folders on is the app, the other one is some raw material</p>
+<p>There are two folders, one is the app, the other one is some raw material</p>
 
 
   </body>
