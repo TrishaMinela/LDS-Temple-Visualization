@@ -21,7 +21,9 @@ public class ImageCache {
     private static ArrayList<Integer> allImageIds;
     private static float screenWidth, screenHeight;
 
-    private static Bitmap logan_temple,
+    private static Bitmap
+
+            logan_temple,
             manti_temple,
             hawaii_temple,
             cardston_alberta_temple,
@@ -628,6 +630,7 @@ public class ImageCache {
         lisbon_portugal_temple = loadAndScale(res, R.drawable.aazzzzzzc, w);
         arequipa_peru_temple = loadAndScale(res, R.drawable.aazzzzzzd, w);
         durban_south_africa_temple = loadAndScale(res, R.drawable.aazzzzzze, w);
+
 
 
 
