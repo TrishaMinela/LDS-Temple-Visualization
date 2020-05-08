@@ -15,7 +15,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -477,8 +476,6 @@ public class TempleView extends View {
                             String data = String.valueOf(eachIndex);
                             thisTemple.putExtra("eachIndex", data);
 
-                            //Toast.makeText(getContext(), "what's the index of temple clicked " + data, Toast.LENGTH_SHORT).show();
-
                             String templeUrl = allTempleLinks.get(eachIndex);
                             thisTemple.putExtra("templeUrl", templeUrl);
 
@@ -496,9 +493,9 @@ public class TempleView extends View {
                         } else {
 
 
-                                                       AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                             builder.setTitle("No Photo Available");
-                            builder.setMessage("Announced temple or temple in construction");
+                            builder.setMessage("Announced Temple or Temple Under Construction");
                             builder.setIcon(R.mipmap.ic_launcher_round);
 
                             //点击对话框以外的区域是否让对话框消失

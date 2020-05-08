@@ -1,5 +1,6 @@
 package com.ldstemplevirtualization;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -193,15 +194,35 @@ public class SingleTempleView extends View {
             //size is good
             //Toast.makeText(getContext(), "singleTemple.getHeight()/2 is " + singleTemple.getHeight()/2, Toast.LENGTH_SHORT).show();
 
+            //Toast.makeText(getContext(), "|" + templeUrl + "|", Toast.LENGTH_SHORT).show();
+
             if (distanceToImageCenter < singleTemple.getHeight()/2) {
 
                 //Toast.makeText(getContext(), "touched at temple", Toast.LENGTH_SHORT).show();
 
-                Intent eachTemplePage= new Intent();
-                eachTemplePage.setAction("android.intent.action.VIEW");
-                Uri eachTemplePage_url = Uri.parse(templeUrl);
-                eachTemplePage.setData(eachTemplePage_url);
-                getContext().startActivity(eachTemplePage);
+
+
+                if (templeUrl.equals("no link" + "\n")) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                    builder.setTitle("No Link Available");
+                    builder.setMessage("Sorry, Temple link is not available");
+                    builder.setIcon(R.mipmap.ic_launcher_round);
+                    //点击对话框以外的区域是否让对话框消失
+                    builder.setCancelable(true);
+                    final AlertDialog dialog = builder.create();
+                    dialog.show();
+
+                } else {
+                    Intent eachTemplePage= new Intent();
+                    eachTemplePage.setAction("android.intent.action.VIEW");
+                    Uri eachTemplePage_url = Uri.parse(templeUrl);
+                    eachTemplePage.setData(eachTemplePage_url);
+                    getContext().startActivity(eachTemplePage);
+                }
+
+
+
+
 
             }
 
