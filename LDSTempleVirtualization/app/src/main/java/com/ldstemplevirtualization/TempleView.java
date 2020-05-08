@@ -467,7 +467,7 @@ public class TempleView extends View {
 
                         //Toast.makeText(getContext(), "how many onScreenTemples last time? " + onScreenTemples.size(), Toast.LENGTH_SHORT).show();
 
-                        if (eachIndex <= 160) {
+                        if (eachIndex <= 169) {
 
 
                             Intent thisTemple = new Intent(getContext(), ImageActivity.class);
