@@ -15,6 +15,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -475,6 +476,8 @@ public class TempleView extends View {
                             //传值给下一个Activity
                             String data = String.valueOf(eachIndex);
                             thisTemple.putExtra("eachIndex", data);
+
+                            //Toast.makeText(getContext(), "what's the index of temple clicked " + data, Toast.LENGTH_SHORT).show();
 
                             String templeUrl = allTempleLinks.get(eachIndex);
                             thisTemple.putExtra("templeUrl", templeUrl);
