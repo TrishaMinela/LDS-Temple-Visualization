@@ -49,16 +49,38 @@ for x in range(0, 21):
 
 #print(templesNames)
 
+#fo = open("outputDesignedStrings2.txt", "w")
+
 templesNamesReal = []
 for i in templesNames:
     j = i[9:-4]
     templesNamesReal.append(j)
 
-
+'''
 for i in templesNamesReal:
     print(i)
+    #fo.write( i + ", ")
 print(len(templesNamesReal))
+'''
 
+'''
+for i in templesNamesReal:
+    print(i + " = loadAndScale(res, R.drawable." + i + ", w);")
+    #fo.write(i)
+print(len(templesNamesReal))
+'''
+
+'''
+for i in templesNamesReal:
+    print("templesList.add(" + i + ");")
+    #fo.write(i)
+print(len(templesNamesReal))
+'''
+
+for i in templesNamesReal:
+    print("allImageIds.add(R.drawable." + i + "_large);")
+    #fo.write(i)
+print(len(templesNamesReal))
 
 '''
 s = "aa"

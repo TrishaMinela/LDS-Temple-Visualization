@@ -46,7 +46,7 @@ def file_name(file_dir):
         
 
 
-files = file_name("C:\\Users\\litia\\OneDrive - Brigham Young University Hawaii\\Desktop\\temple_app_resources\\original temples")
+files = file_name("D:\\whatsthisD\\LDSTempleVirtualizationApp\\Raw Materials\\temple_app_resources\\original temples")
 
 
 #print(files)
@@ -65,7 +65,7 @@ for x in namesPre:
 
 
 
-path2 = r"C:/Users/litia/OneDrive - Brigham Young University Hawaii/Desktop/temple_app_resources/small circles - renamed/"
+path2 = r"D:/whatsthisD/LDSTempleVirtualizationApp/Raw Materials/temple_app_resources/small circles - renamed and added new/"
 
 f2=os.listdir(path2)
 
@@ -76,8 +76,8 @@ for file in f2:
     oldname=path2+f2[n]
 
     #设置新文件名
-    newname=path2+namesPre[n]+'_large.webp'
-    #newname=path2+namesPre[n]+'.webp'
+    #newname=path2+namesPre[n]+'_large.webp'
+    newname=path2+namesPre[n]+'.webp'
 
 
     #用os模块中的rename方法对文件改名
