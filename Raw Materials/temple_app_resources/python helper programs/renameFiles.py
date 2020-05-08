@@ -57,11 +57,14 @@ for i in files:
     #print(i)
     namesPre.append(i)
 
+'''
 print(namesPre)
 print(len(namesPre))
 
 for x in namesPre:
     print(x)
+
+'''
 
 '''
 #RENAME SMALL CIRCLES JUST RUN ONCE
@@ -94,7 +97,7 @@ for file in f2:
 
 '''
 
-    
+'''    
 #RENAME LAGRE CIRCLES RUN TWICE, GET RID OF LARGE, THEM RENAME GAIN. ORDER IS MESSIED UP BECAUSE OF _LARGE THE WORD
 
 path2 = r"D:/whatsthisD/LDSTempleVirtualizationApp/Raw Materials/temple_app_resources/large circles - renamed and added new/"
@@ -116,6 +119,34 @@ for file in f2:
     #newname=oldname[0:-11] + ".webp"
     #run 2
     newname=path2+namesPre[n]+'_large.webp'
+
+
+    #用os模块中的rename方法对文件改名
+    os.rename(oldname,newname)
+    print(oldname,'======>',newname)
+    print(n)
+    n+=1
+
+
+'''
+
+path2 = r"E:/FFOutput/"
+
+f2=os.listdir(path2)
+
+
+n=0
+for file in f2:
+
+    #设置旧文件名（就是路径+文件名）
+    oldname=path2+f2[n]
+
+    
+    #设置新文件名
+    #run 1
+    #newname=oldname[0:-11] + ".webp"
+    #run 2
+    newname=oldname[0:-16]+'_large.webp'
 
 
     #用os模块中的rename方法对文件改名
