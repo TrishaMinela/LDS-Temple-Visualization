@@ -17,12 +17,15 @@ import java.util.List;
 
 public class ImageCache {
 
+
+
     private static ArrayList<Bitmap> templesList;
     private static ArrayList<Integer> allImageIds;
     private static float screenWidth, screenHeight;
 
-    private static Bitmap
+    private static Bitmap kirtland_temple, old_nauvoo_temple, st_george_temple, logan_temple, manti_temple, salt_lake_temple, laie_hawaii_temple, cardston_alberta_temple, mesa_temple, idaho_falls_temple, bern_switzerland_temple, los_angeles_temple, hamilton_new_zealand_temple, london_england_temple, oakland_temple, ogden_utah_temple, provo_temple, washington_dc_temple, sao_paulo_brazil_temple, tokyo_japan_temple, seattle_temple, jordan_river_temple, atlanta_temple, apia_samoa_temple, nukualofa_tonga_temple, santiago_chile_temple, papeete_tahiti_temple, mexico_city_temple, boise_idaho_temple, sydney_australia_temple, manila_philippines_temple, dallas_texas_temple, taipei_taiwan_temple, guatemala_lds_temple, freiberg_germany_temple, stockholm_sweden_lds_temple, chicago_temple, johannesburg_south_africa_temple, seoul_korea_temple, lima_peru_temple, buenos_aires_argentina_temple, denver_colorado_templ, frankfurt_germany_temple, portland_oregon_temple, las_vegas_temple, toronto_temple, san_diego_california_temple, orlando_temple, bountiful_temple, hong_kong_china_temple, mount_timpanogos_utah_temple, st_louis_temple, vernal_temple, preston_england_temple, monticello_utah_temple, anchorage_alaska_temple, colonia_juarez_mexico_temple, madrid_spain_temple, bogota_colombia_temple, guayaquil_ecuador_temple, spokane_washington_temple, columbus_ohio_temple, bismark_north_dakota_temple, columbia_temple, detroit_temple, halifax_nova_scotia_lds_temple, regina_temple, billings_montana_temple, edmonton_alberta_temple, raleigh_north_carolina_temple, st_paul_temple, kona_temple, ciudad_juarez_mexico_temple, hermosillo_sonora_mexico_temple, albuquerque_temple, oaxaca_mexico_temple, tuxtla_guitierrez_mexico_temple, louisville_temple, palmyra_temple, fresno_temple, medford_temple, memphis_tennessee_temple, reno_nevada_lds_temple, cochabamba_bolivia_temple, tampico_mexico_temple, nashville_temple, villahermosa_mexico_temple, montreal_quebec_temple, san_jose_costa_rica_temple, fukuoka_japan_temple, adelaide_australia_temple, melbourne_australia_temple, suva_fiji_temple, merida_mexico_temple, veracruz_mexico_temple, baton_rouge_louisiana_temple, oklahoma_city_temple, caracas_venezuela_temple, houston_texas_temple, birmingham_alabama_temple, santo_domingo_dominican_republic_temple, boston_temple, recife_brazil_temple, porto_alegre_brazil_temple, montevideo_uruguay_temple, winter_quarters_temple, guadalajara_temple, perth_australia_temple, columbia_river_temple, snowflake_temple, lubbock_temple, monterrey_mexico_temple, campinas_brazil_temple, asuncion_paraguay_temple, nauvoo_temple, the_hague_netherlands_temple, brisbane_australia_temple, redlands_temple, accra_ghana_temple, copenhagen_denmark_temple, manhattan_temple, san_antonio_temple, aba_nigeria_temple, newport_beach_california_temple, sacramento_temple, helsinki_finland_temple, rexburg_idaho_temple, curitiba_brazil_temple, panama_city_temple, twin_falls_temple, draper_utah_temple, oquirrh_mountain_utah_temple, vancouver_temple, gila_valley_temple, cebu_philippines_temple, kyiv_ukraine_temple, san_salvador_el_salvador_temple, quetzaltenango_guatemala_temple, kansas_city_temple, manaus_brazil_temple, brigham_city_utah_temple, calgary_alberta_lds_temple, tegucigalpa_honduras_temple, gilbert_arizona_temple, fort_lauderdale_florida_temple, phoenix_arizona_temple, cordoba_argentina_temple, payson_utah_temple, trujillo_peru_temple, indianapolis_indiana_temple, tijuana_mexico_temple, provo_city_center_temple, sapporo_japan_temple, philadelphia_pennsylvania_temple, fort_collins_colorado_temple, star_valley_wyoming_temple, hartford_connecticut_temple, paris_france_temple, tucson_arizona_temple, meridian_idaho_temple, cedar_city_utah_temple, concepcion_chile_temple, barranquilla_columbia_temple, rome_italy_temple, kinshasa_temple, fortaleza_brazil_temple, haiti_temple_exterior, lisbon_portugal_temple, arequipa_peru_temple, durban_south_africa_temple;
 
+/*
             logan_temple,
             manti_temple,
             hawaii_temple,
@@ -184,6 +187,11 @@ public class ImageCache {
             lisbon_portugal_temple,
             arequipa_peru_temple,
             durban_south_africa_temple,
+
+
+ */
+
+    private static Bitmap
             aa_imnothing,
             ab_imnothing,
             ac_imnothing,
@@ -237,7 +245,16 @@ public class ImageCache {
             by_imnothing,
             bz_imnothing;
 
+
+
+
     private static Bitmap logo_circle;
+
+
+
+
+
+
 
     /*
     private static Bitmap logan_temple;
@@ -468,7 +485,178 @@ public class ImageCache {
 
         //logo = new Temple(logo_circle);
 
+        kirtland_temple = loadAndScale(res, R.drawable.kirtland_temple, w);
+        old_nauvoo_temple = loadAndScale(res, R.drawable.old_nauvoo_temple, w);
+        st_george_temple = loadAndScale(res, R.drawable.st_george_temple, w);
+        logan_temple = loadAndScale(res, R.drawable.logan_temple, w);
+        manti_temple = loadAndScale(res, R.drawable.manti_temple, w);
+        salt_lake_temple = loadAndScale(res, R.drawable.salt_lake_temple, w);
+        laie_hawaii_temple = loadAndScale(res, R.drawable.laie_hawaii_temple, w);
+        cardston_alberta_temple = loadAndScale(res, R.drawable.cardston_alberta_temple, w);
+        mesa_temple = loadAndScale(res, R.drawable.mesa_temple, w);
+        idaho_falls_temple = loadAndScale(res, R.drawable.idaho_falls_temple, w);
+        bern_switzerland_temple = loadAndScale(res, R.drawable.bern_switzerland_temple, w);
+        los_angeles_temple = loadAndScale(res, R.drawable.los_angeles_temple, w);
+        hamilton_new_zealand_temple = loadAndScale(res, R.drawable.hamilton_new_zealand_temple, w);
+        london_england_temple = loadAndScale(res, R.drawable.london_england_temple, w);
+        oakland_temple = loadAndScale(res, R.drawable.oakland_temple, w);
+        ogden_utah_temple = loadAndScale(res, R.drawable.ogden_utah_temple, w);
+        provo_temple = loadAndScale(res, R.drawable.provo_temple, w);
+        washington_dc_temple = loadAndScale(res, R.drawable.washington_dc_temple, w);
+        sao_paulo_brazil_temple = loadAndScale(res, R.drawable.sao_paulo_brazil_temple, w);
+        tokyo_japan_temple = loadAndScale(res, R.drawable.tokyo_japan_temple, w);
+        seattle_temple = loadAndScale(res, R.drawable.seattle_temple, w);
+        jordan_river_temple = loadAndScale(res, R.drawable.jordan_river_temple, w);
+        atlanta_temple = loadAndScale(res, R.drawable.atlanta_temple, w);
+        apia_samoa_temple = loadAndScale(res, R.drawable.apia_samoa_temple, w);
+        nukualofa_tonga_temple = loadAndScale(res, R.drawable.nukualofa_tonga_temple, w);
+        santiago_chile_temple = loadAndScale(res, R.drawable.santiago_chile_temple, w);
+        papeete_tahiti_temple = loadAndScale(res, R.drawable.papeete_tahiti_temple, w);
+        mexico_city_temple = loadAndScale(res, R.drawable.mexico_city_temple, w);
+        boise_idaho_temple = loadAndScale(res, R.drawable.boise_idaho_temple, w);
+        sydney_australia_temple = loadAndScale(res, R.drawable.sydney_australia_temple, w);
+        manila_philippines_temple = loadAndScale(res, R.drawable.manila_philippines_temple, w);
+        dallas_texas_temple = loadAndScale(res, R.drawable.dallas_texas_temple, w);
+        taipei_taiwan_temple = loadAndScale(res, R.drawable.taipei_taiwan_temple, w);
+        guatemala_lds_temple = loadAndScale(res, R.drawable.guatemala_lds_temple, w);
+        freiberg_germany_temple = loadAndScale(res, R.drawable.freiberg_germany_temple, w);
+        stockholm_sweden_lds_temple = loadAndScale(res, R.drawable.stockholm_sweden_lds_temple, w);
+        chicago_temple = loadAndScale(res, R.drawable.chicago_temple, w);
+        johannesburg_south_africa_temple = loadAndScale(res, R.drawable.johannesburg_south_africa_temple, w);
+        seoul_korea_temple = loadAndScale(res, R.drawable.seoul_korea_temple, w);
+        lima_peru_temple = loadAndScale(res, R.drawable.lima_peru_temple, w);
+        buenos_aires_argentina_temple = loadAndScale(res, R.drawable.buenos_aires_argentina_temple, w);
+        denver_colorado_templ = loadAndScale(res, R.drawable.denver_colorado_templ, w);
+        frankfurt_germany_temple = loadAndScale(res, R.drawable.frankfurt_germany_temple, w);
+        portland_oregon_temple = loadAndScale(res, R.drawable.portland_oregon_temple, w);
+        las_vegas_temple = loadAndScale(res, R.drawable.las_vegas_temple, w);
+        toronto_temple = loadAndScale(res, R.drawable.toronto_temple, w);
+        san_diego_california_temple = loadAndScale(res, R.drawable.san_diego_california_temple, w);
+        orlando_temple = loadAndScale(res, R.drawable.orlando_temple, w);
+        bountiful_temple = loadAndScale(res, R.drawable.bountiful_temple, w);
+        hong_kong_china_temple = loadAndScale(res, R.drawable.hong_kong_china_temple, w);
+        mount_timpanogos_utah_temple = loadAndScale(res, R.drawable.mount_timpanogos_utah_temple, w);
+        st_louis_temple = loadAndScale(res, R.drawable.st_louis_temple, w);
+        vernal_temple = loadAndScale(res, R.drawable.vernal_temple, w);
+        preston_england_temple = loadAndScale(res, R.drawable.preston_england_temple, w);
+        monticello_utah_temple = loadAndScale(res, R.drawable.monticello_utah_temple, w);
+        anchorage_alaska_temple = loadAndScale(res, R.drawable.anchorage_alaska_temple, w);
+        colonia_juarez_mexico_temple = loadAndScale(res, R.drawable.colonia_juarez_mexico_temple, w);
+        madrid_spain_temple = loadAndScale(res, R.drawable.madrid_spain_temple, w);
+        bogota_colombia_temple = loadAndScale(res, R.drawable.bogota_colombia_temple, w);
+        guayaquil_ecuador_temple = loadAndScale(res, R.drawable.guayaquil_ecuador_temple, w);
+        spokane_washington_temple = loadAndScale(res, R.drawable.spokane_washington_temple, w);
+        columbus_ohio_temple = loadAndScale(res, R.drawable.columbus_ohio_temple, w);
+        bismark_north_dakota_temple = loadAndScale(res, R.drawable.bismark_north_dakota_temple, w);
+        columbia_temple = loadAndScale(res, R.drawable.columbia_temple, w);
+        detroit_temple = loadAndScale(res, R.drawable.detroit_temple, w);
+        halifax_nova_scotia_lds_temple = loadAndScale(res, R.drawable.halifax_nova_scotia_lds_temple, w);
+        regina_temple = loadAndScale(res, R.drawable.regina_temple, w);
+        billings_montana_temple = loadAndScale(res, R.drawable.billings_montana_temple, w);
+        edmonton_alberta_temple = loadAndScale(res, R.drawable.edmonton_alberta_temple, w);
+        raleigh_north_carolina_temple = loadAndScale(res, R.drawable.raleigh_north_carolina_temple, w);
+        st_paul_temple = loadAndScale(res, R.drawable.st_paul_temple, w);
+        kona_temple = loadAndScale(res, R.drawable.kona_temple, w);
+        ciudad_juarez_mexico_temple = loadAndScale(res, R.drawable.ciudad_juarez_mexico_temple, w);
+        hermosillo_sonora_mexico_temple = loadAndScale(res, R.drawable.hermosillo_sonora_mexico_temple, w);
+        albuquerque_temple = loadAndScale(res, R.drawable.albuquerque_temple, w);
+        oaxaca_mexico_temple = loadAndScale(res, R.drawable.oaxaca_mexico_temple, w);
+        tuxtla_guitierrez_mexico_temple = loadAndScale(res, R.drawable.tuxtla_guitierrez_mexico_temple, w);
+        louisville_temple = loadAndScale(res, R.drawable.louisville_temple, w);
+        palmyra_temple = loadAndScale(res, R.drawable.palmyra_temple, w);
+        fresno_temple = loadAndScale(res, R.drawable.fresno_temple, w);
+        medford_temple = loadAndScale(res, R.drawable.medford_temple, w);
+        memphis_tennessee_temple = loadAndScale(res, R.drawable.memphis_tennessee_temple, w);
+        reno_nevada_lds_temple = loadAndScale(res, R.drawable.reno_nevada_lds_temple, w);
+        cochabamba_bolivia_temple = loadAndScale(res, R.drawable.cochabamba_bolivia_temple, w);
+        tampico_mexico_temple = loadAndScale(res, R.drawable.tampico_mexico_temple, w);
+        nashville_temple = loadAndScale(res, R.drawable.nashville_temple, w);
+        villahermosa_mexico_temple = loadAndScale(res, R.drawable.villahermosa_mexico_temple, w);
+        montreal_quebec_temple = loadAndScale(res, R.drawable.montreal_quebec_temple, w);
+        san_jose_costa_rica_temple = loadAndScale(res, R.drawable.san_jose_costa_rica_temple, w);
+        fukuoka_japan_temple = loadAndScale(res, R.drawable.fukuoka_japan_temple, w);
+        adelaide_australia_temple = loadAndScale(res, R.drawable.adelaide_australia_temple, w);
+        melbourne_australia_temple = loadAndScale(res, R.drawable.melbourne_australia_temple, w);
+        suva_fiji_temple = loadAndScale(res, R.drawable.suva_fiji_temple, w);
+        merida_mexico_temple = loadAndScale(res, R.drawable.merida_mexico_temple, w);
+        veracruz_mexico_temple = loadAndScale(res, R.drawable.veracruz_mexico_temple, w);
+        baton_rouge_louisiana_temple = loadAndScale(res, R.drawable.baton_rouge_louisiana_temple, w);
+        oklahoma_city_temple = loadAndScale(res, R.drawable.oklahoma_city_temple, w);
+        caracas_venezuela_temple = loadAndScale(res, R.drawable.caracas_venezuela_temple, w);
+        houston_texas_temple = loadAndScale(res, R.drawable.houston_texas_temple, w);
+        birmingham_alabama_temple = loadAndScale(res, R.drawable.birmingham_alabama_temple, w);
+        santo_domingo_dominican_republic_temple = loadAndScale(res, R.drawable.santo_domingo_dominican_republic_temple, w);
+        boston_temple = loadAndScale(res, R.drawable.boston_temple, w);
+        recife_brazil_temple = loadAndScale(res, R.drawable.recife_brazil_temple, w);
+        porto_alegre_brazil_temple = loadAndScale(res, R.drawable.porto_alegre_brazil_temple, w);
+        montevideo_uruguay_temple = loadAndScale(res, R.drawable.montevideo_uruguay_temple, w);
+        winter_quarters_temple = loadAndScale(res, R.drawable.winter_quarters_temple, w);
+        guadalajara_temple = loadAndScale(res, R.drawable.guadalajara_temple, w);
+        perth_australia_temple = loadAndScale(res, R.drawable.perth_australia_temple, w);
+        columbia_river_temple = loadAndScale(res, R.drawable.columbia_river_temple, w);
+        snowflake_temple = loadAndScale(res, R.drawable.snowflake_temple, w);
+        lubbock_temple = loadAndScale(res, R.drawable.lubbock_temple, w);
+        monterrey_mexico_temple = loadAndScale(res, R.drawable.monterrey_mexico_temple, w);
+        campinas_brazil_temple = loadAndScale(res, R.drawable.campinas_brazil_temple, w);
+        asuncion_paraguay_temple = loadAndScale(res, R.drawable.asuncion_paraguay_temple, w);
+        nauvoo_temple = loadAndScale(res, R.drawable.nauvoo_temple, w);
+        the_hague_netherlands_temple = loadAndScale(res, R.drawable.the_hague_netherlands_temple, w);
+        brisbane_australia_temple = loadAndScale(res, R.drawable.brisbane_australia_temple, w);
+        redlands_temple = loadAndScale(res, R.drawable.redlands_temple, w);
+        accra_ghana_temple = loadAndScale(res, R.drawable.accra_ghana_temple, w);
+        copenhagen_denmark_temple = loadAndScale(res, R.drawable.copenhagen_denmark_temple, w);
+        manhattan_temple = loadAndScale(res, R.drawable.manhattan_temple, w);
+        san_antonio_temple = loadAndScale(res, R.drawable.san_antonio_temple, w);
+        aba_nigeria_temple = loadAndScale(res, R.drawable.aba_nigeria_temple, w);
+        newport_beach_california_temple = loadAndScale(res, R.drawable.newport_beach_california_temple, w);
+        sacramento_temple = loadAndScale(res, R.drawable.sacramento_temple, w);
+        helsinki_finland_temple = loadAndScale(res, R.drawable.helsinki_finland_temple, w);
+        rexburg_idaho_temple = loadAndScale(res, R.drawable.rexburg_idaho_temple, w);
+        curitiba_brazil_temple = loadAndScale(res, R.drawable.curitiba_brazil_temple, w);
+        panama_city_temple = loadAndScale(res, R.drawable.panama_city_temple, w);
+        twin_falls_temple = loadAndScale(res, R.drawable.twin_falls_temple, w);
+        draper_utah_temple = loadAndScale(res, R.drawable.draper_utah_temple, w);
+        oquirrh_mountain_utah_temple = loadAndScale(res, R.drawable.oquirrh_mountain_utah_temple, w);
+        vancouver_temple = loadAndScale(res, R.drawable.vancouver_temple, w);
+        gila_valley_temple = loadAndScale(res, R.drawable.gila_valley_temple, w);
+        cebu_philippines_temple = loadAndScale(res, R.drawable.cebu_philippines_temple, w);
+        kyiv_ukraine_temple = loadAndScale(res, R.drawable.kyiv_ukraine_temple, w);
+        san_salvador_el_salvador_temple = loadAndScale(res, R.drawable.san_salvador_el_salvador_temple, w);
+        quetzaltenango_guatemala_temple = loadAndScale(res, R.drawable.quetzaltenango_guatemala_temple, w);
+        kansas_city_temple = loadAndScale(res, R.drawable.kansas_city_temple, w);
+        manaus_brazil_temple = loadAndScale(res, R.drawable.manaus_brazil_temple, w);
+        brigham_city_utah_temple = loadAndScale(res, R.drawable.brigham_city_utah_temple, w);
+        calgary_alberta_lds_temple = loadAndScale(res, R.drawable.calgary_alberta_lds_temple, w);
+        tegucigalpa_honduras_temple = loadAndScale(res, R.drawable.tegucigalpa_honduras_temple, w);
+        gilbert_arizona_temple = loadAndScale(res, R.drawable.gilbert_arizona_temple, w);
+        fort_lauderdale_florida_temple = loadAndScale(res, R.drawable.fort_lauderdale_florida_temple, w);
+        phoenix_arizona_temple = loadAndScale(res, R.drawable.phoenix_arizona_temple, w);
+        cordoba_argentina_temple = loadAndScale(res, R.drawable.cordoba_argentina_temple, w);
+        payson_utah_temple = loadAndScale(res, R.drawable.payson_utah_temple, w);
+        trujillo_peru_temple = loadAndScale(res, R.drawable.trujillo_peru_temple, w);
+        indianapolis_indiana_temple = loadAndScale(res, R.drawable.indianapolis_indiana_temple, w);
+        tijuana_mexico_temple = loadAndScale(res, R.drawable.tijuana_mexico_temple, w);
+        provo_city_center_temple = loadAndScale(res, R.drawable.provo_city_center_temple, w);
+        sapporo_japan_temple = loadAndScale(res, R.drawable.sapporo_japan_temple, w);
+        philadelphia_pennsylvania_temple = loadAndScale(res, R.drawable.philadelphia_pennsylvania_temple, w);
+        fort_collins_colorado_temple = loadAndScale(res, R.drawable.fort_collins_colorado_temple, w);
+        star_valley_wyoming_temple = loadAndScale(res, R.drawable.star_valley_wyoming_temple, w);
+        hartford_connecticut_temple = loadAndScale(res, R.drawable.hartford_connecticut_temple, w);
+        paris_france_temple = loadAndScale(res, R.drawable.paris_france_temple, w);
+        tucson_arizona_temple = loadAndScale(res, R.drawable.tucson_arizona_temple, w);
+        meridian_idaho_temple = loadAndScale(res, R.drawable.meridian_idaho_temple, w);
+        cedar_city_utah_temple = loadAndScale(res, R.drawable.cedar_city_utah_temple, w);
+        concepcion_chile_temple = loadAndScale(res, R.drawable.concepcion_chile_temple, w);
+        barranquilla_columbia_temple = loadAndScale(res, R.drawable.barranquilla_columbia_temple, w);
+        rome_italy_temple = loadAndScale(res, R.drawable.rome_italy_temple, w);
+        kinshasa_temple = loadAndScale(res, R.drawable.kinshasa_temple, w);
+        fortaleza_brazil_temple = loadAndScale(res, R.drawable.fortaleza_brazil_temple, w);
+        haiti_temple_exterior = loadAndScale(res, R.drawable.haiti_temple_exterior, w);
+        lisbon_portugal_temple = loadAndScale(res, R.drawable.lisbon_portugal_temple, w);
+        arequipa_peru_temple = loadAndScale(res, R.drawable.arequipa_peru_temple, w);
+        durban_south_africa_temple = loadAndScale(res, R.drawable.durban_south_africa_temple, w);
 
+        /*
         logan_temple = loadAndScale(res, R.drawable.aaa, w);
         manti_temple = loadAndScale(res, R.drawable.aab, w);
         hawaii_temple = loadAndScale(res, R.drawable.aac, w);
@@ -632,6 +820,9 @@ public class ImageCache {
         durban_south_africa_temple = loadAndScale(res, R.drawable.aazzzzzze, w);
 
 
+         */
+
+
 
 
 
@@ -704,6 +895,179 @@ public class ImageCache {
     public static ArrayList<Bitmap> getTemplesList() {
         templesList = new ArrayList<>();
 
+
+        templesList.add(kirtland_temple);
+        templesList.add(old_nauvoo_temple);
+        templesList.add(st_george_temple);
+        templesList.add(logan_temple);
+        templesList.add(manti_temple);
+        templesList.add(salt_lake_temple);
+        templesList.add(laie_hawaii_temple);
+        templesList.add(cardston_alberta_temple);
+        templesList.add(mesa_temple);
+        templesList.add(idaho_falls_temple);
+        templesList.add(bern_switzerland_temple);
+        templesList.add(los_angeles_temple);
+        templesList.add(hamilton_new_zealand_temple);
+        templesList.add(london_england_temple);
+        templesList.add(oakland_temple);
+        templesList.add(ogden_utah_temple);
+        templesList.add(provo_temple);
+        templesList.add(washington_dc_temple);
+        templesList.add(sao_paulo_brazil_temple);
+        templesList.add(tokyo_japan_temple);
+        templesList.add(seattle_temple);
+        templesList.add(jordan_river_temple);
+        templesList.add(atlanta_temple);
+        templesList.add(apia_samoa_temple);
+        templesList.add(nukualofa_tonga_temple);
+        templesList.add(santiago_chile_temple);
+        templesList.add(papeete_tahiti_temple);
+        templesList.add(mexico_city_temple);
+        templesList.add(boise_idaho_temple);
+        templesList.add(sydney_australia_temple);
+        templesList.add(manila_philippines_temple);
+        templesList.add(dallas_texas_temple);
+        templesList.add(taipei_taiwan_temple);
+        templesList.add(guatemala_lds_temple);
+        templesList.add(freiberg_germany_temple);
+        templesList.add(stockholm_sweden_lds_temple);
+        templesList.add(chicago_temple);
+        templesList.add(johannesburg_south_africa_temple);
+        templesList.add(seoul_korea_temple);
+        templesList.add(lima_peru_temple);
+        templesList.add(buenos_aires_argentina_temple);
+        templesList.add(denver_colorado_templ);
+        templesList.add(frankfurt_germany_temple);
+        templesList.add(portland_oregon_temple);
+        templesList.add(las_vegas_temple);
+        templesList.add(toronto_temple);
+        templesList.add(san_diego_california_temple);
+        templesList.add(orlando_temple);
+        templesList.add(bountiful_temple);
+        templesList.add(hong_kong_china_temple);
+        templesList.add(mount_timpanogos_utah_temple);
+        templesList.add(st_louis_temple);
+        templesList.add(vernal_temple);
+        templesList.add(preston_england_temple);
+        templesList.add(monticello_utah_temple);
+        templesList.add(anchorage_alaska_temple);
+        templesList.add(colonia_juarez_mexico_temple);
+        templesList.add(madrid_spain_temple);
+        templesList.add(bogota_colombia_temple);
+        templesList.add(guayaquil_ecuador_temple);
+        templesList.add(spokane_washington_temple);
+        templesList.add(columbus_ohio_temple);
+        templesList.add(bismark_north_dakota_temple);
+        templesList.add(columbia_temple);
+        templesList.add(detroit_temple);
+        templesList.add(halifax_nova_scotia_lds_temple);
+        templesList.add(regina_temple);
+        templesList.add(billings_montana_temple);
+        templesList.add(edmonton_alberta_temple);
+        templesList.add(raleigh_north_carolina_temple);
+        templesList.add(st_paul_temple);
+        templesList.add(kona_temple);
+        templesList.add(ciudad_juarez_mexico_temple);
+        templesList.add(hermosillo_sonora_mexico_temple);
+        templesList.add(albuquerque_temple);
+        templesList.add(oaxaca_mexico_temple);
+        templesList.add(tuxtla_guitierrez_mexico_temple);
+        templesList.add(louisville_temple);
+        templesList.add(palmyra_temple);
+        templesList.add(fresno_temple);
+        templesList.add(medford_temple);
+        templesList.add(memphis_tennessee_temple);
+        templesList.add(reno_nevada_lds_temple);
+        templesList.add(cochabamba_bolivia_temple);
+        templesList.add(tampico_mexico_temple);
+        templesList.add(nashville_temple);
+        templesList.add(villahermosa_mexico_temple);
+        templesList.add(montreal_quebec_temple);
+        templesList.add(san_jose_costa_rica_temple);
+        templesList.add(fukuoka_japan_temple);
+        templesList.add(adelaide_australia_temple);
+        templesList.add(melbourne_australia_temple);
+        templesList.add(suva_fiji_temple);
+        templesList.add(merida_mexico_temple);
+        templesList.add(veracruz_mexico_temple);
+        templesList.add(baton_rouge_louisiana_temple);
+        templesList.add(oklahoma_city_temple);
+        templesList.add(caracas_venezuela_temple);
+        templesList.add(houston_texas_temple);
+        templesList.add(birmingham_alabama_temple);
+        templesList.add(santo_domingo_dominican_republic_temple);
+        templesList.add(boston_temple);
+        templesList.add(recife_brazil_temple);
+        templesList.add(porto_alegre_brazil_temple);
+        templesList.add(montevideo_uruguay_temple);
+        templesList.add(winter_quarters_temple);
+        templesList.add(guadalajara_temple);
+        templesList.add(perth_australia_temple);
+        templesList.add(columbia_river_temple);
+        templesList.add(snowflake_temple);
+        templesList.add(lubbock_temple);
+        templesList.add(monterrey_mexico_temple);
+        templesList.add(campinas_brazil_temple);
+        templesList.add(asuncion_paraguay_temple);
+        templesList.add(nauvoo_temple);
+        templesList.add(the_hague_netherlands_temple);
+        templesList.add(brisbane_australia_temple);
+        templesList.add(redlands_temple);
+        templesList.add(accra_ghana_temple);
+        templesList.add(copenhagen_denmark_temple);
+        templesList.add(manhattan_temple);
+        templesList.add(san_antonio_temple);
+        templesList.add(aba_nigeria_temple);
+        templesList.add(newport_beach_california_temple);
+        templesList.add(sacramento_temple);
+        templesList.add(helsinki_finland_temple);
+        templesList.add(rexburg_idaho_temple);
+        templesList.add(curitiba_brazil_temple);
+        templesList.add(panama_city_temple);
+        templesList.add(twin_falls_temple);
+        templesList.add(draper_utah_temple);
+        templesList.add(oquirrh_mountain_utah_temple);
+        templesList.add(vancouver_temple);
+        templesList.add(gila_valley_temple);
+        templesList.add(cebu_philippines_temple);
+        templesList.add(kyiv_ukraine_temple);
+        templesList.add(san_salvador_el_salvador_temple);
+        templesList.add(quetzaltenango_guatemala_temple);
+        templesList.add(kansas_city_temple);
+        templesList.add(manaus_brazil_temple);
+        templesList.add(brigham_city_utah_temple);
+        templesList.add(calgary_alberta_lds_temple);
+        templesList.add(tegucigalpa_honduras_temple);
+        templesList.add(gilbert_arizona_temple);
+        templesList.add(fort_lauderdale_florida_temple);
+        templesList.add(phoenix_arizona_temple);
+        templesList.add(cordoba_argentina_temple);
+        templesList.add(payson_utah_temple);
+        templesList.add(trujillo_peru_temple);
+        templesList.add(indianapolis_indiana_temple);
+        templesList.add(tijuana_mexico_temple);
+        templesList.add(provo_city_center_temple);
+        templesList.add(sapporo_japan_temple);
+        templesList.add(philadelphia_pennsylvania_temple);
+        templesList.add(fort_collins_colorado_temple);
+        templesList.add(star_valley_wyoming_temple);
+        templesList.add(hartford_connecticut_temple);
+        templesList.add(paris_france_temple);
+        templesList.add(tucson_arizona_temple);
+        templesList.add(meridian_idaho_temple);
+        templesList.add(cedar_city_utah_temple);
+        templesList.add(concepcion_chile_temple);
+        templesList.add(barranquilla_columbia_temple);
+        templesList.add(rome_italy_temple);
+        templesList.add(kinshasa_temple);
+        templesList.add(fortaleza_brazil_temple);
+        templesList.add(haiti_temple_exterior);
+        templesList.add(lisbon_portugal_temple);
+        templesList.add(arequipa_peru_temple);
+        templesList.add(durban_south_africa_temple);
+
+        /*
         templesList.add(logan_temple);
         templesList.add(manti_temple);
         templesList.add(hawaii_temple);
@@ -867,6 +1231,8 @@ public class ImageCache {
         templesList.add(durban_south_africa_temple);
 
 
+         */
+
         templesList.add(aa_imnothing);
         templesList.add(ab_imnothing);
         templesList.add(ac_imnothing);
@@ -923,6 +1289,8 @@ public class ImageCache {
 
 
 
+
+
         return templesList;
     }
 
@@ -935,6 +1303,178 @@ public class ImageCache {
 
         allImageIds = new ArrayList<>();
 
+        allImageIds.add(R.drawable.kirtland_temple_large);
+        allImageIds.add(R.drawable.old_nauvoo_temple_large);
+        allImageIds.add(R.drawable.st_george_temple_large);
+        allImageIds.add(R.drawable.logan_temple_large);
+        allImageIds.add(R.drawable.manti_temple_large);
+        allImageIds.add(R.drawable.salt_lake_temple_large);
+        allImageIds.add(R.drawable.laie_hawaii_temple_large);
+        allImageIds.add(R.drawable.cardston_alberta_temple_large);
+        allImageIds.add(R.drawable.mesa_temple_large);
+        allImageIds.add(R.drawable.idaho_falls_temple_large);
+        allImageIds.add(R.drawable.bern_switzerland_temple_large);
+        allImageIds.add(R.drawable.los_angeles_temple_large);
+        allImageIds.add(R.drawable.hamilton_new_zealand_temple_large);
+        allImageIds.add(R.drawable.london_england_temple_large);
+        allImageIds.add(R.drawable.oakland_temple_large);
+        allImageIds.add(R.drawable.ogden_utah_temple_large);
+        allImageIds.add(R.drawable.provo_temple_large);
+        allImageIds.add(R.drawable.washington_dc_temple_large);
+        allImageIds.add(R.drawable.sao_paulo_brazil_temple_large);
+        allImageIds.add(R.drawable.tokyo_japan_temple_large);
+        allImageIds.add(R.drawable.seattle_temple_large);
+        allImageIds.add(R.drawable.jordan_river_temple_large);
+        allImageIds.add(R.drawable.atlanta_temple_large);
+        allImageIds.add(R.drawable.apia_samoa_temple_large);
+        allImageIds.add(R.drawable.nukualofa_tonga_temple_large);
+        allImageIds.add(R.drawable.santiago_chile_temple_large);
+        allImageIds.add(R.drawable.papeete_tahiti_temple_large);
+        allImageIds.add(R.drawable.mexico_city_temple_large);
+        allImageIds.add(R.drawable.boise_idaho_temple_large);
+        allImageIds.add(R.drawable.sydney_australia_temple_large);
+        allImageIds.add(R.drawable.manila_philippines_temple_large);
+        allImageIds.add(R.drawable.dallas_texas_temple_large);
+        allImageIds.add(R.drawable.taipei_taiwan_temple_large);
+        allImageIds.add(R.drawable.guatemala_lds_temple_large);
+        allImageIds.add(R.drawable.freiberg_germany_temple_large);
+        allImageIds.add(R.drawable.stockholm_sweden_lds_temple_large);
+        allImageIds.add(R.drawable.chicago_temple_large);
+        allImageIds.add(R.drawable.johannesburg_south_africa_temple_large);
+        allImageIds.add(R.drawable.seoul_korea_temple_large);
+        allImageIds.add(R.drawable.lima_peru_temple_large);
+        allImageIds.add(R.drawable.buenos_aires_argentina_temple_large);
+        allImageIds.add(R.drawable.denver_colorado_templ_large);
+        allImageIds.add(R.drawable.frankfurt_germany_temple_large);
+        allImageIds.add(R.drawable.portland_oregon_temple_large);
+        allImageIds.add(R.drawable.las_vegas_temple_large);
+        allImageIds.add(R.drawable.toronto_temple_large);
+        allImageIds.add(R.drawable.san_diego_california_temple_large);
+        allImageIds.add(R.drawable.orlando_temple_large);
+        allImageIds.add(R.drawable.bountiful_temple_large);
+        allImageIds.add(R.drawable.hong_kong_china_temple_large);
+        allImageIds.add(R.drawable.mount_timpanogos_utah_temple_large);
+        allImageIds.add(R.drawable.st_louis_temple_large);
+        allImageIds.add(R.drawable.vernal_temple_large);
+        allImageIds.add(R.drawable.preston_england_temple_large);
+        allImageIds.add(R.drawable.monticello_utah_temple_large);
+        allImageIds.add(R.drawable.anchorage_alaska_temple_large);
+        allImageIds.add(R.drawable.colonia_juarez_mexico_temple_large);
+        allImageIds.add(R.drawable.madrid_spain_temple_large);
+        allImageIds.add(R.drawable.bogota_colombia_temple_large);
+        allImageIds.add(R.drawable.guayaquil_ecuador_temple_large);
+        allImageIds.add(R.drawable.spokane_washington_temple_large);
+        allImageIds.add(R.drawable.columbus_ohio_temple_large);
+        allImageIds.add(R.drawable.bismark_north_dakota_temple_large);
+        allImageIds.add(R.drawable.columbia_temple_large);
+        allImageIds.add(R.drawable.detroit_temple_large);
+        allImageIds.add(R.drawable.halifax_nova_scotia_lds_temple_large);
+        allImageIds.add(R.drawable.regina_temple_large);
+        allImageIds.add(R.drawable.billings_montana_temple_large);
+        allImageIds.add(R.drawable.edmonton_alberta_temple_large);
+        allImageIds.add(R.drawable.raleigh_north_carolina_temple_large);
+        allImageIds.add(R.drawable.st_paul_temple_large);
+        allImageIds.add(R.drawable.kona_temple_large);
+        allImageIds.add(R.drawable.ciudad_juarez_mexico_temple_large);
+        allImageIds.add(R.drawable.hermosillo_sonora_mexico_temple_large);
+        allImageIds.add(R.drawable.albuquerque_temple_large);
+        allImageIds.add(R.drawable.oaxaca_mexico_temple_large);
+        allImageIds.add(R.drawable.tuxtla_guitierrez_mexico_temple_large);
+        allImageIds.add(R.drawable.louisville_temple_large);
+        allImageIds.add(R.drawable.palmyra_temple_large);
+        allImageIds.add(R.drawable.fresno_temple_large);
+        allImageIds.add(R.drawable.medford_temple_large);
+        allImageIds.add(R.drawable.memphis_tennessee_temple_large);
+        allImageIds.add(R.drawable.reno_nevada_lds_temple_large);
+        allImageIds.add(R.drawable.cochabamba_bolivia_temple_large);
+        allImageIds.add(R.drawable.tampico_mexico_temple_large);
+        allImageIds.add(R.drawable.nashville_temple_large);
+        allImageIds.add(R.drawable.villahermosa_mexico_temple_large);
+        allImageIds.add(R.drawable.montreal_quebec_temple_large);
+        allImageIds.add(R.drawable.san_jose_costa_rica_temple_large);
+        allImageIds.add(R.drawable.fukuoka_japan_temple_large);
+        allImageIds.add(R.drawable.adelaide_australia_temple_large);
+        allImageIds.add(R.drawable.melbourne_australia_temple_large);
+        allImageIds.add(R.drawable.suva_fiji_temple_large);
+        allImageIds.add(R.drawable.merida_mexico_temple_large);
+        allImageIds.add(R.drawable.veracruz_mexico_temple_large);
+        allImageIds.add(R.drawable.baton_rouge_louisiana_temple_large);
+        allImageIds.add(R.drawable.oklahoma_city_temple_large);
+        allImageIds.add(R.drawable.caracas_venezuela_temple_large);
+        allImageIds.add(R.drawable.houston_texas_temple_large);
+        allImageIds.add(R.drawable.birmingham_alabama_temple_large);
+        allImageIds.add(R.drawable.santo_domingo_dominican_republic_temple_large);
+        allImageIds.add(R.drawable.boston_temple_large);
+        allImageIds.add(R.drawable.recife_brazil_temple_large);
+        allImageIds.add(R.drawable.porto_alegre_brazil_temple_large);
+        allImageIds.add(R.drawable.montevideo_uruguay_temple_large);
+        allImageIds.add(R.drawable.winter_quarters_temple_large);
+        allImageIds.add(R.drawable.guadalajara_temple_large);
+        allImageIds.add(R.drawable.perth_australia_temple_large);
+        allImageIds.add(R.drawable.columbia_river_temple_large);
+        allImageIds.add(R.drawable.snowflake_temple_large);
+        allImageIds.add(R.drawable.lubbock_temple_large);
+        allImageIds.add(R.drawable.monterrey_mexico_temple_large);
+        allImageIds.add(R.drawable.campinas_brazil_temple_large);
+        allImageIds.add(R.drawable.asuncion_paraguay_temple_large);
+        allImageIds.add(R.drawable.nauvoo_temple_large);
+        allImageIds.add(R.drawable.the_hague_netherlands_temple_large);
+        allImageIds.add(R.drawable.brisbane_australia_temple_large);
+        allImageIds.add(R.drawable.redlands_temple_large);
+        allImageIds.add(R.drawable.accra_ghana_temple_large);
+        allImageIds.add(R.drawable.copenhagen_denmark_temple_large);
+        allImageIds.add(R.drawable.manhattan_temple_large);
+        allImageIds.add(R.drawable.san_antonio_temple_large);
+        allImageIds.add(R.drawable.aba_nigeria_temple_large);
+        allImageIds.add(R.drawable.newport_beach_california_temple_large);
+        allImageIds.add(R.drawable.sacramento_temple_large);
+        allImageIds.add(R.drawable.helsinki_finland_temple_large);
+        allImageIds.add(R.drawable.rexburg_idaho_temple_large);
+        allImageIds.add(R.drawable.curitiba_brazil_temple_large);
+        allImageIds.add(R.drawable.panama_city_temple_large);
+        allImageIds.add(R.drawable.twin_falls_temple_large);
+        allImageIds.add(R.drawable.draper_utah_temple_large);
+        allImageIds.add(R.drawable.oquirrh_mountain_utah_temple_large);
+        allImageIds.add(R.drawable.vancouver_temple_large);
+        allImageIds.add(R.drawable.gila_valley_temple_large);
+        allImageIds.add(R.drawable.cebu_philippines_temple_large);
+        allImageIds.add(R.drawable.kyiv_ukraine_temple_large);
+        allImageIds.add(R.drawable.san_salvador_el_salvador_temple_large);
+        allImageIds.add(R.drawable.quetzaltenango_guatemala_temple_large);
+        allImageIds.add(R.drawable.kansas_city_temple_large);
+        allImageIds.add(R.drawable.manaus_brazil_temple_large);
+        allImageIds.add(R.drawable.brigham_city_utah_temple_large);
+        allImageIds.add(R.drawable.calgary_alberta_lds_temple_large);
+        allImageIds.add(R.drawable.tegucigalpa_honduras_temple_large);
+        allImageIds.add(R.drawable.gilbert_arizona_temple_large);
+        allImageIds.add(R.drawable.fort_lauderdale_florida_temple_large);
+        allImageIds.add(R.drawable.phoenix_arizona_temple_large);
+        allImageIds.add(R.drawable.cordoba_argentina_temple_large);
+        allImageIds.add(R.drawable.payson_utah_temple_large);
+        allImageIds.add(R.drawable.trujillo_peru_temple_large);
+        allImageIds.add(R.drawable.indianapolis_indiana_temple_large);
+        allImageIds.add(R.drawable.tijuana_mexico_temple_large);
+        allImageIds.add(R.drawable.provo_city_center_temple_large);
+        allImageIds.add(R.drawable.sapporo_japan_temple_large);
+        allImageIds.add(R.drawable.philadelphia_pennsylvania_temple_large);
+        allImageIds.add(R.drawable.fort_collins_colorado_temple_large);
+        allImageIds.add(R.drawable.star_valley_wyoming_temple_large);
+        allImageIds.add(R.drawable.hartford_connecticut_temple_large);
+        allImageIds.add(R.drawable.paris_france_temple_large);
+        allImageIds.add(R.drawable.tucson_arizona_temple_large);
+        allImageIds.add(R.drawable.meridian_idaho_temple_large);
+        allImageIds.add(R.drawable.cedar_city_utah_temple_large);
+        allImageIds.add(R.drawable.concepcion_chile_temple_large);
+        allImageIds.add(R.drawable.barranquilla_columbia_temple_large);
+        allImageIds.add(R.drawable.rome_italy_temple_large);
+        allImageIds.add(R.drawable.kinshasa_temple_large);
+        allImageIds.add(R.drawable.fortaleza_brazil_temple_large);
+        allImageIds.add(R.drawable.haiti_temple_exterior_large);
+        allImageIds.add(R.drawable.lisbon_portugal_temple_large);
+        allImageIds.add(R.drawable.arequipa_peru_temple_large);
+        allImageIds.add(R.drawable.durban_south_africa_temple_large);
+
+        /*
 
         allImageIds.add(R.drawable.aaa_large);
         allImageIds.add(R.drawable.aab_large);
@@ -1097,6 +1637,8 @@ public class ImageCache {
         allImageIds.add(R.drawable.aazzzzzzc_large);
         allImageIds.add(R.drawable.aazzzzzzd_large);
         allImageIds.add(R.drawable.aazzzzzze_large);
+
+         */
 
 
         allImageIds.add(R.drawable.aa_imnothing);
