@@ -77,48 +77,15 @@ for i in templesNamesReal:
 print(len(templesNamesReal))
 '''
 
+'''
 for i in templesNamesReal:
     print("allImageIds.add(R.drawable." + i + "_large);")
     #fo.write(i)
 print(len(templesNamesReal))
-
 '''
-s = "aa"
-fakeNames = []
-for x in range(2, 9):
-    for i in "abcdefghijklmnopqrstuvwxyz":
-        s = s[0:x]
-        s += i
-        fakeNames.append(s)
 
-for x in range(0, 21):
-    fakeNames.pop()
-
-print(fakeNames)
-
-
-templesNamesLarge = []
-for i in fakeNames:
-    i = i + "_large"
-    templesNamesLarge.append(i)
-
-#print(templesNamesReal)
-
-for i in templesNamesLarge:
-    print("allImageIds.add(R.drawable." + i + ");")
-
-#templesNamesLarge = file_name("C:\\Users\\litia\\OneDrive - Brigham Young University Hawaii\\Desktop\\temple_app_images\\temporary - Copy")
-'''
-'''
-t = 0
-templesNamesReal = []
-for i in templesNamesLarge:
-    t = t + 1   
-    
-    j = i[0:-5]
-    print("allImageIds.add(R.drawable." + j + ");")
-    print(t)
-    #templesNamesReal.append(j)
-
-#print(templesNamesReal)
-'''
+x = 0 
+for i in templesNames:
+    x += 1
+    print(x)
+    print(i)
