@@ -1,5 +1,5 @@
 
-LDS Temple Virtualization
+Latter-day Temples Virtualization
 ===
 
  
