@@ -9,6 +9,3 @@ LDS Temple Virtualization
 <li>Video demonstration of the App</li>
 </ul>
 
-
-
-
