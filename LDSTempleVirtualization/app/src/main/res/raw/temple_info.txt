@@ -225,7 +225,7 @@ Albuquerque, New Mexico, United States
 March 5, 2000
 Oaxaca Mexico Temple
 Oaxaca City, Mexico
-11 March 2000 
+11 March 2000
 Tuxtla Gutiérrez Mexico Temple
 Tuxtla Gutiérrez, Chiapas, Mexico
 12 March 2000
@@ -297,7 +297,7 @@ Spring, Texas, United States
 August 26, 2000
 Birmingham Alabama Temple
 Gardendale, Alabama, United States
-September 3
+September 3, 2000
 Santo Domingo Dominican Republic Temple
 Santo Domingo, Dominican Republic
 September 17, 2000
@@ -327,7 +327,7 @@ Richland, Washington, United States
 November 18, 2001
 Snowflake Arizona Temple
 Snowflake, Arizona, United States
-March 3, 2002 
+March 3, 2002
 Lubbock Texas Temple
 Lubbock, Texas, United States
 April 21, 2002
@@ -363,7 +363,7 @@ New York City, United States
 13 June 2004
 San Antonio Texas Temple
 San Antonio, Texas, United States
-May 22, 2005 
+May 22, 2005
 Aba Nigeria Temple
 Aba, Nigeria
 7 August 2005
