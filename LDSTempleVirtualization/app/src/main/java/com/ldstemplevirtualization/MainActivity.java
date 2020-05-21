@@ -30,15 +30,15 @@ import static java.lang.Boolean.TRUE;
 public class MainActivity extends AppCompatActivity {
 
     private TempleView tv;
-    private SeekBar slider;
+    public SeekBar slider;
     public Context mContext;
     private int oldProgress;
 
     //not using Timer to make slider smooth anymore
     private MyTimer timA;
 
-    private int progress;
-    private int lastProgress;
+    public int progress;
+    public int lastProgress;
 
 
     int stop;
@@ -69,6 +69,14 @@ public class MainActivity extends AppCompatActivity {
             //Log.d("My Timer here ", "My Timer ****************" + " ");
 
             //slider.setProgress(3000);
+
+            if (tv.touchDownOnScreenTempleView == TRUE) {
+                progress = (int)tv.theta;
+                slider.setProgress(progress);
+                tv.invalidate();
+            }
+
+
 
 
             float lastProgressF = tv.getLastProgress();
@@ -124,8 +132,8 @@ public class MainActivity extends AppCompatActivity {
              */
 
 
-            //Log.d("progress is ", progress + " ");
-            //Log.d("last progress is ", lastProgress + " ");
+            Log.d("progress is ", progress + " ");
+            Log.d("last progress is ", lastProgress + " ");
 
             sendMessageDelayed(obtainMessage(0), 1);
         }
@@ -160,8 +168,9 @@ public class MainActivity extends AppCompatActivity {
 
         slider.setProgress(5500);
 
+        timA = new MyTimer();
 
-
+        progress = 5500;
 
 
         slider.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -188,6 +197,8 @@ public class MainActivity extends AppCompatActivity {
 
 
                  */
+
+
 
 
                 if (sliderTouchedByHuman) {
@@ -217,7 +228,9 @@ public class MainActivity extends AppCompatActivity {
 
                 } else {
                     slider.setProgress(lastProgress);
+
                 }
+
 
 
                 /*
@@ -337,10 +350,13 @@ public class MainActivity extends AppCompatActivity {
  */
                 //Toast.makeText(mContext, "touch SeekBar", Toast.LENGTH_SHORT).show();
 
+                /*
                 if (timA != null) {
                     timA.removeCallbacksAndMessages(null);
                 }
 
+
+                 */
 
             }
 
@@ -362,7 +378,8 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-                timA = new MyTimer();
+
+                //timA = new MyTimer();
 
 
                 /*

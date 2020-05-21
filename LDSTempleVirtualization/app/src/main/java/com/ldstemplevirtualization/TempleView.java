@@ -15,6 +15,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -83,6 +84,8 @@ public class TempleView extends View {
     private boolean coordinatesAndSizesUpdated;
 
     private boolean orientationJustChanged;
+
+    public boolean touchDownOnScreenTempleView;
 
 
     public TempleView(Context context) {
@@ -353,9 +356,6 @@ public class TempleView extends View {
 
 
 
-
-
-
     @Override
     public boolean onTouchEvent(MotionEvent m) {
 
@@ -364,13 +364,21 @@ public class TempleView extends View {
         if (m.getAction() == MotionEvent.ACTION_DOWN) {
             downX = m.getX();
             downY = m.getY();
-            //Toast.makeText(getContext(), "touched a circle when DOWN at " + downX + " " + downY, Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "touched DOWN at " + downX + " " + downY, Toast.LENGTH_SHORT).show();
+
+            theta = 1000;
+
+            touchDownOnScreenTempleView = TRUE;
+
+
+
         }
 
 
 
         if (m.getAction() == MotionEvent.ACTION_UP) {
 
+            touchDownOnScreenTempleView = FALSE;
 
             //helper--time test
             //Long timeLong = System.currentTimeMillis();
@@ -557,7 +565,7 @@ public class TempleView extends View {
             centerY = screenHeight / 2;
             //centerY = 3 * screenHeight / 8;
 
-            Log.d("LANDSCAPE ", "-------------------------");
+            //Log.d("LANDSCAPE ", "-------------------------");
 
         } else if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
             screenWidth = c.getWidth();
@@ -566,14 +574,14 @@ public class TempleView extends View {
             centerY = screenHeight / 2;
             //centerY = 3 * screenHeight / 8;
 
-            Log.d("PORTRAIT ", "|||||||||||||||||||||||||||||");
+            //Log.d("PORTRAIT ", "|||||||||||||||||||||||||||||");
 
         }
 
 
 
-        Log.d("CENTER X ", centerX + " ");
-        Log.d("CENTER Y ", centerY + " ");
+        //Log.d("CENTER X ", centerX + " ");
+        //Log.d("CENTER Y ", centerY + " ");
 
 
         initialR = screenWidth / 10;
