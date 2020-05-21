@@ -72,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
 
             if (tv.touchDownOnScreenTempleView == TRUE) {
                 progress = (int)tv.theta;
+                lastProgress = (int)tv.theta;
                 slider.setProgress(progress);
                 tv.invalidate();
             }
