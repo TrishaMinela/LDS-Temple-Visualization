@@ -231,6 +231,8 @@ public class SingleTempleView extends View {
 
 
 
+
+
         return true;
     }
 
