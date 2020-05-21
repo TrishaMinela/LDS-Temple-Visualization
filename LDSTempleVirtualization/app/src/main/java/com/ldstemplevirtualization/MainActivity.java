@@ -158,6 +158,8 @@ public class MainActivity extends AppCompatActivity {
         slider.setBackgroundColor(Color.parseColor("#669cff"));
 
 
+        slider.setProgress(5500);
+
 
 
 
@@ -425,6 +427,7 @@ public class MainActivity extends AppCompatActivity {
         //lnl.addView(text1);
 
         setContentView(lnl);
+
 
 
 

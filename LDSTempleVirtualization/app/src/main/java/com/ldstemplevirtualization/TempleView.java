@@ -118,7 +118,8 @@ public class TempleView extends View {
         allTempleInfo = new ArrayList<>();
 
 
-        theta = 0;
+        //theta = 0;
+        theta = 5500;
         thetaPre = 0;
 
         currentTempleMatrix = new Matrix();
