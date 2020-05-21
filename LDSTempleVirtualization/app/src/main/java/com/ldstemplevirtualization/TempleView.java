@@ -366,7 +366,7 @@ public class TempleView extends View {
             downY = m.getY();
             Toast.makeText(getContext(), "touched DOWN at " + downX + " " + downY, Toast.LENGTH_SHORT).show();
 
-            theta = 1000;
+            //theta = 1000;
 
             touchDownOnScreenTempleView = TRUE;
 
