@@ -439,21 +439,60 @@ public class TempleView extends View {
             boolean bottomLeft = (touchY < 9 * screenHeight / 10 && touchY > 9 * screenHeight / 20 && touchX <= screenWidth / 2);
             boolean bottomRight = (touchY < 9 * screenHeight / 10 && touchY > 9 * screenHeight / 20 && touchX > screenWidth / 2);
 
-            boolean top = (touchY < 9 * screenHeight / 20);
-            boolean bottom = (touchY < 9 * screenHeight / 10 && touchY > 9 * screenHeight / 20);
-            boolean left = (touchX < screenWidth / 2);
-            boolean right = (touchX > screenWidth / 2);
+            boolean top = (touchY <= centerY);
+            boolean bottom = (touchY < 9 * screenHeight / 10 && touchY > centerY);
+            boolean left = (touchX <= centerX);
+            boolean right = (touchX > centerX);
+
+            boolean leftThirdVertical = (touchX <= centerX - screenWidth / 6 );
+            boolean middleThirdVertical = (touchX > centerX - screenWidth / 6 && touchX < centerX + screenWidth / 6);
+            boolean rightThirdVertical = (touchX >= centerX + screenWidth / 6 );
+
+            boolean middleColumnNarrowVertical = (touchX > centerX - screenWidth / 20 && touchX < centerX + screenWidth / 20);
 
             //Log.d("topLeft? ",  topLeft + " ");
 
+
+
+            if (leftThirdVertical) {
+                if (yDisplacementFromLastMove > 0) {
+                    theta = theta + 10;
+                } else if (yDisplacementFromLastMove < 0) {
+                    theta = theta - 10;
+                }
+            } else if (rightThirdVertical) {
+                if (yDisplacementFromLastMove > 0) {
+                    theta = theta - 10;
+                } else if (yDisplacementFromLastMove < 0) {
+                    theta = theta + 10;
+                }
+            } else if (middleThirdVertical) {
+                if (top) {
+                    //check xd
+                    if (xDisplacementFromLastMove > 0) {
+                        theta = theta - 10;
+                    } else if (xDisplacementFromLastMove < 0) {
+                        theta = theta + 10;
+                    }
+                } else if (bottom) {
+                    //check xd
+                    if (xDisplacementFromLastMove > 0) {
+                        theta = theta + 10;
+                    } else if (xDisplacementFromLastMove < 0) {
+                        theta = theta - 10;
+                    }
+                }
+            }
+
+            /*
             if (topLeft) {
                 if (xDisplacementFromLastMove > 0 && yDisplacementFromLastMove < 0) { //diagonal move in forth quadrant - this and next else if
                     theta = theta - 10;
                 } else if (xDisplacementFromLastMove < 0 && yDisplacementFromLastMove > 0) {
                     theta = theta + 10;
-                } else if (yDisplacementFromLastMove > 0) {
+                } else if (yDisplacementFromLastMove > 1) {
                     theta = theta + 10;
-                } else if (yDisplacementFromLastMove < 0) {
+                } else if (yDisplacementFromLastMove < -1) {
                     theta = theta - 10;
                 } else if (xDisplacementFromLastMove > 0) {
                     theta = theta - 10;
@@ -465,13 +504,9 @@ public class TempleView extends View {
                     theta = theta - 10;
                 } else if (xDisplacementFromLastMove < 0 && yDisplacementFromLastMove < 0) {
                     theta = theta + 10;
-                } else if (yDisplacementFromLastMove > 0) {
+                } else if (yDisplacementFromLastMove > 1) {
                     theta = theta - 10;
-                } else if (yDisplacementFromLastMove < 0) {
-                    theta = theta + 10;
-                } else if (xDisplacementFromLastMove > 0) {
-                    theta = theta - 10;
-                } else if (xDisplacementFromLastMove < 0) {
+                } else if (yDisplacementFromLastMove < -1) {
                     theta = theta + 10;
                 }
             } else if (bottomLeft) {
@@ -479,13 +514,9 @@ public class TempleView extends View {
                     theta = theta + 10;
                 } else if (xDisplacementFromLastMove < 0 && yDisplacementFromLastMove < 0) {
                     theta = theta - 10;
-                } else if (yDisplacementFromLastMove > 0) {
+                } else if (yDisplacementFromLastMove > 1) {
                     theta = theta + 10;
-                } else if (yDisplacementFromLastMove < 0) {
-                    theta = theta - 10;
-                } else if (xDisplacementFromLastMove > 0) {
-                    theta = theta + 10;
-                } else if (xDisplacementFromLastMove < 0) {
+                } else if (yDisplacementFromLastMove < -1) {
                     theta = theta - 10;
                 }
             } else if (bottomRight) {
@@ -493,16 +524,14 @@ public class TempleView extends View {
                     theta = theta + 10;
                 } else if (xDisplacementFromLastMove < 0 && yDisplacementFromLastMove > 0) {
                     theta = theta - 10;
-                } else if (yDisplacementFromLastMove > 0) {
+                } else if (yDisplacementFromLastMove > 1) {
                     theta = theta - 10;
-                } else if (yDisplacementFromLastMove < 0) {
+                } else if (yDisplacementFromLastMove < -1) {
                     theta = theta + 10;
-                } else if (xDisplacementFromLastMove > 0) {
-                    theta = theta + 10;
-                } else if (xDisplacementFromLastMove < 0) {
-                    theta = theta - 10;
                 }
             }
+
+             */
 
 
 
