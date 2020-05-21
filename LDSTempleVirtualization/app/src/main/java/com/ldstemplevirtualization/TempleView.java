@@ -23,6 +23,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
@@ -90,6 +91,9 @@ public class TempleView extends View {
     float downX;
     float downY;
 
+    private ArrayList<Float> movingCoordinatesLastTime;
+
+    long downTime;
 
     public TempleView(Context context) {
         super(context);
@@ -132,6 +136,8 @@ public class TempleView extends View {
 
         coordinatesAndSizesUpdated = FALSE;
         orientationJustChanged = FALSE;
+
+        movingCoordinatesLastTime = new ArrayList<>();
 
 
     }
@@ -364,6 +370,8 @@ public class TempleView extends View {
 
         float touchX= m.getX();;
         float touchY= m.getY();;
+
+
         //Log.d("TOUCH EVENT",  " touch event happens on screen at ************* " + touchX + " " + touchY );
 
 
@@ -372,11 +380,17 @@ public class TempleView extends View {
             downY = m.getY();
             //Toast.makeText(getContext(), "touched DOWN at " + downX + " " + downY, Toast.LENGTH_SHORT).show();
 
+            movingCoordinatesLastTime.clear();
+            movingCoordinatesLastTime.add(downX);
+            movingCoordinatesLastTime.add(downY);
+
             //Log.d("DOWN",  " finger down on screen at |||||||||||||||" + downX + " " + downY );
 
             //theta = 1000;
 
             touchDownOnScreenTempleView = TRUE;
+
+            downTime = System.currentTimeMillis();
 
         }
 
@@ -388,12 +402,24 @@ public class TempleView extends View {
             float movingY = m.getY();
             //Log.d("MOVING",  " finger moving on screen at " + movingX + " " + movingY );
 
-            float lastX = 0;
-            float lastY = 0;
+            float lastX = movingCoordinatesLastTime.get(0);
+            float lastY = movingCoordinatesLastTime.get(1);
 
-            float xDisplacement = movingX - downX;
-            float yDisplacement = movingX - downY;
-            Log.d("x and y Displacement ", xDisplacement + " " + yDisplacement);
+
+            float xDisplacementFromDown = movingX - downX;
+            float yDisplacementFromDown  = movingX - downY;
+
+            float xDisplacementFromLastMove = movingX - lastX;
+            float yDisplacementFromLastMove = movingY - lastY;
+
+            //Log.d("movingCoordinates", "movingCoordinatesLastTime is " + movingCoordinatesLastTime);
+
+            movingCoordinatesLastTime.clear();
+            movingCoordinatesLastTime.add(movingX);
+            movingCoordinatesLastTime.add(movingY);
+
+
+            Log.d("xy displacementFLT ", xDisplacementFromLastMove + " " + yDisplacementFromLastMove);
 
             //theta = theta - 10;
 
@@ -408,41 +434,72 @@ public class TempleView extends View {
             }
              */
 
-            boolean topLeft = (touchY < 9 * screenHeight / 20 && touchX < screenWidth / 2);
-            boolean topRight = (touchY < 9 * screenHeight / 20 && touchX > screenWidth / 2);
-            boolean bottomLeft = (touchY < 9 * screenHeight / 10 && touchY > 9 * screenHeight / 20 && touchX < screenWidth / 2);
+            boolean topLeft = (touchY <= 9 * screenHeight / 20 && touchX <= screenWidth / 2);
+            boolean topRight = (touchY <= 9 * screenHeight / 20 && touchX > screenWidth / 2);
+            boolean bottomLeft = (touchY < 9 * screenHeight / 10 && touchY > 9 * screenHeight / 20 && touchX <= screenWidth / 2);
             boolean bottomRight = (touchY < 9 * screenHeight / 10 && touchY > 9 * screenHeight / 20 && touchX > screenWidth / 2);
 
-            Log.d("topLeft? ",  topLeft + " ");
+            boolean top = (touchY < 9 * screenHeight / 20);
+            boolean bottom = (touchY < 9 * screenHeight / 10 && touchY > 9 * screenHeight / 20);
+            boolean left = (touchX < screenWidth / 2);
+            boolean right = (touchX > screenWidth / 2);
+
+            //Log.d("topLeft? ",  topLeft + " ");
 
             if (topLeft) {
-                if (xDisplacement > 0 && yDisplacement < 0) {
+                if (xDisplacementFromLastMove > 0 && yDisplacementFromLastMove < 0) { //diagonal move in forth quadrant - this and next else if
                     theta = theta - 10;
-                } else {
+                } else if (xDisplacementFromLastMove < 0 && yDisplacementFromLastMove > 0) {
+                    theta = theta + 10;
+                } else if (yDisplacementFromLastMove > 0) {
+                    theta = theta + 10;
+                } else if (yDisplacementFromLastMove < 0) {
+                    theta = theta - 10;
+                } else if (xDisplacementFromLastMove > 0) {
+                    theta = theta - 10;
+                } else if (xDisplacementFromLastMove < 0) {
                     theta = theta + 10;
                 }
-            }
-
-            if (topRight) {
-                if (xDisplacement > 0 && yDisplacement > 0) {
+            } else if (topRight) {
+                if (xDisplacementFromLastMove > 0 && yDisplacementFromLastMove > 0) { //diagonal move in first quadrant - this and next else if
                     theta = theta - 10;
-                } else {
+                } else if (xDisplacementFromLastMove < 0 && yDisplacementFromLastMove < 0) {
+                    theta = theta + 10;
+                } else if (yDisplacementFromLastMove > 0) {
+                    theta = theta - 10;
+                } else if (yDisplacementFromLastMove < 0) {
+                    theta = theta + 10;
+                } else if (xDisplacementFromLastMove > 0) {
+                    theta = theta - 10;
+                } else if (xDisplacementFromLastMove < 0) {
                     theta = theta + 10;
                 }
-            }
-
-            if (bottomLeft) {
-                if (xDisplacement < 0 && yDisplacement < 0) {
+            } else if (bottomLeft) {
+                if (xDisplacementFromLastMove > 0 && yDisplacementFromLastMove > 0) { //diagonal move in second quadrant - this and next else if
+                    theta = theta + 10;
+                } else if (xDisplacementFromLastMove < 0 && yDisplacementFromLastMove < 0) {
                     theta = theta - 10;
-                } else {
+                } else if (yDisplacementFromLastMove > 0) {
                     theta = theta + 10;
+                } else if (yDisplacementFromLastMove < 0) {
+                    theta = theta - 10;
+                } else if (xDisplacementFromLastMove > 0) {
+                    theta = theta + 10;
+                } else if (xDisplacementFromLastMove < 0) {
+                    theta = theta - 10;
                 }
-            }
-
-            if (bottomRight) {
-                if (xDisplacement > 0 && yDisplacement < 0) {
+            } else if (bottomRight) {
+                if (xDisplacementFromLastMove > 0 && yDisplacementFromLastMove < 0) { //diagonal move in third quadrant - this and next else if
                     theta = theta + 10;
-                } else {
+                } else if (xDisplacementFromLastMove < 0 && yDisplacementFromLastMove > 0) {
+                    theta = theta - 10;
+                } else if (yDisplacementFromLastMove > 0) {
+                    theta = theta - 10;
+                } else if (yDisplacementFromLastMove < 0) {
+                    theta = theta + 10;
+                } else if (xDisplacementFromLastMove > 0) {
+                    theta = theta + 10;
+                } else if (xDisplacementFromLastMove < 0) {
                     theta = theta - 10;
                 }
             }
@@ -452,14 +509,14 @@ public class TempleView extends View {
             /*
             if (touchY < 9 * screenHeight / 20) {
                 //Log.d("UPPER",  "UPPER");
-                if (xDisplacement > 0) {
+                if (xDisplacementFromLastMove > 0) {
                     theta = theta - 10;
                 } else {
                     theta = theta + 10;
                 }
             } else if (touchY < 9 * screenHeight / 10){
                 //Log.d("LOWER",  "LOWER");
-                if (xDisplacement > 0) {
+                if (xDisplacementFromLastMove > 0) {
                     theta = theta + 10;
                 } else {
                     theta = theta - 10;
@@ -481,6 +538,10 @@ public class TempleView extends View {
 
 
         if (m.getAction() == MotionEvent.ACTION_UP) {
+
+            long upTime = System.currentTimeMillis();
+
+            long period = upTime - downTime;
 
             touchDownOnScreenTempleView = FALSE;
 
@@ -564,7 +625,7 @@ public class TempleView extends View {
             }
 
 
-            if (y < 9 * screenHeight / 10) {
+            if (y < 9 * screenHeight / 10 && period < 100) {
 
                 for (ArrayList<Float> eachOnScreenTemple : onScreenTemples) {
                     //remember each Float in inner class is a object, when convert it to int you need to use some method.
