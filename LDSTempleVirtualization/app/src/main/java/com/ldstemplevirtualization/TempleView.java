@@ -87,6 +87,9 @@ public class TempleView extends View {
 
     public boolean touchDownOnScreenTempleView;
 
+    float downX;
+    float downY;
+
 
     public TempleView(Context context) {
         super(context);
@@ -359,16 +362,117 @@ public class TempleView extends View {
     @Override
     public boolean onTouchEvent(MotionEvent m) {
 
-        float downX;
-        float downY;
+        float touchX= m.getX();;
+        float touchY= m.getY();;
+        //Log.d("TOUCH EVENT",  " touch event happens on screen at ************* " + touchX + " " + touchY );
+
+
         if (m.getAction() == MotionEvent.ACTION_DOWN) {
             downX = m.getX();
             downY = m.getY();
-            Toast.makeText(getContext(), "touched DOWN at " + downX + " " + downY, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getContext(), "touched DOWN at " + downX + " " + downY, Toast.LENGTH_SHORT).show();
+
+            //Log.d("DOWN",  " finger down on screen at |||||||||||||||" + downX + " " + downY );
 
             //theta = 1000;
 
             touchDownOnScreenTempleView = TRUE;
+
+        }
+
+        if (m.getAction() == MotionEvent.ACTION_MOVE) {
+
+            //Toast.makeText(getContext(), "finger moving on screen", Toast.LENGTH_SHORT).show();
+
+            float movingX = m.getX();
+            float movingY = m.getY();
+            //Log.d("MOVING",  " finger moving on screen at " + movingX + " " + movingY );
+
+            float lastX = 0;
+            float lastY = 0;
+
+            float xDisplacement = movingX - downX;
+            float yDisplacement = movingX - downY;
+            Log.d("x and y Displacement ", xDisplacement + " " + yDisplacement);
+
+            //theta = theta - 10;
+
+
+            /*
+            float direction = (centerX-0) * (movingY-0) - (centerY-0) *(movingX-0);
+
+            if(direction > 0) {
+                Log.d("direction is ",  "clockwise");
+            } else if (direction < 0) {
+                Log.d("direction is ",  "anti-clockwise");
+            }
+             */
+
+            boolean topLeft = (touchY < 9 * screenHeight / 20 && touchX < screenWidth / 2);
+            boolean topRight = (touchY < 9 * screenHeight / 20 && touchX > screenWidth / 2);
+            boolean bottomLeft = (touchY < 9 * screenHeight / 10 && touchY > 9 * screenHeight / 20 && touchX < screenWidth / 2);
+            boolean bottomRight = (touchY < 9 * screenHeight / 10 && touchY > 9 * screenHeight / 20 && touchX > screenWidth / 2);
+
+            Log.d("topLeft? ",  topLeft + " ");
+
+            if (topLeft) {
+                if (xDisplacement > 0 && yDisplacement < 0) {
+                    theta = theta - 10;
+                } else {
+                    theta = theta + 10;
+                }
+            }
+
+            if (topRight) {
+                if (xDisplacement > 0 && yDisplacement > 0) {
+                    theta = theta - 10;
+                } else {
+                    theta = theta + 10;
+                }
+            }
+
+            if (bottomLeft) {
+                if (xDisplacement < 0 && yDisplacement < 0) {
+                    theta = theta - 10;
+                } else {
+                    theta = theta + 10;
+                }
+            }
+
+            if (bottomRight) {
+                if (xDisplacement > 0 && yDisplacement < 0) {
+                    theta = theta + 10;
+                } else {
+                    theta = theta - 10;
+                }
+            }
+
+
+
+            /*
+            if (touchY < 9 * screenHeight / 20) {
+                //Log.d("UPPER",  "UPPER");
+                if (xDisplacement > 0) {
+                    theta = theta - 10;
+                } else {
+                    theta = theta + 10;
+                }
+            } else if (touchY < 9 * screenHeight / 10){
+                //Log.d("LOWER",  "LOWER");
+                if (xDisplacement > 0) {
+                    theta = theta + 10;
+                } else {
+                    theta = theta - 10;
+                }
+            }
+
+            if (touchX < screenWidth / 2) {
+                //Log.d("LEFT",  "LEFT");
+            } else if (touchX > screenWidth / 2) {
+                //Log.d("RIGHT",  "RIGHT");
+            }
+
+            */
 
 
 

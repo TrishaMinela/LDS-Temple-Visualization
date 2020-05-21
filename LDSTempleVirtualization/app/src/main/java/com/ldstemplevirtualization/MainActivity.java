@@ -139,8 +139,9 @@ public class MainActivity extends AppCompatActivity {
              */
 
 
-            Log.d("progress is ", progress + " ");
-            Log.d("last progress is ", lastProgress + " ");
+            //very helper log here, display current slider progress and it's target progress
+            //Log.d("progress is ", progress + " ");
+            //Log.d("last progress is ", lastProgress + " ");
 
             sendMessageDelayed(obtainMessage(0), 1);
         }
