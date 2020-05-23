@@ -453,9 +453,9 @@ public class MainActivity extends AppCompatActivity {
         //((ViewGroup)text1.getParent()).removeView(text1);
         //lnl.addView(text1);
 
-        setContentView(lnl);
+        //setContentView(lnl);
 
-        /*
+
         if(getResources().getConfiguration().orientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT){
             setContentView(lnl);
         } else {
@@ -478,7 +478,7 @@ public class MainActivity extends AppCompatActivity {
             dialog.show();
         }
 
-         */
+
 
 
 
