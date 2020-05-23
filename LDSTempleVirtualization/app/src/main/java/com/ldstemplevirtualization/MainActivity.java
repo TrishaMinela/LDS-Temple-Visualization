@@ -3,7 +3,9 @@ package com.ldstemplevirtualization;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.graphics.Color;
@@ -452,6 +454,34 @@ public class MainActivity extends AppCompatActivity {
         //lnl.addView(text1);
 
         setContentView(lnl);
+
+        /*
+        if(getResources().getConfiguration().orientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT){
+            setContentView(lnl);
+        } else {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Welcome");
+            builder.setMessage("Please Launch the App with Your Device Portrait");
+            builder.setIcon(R.mipmap.ic_launcher_round);
+
+            //点击对话框以外的区域是否让对话框消失
+            builder.setCancelable(false);
+
+            builder.setNeutralButton("OK", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    finish();
+                }
+            });
+
+            final AlertDialog dialog = builder.create();
+
+            dialog.show();
+        }
+
+         */
+
+
+
 
 
 

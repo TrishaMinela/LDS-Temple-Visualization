@@ -95,6 +95,9 @@ public class TempleView extends View {
 
     long downTime;
 
+    float ultimateScreenWidth;
+    float initialRForLocation;
+
     public TempleView(Context context) {
         super(context);
 
@@ -751,15 +754,18 @@ public class TempleView extends View {
 
 
 
+
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
             screenWidth = c.getWidth() / 2;
             screenHeight = c.getHeight();
 
-            centerX = 5 * screenWidth / 4 / 2 + screenWidth / 16;
+            centerX = screenWidth / 2 + 3 * screenWidth / 16;
+            //centerX = 5 * screenWidth / 4 / 2 + screenWidth / 16;
             centerY = screenHeight / 2;
             //centerY = 3 * screenHeight / 8;
 
-            //Log.d("LANDSCAPE ", "-------------------------");
+            // screenHeight / 10;
+            Log.d("LANDSCAPE ", "-------------------------" + screenHeight);
 
         } else if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
             screenWidth = c.getWidth();
@@ -768,7 +774,10 @@ public class TempleView extends View {
             centerY = screenHeight / 2;
             //centerY = 3 * screenHeight / 8;
 
-            //Log.d("PORTRAIT ", "|||||||||||||||||||||||||||||");
+            ultimateScreenWidth = screenWidth;
+            //initialR = screenWidth / 10;
+
+            Log.d("PORTRAIT ", "|||||||||||||||||||||||||||||" + screenWidth);
 
         }
 
@@ -779,6 +788,8 @@ public class TempleView extends View {
 
 
         initialR = screenWidth / 10;
+        initialRForLocation = ultimateScreenWidth / 10;
+        //initialR = 80;
 
 
 
@@ -787,7 +798,7 @@ public class TempleView extends View {
             sizes.clear();
             getCoordinatesAndSizes();
             orientationJustChanged = FALSE;
-            Log.d("coordinates and sizes ", " just reset ");
+            //Log.d("coordinates and sizes ", " just reset ");
         }
 
         if (coordinatesAndSizesUpdated == FALSE) {
@@ -1600,6 +1611,20 @@ public class TempleView extends View {
 
     public void getCoordinates() {
 
+
+
+
+
+        //spiral are impacted a lot by initialR.
+        //circles locations remain whether landscape or portrait
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            initialR = initialRForLocation;
+
+        } else if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+            initialR = screenWidth / 10;
+
+        }
+
         //for (float t = -30; t < 30; t += 0.02f) {
         for (float t = -18; t < 17.5; t += 0.02f) {
             //Equiangular spiral function：
@@ -1696,6 +1721,11 @@ public class TempleView extends View {
         float pi = (float) Math.PI;
         //float pi = 3.14f;
 
+        //circles sizes remain whether landscape or portrait
+        initialR = screenWidth / 10;
+
+        Toast.makeText(getContext(), "getSizes called, sizes.length is " + sizes.size(), Toast.LENGTH_SHORT).show();
+
         //for (float t = -30; t < 30; t += 0.02f) {
         for (float t = -18; t < 17.5; t += 0.02f) {
             float x = centerX + initialR * (float) (Math.exp(t * 1 / (Math.tan(47 * Math.PI / 100)))) * (float) (Math.cos(t));
@@ -1704,8 +1734,8 @@ public class TempleView extends View {
             float newSize;
             if (t <= 2 * pi) {
                 newSize = (float) (Math.sqrt(Math.pow(Math.abs(x - centerX), 2) + Math.pow(Math.abs(y - centerY), 2)) - initialR);
-                newSize = ((newSize / (screenWidth)) * screenWidth / 818); //1.32f
-                //newSize = ((newSize / (screenWidth)) * 1.32f); //1.32f
+                //newSize = ((newSize / (screenWidth)) * screenWidth / 818); //1.32f
+                newSize = ((newSize / (screenWidth)) * 1.32f); //1.32f
 
 
 
@@ -1726,10 +1756,6 @@ public class TempleView extends View {
                 }
 
                  */
-
-
-
-
 
 
                     /*
@@ -1753,12 +1779,36 @@ public class TempleView extends View {
                 float x2 = centerX + initialR * (float) (Math.exp(t2 * 1 / (Math.tan(47 * Math.PI / 100)))) * (float) (Math.cos(t2));
                 float y2 = centerY + initialR * (float) (Math.exp(t2 * 1 / (Math.tan(47 * Math.PI / 100)))) * (float) (Math.sin(t2));
                 newSize = (float) (Math.sqrt(Math.pow(Math.abs(x - x2), 2) + Math.pow(Math.abs(y - y2), 2)));
-                newSize = (newSize / screenWidth) * screenWidth / 818; //1.32f
+                //newSize = (newSize / screenWidth * 1.32f);
+                //newSize = (newSize / screenWidth) * screenWidth / 818; //1.32f
                 //newSize = (newSize / screenWidth * 1.32f); //
+
+
+
+                if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+                    //newSize = (newSize / screenWidth * 1.12f);
+                    //newSize = (newSize / screenWidth * initialR / 60.6f);
+                    newSize = (newSize / screenWidth * 1.3f);
+
+                } else if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+                    //newSize = (newSize / screenWidth * 1.32f);
+                    //newSize = (newSize / screenWidth * initialR / 60.6f);
+                    newSize = (newSize / screenWidth * 1.3f);
+
+                }
+
                 sizes.add(newSize);
             }
 
+
+
+
+
         }
+
+        Log.d("sizes 1400 are ", " " + sizes.get(1400));
+        Log.d("sizes size is ", " " + sizes.size());
+        Log.d("initialR is ", " " + initialR);
 
         float t = 17.5f;
         int sizesSizeInSpiralPart = sizes.size();
