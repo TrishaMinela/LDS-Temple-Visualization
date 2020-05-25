@@ -38,8 +38,6 @@ public class SingleTempleView extends View {
         location = loc;
         dedicationDate = date;
 
-
-
     }
 
 

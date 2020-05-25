@@ -229,6 +229,7 @@ public class ImageActivity extends AppCompatActivity {
 
 
 
+
         LinearLayout lnl2 = new LinearLayout(this);
         lnl2.setOrientation(LinearLayout.VERTICAL);
 
@@ -285,6 +286,8 @@ public class ImageActivity extends AppCompatActivity {
 
 
     public void readInfoFile() {
+
+        //String s = "temple_info";
 
         try {
             InputStream allTempleInfoFile =  this.getResources().openRawResource(R.raw.temple_info);
