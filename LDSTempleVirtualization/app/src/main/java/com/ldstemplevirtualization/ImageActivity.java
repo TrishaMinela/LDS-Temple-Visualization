@@ -294,11 +294,11 @@ public class ImageActivity extends AppCompatActivity {
             //templeInfo.setBackgroundColor(Color.GREEN);
 
             if (howManyLinesInTempleInfo <= 2) {
-                templeInfo.setTextSize(25);
+                templeInfo.setTextSize(5);
             } else if (howManyLinesInTempleInfo <= 4) {
-                templeInfo.setTextSize(25);
+                templeInfo.setTextSize(15);
             } else {
-                templeInfo.setTextSize(20);
+                templeInfo.setTextSize(12);
             }
             //templeInfo.setTextSize(height / 5 / (howManyLinesInTempleInfo * 1.8f));
             templeInfo.setGravity(Gravity.CENTER);
@@ -375,12 +375,15 @@ public class ImageActivity extends AppCompatActivity {
             templeInfo.setHeight(height/5);
             //templeInfo.setBackgroundColor(Color.GREEN);
 
+            Toast.makeText(this, "howmanylinesintempleinfo", Toast.LENGTH_SHORT).show();
+
+
             if (howManyLinesInTempleInfo <= 2) {
-                templeInfo.setTextSize(25);
-            } else if (howManyLinesInTempleInfo <= 4) {
-                templeInfo.setTextSize(25);
-            } else {
                 templeInfo.setTextSize(20);
+            } else if (howManyLinesInTempleInfo <= 4) {
+                templeInfo.setTextSize(20);
+            } else {
+                templeInfo.setTextSize(15);
             }
             //templeInfo.setTextSize(height / 5 / (howManyLinesInTempleInfo * 1.8f));
             templeInfo.setGravity(Gravity.CENTER);
