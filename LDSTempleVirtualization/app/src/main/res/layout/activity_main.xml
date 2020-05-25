@@ -33,7 +33,7 @@
         android:layout_weight="3"
         android:gravity="center"
         android:textSize="20sp"
-        android:text="Slide to View" />
+        android:text="   " />
 
         <TextView
             android:layout_width="0dp"
