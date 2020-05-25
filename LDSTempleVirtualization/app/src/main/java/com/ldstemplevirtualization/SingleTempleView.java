@@ -123,8 +123,9 @@ public class SingleTempleView extends View {
 
 
 
-            if (sWidth > sHeight - 50 - 35) {
-                singleTemple = loadAndScale(getResources(), bitmapId, sHeight-50 - 35 - sHeight/8);
+            //make sure image is now covering texts. 
+            if (sWidth > sHeight - 50 - 35 - 1.5f * (sHeight / 16 + titleSize / 3)) {
+                singleTemple = loadAndScale(getResources(), bitmapId, sHeight-50 - 35 - 1.5f * (sHeight / 16 + titleSize / 3));
             } else {
                 singleTemple = loadAndScale(getResources(), bitmapId, sWidth);
             }
@@ -137,6 +138,7 @@ public class SingleTempleView extends View {
 
             imageX = centerX - singleTemple.getWidth()/2;
 
+            //where image's top is, this number is used to calculate image size
             //imageY = (sHeight-250 - 35 + sHeight/8) / 2 - singleTemple.getHeight()/2;
             imageY = 1.5f * sHeight / 16 + titleSize / 3;
 
