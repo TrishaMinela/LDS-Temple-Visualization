@@ -53,8 +53,8 @@ files = file_name("D:\\whatsthisD\\LDSTempleVirtualizationApp\\Raw Materials\\te
 
 namesPre = []
 for i in files:
-    #i = i[9:-4]
-    i = i[0:-4]
+    i = i[9:-4]
+    #i = i[0:-4]
     #print(i)
     namesPre.append(i)
 
@@ -66,7 +66,8 @@ print(namesPre)
 
 
 for x in namesPre:
-    print(x)
+    #print(x)
+    print("allTempleInfoFileIds.add(R.raw." + x + ");")
 
 print(len(namesPre))
 
