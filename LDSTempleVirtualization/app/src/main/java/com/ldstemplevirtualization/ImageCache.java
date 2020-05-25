@@ -4,16 +4,9 @@ package com.ldstemplevirtualization;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.util.Log;
 
 
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.List;
 
 public class ImageCache {
 
@@ -21,6 +14,7 @@ public class ImageCache {
 
     private static ArrayList<Bitmap> templesList;
     private static ArrayList<Integer> allImageIds;
+    private static ArrayList<Integer> allTempleInfoFileIds;
     private static float screenWidth, screenHeight;
 
     private static Bitmap kirtland_temple, old_nauvoo_temple, st_george_temple, logan_temple, manti_temple, salt_lake_temple, laie_hawaii_temple, cardston_alberta_temple, mesa_temple, idaho_falls_temple, bern_switzerland_temple, los_angeles_temple, hamilton_new_zealand_temple, london_england_temple, oakland_temple, ogden_utah_temple, provo_temple, washington_dc_temple, sao_paulo_brazil_temple, tokyo_japan_temple, seattle_temple, jordan_river_temple, atlanta_temple, apia_samoa_temple, nukualofa_tonga_temple, santiago_chile_temple, papeete_tahiti_temple, mexico_city_temple, boise_idaho_temple, sydney_australia_temple, manila_philippines_temple, dallas_texas_temple, taipei_taiwan_temple, guatemala_lds_temple, freiberg_germany_temple, stockholm_sweden_lds_temple, chicago_temple, johannesburg_south_africa_temple, seoul_korea_temple, lima_peru_temple, buenos_aires_argentina_temple, denver_colorado_templ, frankfurt_germany_temple, portland_oregon_temple, las_vegas_temple, toronto_temple, san_diego_california_temple, orlando_temple, bountiful_temple, hong_kong_china_temple, mount_timpanogos_utah_temple, st_louis_temple, vernal_temple, preston_england_temple, monticello_utah_temple, anchorage_alaska_temple, colonia_juarez_mexico_temple, madrid_spain_temple, bogota_colombia_temple, guayaquil_ecuador_temple, spokane_washington_temple, columbus_ohio_temple, bismark_north_dakota_temple, columbia_temple, detroit_temple, halifax_nova_scotia_lds_temple, regina_temple, billings_montana_temple, edmonton_alberta_temple, raleigh_north_carolina_temple, st_paul_temple, kona_temple, ciudad_juarez_mexico_temple, hermosillo_sonora_mexico_temple, albuquerque_temple, oaxaca_mexico_temple, tuxtla_guitierrez_mexico_temple, louisville_temple, palmyra_temple, fresno_temple, medford_temple, memphis_tennessee_temple, reno_nevada_lds_temple, cochabamba_bolivia_temple, tampico_mexico_temple, nashville_temple, villahermosa_mexico_temple, montreal_quebec_temple, san_jose_costa_rica_temple, fukuoka_japan_temple, adelaide_australia_temple, melbourne_australia_temple, suva_fiji_temple, merida_mexico_temple, veracruz_mexico_temple, baton_rouge_louisiana_temple, oklahoma_city_temple, caracas_venezuela_temple, houston_texas_temple, birmingham_alabama_temple, santo_domingo_dominican_republic_temple, boston_temple, recife_brazil_temple, porto_alegre_brazil_temple, montevideo_uruguay_temple, winter_quarters_temple, guadalajara_temple, perth_australia_temple, columbia_river_temple, snowflake_temple, lubbock_temple, monterrey_mexico_temple, campinas_brazil_temple, asuncion_paraguay_temple, nauvoo_temple, the_hague_netherlands_temple, brisbane_australia_temple, redlands_temple, accra_ghana_temple, copenhagen_denmark_temple, manhattan_temple, san_antonio_temple, aba_nigeria_temple, newport_beach_california_temple, sacramento_temple, helsinki_finland_temple, rexburg_idaho_temple, curitiba_brazil_temple, panama_city_temple, twin_falls_temple, draper_utah_temple, oquirrh_mountain_utah_temple, vancouver_temple, gila_valley_temple, cebu_philippines_temple, kyiv_ukraine_temple, san_salvador_el_salvador_temple, quetzaltenango_guatemala_temple, kansas_city_temple, manaus_brazil_temple, brigham_city_utah_temple, calgary_alberta_lds_temple, tegucigalpa_honduras_temple, gilbert_arizona_temple, fort_lauderdale_florida_temple, phoenix_arizona_temple, cordoba_argentina_temple, payson_utah_temple, trujillo_peru_temple, indianapolis_indiana_temple, tijuana_mexico_temple, provo_city_center_temple, sapporo_japan_temple, philadelphia_pennsylvania_temple, fort_collins_colorado_temple, star_valley_wyoming_temple, hartford_connecticut_temple, paris_france_temple, tucson_arizona_temple, meridian_idaho_temple, cedar_city_utah_temple, concepcion_chile_temple, barranquilla_columbia_temple, rome_italy_temple, kinshasa_temple, fortaleza_brazil_temple, haiti_temple_exterior, lisbon_portugal_temple, arequipa_peru_temple, durban_south_africa_temple;
@@ -1700,8 +1694,188 @@ public class ImageCache {
         return allImageIds;
     }
 
+    public static ArrayList<Integer> getAllTempleInfoFileIds() {
 
 
 
-}
+        allTempleInfoFileIds = new ArrayList<>();
+
+        allTempleInfoFileIds.add(R.raw.kirtland_temple);
+        allTempleInfoFileIds.add(R.raw.old_nauvoo_temple);
+        allTempleInfoFileIds.add(R.raw.st_george_temple);
+        allTempleInfoFileIds.add(R.raw.logan_temple);
+        allTempleInfoFileIds.add(R.raw.manti_temple);
+        allTempleInfoFileIds.add(R.raw.salt_lake_temple);
+        allTempleInfoFileIds.add(R.raw.laie_hawaii_temple);
+        allTempleInfoFileIds.add(R.raw.cardston_alberta_temple);
+        allTempleInfoFileIds.add(R.raw.mesa_temple);
+        allTempleInfoFileIds.add(R.raw.idaho_falls_temple);
+        allTempleInfoFileIds.add(R.raw.bern_switzerland_temple);
+        allTempleInfoFileIds.add(R.raw.los_angeles_temple);
+        allTempleInfoFileIds.add(R.raw.hamilton_new_zealand_temple);
+        allTempleInfoFileIds.add(R.raw.london_england_temple);
+        allTempleInfoFileIds.add(R.raw.oakland_temple);
+        allTempleInfoFileIds.add(R.raw.ogden_utah_temple);
+        allTempleInfoFileIds.add(R.raw.provo_temple);
+        allTempleInfoFileIds.add(R.raw.washington_dc_temple);
+        allTempleInfoFileIds.add(R.raw.sao_paulo_brazil_temple);
+        allTempleInfoFileIds.add(R.raw.tokyo_japan_temple);
+        allTempleInfoFileIds.add(R.raw.seattle_temple);
+        allTempleInfoFileIds.add(R.raw.jordan_river_temple);
+        allTempleInfoFileIds.add(R.raw.atlanta_temple);
+        allTempleInfoFileIds.add(R.raw.apia_samoa_temple);
+        allTempleInfoFileIds.add(R.raw.nukualofa_tonga_temple);
+        allTempleInfoFileIds.add(R.raw.santiago_chile_temple);
+        allTempleInfoFileIds.add(R.raw.papeete_tahiti_temple);
+        allTempleInfoFileIds.add(R.raw.mexico_city_temple);
+        allTempleInfoFileIds.add(R.raw.boise_idaho_temple);
+        allTempleInfoFileIds.add(R.raw.sydney_australia_temple);
+        allTempleInfoFileIds.add(R.raw.manila_philippines_temple);
+        allTempleInfoFileIds.add(R.raw.dallas_texas_temple);
+        allTempleInfoFileIds.add(R.raw.taipei_taiwan_temple);
+        allTempleInfoFileIds.add(R.raw.guatemala_lds_temple);
+        allTempleInfoFileIds.add(R.raw.freiberg_germany_temple);
+        allTempleInfoFileIds.add(R.raw.stockholm_sweden_lds_temple);
+        allTempleInfoFileIds.add(R.raw.chicago_temple);
+        allTempleInfoFileIds.add(R.raw.johannesburg_south_africa_temple);
+        allTempleInfoFileIds.add(R.raw.seoul_korea_temple);
+        allTempleInfoFileIds.add(R.raw.lima_peru_temple);
+        allTempleInfoFileIds.add(R.raw.buenos_aires_argentina_temple);
+        allTempleInfoFileIds.add(R.raw.denver_colorado_templ);
+        allTempleInfoFileIds.add(R.raw.frankfurt_germany_temple);
+        allTempleInfoFileIds.add(R.raw.portland_oregon_temple);
+        allTempleInfoFileIds.add(R.raw.las_vegas_temple);
+        allTempleInfoFileIds.add(R.raw.toronto_temple);
+        allTempleInfoFileIds.add(R.raw.san_diego_california_temple);
+        allTempleInfoFileIds.add(R.raw.orlando_temple);
+        allTempleInfoFileIds.add(R.raw.bountiful_temple);
+        allTempleInfoFileIds.add(R.raw.hong_kong_china_temple);
+        allTempleInfoFileIds.add(R.raw.mount_timpanogos_utah_temple);
+        allTempleInfoFileIds.add(R.raw.st_louis_temple);
+        allTempleInfoFileIds.add(R.raw.vernal_temple);
+        allTempleInfoFileIds.add(R.raw.preston_england_temple);
+        allTempleInfoFileIds.add(R.raw.monticello_utah_temple);
+        allTempleInfoFileIds.add(R.raw.anchorage_alaska_temple);
+        allTempleInfoFileIds.add(R.raw.colonia_juarez_mexico_temple);
+        allTempleInfoFileIds.add(R.raw.madrid_spain_temple);
+        allTempleInfoFileIds.add(R.raw.bogota_colombia_temple);
+        allTempleInfoFileIds.add(R.raw.guayaquil_ecuador_temple);
+        allTempleInfoFileIds.add(R.raw.spokane_washington_temple);
+        allTempleInfoFileIds.add(R.raw.columbus_ohio_temple);
+        allTempleInfoFileIds.add(R.raw.bismark_north_dakota_temple);
+        allTempleInfoFileIds.add(R.raw.columbia_temple);
+        allTempleInfoFileIds.add(R.raw.detroit_temple);
+        allTempleInfoFileIds.add(R.raw.halifax_nova_scotia_lds_temple);
+        allTempleInfoFileIds.add(R.raw.regina_temple);
+        allTempleInfoFileIds.add(R.raw.billings_montana_temple);
+        allTempleInfoFileIds.add(R.raw.edmonton_alberta_temple);
+        allTempleInfoFileIds.add(R.raw.raleigh_north_carolina_temple);
+        allTempleInfoFileIds.add(R.raw.st_paul_temple);
+        allTempleInfoFileIds.add(R.raw.kona_temple);
+        allTempleInfoFileIds.add(R.raw.ciudad_juarez_mexico_temple);
+        allTempleInfoFileIds.add(R.raw.hermosillo_sonora_mexico_temple);
+        allTempleInfoFileIds.add(R.raw.albuquerque_temple);
+        allTempleInfoFileIds.add(R.raw.oaxaca_mexico_temple);
+        allTempleInfoFileIds.add(R.raw.tuxtla_guitierrez_mexico_temple);
+        allTempleInfoFileIds.add(R.raw.louisville_temple);
+        allTempleInfoFileIds.add(R.raw.palmyra_temple);
+        allTempleInfoFileIds.add(R.raw.fresno_temple);
+        allTempleInfoFileIds.add(R.raw.medford_temple);
+        allTempleInfoFileIds.add(R.raw.memphis_tennessee_temple);
+        allTempleInfoFileIds.add(R.raw.reno_nevada_lds_temple);
+        allTempleInfoFileIds.add(R.raw.cochabamba_bolivia_temple);
+        allTempleInfoFileIds.add(R.raw.tampico_mexico_temple);
+        allTempleInfoFileIds.add(R.raw.nashville_temple);
+        allTempleInfoFileIds.add(R.raw.villahermosa_mexico_temple);
+        allTempleInfoFileIds.add(R.raw.montreal_quebec_temple);
+        allTempleInfoFileIds.add(R.raw.san_jose_costa_rica_temple);
+        allTempleInfoFileIds.add(R.raw.fukuoka_japan_temple);
+        allTempleInfoFileIds.add(R.raw.adelaide_australia_temple);
+        allTempleInfoFileIds.add(R.raw.melbourne_australia_temple);
+        allTempleInfoFileIds.add(R.raw.suva_fiji_temple);
+        allTempleInfoFileIds.add(R.raw.merida_mexico_temple);
+        allTempleInfoFileIds.add(R.raw.veracruz_mexico_temple);
+        allTempleInfoFileIds.add(R.raw.baton_rouge_louisiana_temple);
+        allTempleInfoFileIds.add(R.raw.oklahoma_city_temple);
+        allTempleInfoFileIds.add(R.raw.caracas_venezuela_temple);
+        allTempleInfoFileIds.add(R.raw.houston_texas_temple);
+        allTempleInfoFileIds.add(R.raw.birmingham_alabama_temple);
+        allTempleInfoFileIds.add(R.raw.santo_domingo_dominican_republic_temple);
+        allTempleInfoFileIds.add(R.raw.boston_temple);
+        allTempleInfoFileIds.add(R.raw.recife_brazil_temple);
+        allTempleInfoFileIds.add(R.raw.porto_alegre_brazil_temple);
+        allTempleInfoFileIds.add(R.raw.montevideo_uruguay_temple);
+        allTempleInfoFileIds.add(R.raw.winter_quarters_temple);
+        allTempleInfoFileIds.add(R.raw.guadalajara_temple);
+        allTempleInfoFileIds.add(R.raw.perth_australia_temple);
+        allTempleInfoFileIds.add(R.raw.columbia_river_temple);
+        allTempleInfoFileIds.add(R.raw.snowflake_temple);
+        allTempleInfoFileIds.add(R.raw.lubbock_temple);
+        allTempleInfoFileIds.add(R.raw.monterrey_mexico_temple);
+        allTempleInfoFileIds.add(R.raw.campinas_brazil_temple);
+        allTempleInfoFileIds.add(R.raw.asuncion_paraguay_temple);
+        allTempleInfoFileIds.add(R.raw.nauvoo_temple);
+        allTempleInfoFileIds.add(R.raw.the_hague_netherlands_temple);
+        allTempleInfoFileIds.add(R.raw.brisbane_australia_temple);
+        allTempleInfoFileIds.add(R.raw.redlands_temple);
+        allTempleInfoFileIds.add(R.raw.accra_ghana_temple);
+        allTempleInfoFileIds.add(R.raw.copenhagen_denmark_temple);
+        allTempleInfoFileIds.add(R.raw.manhattan_temple);
+        allTempleInfoFileIds.add(R.raw.san_antonio_temple);
+        allTempleInfoFileIds.add(R.raw.aba_nigeria_temple);
+        allTempleInfoFileIds.add(R.raw.newport_beach_california_temple);
+        allTempleInfoFileIds.add(R.raw.sacramento_temple);
+        allTempleInfoFileIds.add(R.raw.helsinki_finland_temple);
+        allTempleInfoFileIds.add(R.raw.rexburg_idaho_temple);
+        allTempleInfoFileIds.add(R.raw.curitiba_brazil_temple);
+        allTempleInfoFileIds.add(R.raw.panama_city_temple);
+        allTempleInfoFileIds.add(R.raw.twin_falls_temple);
+        allTempleInfoFileIds.add(R.raw.draper_utah_temple);
+        allTempleInfoFileIds.add(R.raw.oquirrh_mountain_utah_temple);
+        allTempleInfoFileIds.add(R.raw.vancouver_temple);
+        allTempleInfoFileIds.add(R.raw.gila_valley_temple);
+        allTempleInfoFileIds.add(R.raw.cebu_philippines_temple);
+        allTempleInfoFileIds.add(R.raw.kyiv_ukraine_temple);
+        allTempleInfoFileIds.add(R.raw.san_salvador_el_salvador_temple);
+        allTempleInfoFileIds.add(R.raw.quetzaltenango_guatemala_temple);
+        allTempleInfoFileIds.add(R.raw.kansas_city_temple);
+        allTempleInfoFileIds.add(R.raw.manaus_brazil_temple);
+        allTempleInfoFileIds.add(R.raw.brigham_city_utah_temple);
+        allTempleInfoFileIds.add(R.raw.calgary_alberta_lds_temple);
+        allTempleInfoFileIds.add(R.raw.tegucigalpa_honduras_temple);
+        allTempleInfoFileIds.add(R.raw.gilbert_arizona_temple);
+        allTempleInfoFileIds.add(R.raw.fort_lauderdale_florida_temple);
+        allTempleInfoFileIds.add(R.raw.phoenix_arizona_temple);
+        allTempleInfoFileIds.add(R.raw.cordoba_argentina_temple);
+        allTempleInfoFileIds.add(R.raw.payson_utah_temple);
+        allTempleInfoFileIds.add(R.raw.trujillo_peru_temple);
+        allTempleInfoFileIds.add(R.raw.indianapolis_indiana_temple);
+        allTempleInfoFileIds.add(R.raw.tijuana_mexico_temple);
+        allTempleInfoFileIds.add(R.raw.provo_city_center_temple);
+        allTempleInfoFileIds.add(R.raw.sapporo_japan_temple);
+        allTempleInfoFileIds.add(R.raw.philadelphia_pennsylvania_temple);
+        allTempleInfoFileIds.add(R.raw.fort_collins_colorado_temple);
+        allTempleInfoFileIds.add(R.raw.star_valley_wyoming_temple);
+        allTempleInfoFileIds.add(R.raw.hartford_connecticut_temple);
+        allTempleInfoFileIds.add(R.raw.paris_france_temple);
+        allTempleInfoFileIds.add(R.raw.tucson_arizona_temple);
+        allTempleInfoFileIds.add(R.raw.meridian_idaho_temple);
+        allTempleInfoFileIds.add(R.raw.cedar_city_utah_temple);
+        allTempleInfoFileIds.add(R.raw.concepcion_chile_temple);
+        allTempleInfoFileIds.add(R.raw.barranquilla_columbia_temple);
+        allTempleInfoFileIds.add(R.raw.rome_italy_temple);
+        allTempleInfoFileIds.add(R.raw.kinshasa_temple);
+        allTempleInfoFileIds.add(R.raw.fortaleza_brazil_temple);
+        allTempleInfoFileIds.add(R.raw.haiti_temple_exterior);
+        allTempleInfoFileIds.add(R.raw.lisbon_portugal_temple);
+        allTempleInfoFileIds.add(R.raw.arequipa_peru_temple);
+        allTempleInfoFileIds.add(R.raw.durban_south_africa_temple);
+
+        return allTempleInfoFileIds;
+
+    }
+
+
+
+    }
 

@@ -30,6 +30,8 @@ public class SingleTempleView extends View {
     float imageX;
     float imageY;
 
+    private String templeInfo;
+
     public SingleTempleView(Context context, int id, String name, String url, String loc, String date) {
         super(context);
         templeName =name;
@@ -40,6 +42,15 @@ public class SingleTempleView extends View {
 
     }
 
+    public SingleTempleView(Context context, int id, String name, String url, String info) {
+        super(context);
+        templeName =name;
+        bitmapId = id;
+        templeUrl =url;
+        templeInfo = info;
+
+
+    }
 
     @Override
     public void onDraw(Canvas c) {
@@ -81,10 +92,12 @@ public class SingleTempleView extends View {
 
             //c.drawRect(0,sHeight/2, sWidth,sHeight,textPaint);
 
-            c.drawText("Location:", textAreaCenterX, 2 * sHeight / 6, textPaint);
-            c.drawText(location, textAreaCenterX, 3 * sHeight / 6, textPaint);
-            c.drawText("First Dedication Date", textAreaCenterX, 4 * sHeight / 6, textPaint);
-            c.drawText(dedicationDate, textAreaCenterX, 5 * sHeight / 6, textPaint);
+            //c.drawText("Location:", textAreaCenterX, 2 * sHeight / 6, textPaint);
+            //c.drawText(location, textAreaCenterX, 3 * sHeight / 6, textPaint);
+            //c.drawText("First Dedication Date", textAreaCenterX, 4 * sHeight / 6, textPaint);
+            //c.drawText(dedicationDate, textAreaCenterX, 5 * sHeight / 6, textPaint);
+
+            c.drawText(templeInfo, textAreaCenterX, 4 * sHeight / 6, textPaint);
 
 
 
@@ -109,19 +122,23 @@ public class SingleTempleView extends View {
 
 
 
-            if (sWidth > sHeight-250 - 35 - sHeight/8) {
-                singleTemple = loadAndScale(getResources(), bitmapId, sHeight-250 - 35 - sHeight/8);
+
+            if (sWidth > sHeight - 50 - 35) {
+                singleTemple = loadAndScale(getResources(), bitmapId, sHeight-50 - 35 - sHeight/8);
             } else {
                 singleTemple = loadAndScale(getResources(), bitmapId, sWidth);
             }
 
+
+            //singleTemple = loadAndScale(getResources(), bitmapId, sWidth);
 
 
 
 
             imageX = centerX - singleTemple.getWidth()/2;
 
-            imageY = (sHeight-250 - 35 + sHeight/8) / 2 - singleTemple.getHeight()/2;
+            //imageY = (sHeight-250 - 35 + sHeight/8) / 2 - singleTemple.getHeight()/2;
+            imageY = 1.5f * sHeight / 16 + titleSize / 3;
 
 
 
@@ -132,14 +149,15 @@ public class SingleTempleView extends View {
             Paint textPaint = new Paint();
             textPaint.setColor(Color.GRAY);
             textPaint.setStyle(Paint.Style.FILL);
-            textPaint.setTextSize(50);
+            textPaint.setTextSize(10);
             textPaint.setTextAlign(Paint.Align.CENTER);
 
 
             //c.drawRect(0,sHeight/2, sWidth,sHeight,textPaint);
 
-            c.drawText(location, sWidth / 2, sHeight -150 , textPaint);
-            c.drawText(dedicationDate, sWidth / 2, sHeight - 70, textPaint);
+            //c.drawText(location, sWidth / 2, sHeight -150 , textPaint);
+            //c.drawText(dedicationDate, sWidth / 2, sHeight - 70, textPaint);
+            //c.drawText(templeInfo, sWidth / 2, sHeight - 70, textPaint);
 
             /*
             Paint buttonPaint = new Paint();
@@ -156,7 +174,8 @@ public class SingleTempleView extends View {
              */
 
             textPaint.setTextSize(35);
-            c.drawText("Click the temple to visit it's website", sWidth/2, sHeight - 250, textPaint);
+            c.drawText("Click the temple to visit it's website", sWidth/2, sHeight - 50, textPaint);
+            //c.drawText("Click the temple to visit it's website", sWidth/2, sHeight - 250, textPaint);
 
 
 
