@@ -455,34 +455,37 @@ public class TempleView extends View {
 
             //Log.d("topLeft? ",  topLeft + " ");
 
+            int moveTheta = 10;
 
 
             if (leftThirdVertical) {
                 if (yDisplacementFromLastMove > 0) {
-                    theta = theta + 10;
+                    theta = theta + moveTheta;
                 } else if (yDisplacementFromLastMove < 0) {
-                    theta = theta - 10;
+                    theta = theta - moveTheta;
                 }
             } else if (rightThirdVertical) {
                 if (yDisplacementFromLastMove > 0) {
-                    theta = theta - 10;
+                    theta = theta - moveTheta;
                 } else if (yDisplacementFromLastMove < 0) {
-                    theta = theta + 10;
+                    theta = theta + moveTheta;
                 }
             } else if (middleThirdVertical) {
-                if (top) {
+                if (touchY > centerY - screenWidth / 6 && touchY < centerY + screenWidth / 6) {
+                    //do nothing, touch movement in center of spiral is disabled
+                } else if (top) {
                     //check xd
                     if (xDisplacementFromLastMove > 0) {
-                        theta = theta - 10;
+                        theta = theta - moveTheta;
                     } else if (xDisplacementFromLastMove < 0) {
-                        theta = theta + 10;
+                        theta = theta + moveTheta;
                     }
                 } else if (bottom) {
                     //check xd
                     if (xDisplacementFromLastMove > 0) {
-                        theta = theta + 10;
+                        theta = theta + moveTheta;
                     } else if (xDisplacementFromLastMove < 0) {
-                        theta = theta - 10;
+                        theta = theta - moveTheta;
                     }
                 }
             }
@@ -570,6 +573,8 @@ public class TempleView extends View {
 
 
         if (m.getAction() == MotionEvent.ACTION_UP) {
+
+            //theta = theta - 10;
 
             long upTime = System.currentTimeMillis();
 
@@ -1724,7 +1729,7 @@ public class TempleView extends View {
         //circles sizes remain whether landscape or portrait
         initialR = screenWidth / 10;
 
-        Toast.makeText(getContext(), "getSizes called, sizes.length is " + sizes.size(), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getContext(), "getSizes called, sizes.length is " + sizes.size(), Toast.LENGTH_SHORT).show();
 
         //for (float t = -30; t < 30; t += 0.02f) {
         for (float t = -18; t < 17.5; t += 0.02f) {
