@@ -132,7 +132,7 @@ public class TempleView extends View {
 
 
         //theta = 0;
-        theta = 5500;
+        theta = 5550;
         thetaPre = 0;
 
         currentTempleMatrix = new Matrix();

@@ -176,11 +176,11 @@ public class MainActivity extends AppCompatActivity {
         slider.setBackgroundColor(Color.parseColor("#669cff"));
 
 
-        slider.setProgress(5500);
+        slider.setProgress(5550);
 
         timA = new MyTimer();
 
-        progress = 5500;
+        progress = 5550;
 
 
         slider.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
