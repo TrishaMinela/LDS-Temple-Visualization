@@ -114,6 +114,7 @@ public class SingleTempleView extends View {
 
             titlePaint = new Paint();
             titlePaint.setColor(Color.GRAY);
+            titlePaint.setColor(Color.GRAY);
             titlePaint.setStyle(Paint.Style.FILL);
             titlePaint.setTextSize((int)(titleSize));
             titlePaint.setTextAlign(Paint.Align.CENTER);

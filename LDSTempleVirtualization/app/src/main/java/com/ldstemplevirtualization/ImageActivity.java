@@ -299,6 +299,8 @@ public class ImageActivity extends AppCompatActivity {
             //templeInfo.setHeight(height/5);
             //templeInfo.setBackgroundColor(Color.GREEN);
 
+            templeInfo.setTextColor(Color.GRAY);
+
             //Toast.makeText(this, "howmanylinesintempleinfo" + howManyLinesInTempleInfo, Toast.LENGTH_SHORT).show();
 
             if (howManyLinesInTempleInfo <= 2) {
@@ -340,6 +342,8 @@ public class ImageActivity extends AppCompatActivity {
             title.setText(allTempleInfo.get(currentIndex*3));
             title.setHeight(height/10);
             title.setTextSize(30);
+
+            title.setTextColor(Color.GRAY);
 
             title.setGravity(Gravity.CENTER);
             //title.setLayoutParams(two);
@@ -428,6 +432,8 @@ public class ImageActivity extends AppCompatActivity {
             templeInfo.setText(oneTempleInfo);
             templeInfo.setHeight(height/5);
             //templeInfo.setBackgroundColor(Color.GREEN);
+
+            templeInfo.setTextColor(Color.GRAY);
 
             //Toast.makeText(this, "howmanylinesintempleinfo" + howManyLinesInTempleInfo, Toast.LENGTH_SHORT).show();
 
