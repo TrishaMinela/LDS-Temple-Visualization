@@ -304,9 +304,9 @@ public class ImageActivity extends AppCompatActivity {
             if (howManyLinesInTempleInfo <= 2) {
                 templeInfo.setTextSize(25);
             } else if (howManyLinesInTempleInfo <= 4) {
-                templeInfo.setTextSize(20);
+                templeInfo.setTextSize(17);
             } else {
-                templeInfo.setTextSize(20);
+                templeInfo.setTextSize(17);
             }
             //templeInfo.setTextSize(height / 5 / (howManyLinesInTempleInfo * 1.8f));
             templeInfo.setGravity(Gravity.CENTER);
