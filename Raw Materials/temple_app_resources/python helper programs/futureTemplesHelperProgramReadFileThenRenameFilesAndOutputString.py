@@ -13,7 +13,7 @@ for i in range(0, len(names)):
         templesNoImages.append(names[i])
 '''   
 
-
+'''
 for name in names:
     #print(name + " = loadAndScale(res, R.drawable." + name + ", w);")
     #print("templesList.add(" + name + ");")
@@ -23,11 +23,11 @@ for name in names:
 print(len(names))
 
 #print(len(templesNoImages))
-
-
-
 '''
-path2 = r"D:/whatsthisD/LDSTempleVirtualizationApp/Raw Materials/temple_app_resources/temples under construction circles - name large/"
+
+
+
+path2 = r"D:/whatsthisD/LDSTempleVirtualizationApp/Raw Materials/temple_app_resources/future temples documents/"
 
 import os
 f2=os.listdir(path2)
@@ -42,7 +42,8 @@ for file in f2:
     
     #设置新文件名
     #newname=path2+templesNoImages[n]+'.png'
-    newname=path2+templesNoImages[n]+'large.png'
+    #newname=path2+templesNoImages[n]+'large.png'
+    newname=path2+names[n]+'.txt'
 
 
     #用os模块中的rename方法对文件改名
@@ -50,4 +51,3 @@ for file in f2:
     print(oldname,'======>',newname)
     print(n)
     n+=1
-'''
