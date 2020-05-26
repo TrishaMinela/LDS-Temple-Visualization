@@ -168,13 +168,6 @@ https://www.churchofjesuschrist.org/temples/details/port-au-prince-haiti-temple?
 https://www.churchofjesuschrist.org/temples/details/lisbon-portugal-temple?lang=eng
 https://www.churchofjesuschrist.org/temples/details/arequipa-peru-temple?lang=eng
 https://www.churchofjesuschrist.org/temples/details/durban-south-africa-temple?lang=eng
-https://www.churchofjesuschrist.org/temples/details/hamilton-new-zealand-temple?lang=eng
-https://www.churchofjesuschrist.org/temples/details/hong-kong-china-temple?lang=eng
-https://www.churchofjesuschrist.org/temples/details/mesa-arizona-temple?lang=eng
-https://www.churchofjesuschrist.org/temples/details/salt-lake-temple?lang=eng
-https://www.churchofjesuschrist.org/temples/details/st.-george-utah-temple?lang=eng
-https://www.churchofjesuschrist.org/temples/details/tokyo-japan-temple?lang=eng
-https://www.churchofjesuschrist.org/temples/details/washington-d.c.-temple?lang=eng
 https://www.churchofjesuschrist.org/temples/details/abidjan-ivory-coast-temple?lang=eng
 https://www.churchofjesuschrist.org/temples/details/bangkok-thailand-temple?lang=eng
 https://www.churchofjesuschrist.org/temples/details/belem-brazil-temple?lang=eng
@@ -190,3 +183,4 @@ https://www.churchofjesuschrist.org/temples/details/saratoga-springs-utah-temple
 https://www.churchofjesuschrist.org/temples/details/urdaneta-philippines-temple?lang=eng
 https://www.churchofjesuschrist.org/temples/details/winnipeg-manitoba-temple?lang=eng
 https://www.churchofjesuschrist.org/temples/details/yigo-guam-temple?lang=eng
+
