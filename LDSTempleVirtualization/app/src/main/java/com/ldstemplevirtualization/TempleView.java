@@ -397,6 +397,7 @@ public class TempleView extends View {
 
         }
 
+
         if (m.getAction() == MotionEvent.ACTION_MOVE) {
 
             //Toast.makeText(getContext(), "finger moving on screen", Toast.LENGTH_SHORT).show();
@@ -457,18 +458,44 @@ public class TempleView extends View {
 
             int moveTheta = 10;
 
+            boolean thetaMaxReached = theta >= 6800;
+            boolean thetaMinReached = theta <= 0;
 
             if (leftThirdVertical) {
                 if (yDisplacementFromLastMove > 0) {
-                    theta = theta + moveTheta;
+
+                    if (thetaMaxReached) {
+
+                    } else {
+                        theta = theta + moveTheta;
+                    }
+
                 } else if (yDisplacementFromLastMove < 0) {
-                    theta = theta - moveTheta;
+
+                    if (thetaMinReached) {
+
+                    } else {
+                        theta = theta - moveTheta;
+                    }
+
                 }
             } else if (rightThirdVertical) {
                 if (yDisplacementFromLastMove > 0) {
-                    theta = theta - moveTheta;
+
+                    if (thetaMinReached) {
+
+                    } else {
+                        theta = theta - moveTheta;
+                    }
+
                 } else if (yDisplacementFromLastMove < 0) {
-                    theta = theta + moveTheta;
+
+                    if (thetaMaxReached) {
+
+                    } else {
+                        theta = theta + moveTheta;
+                    }
+
                 }
             } else if (middleThirdVertical) {
                 if (touchY > centerY - screenWidth / 6 && touchY < centerY + screenWidth / 6) {
@@ -476,16 +503,40 @@ public class TempleView extends View {
                 } else if (top) {
                     //check xd
                     if (xDisplacementFromLastMove > 0) {
-                        theta = theta - moveTheta;
+
+                        if (thetaMinReached) {
+
+                        } else {
+                            theta = theta - moveTheta;
+                        }
+
                     } else if (xDisplacementFromLastMove < 0) {
-                        theta = theta + moveTheta;
+
+                        if (thetaMaxReached) {
+
+                        } else {
+                            theta = theta + moveTheta;
+                        }
+
                     }
                 } else if (bottom) {
                     //check xd
                     if (xDisplacementFromLastMove > 0) {
-                        theta = theta + moveTheta;
+
+                        if (thetaMaxReached) {
+
+                        } else {
+                            theta = theta + moveTheta;
+                        }
+
                     } else if (xDisplacementFromLastMove < 0) {
-                        theta = theta - moveTheta;
+
+                        if (thetaMinReached) {
+
+                        } else {
+                            theta = theta - moveTheta;
+                        }
+
                     }
                 }
             }
