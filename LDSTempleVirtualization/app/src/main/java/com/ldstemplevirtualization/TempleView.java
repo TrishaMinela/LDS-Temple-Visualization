@@ -755,6 +755,21 @@ public class TempleView extends View {
                         } else {
 
 
+
+                                //no link
+                                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                                builder.setTitle("Nothing Here");
+                                builder.setMessage("future temples to come!");
+                                builder.setIcon(R.mipmap.ic_launcher_round);
+
+                                //点击对话框以外的区域是否让对话框消失
+                                builder.setCancelable(true);
+
+                                final AlertDialog dialog = builder.create();
+
+                                dialog.show();
+
+                            /*
                             AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                             builder.setTitle("Nothing Here");
                             builder.setMessage("future temples to come!");
@@ -766,6 +781,8 @@ public class TempleView extends View {
                             final AlertDialog dialog = builder.create();
 
                             dialog.show();
+
+                             */
 
                             /*
                             Intent eachTemplePage= new Intent();

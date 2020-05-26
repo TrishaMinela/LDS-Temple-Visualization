@@ -222,10 +222,10 @@ public class SingleTempleView extends View {
 
 
 
-                if (templeUrl.equals("no link" + "\n")) {
+                if (templeUrl.equals("" + "\n")) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                     builder.setTitle("No Link Available");
-                    builder.setMessage("Sorry, Temple link is not available");
+                    builder.setMessage("Sorry, Temple does not have a website yet");
                     builder.setIcon(R.mipmap.ic_launcher_round);
                     //点击对话框以外的区域是否让对话框消失
                     builder.setCancelable(true);
