@@ -381,7 +381,7 @@ public class ImageActivity extends AppCompatActivity {
 
  */
             //lnl2.setBackgroundColor(Color.parseColor("#66ccff"));
-            lnl2.setBackgroundColor(Color.parseColor("#3d4245"));
+            lnl2.setBackgroundColor(Color.parseColor("#24292b"));
 
             setContentView(lnl2);
 
@@ -475,7 +475,7 @@ public class ImageActivity extends AppCompatActivity {
 
  */
             //lnl2.setBackgroundColor(Color.parseColor("#66ccff"));
-            lnl2.setBackgroundColor(Color.parseColor("#3d4245"));
+            lnl2.setBackgroundColor(Color.parseColor("#24292b"));
 
 
             setContentView(lnl2);
