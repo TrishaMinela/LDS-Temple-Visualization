@@ -316,6 +316,18 @@ public class ImageActivity extends AppCompatActivity {
             ImageView im = new ImageView(this);
             im.setImageResource(allImageIds.get(currentIndex));
 
+
+            im.setClickable(true);
+            im.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Uri uri = Uri.parse(templeUrl);
+                    Intent intent = new Intent(Intent.ACTION_VIEW);
+                    intent.setData(uri);
+                    startActivity(intent);
+                }
+            });
+
             LinearLayout.LayoutParams two = new LinearLayout.LayoutParams
                     (LinearLayout.LayoutParams.MATCH_PARENT,
                             LinearLayout.LayoutParams.MATCH_PARENT, 1);
