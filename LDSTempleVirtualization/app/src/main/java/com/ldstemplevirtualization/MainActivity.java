@@ -173,7 +173,10 @@ public class MainActivity extends AppCompatActivity {
         tv.setLayoutParams(nice);
 
         slider = findViewById(R.id.seekBar3);
-        slider.setBackgroundColor(Color.parseColor("#669cff"));
+
+        //slider.setBackgroundColor(Color.parseColor("#669cff"));
+        slider.setBackgroundColor(Color.parseColor("#202224"));
+
 
 
         slider.setProgress(5550);
@@ -410,7 +413,10 @@ public class MainActivity extends AppCompatActivity {
         });
 
         LinearLayout sliderLabel = findViewById(R.id.sliderLabel);
-        sliderLabel.setBackgroundColor(Color.parseColor("#669cff"));
+        //sliderLabel.setBackgroundColor(Color.parseColor("#669cff"));
+        sliderLabel.setBackgroundColor(Color.parseColor("#202224"));
+
+
 
 
         lnl = new LinearLayout(this);

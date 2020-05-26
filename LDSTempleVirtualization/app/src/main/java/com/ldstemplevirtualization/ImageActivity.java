@@ -267,6 +267,9 @@ public class ImageActivity extends AppCompatActivity {
             //b.setLayoutParams(one);
             b2.setHeight(height/10);
 
+            b2.setBackgroundColor(Color.parseColor("#202224"));
+
+            b2.setTextColor(Color.GRAY);
 
             b2.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -377,7 +380,8 @@ public class ImageActivity extends AppCompatActivity {
         }
 
  */
-            lnl2.setBackgroundColor(Color.parseColor("#66ccff"));
+            //lnl2.setBackgroundColor(Color.parseColor("#66ccff"));
+            lnl2.setBackgroundColor(Color.parseColor("#3d4245"));
 
             setContentView(lnl2);
 
@@ -397,6 +401,10 @@ public class ImageActivity extends AppCompatActivity {
             //b.setLayoutParams(one);
             b2.setHeight(100);
 
+
+            b2.setBackgroundColor(Color.parseColor("#202224"));
+
+            b2.setTextColor(Color.GRAY);
 
             b2.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -466,7 +474,9 @@ public class ImageActivity extends AppCompatActivity {
         }
 
  */
-            lnl2.setBackgroundColor(Color.parseColor("#66ccff"));
+            //lnl2.setBackgroundColor(Color.parseColor("#66ccff"));
+            lnl2.setBackgroundColor(Color.parseColor("#3d4245"));
+
 
             setContentView(lnl2);
 
