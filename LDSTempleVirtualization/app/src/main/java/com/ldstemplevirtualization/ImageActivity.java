@@ -304,11 +304,11 @@ public class ImageActivity extends AppCompatActivity {
             //Toast.makeText(this, "howmanylinesintempleinfo" + howManyLinesInTempleInfo, Toast.LENGTH_SHORT).show();
 
             if (howManyLinesInTempleInfo <= 2) {
-                templeInfo.setTextSize(25);
+                templeInfo.setTextSize(20);
             } else if (howManyLinesInTempleInfo <= 4) {
-                templeInfo.setTextSize(17);
+                templeInfo.setTextSize(20);
             } else {
-                templeInfo.setTextSize(17);
+                templeInfo.setTextSize(15);
             }
             //templeInfo.setTextSize(height / 5 / (howManyLinesInTempleInfo * 1.8f));
             templeInfo.setGravity(Gravity.CENTER);
