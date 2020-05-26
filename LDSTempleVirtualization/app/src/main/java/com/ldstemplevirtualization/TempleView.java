@@ -729,7 +729,7 @@ public class TempleView extends View {
 
                         //Toast.makeText(getContext(), "how many onScreenTemples last time? " + onScreenTemples.size(), Toast.LENGTH_SHORT).show();
 
-                        if (eachIndex <= 169) {
+                        if (eachIndex <= 226) {
 
 
                             Intent thisTemple = new Intent(getContext(), ImageActivity.class);
@@ -756,8 +756,8 @@ public class TempleView extends View {
 
 
                             AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                            builder.setTitle("No Photo Available");
-                            builder.setMessage("Announced Temple or Temple Under Construction");
+                            builder.setTitle("Nothing Here");
+                            builder.setMessage("future temples to come!");
                             builder.setIcon(R.mipmap.ic_launcher_round);
 
                             //点击对话框以外的区域是否让对话框消失
