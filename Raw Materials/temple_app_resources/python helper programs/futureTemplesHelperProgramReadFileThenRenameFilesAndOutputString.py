@@ -15,7 +15,9 @@ for i in range(0, len(names)):
 '''
 
 for name in names:
-    print(name)
+    #print(name + " = loadAndScale(res, R.drawable." + name + ", w);")
+
+    print("templesList.add(" + name + ");")
 
 print(len(names))
 
