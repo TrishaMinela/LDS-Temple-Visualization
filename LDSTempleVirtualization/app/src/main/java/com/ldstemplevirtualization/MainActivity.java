@@ -460,8 +460,8 @@ public class MainActivity extends AppCompatActivity {
             setContentView(lnl);
         } else {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle("Welcome");
-            builder.setMessage("Please Launch the App with Your Device Portrait");
+            builder.setTitle("Welcome to Latter-day Temples");
+            builder.setMessage("Please Launch the App with Your Device in Portrait Mode");
             builder.setIcon(R.mipmap.ic_launcher_round);
 
             //点击对话框以外的区域是否让对话框消失
