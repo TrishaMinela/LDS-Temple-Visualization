@@ -248,14 +248,24 @@ public class ImageActivity extends AppCompatActivity {
             // 加入横屏要处理的代码
             Toast.makeText(this, "landscape now", Toast.LENGTH_SHORT).show();
 
+
+            WindowManager manager = this.getWindowManager();
+            DisplayMetrics outMetrics = new DisplayMetrics();
+            manager.getDefaultDisplay().getMetrics(outMetrics);
+            int width = outMetrics.widthPixels;
+            int height = outMetrics.heightPixels;
+
             LinearLayout lnl2 = new LinearLayout(this);
             lnl2.setOrientation(LinearLayout.VERTICAL);
+
+            LinearLayout lnl3 = new LinearLayout(this);
+            lnl3.setOrientation(LinearLayout.HORIZONTAL);
 
 
             final Button b2 = new Button(this);
             b2.setText("OK");
             //b.setLayoutParams(one);
-            b2.setHeight(100);
+            b2.setHeight(height/10);
 
 
             b2.setOnClickListener(new View.OnClickListener() {
@@ -282,35 +292,65 @@ public class ImageActivity extends AppCompatActivity {
 
 
 
-            WindowManager manager = this.getWindowManager();
-            DisplayMetrics outMetrics = new DisplayMetrics();
-            manager.getDefaultDisplay().getMetrics(outMetrics);
-            int width = outMetrics.widthPixels;
-            int height = outMetrics.heightPixels;
+
 
             TextView templeInfo = new TextView(this);
             templeInfo.setText(oneTempleInfo);
-            templeInfo.setHeight(height/5);
+            //templeInfo.setHeight(height/5);
             //templeInfo.setBackgroundColor(Color.GREEN);
 
+            Toast.makeText(this, "howmanylinesintempleinfo" + howManyLinesInTempleInfo, Toast.LENGTH_SHORT).show();
+
             if (howManyLinesInTempleInfo <= 2) {
-                templeInfo.setTextSize(5);
+                templeInfo.setTextSize(25);
             } else if (howManyLinesInTempleInfo <= 4) {
-                templeInfo.setTextSize(15);
+                templeInfo.setTextSize(20);
             } else {
-                templeInfo.setTextSize(12);
+                templeInfo.setTextSize(20);
             }
             //templeInfo.setTextSize(height / 5 / (howManyLinesInTempleInfo * 1.8f));
             templeInfo.setGravity(Gravity.CENTER);
 
-            stv.setLayoutParams(one);
+            //stv.setLayoutParams(one);
 
-            lnl2.addView(stv);
+            ImageView im = new ImageView(this);
+            im.setImageResource(allImageIds.get(currentIndex));
 
-            /*
-            lnl2.addView(templeInfo);
+            LinearLayout.LayoutParams two = new LinearLayout.LayoutParams
+                    (LinearLayout.LayoutParams.MATCH_PARENT,
+                            LinearLayout.LayoutParams.MATCH_PARENT, 1);
+
+            LinearLayout.LayoutParams three = new LinearLayout.LayoutParams
+                    (LinearLayout.LayoutParams.WRAP_CONTENT,
+                            LinearLayout.LayoutParams.WRAP_CONTENT, 1);
+
+            TextView title = new TextView(this);
+            title.setText(allTempleInfo.get(currentIndex*3));
+            title.setHeight(height/10);
+            title.setTextSize(30);
+
+            title.setGravity(Gravity.CENTER);
+            //title.setLayoutParams(two);
+
+            im.setLayoutParams(two);
+            templeInfo.setLayoutParams(two);
+            //b2.setLayoutParams(two);
+
+            im.setBackgroundColor(Color.GREEN);
+            templeInfo.setBackgroundColor(Color.RED);
+
+            //lnl2.addView(stv);
+            lnl3.addView((im));
+            lnl3.addView(templeInfo);
+
+            lnl3.setLayoutParams(two);
+
+            lnl2.addView(title);
+            lnl2.addView(lnl3);
             lnl2.addView(b2);
-             */
+
+            //lnl2.addView(b2);
+
 
 
 
@@ -334,6 +374,8 @@ public class ImageActivity extends AppCompatActivity {
             lnl2.setOrientation(LinearLayout.VERTICAL);
 
 
+
+
             final Button b2 = new Button(this);
             b2.setText("OK");
             //b.setLayoutParams(one);
@@ -375,7 +417,7 @@ public class ImageActivity extends AppCompatActivity {
             templeInfo.setHeight(height/5);
             //templeInfo.setBackgroundColor(Color.GREEN);
 
-            Toast.makeText(this, "howmanylinesintempleinfo", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "howmanylinesintempleinfo" + howManyLinesInTempleInfo, Toast.LENGTH_SHORT).show();
 
 
             if (howManyLinesInTempleInfo <= 2) {
@@ -387,7 +429,6 @@ public class ImageActivity extends AppCompatActivity {
             }
             //templeInfo.setTextSize(height / 5 / (howManyLinesInTempleInfo * 1.8f));
             templeInfo.setGravity(Gravity.CENTER);
-
 
 
 

@@ -58,6 +58,7 @@ public class SingleTempleView extends View {
 
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
 
+            /*
             sHeight = c.getHeight();
             sWidth = c.getWidth();
 
@@ -81,14 +82,11 @@ public class SingleTempleView extends View {
 
             c.drawText(templeName, textAreaCenterX, sHeight / 6, titlePaint);
 
-
-
             Paint textPaint = new Paint();
             textPaint.setColor(Color.GRAY);
             textPaint.setStyle(Paint.Style.FILL);
             textPaint.setTextSize(50);
             textPaint.setTextAlign(Paint.Align.CENTER);
-
 
             //c.drawRect(0,sHeight/2, sWidth,sHeight,textPaint);
 
@@ -97,7 +95,9 @@ public class SingleTempleView extends View {
             //c.drawText("First Dedication Date", textAreaCenterX, 4 * sHeight / 6, textPaint);
             //c.drawText(dedicationDate, textAreaCenterX, 5 * sHeight / 6, textPaint);
 
-            c.drawText(templeInfo, textAreaCenterX, 4 * sHeight / 6, textPaint);
+            //c.drawText(templeInfo, textAreaCenterX, 4 * sHeight / 6, textPaint);
+
+             */
 
 
 
@@ -123,7 +123,7 @@ public class SingleTempleView extends View {
 
 
 
-            //make sure image is now covering texts. 
+            //make sure image is now covering texts.
             if (sWidth > sHeight - 50 - 35 - 1.5f * (sHeight / 16 + titleSize / 3)) {
                 singleTemple = loadAndScale(getResources(), bitmapId, sHeight-50 - 35 - 1.5f * (sHeight / 16 + titleSize / 3));
             } else {
