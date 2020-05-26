@@ -1600,15 +1600,17 @@ public class TempleView extends View {
             //Log.d("years are ", firstOnScreenTempleIndex+" "+lastOnScreenTempleIndex);
 
             c.drawText("Years of Temples: " + startYear + "--- " + endYear, screenWidth / 2, 39 * screenHeight / 40, yearDisplayPaint);
-        } else if (theta >= 4850) {
+        } else if (theta >= 4850 && theta <= 5550) {
             firstOnScreenTempleIndex = (onScreenTemples.get(0).get(0));
             String startYear = allTempleInfo.get((int)(firstOnScreenTempleIndex) * 3 + 2);
             startYear = startYear.substring(startYear.length()-5);
             c.drawText("Years of Temples: " + startYear + " --- " + "2020", screenWidth / 2, 39 * screenHeight / 40, yearDisplayPaint);
-        } else if (theta >= 4900) {
-            c.drawText("Future Temples to Come!", screenWidth / 2, 39 * screenHeight / 40, yearDisplayPaint);
-        } else {
+        } else if (theta > 5550 ) {
+            c.drawText("Future Temples", screenWidth / 2, 39 * screenHeight / 40, yearDisplayPaint);
+        } else if (theta == 0){
             c.drawText("Welcome to View LDS Temples!", screenWidth / 2, 39 * screenHeight / 40, yearDisplayPaint);
+        } else {
+            //c.drawText("Future Temples", screenWidth / 2, 39 * screenHeight / 40, yearDisplayPaint);
         }
     }
 
@@ -1659,7 +1661,7 @@ public class TempleView extends View {
 
             c.drawText(startYear + "--- " + endYear, 6.5f * screenWidth / 4, 25 * screenHeight / 40, yearDisplayPaint);
 
-        } else if (theta >= 4850) {
+        } else if (theta >= 4850  && theta <= 5550) {
             firstOnScreenTempleIndex = (onScreenTemples.get(0).get(0));
             String startYear = allTempleInfo.get((int)(firstOnScreenTempleIndex) * 3 + 2);
             startYear = startYear.substring(startYear.length()-5);
@@ -1668,8 +1670,8 @@ public class TempleView extends View {
 
             c.drawText(startYear + " --- " + "2020", 6.5f * screenWidth / 4, 25 * screenHeight / 40, yearDisplayPaint);
 
-        } else if (theta >= 4900) {
-            c.drawText("Future Temples to Come!", 6.5f * screenWidth / 4, 20 * screenHeight / 40, yearDisplayPaint);
+        } else if (theta >= 5550) {
+            c.drawText("Future Temples", 6.5f * screenWidth / 4, 20 * screenHeight / 40, yearDisplayPaint);
         } else {
 
             c.drawText("Welcome to", 6.5f * screenWidth / 4, 18 * screenHeight / 40, yearDisplayPaint);
