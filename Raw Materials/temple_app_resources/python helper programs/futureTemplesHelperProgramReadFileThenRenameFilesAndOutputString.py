@@ -4,28 +4,29 @@ for line in open("D:/whatsthisD/LDSTempleVirtualizationApp/Raw Materials/temple_
     #print(line.lower())
     names.append(line[0:-1].lower())
 
-
+'''
 templesNoImages = []
 for i in range(0, len(names)):
     if i <= 14: 
         print(names[i])
         #print(len(name))
         templesNoImages.append(names[i])
-    
+'''   
 
-'''
+
 for name in names:
     #print(name + " = loadAndScale(res, R.drawable." + name + ", w);")
+    #print("templesList.add(" + name + ");")
 
-    print("templesList.add(" + name + ");")
+    print("allImageIds.add(R.drawable." + name + "")
 
 print(len(names))
 
 #print(len(templesNoImages))
+
+
+
 '''
-
-
-
 path2 = r"D:/whatsthisD/LDSTempleVirtualizationApp/Raw Materials/temple_app_resources/temples under construction circles - name large/"
 
 import os
@@ -49,3 +50,4 @@ for file in f2:
     print(oldname,'======>',newname)
     print(n)
     n+=1
+'''

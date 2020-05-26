@@ -1644,6 +1644,63 @@ public class ImageCache {
         allImageIds.add(R.drawable.arequipa_peru_temple_large);
         allImageIds.add(R.drawable.durban_south_africa_temple_large);
 
+        allImageIds.add(R.drawable.abidjan_ivory_coast_temple_large);
+        allImageIds.add(R.drawable.bangkok_thailand_temple_large);
+        allImageIds.add(R.drawable.belem_brazil_temple_large);
+        allImageIds.add(R.drawable.lima_peru_los_olivos_temple_large);
+        allImageIds.add(R.drawable.pocatello_idaho_temple_large);
+        allImageIds.add(R.drawable.praia_cape_verde_temple_large);
+        allImageIds.add(R.drawable.puebla_mexico_temple_large);
+        allImageIds.add(R.drawable.quito_ecuador_temple_large);
+        allImageIds.add(R.drawable.richmond_virginia_temple_large);
+        allImageIds.add(R.drawable.rio_de_janeiro_brazil_temple_large);
+        allImageIds.add(R.drawable.san_juan_puerto_rico_temple_large);
+        allImageIds.add(R.drawable.saratoga_springs_utah_temple_large);
+        allImageIds.add(R.drawable.urdaneta_philippines_temple_large);
+        allImageIds.add(R.drawable.winnipeg_manitoba_temple_large);
+        allImageIds.add(R.drawable.yigo_guam_temple_large);
+        allImageIds.add(R.drawable.alabang_philippines_temple_large);
+        allImageIds.add(R.drawable.antofagasta_chile_temple_large);
+        allImageIds.add(R.drawable.auckland_new_zealand_temple_large);
+        allImageIds.add(R.drawable.bacolod_philippines_temple_large);
+        allImageIds.add(R.drawable.bahia_blanca_argentina_temple_large);
+        allImageIds.add(R.drawable.bengaluru_india_temple_large);
+        allImageIds.add(R.drawable.benin_city_nigeria_temple_large);
+        allImageIds.add(R.drawable.bentonville_arkansas_temple_large);
+        allImageIds.add(R.drawable.brasilia_brazil_temple_large);
+        allImageIds.add(R.drawable.budapest_hungary_temple_large);
+        allImageIds.add(R.drawable.cagayan_de_oro_philippines_temple_large);
+        allImageIds.add(R.drawable.coban_guatemala_temple_large);
+        allImageIds.add(R.drawable.davao_philippines_temple_large);
+        allImageIds.add(R.drawable.dubai_united_arab_emirates_temple_large);
+        allImageIds.add(R.drawable.feather_river_california_temple_large);
+        allImageIds.add(R.drawable.freetown_sierra_leone_temple_large);
+        allImageIds.add(R.drawable.harare_zimbabwe_temple_large);
+        allImageIds.add(R.drawable.lagos_nigeria_temple_large);
+        allImageIds.add(R.drawable.layton_utah_temple_large);
+        allImageIds.add(R.drawable.lubumbashi_democratic_republic_of_the_congo_temple_large);
+        allImageIds.add(R.drawable.managua_nicaragua_temple_large);
+        allImageIds.add(R.drawable.mcallen_texas_temple_large);
+        allImageIds.add(R.drawable.mendoza_argentina_temple_large);
+        allImageIds.add(R.drawable.moses_lake_washington_temple_large);
+        allImageIds.add(R.drawable.nairobi_kenya_temple_large);
+        allImageIds.add(R.drawable.neiafu_tonga_temple_large);
+        allImageIds.add(R.drawable.okinawa_city_okinawa_temple_large);
+        allImageIds.add(R.drawable.orem_utah_temple_large);
+        allImageIds.add(R.drawable.pago_pago_american_samoa_temple_large);
+        allImageIds.add(R.drawable.phnom_penh_cambodia_temple_large);
+        allImageIds.add(R.drawable.pittsburgh_pennsylvania_temple_large);
+        allImageIds.add(R.drawable.port_moresby_papua_new_guinea_temple_large);
+        allImageIds.add(R.drawable.russia_temple_large);
+        allImageIds.add(R.drawable.salta_argentina_temple_large);
+        allImageIds.add(R.drawable.salvador_brazil_temple_large);
+        allImageIds.add(R.drawable.san_pedro_sula_honduras_temple_large);
+        allImageIds.add(R.drawable.syracuse_utah_temple_large);
+        allImageIds.add(R.drawable.tallahassee_florida_temple_large);
+        allImageIds.add(R.drawable.taylorsville_utah_temple_large);
+        allImageIds.add(R.drawable.tooele_valley_utah_temple_large);
+        allImageIds.add(R.drawable.washington_county_utah_temple_large);
+
         /*
 
         allImageIds.add(R.drawable.aaa_large);
@@ -1809,6 +1866,8 @@ public class ImageCache {
         allImageIds.add(R.drawable.aazzzzzze_large);
 
          */
+
+
 
 
         allImageIds.add(R.drawable.aa_imnothing);
