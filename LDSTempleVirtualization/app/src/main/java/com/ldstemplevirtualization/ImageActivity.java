@@ -246,7 +246,7 @@ public class ImageActivity extends AppCompatActivity {
 
         if (this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
             // 加入横屏要处理的代码
-            Toast.makeText(this, "landscape now", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "landscape now", Toast.LENGTH_SHORT).show();
 
 
             WindowManager manager = this.getWindowManager();
@@ -299,7 +299,7 @@ public class ImageActivity extends AppCompatActivity {
             //templeInfo.setHeight(height/5);
             //templeInfo.setBackgroundColor(Color.GREEN);
 
-            Toast.makeText(this, "howmanylinesintempleinfo" + howManyLinesInTempleInfo, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "howmanylinesintempleinfo" + howManyLinesInTempleInfo, Toast.LENGTH_SHORT).show();
 
             if (howManyLinesInTempleInfo <= 2) {
                 templeInfo.setTextSize(25);
@@ -348,8 +348,8 @@ public class ImageActivity extends AppCompatActivity {
             templeInfo.setLayoutParams(two);
             //b2.setLayoutParams(two);
 
-            im.setBackgroundColor(Color.GREEN);
-            templeInfo.setBackgroundColor(Color.RED);
+            //im.setBackgroundColor(Color.GREEN);
+            //templeInfo.setBackgroundColor(Color.RED);
 
             //lnl2.addView(stv);
             lnl3.addView((im));
@@ -380,7 +380,7 @@ public class ImageActivity extends AppCompatActivity {
 
         } else if (this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
             // 加入竖屏要处理的代码
-            Toast.makeText(this, "portrait now", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "portrait now", Toast.LENGTH_SHORT).show();
 
             LinearLayout lnl2 = new LinearLayout(this);
             lnl2.setOrientation(LinearLayout.VERTICAL);
@@ -429,7 +429,7 @@ public class ImageActivity extends AppCompatActivity {
             templeInfo.setHeight(height/5);
             //templeInfo.setBackgroundColor(Color.GREEN);
 
-            Toast.makeText(this, "howmanylinesintempleinfo" + howManyLinesInTempleInfo, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "howmanylinesintempleinfo" + howManyLinesInTempleInfo, Toast.LENGTH_SHORT).show();
 
 
             if (howManyLinesInTempleInfo <= 2) {
