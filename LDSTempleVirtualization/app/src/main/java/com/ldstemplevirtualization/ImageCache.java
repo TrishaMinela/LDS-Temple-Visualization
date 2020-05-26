@@ -1702,7 +1702,7 @@ public class ImageCache {
         allImageIds.add(R.drawable.washington_county_utah_temple_large);
 
 
-        
+
         /*
 
         allImageIds.add(R.drawable.aaa_large);
