@@ -13,20 +13,21 @@ for i in range(0, len(names)):
         templesNoImages.append(names[i])
 '''   
 
-'''
+
 for name in names:
     #print(name + " = loadAndScale(res, R.drawable." + name + ", w);")
     #print("templesList.add(" + name + ");")
+    #print("allImageIds.add(R.drawable." + name + "")
 
-    print("allImageIds.add(R.drawable." + name + "")
+    print("allTempleInfoFileIds.add(R.raw." + name + ");")
 
 print(len(names))
 
 #print(len(templesNoImages))
+
+
+
 '''
-
-
-
 path2 = r"D:/whatsthisD/LDSTempleVirtualizationApp/Raw Materials/temple_app_resources/future temples documents/"
 
 import os
@@ -51,3 +52,4 @@ for file in f2:
     print(oldname,'======>',newname)
     print(n)
     n+=1
+'''
