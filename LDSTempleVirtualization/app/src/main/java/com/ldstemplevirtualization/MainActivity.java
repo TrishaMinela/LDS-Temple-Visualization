@@ -6,9 +6,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -607,14 +609,20 @@ public class MainActivity extends AppCompatActivity {
                 //点击对话框以外的区域是否让对话框消失
                 builder.setCancelable(true);
 
-                /*
-                builder.setNeutralButton("OK", new DialogInterface.OnClickListener() {
+
+                builder.setNeutralButton("Visit App's Website", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        finish();
+                        //finish();
+
+                        Uri uri = Uri.parse("https://litianzhang.com/latter-day-temples-virtualization-android-app/");
+                        Intent intent = new Intent(Intent.ACTION_VIEW);
+                        intent.setData(uri);
+                        startActivity(intent);
+
                     }
                 });
 
-                 */
+
 
                 final AlertDialog dialog = builder.create();
 
