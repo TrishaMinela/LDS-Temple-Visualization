@@ -15,8 +15,12 @@ import android.os.Message;
 import android.print.PrinterId;
 import android.util.Log;
 import android.view.GestureDetector;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -579,6 +583,47 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch (item.getItemId()) {
+            case R.id.action_cart://监听菜单按钮
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setTitle("About");
+                builder.setMessage("This App presents the temples in a spiral view");
+                builder.setIcon(R.mipmap.ic_launcher_round);
+
+                //ImageView im = new ImageView(this);
+                //im.setImageResource(R.drawable.aa_imnothing);
+                //builder.setView(im);
+
+                //点击对话框以外的区域是否让对话框消失
+                builder.setCancelable(true);
+
+                /*
+                builder.setNeutralButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        finish();
+                    }
+                });
+
+                 */
+
+                final AlertDialog dialog = builder.create();
+
+                dialog.show();
+
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
 
 

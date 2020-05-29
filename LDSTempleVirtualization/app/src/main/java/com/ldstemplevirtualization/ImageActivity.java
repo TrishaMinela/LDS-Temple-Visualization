@@ -1,5 +1,6 @@
 package com.ldstemplevirtualization;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -17,6 +18,9 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Display;
 import android.view.Gravity;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -629,5 +633,53 @@ public class ImageActivity extends AppCompatActivity {
 
         return true;
     }
+
+
+
+    /*
+    @SuppressLint({"NewApi", "ResourceType"})
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.xml.menu, menu);
+        //添加标题栏的确定按钮
+        MenuItem item=menu.add(0,MENU_CONFIRM,0,"hello");
+
+
+          //setShowAsAction参数说明   MenuItem接口的一些常量
+          //SHOW_AS_ACTION_ALWAYS   总是显示这个项目作为一个操作栏按钮。
+          //SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW   此产品的动作视图折叠成一个正常的菜单项。
+          //SHOW_AS_ACTION_IF_ROOM   显示此项目作为一个操作栏的按钮,如果系统有空间。
+          //SHOW_AS_ACTION_NEVER     从不显示该项目作为一个操作栏按钮。
+          //SHOW_AS_ACTION_WITH_TEXT  当这个项目是在操作栏中,始终以一个文本标签显示它,即使它也有指定一个图标。
+
+        item.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);//主要是这句话
+
+        item.setOnMenuItemClickListener(listener);//添加监听事件
+        item.setIcon(R.drawable.ic_menu_confirm);//设置图标
+        return true;
+
+    }
+
+    MenuItem.OnMenuItemClickListener listener=new MenuItem.OnMenuItemClickListener() {
+        @Override
+        public boolean onMenuItemClick(MenuItem item) {
+            switch (item.getItemId()) {
+                case MENU_CONFIRM:
+                    Toast.makeText(MainActivity.this, "您点击了确定按钮", Toast.LENGTH_SHORT).show();
+                    break;
+                default:
+                    break;
+            }
+            return false;
+        }
+    };
+        */
+
+
+
+
 
 }
