@@ -15,6 +15,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.print.PrinterId;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.Menu;
@@ -22,6 +23,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
@@ -169,12 +171,22 @@ public class MainActivity extends AppCompatActivity {
         //not using Timer to make slider smooth anymore
         //timA = new MyTimer();
 
+        WindowManager manager = this.getWindowManager();
+        DisplayMetrics outMetrics = new DisplayMetrics();
+        manager.getDefaultDisplay().getMetrics(outMetrics);
+        int width = outMetrics.widthPixels;
+        int height = outMetrics.heightPixels;
+        Log.d("window Width", width + " ");
+        Log.d("window Height", height + " ");
+
 
         LinearLayout.LayoutParams nice = new LinearLayout.LayoutParams
                 (LinearLayout.LayoutParams.MATCH_PARENT,
                         LinearLayout.LayoutParams.MATCH_PARENT, 1);
 
         tv = new TempleView(this);
+
+        tv.getWindowSize(width, height);
 
         tv.setLayoutParams(nice);
 
@@ -467,10 +479,15 @@ public class MainActivity extends AppCompatActivity {
 
         //setContentView(lnl);
 
+        //tv.firstLaunchCoordinatesAndSizes();
 
         if(getResources().getConfiguration().orientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT){
             setContentView(lnl);
         } else {
+
+            setContentView(lnl);
+
+            /*
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle("Welcome to Latter-day Temples");
             builder.setMessage("Please Launch the App with Your Device in Portrait Mode");
@@ -488,6 +505,10 @@ public class MainActivity extends AppCompatActivity {
             final AlertDialog dialog = builder.create();
 
             dialog.show();
+
+             */
+
+
         }
 
 

@@ -10,12 +10,16 @@ import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.loader.content.Loader;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -98,6 +102,11 @@ public class TempleView extends View {
     float ultimateScreenWidth;
     float initialRForLocation;
 
+    private boolean firstLaunch;
+
+    private float windowWidth;
+    private float windowHeight;
+
     public TempleView(Context context) {
         super(context);
 
@@ -142,6 +151,9 @@ public class TempleView extends View {
         orientationJustChanged = FALSE;
 
         movingCoordinatesLastTime = new ArrayList<>();
+
+        yearDisplayPaint = new Paint();
+        firstLaunch = TRUE;
 
 
     }
@@ -821,22 +833,42 @@ public class TempleView extends View {
 
     }
 
+    public void firstLaunchCoordinatesAndSizes() {
+        //spiralCoordinates.clear();
+        //sizes.clear();
+        //getCoordinatesAndSizes();
+        firstLaunch = FALSE;
+
+    }
+
+    public void getWindowSize(float w, float h) {
+        windowWidth = w;
+        windowHeight = h;
+    }
     @Override
     public void onDraw(Canvas c) {
         thetaSmall = theta / 4;
         //spiralCoordinates.clear();
 
 
+        //Toast.makeText(getContext(), "onscreen temples" + onScreenTemples.size(), Toast.LENGTH_SHORT).show();
 
+        //Log.d("onscreen temples ", "" + onScreenTemples.size());
 
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+
             screenWidth = c.getWidth() / 2;
+
+            //screenWidth = windowHeight;
+
             screenHeight = c.getHeight();
 
             centerX = screenWidth / 2 + 3 * screenWidth / 16;
             //centerX = 5 * screenWidth / 4 / 2 + screenWidth / 16;
             centerY = screenHeight / 2;
             //centerY = 3 * screenHeight / 8;
+
+            yearDisplayPaint.setTextSize((int)(2 * screenHeight / 25));
 
             // screenHeight / 10;
             Log.d("LANDSCAPE ", "-------------------------" + screenHeight);
@@ -850,6 +882,8 @@ public class TempleView extends View {
 
             ultimateScreenWidth = screenWidth;
             //initialR = screenWidth / 10;
+
+            yearDisplayPaint.setTextSize((int)(screenHeight / 25));
 
             Log.d("PORTRAIT ", "|||||||||||||||||||||||||||||" + screenWidth);
 
@@ -867,18 +901,66 @@ public class TempleView extends View {
 
 
 
+
         if (orientationJustChanged == TRUE) {
             spiralCoordinates.clear();
             sizes.clear();
             getCoordinatesAndSizes();
             orientationJustChanged = FALSE;
             //Log.d("coordinates and sizes ", " just reset ");
+
+            Log.d("orChanged coorSize ", " ++++++++++++++++ "
+                    + spiralCoordinates.size() + " "
+                    + sizes.size());
+
+            Log.d("spiralCoordinates", spiralCoordinates + " ");
+            Log.d("sizes", sizes + " ");
+
         }
 
+
+
+        //when app first launch this got called.
         if (coordinatesAndSizesUpdated == FALSE) {
+
+            /*
+            if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+
+                float tempW = screenWidth;
+                float temH = screenHeight;
+                screenWidth = screenHeight;
+
+            }
+
+             */
+
+            /*
+            WindowManager manager = this.getWindowManager();
+            DisplayMetrics outMetrics = new DisplayMetrics();
+            manager.getDefaultDisplay().getMetrics(outMetrics);
+            int width = outMetrics.widthPixels;
+            int height = outMetrics.heightPixels;
+            Log.d("window Width", width + " ");
+            Log.d("window Height", height + " ");
+             */
+
+
             getCoordinatesAndSizes();
+
             coordinatesAndSizesUpdated = TRUE;
+            Log.d("launch coorSize ", " ++++++++++++++++ "
+                    + spiralCoordinates.size() + " "
+                    + sizes.size());
+
+            Log.d("spiralCoordinates", spiralCoordinates + " ");
+            Log.d("sizes", sizes + " ");
+            Log.d("screenWidth", screenWidth + " ");
+            Log.d("screenHeight", screenHeight + " ");
         }
+
+
+
+
 
         //tim = new MyTimer();
 
@@ -890,7 +972,22 @@ public class TempleView extends View {
         if (loadedImages == false) {
             loadedImages = true;
             //get the temple images in arraylist
-            ImageCache.init(getResources(), screenWidth, screenHeight);
+
+            //when app launches, images are loaded according to screen width
+            //when launches landscape, according to window height
+            float temp;
+            if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+
+                temp = windowHeight;
+            } else {
+                temp = screenWidth;
+            }
+
+            //screenWidth = windowHeight;
+
+            ImageCache.init(getResources(), temp, screenHeight);
+
+
             temples = ImageCache.getTemplesList();
             //Collections.reverse(temples);
 
@@ -900,12 +997,17 @@ public class TempleView extends View {
             readLinksFile();
             readInfoFile();
 
-            yearDisplayPaint = new Paint();
+            //yearDisplayPaint = new Paint();
             //yearDisplayPaint.setColor(Color.parseColor("#66ccff"));
             yearDisplayPaint.setColor(Color.parseColor("#3d4245"));
 
             yearDisplayPaint.setStyle(Paint.Style.FILL);
-            yearDisplayPaint.setTextSize((int)(screenHeight / 25));
+
+
+
+            //yearDisplayPaint.setTextSize((int)(screenHeight / 25));
+
+
             yearDisplayPaint.setTextAlign(Paint.Align.CENTER);
 
 
@@ -939,7 +1041,9 @@ public class TempleView extends View {
 
 
 
+
         placeAllCircles(c);
+
 
 
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
@@ -1097,17 +1201,33 @@ public class TempleView extends View {
 
     public void actuallyDrawing(float ts, Bitmap t, Canvas c) {
 
-
+        //screenWidth = windowHeight;
 
         //float currentTempleSize = spiralCoordinates.get((int)(ts)).get(2);
         float currentTempleSize = sizes.get((int) (ts));
         //float currentTempleSize = 0.01f;
 
+        //Log.d("ts is: ", "" + ts + " ");
+        //Log.d("ts size: ", "" + sizes.get((int) (ts)) + " ");
+        //Log.d("spiralcoors: ", " in actuallydrawing " + spiralCoordinates + " ");
+        //Log.d("ts coor: ", "" + spiralCoordinates.get((int) (ts)) + " ");
 
         float currentTempleX = spiralCoordinates.get((int) (ts)).get(0);
         float currentTempleY = spiralCoordinates.get((int) (ts)).get(1);
 
+        float temp;
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            temp = windowHeight;
+
+        } else {
+            temp = screenWidth;
+        }
+
+        Log.d("window height: ", "" + windowHeight + " ");
+        Log.d("screen width: ", "" + screenWidth + " ");
+
         float newCurrentTempleRadius = currentTempleSize * screenWidth / 2;
+
 
         currentTempleMatrix.setScale(2 * currentTempleSize, 2 * currentTempleSize);
 
@@ -1116,6 +1236,8 @@ public class TempleView extends View {
         //currentTempleMatrix.postTranslate(currentTempleX, currentTempleY);
 
         c.drawBitmap(t, currentTempleMatrix, null);
+
+
 
         if (currentTempleX + newCurrentTempleRadius < screenWidth || currentTempleY + newCurrentTempleRadius < screenHeight) {
 
@@ -1436,6 +1558,9 @@ public class TempleView extends View {
     public void placeAllCircles(Canvas c) {
         //float move = 30;
 
+        //Log.d("spiralcoors: ", " in placeallcircles " + spiralCoordinates + " ");
+        //Log.d("spiralcoors: ", " in placeallcircles " + spiralCoordinates + " ");
+
         onScreenTemples.clear();
 
         for (Bitmap t : temples) {
@@ -1503,6 +1628,8 @@ public class TempleView extends View {
             //Toast.makeText(getContext(), "slider hahaha start", Toast.LENGTH_SHORT).show();
 
         }
+
+        //Log.d("onscreen temples ", "" + onScreenTemples.size());
 
 
     }
@@ -1636,6 +1763,9 @@ public class TempleView extends View {
         //String startYear = "start";
         //String endYear = "end";
 
+
+
+
         c.drawRect( 5 * screenWidth / 4, 0, 2 * screenWidth, screenHeight, bluePaint);
 
         float firstOnScreenTempleIndex;
@@ -1697,7 +1827,27 @@ public class TempleView extends View {
         //spiral are impacted a lot by initialR.
         //circles locations remain whether landscape or portrait
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+
+
+            //initialRForLocation is 0 when app launches, causing spiral becomes a dot.
+            //when first launch, I treat windowHeight as initial R, which is just screen width later
+            //(有差距，因为有状态栏，so window height is slightly smaller than screen width)
+
+            /*
+            if (coordinatesAndSizesUpdated == FALSE) {
+                initialR = windowHeight / 10;
+            } else {
+                initialR = initialRForLocation;
+            }
+
+             */
+
+
+
             initialR = initialRForLocation;
+
+            //Log.d("initialR", " " + initialR);
+
 
         } else if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
             initialR = screenWidth / 10;
@@ -1799,6 +1949,13 @@ public class TempleView extends View {
     public void getSizes() {
         float pi = (float) Math.PI;
         //float pi = 3.14f;
+
+       //float tempsw= screenWidth;
+        //if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+
+            //screenWidth = windowHeight;
+
+        //}
 
         //circles sizes remain whether landscape or portrait
         initialR = screenWidth / 10;
@@ -1931,6 +2088,9 @@ public class TempleView extends View {
 
 
         Collections.reverse(sizes);
+
+        //screenWidth = tempsw;
+        //screenWidth = windowHeight;
 
 
     }
