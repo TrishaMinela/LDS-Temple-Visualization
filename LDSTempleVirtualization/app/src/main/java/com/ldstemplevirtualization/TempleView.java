@@ -1833,18 +1833,18 @@ public class TempleView extends View {
             //when first launch, I treat windowHeight as initial R, which is just screen width later
             //(有差距，因为有状态栏，so window height is slightly smaller than screen width)
 
-            /*
+            
             if (coordinatesAndSizesUpdated == FALSE) {
                 initialR = windowHeight / 10;
             } else {
                 initialR = initialRForLocation;
             }
 
-             */
 
 
 
-            initialR = initialRForLocation;
+
+            //initialR = initialRForLocation;
 
             //Log.d("initialR", " " + initialR);
 
