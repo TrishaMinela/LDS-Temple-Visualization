@@ -113,8 +113,11 @@ public class SingleTempleView extends View {
             float titleSize = sWidth / templeName.length() * 1.6f;
 
             titlePaint = new Paint();
-            titlePaint.setColor(Color.GRAY);
-            titlePaint.setColor(Color.GRAY);
+            //titlePaint.setColor(Color.GRAY);
+            //titlePaint.setColor(Color.GRAY);
+
+            titlePaint.setColor(Color.parseColor("#def2f1"));
+
             titlePaint.setStyle(Paint.Style.FILL);
             titlePaint.setTextSize((int)(titleSize));
             titlePaint.setTextAlign(Paint.Align.CENTER);
@@ -150,7 +153,13 @@ public class SingleTempleView extends View {
 
 
             Paint textPaint = new Paint();
-            textPaint.setColor(Color.GRAY);
+            //textPaint.setColor(Color.GRAY);
+
+            textPaint.setColor(Color.parseColor("#def2f1"));
+
+
+
+
             textPaint.setStyle(Paint.Style.FILL);
             textPaint.setTextSize(10);
             textPaint.setTextAlign(Paint.Align.CENTER);

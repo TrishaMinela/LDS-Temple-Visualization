@@ -274,6 +274,7 @@ public class ImageActivity extends AppCompatActivity {
 
             b2.setBackgroundColor(Color.parseColor("#202224"));
 
+
             b2.setTextColor(Color.GRAY);
 
             b2.setOnClickListener(new View.OnClickListener() {
@@ -417,8 +418,8 @@ public class ImageActivity extends AppCompatActivity {
 
  */
             //lnl2.setBackgroundColor(Color.parseColor("#66ccff"));
-            lnl2.setBackgroundColor(Color.parseColor("#24292b"));
-
+            //lnl2.setBackgroundColor(Color.parseColor("#24292b"));
+            lnl2.setBackgroundColor(Color.parseColor("#17252a"));
             setContentView(lnl2);
 
 
@@ -477,7 +478,8 @@ public class ImageActivity extends AppCompatActivity {
             templeInfo.setHeight(height/5);
             //templeInfo.setBackgroundColor(Color.GREEN);
 
-            templeInfo.setTextColor(Color.GRAY);
+            //templeInfo.setTextColor(Color.GRAY);
+            templeInfo.setTextColor(Color.parseColor("#def2f1"));
 
             //Toast.makeText(this, "howmanylinesintempleinfo" + howManyLinesInTempleInfo, Toast.LENGTH_SHORT).show();
 

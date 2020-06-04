@@ -116,7 +116,10 @@ public class TempleView extends View {
 
         bluePaint = new Paint();
         //bluePaint.setColor(Color.parseColor("#669cff"));
-        bluePaint.setColor(Color.parseColor("#202224"));
+        //bluePaint.setColor(Color.parseColor("#202224"));
+
+        bluePaint.setColor(Color.parseColor("#17252a"));
+
         bluePaint.setStyle(Paint.Style.FILL);
         bluePaint.setTextSize(35);
 
@@ -979,15 +982,13 @@ public class TempleView extends View {
 
 
 
-
-
         //tim = new MyTimer();
 
         //c.drawColor(Color.parseColor("#66ccff"));
 
-        //Temple View Backgroud color 
+        //Temple View Backgroud color
         //c.drawColor(Color.parseColor("#24292b"));
-
+        c.drawColor(Color.parseColor("#17252a"));
 
         //we just want to load the images once, we don't have to load it every time when we re-draw. otherwise the program is gonna be so slow
         if (loadedImages == false) {
@@ -1022,7 +1023,10 @@ public class TempleView extends View {
 
             //yearDisplayPaint = new Paint();
             //yearDisplayPaint.setColor(Color.parseColor("#66ccff"));
-            yearDisplayPaint.setColor(Color.parseColor("#3d4245"));
+            //yearDisplayPaint.setColor(Color.parseColor("#3d4245"));
+
+            yearDisplayPaint.setColor(Color.parseColor("#def2f1"));
+
 
             yearDisplayPaint.setStyle(Paint.Style.FILL);
 
