@@ -1256,9 +1256,9 @@ public class TempleView extends View {
         float newCurrentTempleRadius = currentTempleSize * screenWidth / 2;
 
 
-        currentTempleMatrix.setScale(2 * currentTempleSize, 2 * currentTempleSize);
+        currentTempleMatrix.setScale(4 * currentTempleSize, 4 * currentTempleSize);
 
-        currentTempleMatrix.postTranslate(currentTempleX - t.getWidth()  *currentTempleSize, currentTempleY - t.getHeight() * currentTempleSize);
+        currentTempleMatrix.postTranslate(currentTempleX - t.getWidth()  *currentTempleSize*2, currentTempleY - t.getHeight() * currentTempleSize*2);
 
         //currentTempleMatrix.postTranslate(currentTempleX, currentTempleY);
 
@@ -1616,7 +1616,7 @@ public class TempleView extends View {
                 move = move - 10;
             }
  */
-            if (ts > 0 && ts < spiralCoordinates.size()) {
+            if (ts > 0 && ts < spiralCoordinates.size() - 150) {
                 //this one works
                 actuallyDrawing(ts, t, c);
 

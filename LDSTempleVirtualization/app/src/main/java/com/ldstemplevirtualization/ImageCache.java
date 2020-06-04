@@ -537,7 +537,7 @@ public class ImageCache {
 
 
     public static void init(Resources res, float w2, float h) {
-        float w = w2 / 2;
+        float w = w2 / 4;
 
         logo_circle = loadAndScale(res, R.drawable.logo_circle, w);
 
@@ -941,6 +941,7 @@ public class ImageCache {
         tooele_valley_utah_temple = loadAndScale(res, R.drawable.tooele_valley_utah_temple, w);
         washington_county_utah_temple = loadAndScale(res, R.drawable.washington_county_utah_temple, w);
 
+        /*
         aa_imnothing = loadAndScale(res, R.drawable.aa_imnothing, w);
         ab_imnothing = loadAndScale(res, R.drawable.ab_imnothing, w);
         ac_imnothing = loadAndScale(res, R.drawable.ac_imnothing, w);
@@ -994,6 +995,8 @@ public class ImageCache {
         by_imnothing = loadAndScale(res, R.drawable.by_imnothing, w);
         bz_imnothing = loadAndScale(res, R.drawable.bz_imnothing, w);
 
+
+         */
 
     }
 
@@ -2253,6 +2256,7 @@ public class ImageCache {
 
 
 
+        /*
         allImageIds.add(R.drawable.aa_imnothing);
         allImageIds.add(R.drawable.ab_imnothing);
         allImageIds.add(R.drawable.ac_imnothing);
@@ -2305,7 +2309,7 @@ public class ImageCache {
         allImageIds.add(R.drawable.bx_imnothing);
         allImageIds.add(R.drawable.by_imnothing);
         allImageIds.add(R.drawable.bz_imnothing);
-
+*/
 
 
 
