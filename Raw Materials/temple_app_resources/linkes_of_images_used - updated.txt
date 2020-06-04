@@ -9,7 +9,8 @@ https://www.churchofjesuschrist.org/temples/details/logan-utah-temple?lang=eng
 https://www.churchofjesuschrist.org/temples/details/manti-utah-temple?lang=eng
 
 ---
-https://www.churchofjesuschrist.org/church/temples/laie-hawaii?lang=eng
+laie-hawaii-temple
+I'm using images from WiKi 
 
 https://www.churchofjesuschrist.org/temples/details/cardston-alberta-temple?lang=eng
 https://www.churchofjesuschrist.org/temples/details/idaho-falls-idaho-temple?lang=eng
@@ -26,12 +27,14 @@ https://www.churchofjesuschrist.org/temples/details/atlanta-georgia-temple?lang=
 https://www.churchofjesuschrist.org/temples/details/apia-samoa-temple?lang=eng
 
 ---
-https://www.churchofjesuschrist.org/church/temples/nukualofa-tonga?lang=eng
+nukualofa-tonga-temple
+I'm using images from WiKi 
 
 https://www.churchofjesuschrist.org/temples/details/santiago-chile-temple?lang=eng
 
 ---
-https://www.churchofjesuschrist.org/church/temples/papeete-tahiti?lang=eng
+papeete-tahiti-temple
+I'm using images from WiKi 
 
 https://www.churchofjesuschrist.org/temples/details/mexico-city-mexico-temple?lang=eng
 https://www.churchofjesuschrist.org/temples/details/boise-idaho-temple?lang=eng
