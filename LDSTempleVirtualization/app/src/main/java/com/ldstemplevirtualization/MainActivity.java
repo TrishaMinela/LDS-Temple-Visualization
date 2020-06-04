@@ -440,7 +440,8 @@ public class MainActivity extends AppCompatActivity {
         //sliderLabel.setBackgroundColor(Color.parseColor("#202224"));
         sliderLabel.setBackgroundColor(Color.parseColor("#287a78"));
 
-
+        LinearLayout sliderLabelNoText = findViewById(R.id.sliderLabelNoText);
+        sliderLabelNoText.setBackgroundColor(Color.parseColor("#287a78"));
 
 
 
@@ -449,6 +450,9 @@ public class MainActivity extends AppCompatActivity {
         lnl.setOrientation(LinearLayout.VERTICAL);
 
         lnl.addView(tv);
+
+        ((ViewGroup)sliderLabelNoText.getParent()).removeView(sliderLabelNoText);
+        lnl.addView(sliderLabelNoText);
 
         ((ViewGroup)slider.getParent()).removeView(slider);
         lnl.addView(slider);
