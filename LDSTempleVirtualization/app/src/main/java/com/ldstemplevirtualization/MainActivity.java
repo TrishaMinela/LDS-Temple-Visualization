@@ -637,7 +637,7 @@ public class MainActivity extends AppCompatActivity {
                         "This app is a research project funded by Brigham Young University--Hawaii, however the contents are the responsibility of its developers. This app is not an \"official\" publication of the Church of Jesus Christ of Latter-day Saints.\n";
 
                 String html = "Programming by Litian Zhang under the supervision of Dr. Geoffrey Draper at Brigham Young University--Hawaii.<br><br>";
-                html += "<a href='https://litianzhang.com/latter-day-temples-virtualization-android-app'>Visit the app's website</a> <br>";
+                html += "<a href='https://litianzhang.com/latter-day-temples-visualization-android-app/'>Visit the app's website</a> <br>";
                 html += "<br>" +
                         "Temple photos are copyrighted by Intellectual Reserve, Inc. Used by permission.<br>" +
                         "<br>" +
