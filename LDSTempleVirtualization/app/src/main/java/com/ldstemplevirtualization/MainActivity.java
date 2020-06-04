@@ -27,6 +27,7 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
@@ -659,6 +660,9 @@ public class MainActivity extends AppCompatActivity {
                 aboutTv.setTextSize(20);
                 aboutTv.setPadding(50,50,50,50);
 
+                aboutTv.setBackgroundColor(Color.parseColor("#ffffee"));
+
+
 
 
                 //builder.setMessage(about);
@@ -680,8 +684,11 @@ public class MainActivity extends AppCompatActivity {
 
                         //do nothing
 
+
+
                     }
                 });
+
 
                 /*
 
@@ -705,6 +712,11 @@ public class MainActivity extends AppCompatActivity {
 
                 dialog.show();
 
+                final Button positiveButton=dialog.getButton(AlertDialog.BUTTON_NEUTRAL);
+                LinearLayout.LayoutParams positiveButtonLL =(LinearLayout.LayoutParams)positiveButton.getLayoutParams();
+                positiveButtonLL.gravity=Gravity.CENTER;
+                positiveButtonLL.width=ViewGroup.LayoutParams.MATCH_PARENT;
+                positiveButton.setLayoutParams(positiveButtonLL);
                 break;
         }
         return super.onOptionsItemSelected(item);
