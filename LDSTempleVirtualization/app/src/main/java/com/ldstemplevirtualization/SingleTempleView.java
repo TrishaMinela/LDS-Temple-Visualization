@@ -177,7 +177,7 @@ public class SingleTempleView extends View {
              */
 
             textPaint.setTextSize(35);
-            c.drawText("Click the temple to visit it's website", sWidth/2, sHeight - 50, textPaint);
+            c.drawText("Click the temple to visit its website", sWidth/2, sHeight - 50, textPaint);
             //c.drawText("Click the temple to visit it's website", sWidth/2, sHeight - 250, textPaint);
 
 
