@@ -4,7 +4,9 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Matrix;
@@ -107,6 +109,8 @@ public class TempleView extends View {
     private float windowWidth;
     private float windowHeight;
 
+    private static ArrayList<Integer> allSpiralImageIds;
+
     public TempleView(Context context) {
         super(context);
 
@@ -155,6 +159,7 @@ public class TempleView extends View {
         yearDisplayPaint = new Paint();
         firstLaunch = TRUE;
 
+        allSpiralImageIds = new ArrayList<>();
 
     }
 
@@ -845,6 +850,20 @@ public class TempleView extends View {
         windowWidth = w;
         windowHeight = h;
     }
+
+/*
+    private static Bitmap loadAndScale(Resources res, int id, float newWidth) {
+        Bitmap original = BitmapFactory.decodeResource(res, id);
+        float aspectRatio = (float)original.getHeight()/(float)original.getWidth();
+        float newHeight = newWidth * aspectRatio;
+        return Bitmap.createScaledBitmap(original, (int)newWidth, (int)newHeight, true);
+    }
+
+
+ */
+
+
+
     @Override
     public void onDraw(Canvas c) {
         thetaSmall = theta / 4;
@@ -990,6 +1009,8 @@ public class TempleView extends View {
 
             temples = ImageCache.getTemplesList();
             //Collections.reverse(temples);
+
+            //allSpiralImageIds = ImageCache.getAllImageIds();
 
             logo_circle = ImageCache.getLogo();
 
@@ -1563,8 +1584,25 @@ public class TempleView extends View {
 
         onScreenTemples.clear();
 
+        //this one works
         for (Bitmap t : temples) {
+
+        //Log.d("placeallscircles", "statrts  hello ");
+
+
+        //this one is a testing
+        //for (Integer i : allSpiralImageIds) {
+
+            //Log.d("placeallscircles", "looping through all temples ");
+
+            //this one works
             float ts = theta - 30 * temples.indexOf(t);
+
+            //this one is a testing
+            //float ts = theta - 30 * allSpiralImageIds.indexOf(i);
+
+            //Log.d("placeallscircles", "i is " + i);
+
             //checkTs(ts, t);
 /*
             if (ts > 30 && ts < 200) {
@@ -1573,7 +1611,26 @@ public class TempleView extends View {
             }
  */
             if (ts > 0 && ts < spiralCoordinates.size()) {
+                //this one works
                 actuallyDrawing(ts, t, c);
+
+/*
+                //this one is a testing
+                float temp;
+                if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+
+                    temp = windowHeight;
+                } else {
+                    temp = screenWidth;
+                }
+                Bitmap t = loadAndScale(getResources(), i, temp/2);
+
+                actuallyDrawing(ts, t, c);
+
+
+ */
+
+
 
                 //add all on screen temples index to a array list once the slider stopped moving,
                 //we do not need to add while slider is moving because people wont click while moving slider
@@ -1582,8 +1639,14 @@ public class TempleView extends View {
 
 
 
+                    //this one works
                     //the following lines of code are copied from method actuallyDrawing(, , );
                     float currentTempleIndex = (float)(temples.indexOf(t));
+
+                    //this one is a testing
+                    //float currentTempleIndex = (float)(allSpiralImageIds.indexOf(i));
+                    //float currentTempleIndex = 1;
+
                     float currentTempleX = spiralCoordinates.get((int) (ts)).get(0);
                     float currentTempleY = spiralCoordinates.get((int) (ts)).get(1);
                     float currentTempleSize = sizes.get((int) (ts));
@@ -1600,6 +1663,8 @@ public class TempleView extends View {
                     ArrayList<Float> oneOnScreenTempleCopy = new ArrayList<>();
                     oneOnScreenTempleCopy.addAll(oneOnScreenTemple);
                     onScreenTemples.add(oneOnScreenTempleCopy);
+
+                    //Log.d("onscreentemples", " add one " + onScreenTemples.size() + " ");
 
                     oneOnScreenTemple.clear();
 

@@ -189,6 +189,7 @@ public class SingleTempleView extends View {
 
     }
 
+
     private static Bitmap loadAndScale(Resources res, int id, float newWidth) {
         Bitmap original = BitmapFactory.decodeResource(res, id);
         float aspectRatio = (float)original.getHeight()/(float)original.getWidth();
