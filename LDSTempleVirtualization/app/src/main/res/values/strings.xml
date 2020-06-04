@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Latter-day Temples</string>
     <string name="textview">TextViewmmmmmmmmm</string>
+    <string name="app_website"><a href="https://litianzhang.com/latter-day-temples-virtualization-android-app">Visit app website</a></string>
 </resources>

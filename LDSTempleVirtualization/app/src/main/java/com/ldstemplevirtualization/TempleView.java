@@ -985,7 +985,9 @@ public class TempleView extends View {
 
         //c.drawColor(Color.parseColor("#66ccff"));
 
-        c.drawColor(Color.parseColor("#24292b"));
+        //Temple View Backgroud color 
+        //c.drawColor(Color.parseColor("#24292b"));
+
 
         //we just want to load the images once, we don't have to load it every time when we re-draw. otherwise the program is gonna be so slow
         if (loadedImages == false) {

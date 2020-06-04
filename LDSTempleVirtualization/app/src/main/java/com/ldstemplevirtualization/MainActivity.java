@@ -15,9 +15,12 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.print.PrinterId;
+import android.text.Html;
+import android.text.method.LinkMovementMethod;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.GestureDetector;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -618,9 +621,42 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.action_cart://监听菜单按钮
 
+                String about = "Programming by Litian Zhang under the supervision of Dr. Geoffrey Draper at Brigham Young University--Hawaii.\n" +
+                        "Visit the app's website: " + R.string.app_website + "\n" +
+                        "\n" +
+                        "Temple photos are copyrighted by Intellectual Reserve, Inc. Used by permission.\n" +
+                        "\n" +
+                        "This app is a research project funded by Brigham Young University--Hawaii, however the contents are the responsibility of its developers. This app is not an \"official\" publication of the Church of Jesus Christ of Latter-day Saints.\n";
+
+                String html = "Programming by Litian Zhang under the supervision of Dr. Geoffrey Draper at Brigham Young University--Hawaii.<br><br>";
+                html += "<a href='https://litianzhang.com/latter-day-temples-virtualization-android-app'>Visit the app's website</a> <br>";
+                html += "<br>" +
+                        "Temple photos are copyrighted by Intellectual Reserve, Inc. Used by permission.<br>" +
+                        "<br>" +
+                        "This app is a research project funded by Brigham Young University--Hawaii, however the contents are the responsibility of its developers. This app is not an \"official\" publication of the Church of Jesus Christ of Latter-day Saints.<br>";
+
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder.setTitle("About");
-                builder.setMessage("This App presents the temples in a spiral view");
+                builder.setTitle("Latter-day Temples");
+
+                TextView aboutTv = new TextView(this);
+
+                //aboutTv.setText(about + R.string.app_website);
+
+                aboutTv.setText(Html.fromHtml(html));
+
+                //aboutTv.setText(Html.fromHtml(about));
+
+                aboutTv.setMovementMethod(LinkMovementMethod.getInstance());
+                aboutTv.setGravity(Gravity.LEFT);
+                aboutTv.setTextSize(20);
+                aboutTv.setPadding(50,50,50,50);
+
+
+
+                //builder.setMessage(about);
+
+                builder.setView(aboutTv);
+
                 builder.setIcon(R.mipmap.ic_launcher_round);
 
                 //ImageView im = new ImageView(this);
@@ -630,6 +666,16 @@ public class MainActivity extends AppCompatActivity {
                 //点击对话框以外的区域是否让对话框消失
                 builder.setCancelable(true);
 
+                builder.setNeutralButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        //finish();
+
+                        //do nothing
+
+                    }
+                });
+
+                /*
 
                 builder.setNeutralButton("Visit App's Website", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
@@ -642,6 +688,8 @@ public class MainActivity extends AppCompatActivity {
 
                     }
                 });
+
+                 */
 
 
 
