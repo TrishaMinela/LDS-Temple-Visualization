@@ -2,6 +2,7 @@ package com.ldstemplevirtualization;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -327,15 +328,46 @@ public class ImageActivity extends AppCompatActivity {
 
 
             im.setClickable(true);
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("No Link Available");
+            builder.setMessage("Sorry, Temple does not have a website yet");
+            builder.setIcon(R.mipmap.ic_launcher_round);
+            //点击对话框以外的区域是否让对话框消失
+            builder.setCancelable(true);
+            final AlertDialog dialog = builder.create();
+
             im.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Uri uri = Uri.parse(templeUrl);
-                    Intent intent = new Intent(Intent.ACTION_VIEW);
-                    intent.setData(uri);
-                    startActivity(intent);
+
+                    if (templeUrl.equals("" + "\n")) {
+
+                        dialog.show();
+                        /*
+                        Uri uri = Uri.parse("https://www.churchofjesuschrist.org/temples/list?lang=eng");
+                        Intent intent = new Intent(Intent.ACTION_VIEW);
+                        intent.setData(uri);
+                        startActivity(intent);
+                         */
+
+                    } else {
+
+                        Uri uri = Uri.parse(templeUrl);
+                        Intent intent = new Intent(Intent.ACTION_VIEW);
+                        intent.setData(uri);
+                        startActivity(intent);
+
+                    }
+
+
+
                 }
             });
+
+
+
+
 
             LinearLayout.LayoutParams two = new LinearLayout.LayoutParams
                     (LinearLayout.LayoutParams.MATCH_PARENT,
