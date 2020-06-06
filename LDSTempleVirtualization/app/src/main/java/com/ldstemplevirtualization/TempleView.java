@@ -479,7 +479,7 @@ public class TempleView extends View {
 
             int moveTheta = 10;
 
-            boolean thetaMaxReached = theta >= 6770;
+            boolean thetaMaxReached = theta >= 6800;
             boolean thetaMinReached = theta <= 0;
 
             if (leftThirdVertical) {

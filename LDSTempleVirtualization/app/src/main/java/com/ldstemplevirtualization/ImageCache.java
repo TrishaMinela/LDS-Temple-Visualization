@@ -246,11 +246,12 @@ public class ImageCache {
             taylorsville_utah_temple,
             tooele_valley_utah_temple,
             washington_county_utah_temple,
+            shanghai_china_temple;
 
 
 
 
-
+/*
             aa_imnothing,
             ab_imnothing,
             ac_imnothing,
@@ -303,6 +304,8 @@ public class ImageCache {
             bx_imnothing,
             by_imnothing,
             bz_imnothing;
+
+ */
 
 
 
@@ -941,6 +944,7 @@ public class ImageCache {
         tooele_valley_utah_temple = loadAndScale(res, R.drawable.tooele_valley_utah_temple, w);
         washington_county_utah_temple = loadAndScale(res, R.drawable.washington_county_utah_temple, w);
 
+        shanghai_china_temple = loadAndScale(res,R.drawable.shanghai_china_temple,w);
         /*
         aa_imnothing = loadAndScale(res, R.drawable.aa_imnothing, w);
         ab_imnothing = loadAndScale(res, R.drawable.ab_imnothing, w);
@@ -1414,6 +1418,7 @@ public class ImageCache {
         templesList.add(syracuse_utah_temple);
         templesList.add(dubai_united_arab_emirates_temple);
 
+        templesList.add(shanghai_china_temple);
 
         /*
         //temples under construction
@@ -2020,6 +2025,8 @@ public class ImageCache {
         allImageIds.add(R.drawable.syracuse_utah_temple_large);
         allImageIds.add(R.drawable.dubai_united_arab_emirates_temple_large);
 
+        allImageIds.add(R.drawable.shanghai_china_temple_large);
+
         /*
         //temples under construction
 
@@ -2556,6 +2563,9 @@ public class ImageCache {
         allTempleInfoFileIds.add(R.raw.benin_city_nigeria_temple);
         allTempleInfoFileIds.add(R.raw.syracuse_utah_temple);
         allTempleInfoFileIds.add(R.raw.dubai_united_arab_emirates_temple);
+
+        allTempleInfoFileIds.add(R.raw.shanghai_china_temple);
+
 
         /*
         //temples under construction
