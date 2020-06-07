@@ -866,6 +866,8 @@ public class TempleView extends View {
         //spiralCoordinates.clear();
 
 
+
+
         //Toast.makeText(getContext(), "onscreen temples" + onScreenTemples.size(), Toast.LENGTH_SHORT).show();
 
         //Log.d("onscreen temples ", "" + onScreenTemples.size());
@@ -886,7 +888,7 @@ public class TempleView extends View {
             yearDisplayPaint.setTextSize((int)(2 * screenHeight / 25));
 
             // screenHeight / 10;
-            Log.d("LANDSCAPE ", "-------------------------" + screenHeight);
+            //("LANDSCAPE ", "-------------------------" + screenHeight);
 
         } else if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
             screenWidth = c.getWidth();
@@ -900,7 +902,7 @@ public class TempleView extends View {
 
             yearDisplayPaint.setTextSize((int)(screenHeight / 25));
 
-            Log.d("PORTRAIT ", "|||||||||||||||||||||||||||||" + screenWidth);
+            //Log.d("PORTRAIT ", "|||||||||||||||||||||||||||||" + screenWidth);
 
         }
 
@@ -920,16 +922,25 @@ public class TempleView extends View {
         if (orientationJustChanged == TRUE) {
             spiralCoordinates.clear();
             sizes.clear();
-            getCoordinatesAndSizes();
+
+            //getCoordinatesAndSizes();
+
+
+            getCoordinates();
+            //getCoordinatesRotateRegular();
+
+            getSizes();
+
+
             orientationJustChanged = FALSE;
             //Log.d("coordinates and sizes ", " just reset ");
 
-            Log.d("orChanged coorSize ", " ++++++++++++++++ "
-                    + spiralCoordinates.size() + " "
-                    + sizes.size());
+            //Log.d("orChanged coorSize ", " ++++++++++++++++ "
+                    //+ spiralCoordinates.size() + " "
+                    //+ sizes.size());
 
-            Log.d("spiralCoordinates", spiralCoordinates + " ");
-            Log.d("sizes", sizes + " ");
+            //Log.d("spiralCoordinates", spiralCoordinates + " ");
+            //Log.d("sizes", sizes + " ");
 
         }
 
@@ -960,18 +971,43 @@ public class TempleView extends View {
              */
 
 
-            getCoordinatesAndSizes();
+            //getCoordinatesAndSizes();
+
+            getCoordinates();
+            //getCoordinatesRotateRegular();
+
+            getSizes();
+
 
             coordinatesAndSizesUpdated = TRUE;
-            Log.d("launch coorSize ", " ++++++++++++++++ "
-                    + spiralCoordinates.size() + " "
-                    + sizes.size());
+            //Log.d("launch coorSize ", " ++++++++++++++++ "
+                    //+ spiralCoordinates.size() + " "
+                    //+ sizes.size());
 
-            Log.d("spiralCoordinates", spiralCoordinates + " ");
-            Log.d("sizes", sizes + " ");
-            Log.d("screenWidth", screenWidth + " ");
-            Log.d("screenHeight", screenHeight + " ");
+            //Log.d("spiralCoordinates", spiralCoordinates + " ");
+            //Log.d("sizes", sizes + " ");
+            //Log.d("screenWidth", screenWidth + " ");
+            //Log.d("screenHeight", screenHeight + " ");
         }
+
+        //spiralCoordinates.clear();
+        //sizes.clear();
+        //getCoordinatesAndSizes();
+
+
+        //three different effects here
+        spiralCoordinates.clear();
+
+        //getCoordinatesRotateRegular();
+        //getCoordinatesRotateZoom();
+        getCoordinatesThreeD();
+
+
+
+
+
+
+        //Log.d("getCoordinatesAndSizes", "again!!!!!!!!!!" + " ");
 
 
 
@@ -1216,6 +1252,9 @@ public class TempleView extends View {
         c.drawText(testString + "    " + result1.get(1).toString(), 0, screenHeight/2 + 100, redPaint);
 
 */
+
+        //drawSpiral(c);
+
     }
 
 
@@ -1243,8 +1282,8 @@ public class TempleView extends View {
             temp = screenWidth;
         }
 
-        Log.d("window height: ", "" + windowHeight + " ");
-        Log.d("screen width: ", "" + screenWidth + " ");
+        //("window height: ", "" + windowHeight + " ");
+        //Log.d("screen width: ", "" + screenWidth + " ");
 
         float newCurrentTempleRadius = currentTempleSize * screenWidth / 2;
 
@@ -1341,7 +1380,11 @@ public class TempleView extends View {
 
         }
 
+
+
         getCoordinates();
+        //getCoordinatesRotateRegular();
+
         getSizes();
 
         //getCoordinatesRotate();
@@ -1377,64 +1420,6 @@ public class TempleView extends View {
     }
 
 
-    public void drawSpiral(Canvas c) {
-        float e = (float) (Math.E);
-
-        float a = screenWidth / 10;
-
-        //draw spiral
-        spiralLine.reset();
-        spiralLine.moveTo(centerX, centerY);
-
-        //radius of the circle in the middle
-
-        //c.drawCircle(centerX, centerY, initialR, spiralPaint);
-
-        //float pi = (float)Math.PI;
-        float pi = 3.14f;
-
-        int count = 0;
-        for (float t = 0; t < 17.5; t += 0.02f) {
-            count ++;
-            //Equiangular spiral function：
-            //x = p * cosA, y = p * sinA, where p = N * e^(B * cotC)
-            //When C = PI/2, graph is a circle, when C = 0, graph is a straight line
-//            float x = centerX + a * (float) (Math.exp(t * 1 / (Math.tan(47 * Math.PI / 100)))) * (float) (Math.cos(t));
-//            float y = centerY + a * (float) (Math.exp(t * 1 / (Math.tan(47 * Math.PI / 100)))) * (float) (Math.sin(t));
-
-            float x = centerX + a * (float) (Math.exp(t * 1 / (Math.tan(47 * Math.PI / 100)))) * (float) (Math.cos(t));
-            float y = centerY + a * (float) (Math.exp(t * 1 / (Math.tan(47 * Math.PI / 100)))) * (float) (Math.sin(t));
-
-
-            // rotates about (0, 0)
-            //float xNew = x * (float)(Math.cos(theta)) + y * (float)(Math.sin(theta));
-            //float yNew = y * (float)(Math.cos(theta)) - x * (float)(Math.sin(theta));
-
-            // rotates about (centerX, centerY)
-            float xNew = (x - centerX) * (float) (Math.cos(thetaSmall)) + (y - centerY) * (float) (Math.sin(thetaSmall)) + centerX;
-            float yNew = (y - centerY) * (float) (Math.cos(thetaSmall)) - (x - centerX) * (float) (Math.sin(thetaSmall)) + centerY;
-
-            //draw lots of rectangles to make up the spiral
-            //c.drawRect(xNew - 2,yNew - 2,xNew + 2,yNew + 2, bluePaint);
-
-            //spiral rotates
-            //spiralLine.lineTo(xNew, yNew);
-
-            //spiral doesn't rotates
-            spiralLine.lineTo(x, y);
-
-
-        }
-        //draw the spiral ****************************************
-        c.drawPath(spiralLine, spiralPaint);
-        //Toast.makeText(getContext(), count + " ", Toast.LENGTH_SHORT).show();
-
-        //c.drawText("center circle radius " + initialR + " ", 0, screenHeight - 250, redPaint);
-    }
-
-    public void createOnScreenTemples() {
-        //method not used
-    }
 
 
     /**
@@ -1884,34 +1869,23 @@ public class TempleView extends View {
 
     public void getCoordinates() {
 
-
-
-
-
         //spiral are impacted a lot by initialR.
         //circles locations remain whether landscape or portrait
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
-
 
             //initialRForLocation is 0 when app launches, causing spiral becomes a dot.
             //when first launch, I treat windowHeight as initial R, which is just screen width later
             //(有差距，因为有状态栏，so window height is slightly smaller than screen width)
 
-            
             if (coordinatesAndSizesUpdated == FALSE) {
                 initialR = windowHeight / 10;
             } else {
                 initialR = initialRForLocation;
             }
 
-
-
-
-
             //initialR = initialRForLocation;
 
             //Log.d("initialR", " " + initialR);
-
 
         } else if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
             initialR = screenWidth / 10;
@@ -1940,12 +1914,8 @@ public class TempleView extends View {
             oneSpiralCoordinate.clear();
         }
 
-
-
         topCoordinateInSpiralX = spiralCoordinates.get(spiralCoordinates.size()-1).get(0);
         topCoordinateInSpiralY = spiralCoordinates.get(spiralCoordinates.size()-1).get(1);
-
-
 
         //when q += 12f, top lines circles next to each other the whole time\
         //must change the same time as getCoordinates()
@@ -1963,16 +1933,330 @@ public class TempleView extends View {
 
         //Toast.makeText(getContext(), spiralCoordinates.size() + " ", Toast.LENGTH_SHORT).show();
 
-
         Collections.reverse(spiralCoordinates);
-
 
     }
 
 
+
+
+
+
+
+    public void drawSpiral(Canvas c) {
+        float e = (float) (Math.E);
+
+        float a = screenWidth / 10;
+
+        //draw spiral
+        spiralLine.reset();
+        spiralLine.moveTo(centerX, centerY);
+
+        //radius of the circle in the middle
+
+        //c.drawCircle(centerX, centerY, initialR, spiralPaint);
+
+        //float pi = (float)Math.PI;
+        float pi = 3.14f;
+
+        Log.d("theta ", "is " + theta);
+
+        int count = 0;
+        for (float t = -18; t < 17.5; t += 0.02f) {
+            count ++;
+            //Equiangular spiral function：
+            //x = p * cosA, y = p * sinA, where p = N * e^(B * cotC)
+            //When C = PI/2, graph is a circle, when C = 0, graph is a straight line
+//            float x = centerX + a * (float) (Math.exp(t * 1 / (Math.tan(47 * Math.PI / 100)))) * (float) (Math.cos(t));
+//            float y = centerY + a * (float) (Math.exp(t * 1 / (Math.tan(47 * Math.PI / 100)))) * (float) (Math.sin(t));
+
+            float x = centerX + a * (float) (Math.exp(t * 1 / (Math.tan(47 * Math.PI / 100)))) * (float) (Math.cos(t));
+            float y = centerY + a * (float) (Math.exp(t * 1 / (Math.tan(47 * Math.PI / 100)))) * (float) (Math.sin(t));
+
+            // rotates about (0, 0)
+            //float xNew = x * (float)(Math.cos(theta)) + y * (float)(Math.sin(theta));
+            //float yNew = y * (float)(Math.cos(theta)) - x * (float)(Math.sin(theta));
+
+
+            float angle = theta / 500;
+            float xNew = (x - centerX) * (float) (Math.cos(angle)) - (y - centerY) * (float) (Math.sin(angle)) + centerX;
+            float yNew = (y - centerY) * (float) (Math.cos(angle)) + (x - centerX) * (float) (Math.sin(angle)) + centerY;
+
+            //spiral doesn't rotates
+            //spiralLine.lineTo(x, y);
+
+            //spiral rotates
+            spiralLine.lineTo(xNew, yNew);
+
+            //draw lots of rectangles to make up the spiral
+            //c.drawRect(xNew - 2,yNew - 2,xNew + 2,yNew + 2, bluePaint);
+
+
+        }
+        //draw the spiral ****************************************
+        c.drawPath(spiralLine, spiralPaint);
+        //Toast.makeText(getContext(), count + " ", Toast.LENGTH_SHORT).show();
+
+        //c.drawText("center circle radius " + initialR + " ", 0, screenHeight - 250, redPaint);
+    }
+
+    public void createOnScreenTemples() {
+        //method not used
+    }
+
+
+
+    public void getCoordinatesRotateRegular() {
+
+        //spiral are impacted a lot by initialR.
+        //circles locations remain whether landscape or portrait
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+
+            //initialRForLocation is 0 when app launches, causing spiral becomes a dot.
+            //when first launch, I treat windowHeight as initial R, which is just screen width later
+            //(有差距，因为有状态栏，so window height is slightly smaller than screen width)
+
+            if (coordinatesAndSizesUpdated == FALSE) {
+                initialR = windowHeight / 10;
+            } else {
+                initialR = initialRForLocation;
+            }
+
+            //initialR = initialRForLocation;
+
+            //Log.d("initialR", " " + initialR);
+
+        } else if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+            initialR = screenWidth / 10;
+
+        }
+
+        //for (float t = -30; t < 30; t += 0.02f) {
+        for (float t = -18; t < 17.5; t += 0.02f) {
+            //Equiangular spiral function：
+            //x = p * cosA, y = p * sinA, where p = N * e^(B * cotC)
+            //When C = PI/2, graph is a circle, when C = 0, graph is a straight line
+            float x = centerX + initialR * (float) (Math.exp(t * 1 / (Math.tan(47 * Math.PI / 100)))) * (float) (Math.cos(t));
+            float y = centerY + initialR * (float) (Math.exp(t * 1 / (Math.tan(47 * Math.PI / 100)))) * (float) (Math.sin(t));
+
+            //intendSize is the new size compare to original (original has width of 0.1 * screenWidth)
+
+
+            float angle = theta / 100;
+            float xNew = (x - centerX) * (float) (Math.cos(angle)) - (y - centerY) * (float) (Math.sin(angle)) + centerX;
+            float yNew = (y - centerY) * (float) (Math.cos(angle)) + (x - centerX) * (float) (Math.sin(angle)) + centerY;
+
+
+            ArrayList<Float> oneSpiralCoordinate = new ArrayList<>();
+            oneSpiralCoordinate.add(xNew);
+            oneSpiralCoordinate.add(yNew);
+
+            ArrayList<Float> oneSpiralCoordinateCopy = new ArrayList<>();
+            oneSpiralCoordinateCopy.addAll(oneSpiralCoordinate);
+            //Log.d("x y coordinate", oneSpiralCoordinate.get(0) + "<- x, y -> " + oneSpiralCoordinate.get(1));
+            spiralCoordinates.add(oneSpiralCoordinateCopy);
+            //Log.d("x y coordinate", "right after adding, spiralCoordinates are " + spiralCoordinates);
+            oneSpiralCoordinate.clear();
+        }
+
+
+        topCoordinateInSpiralX = spiralCoordinates.get(spiralCoordinates.size()-1).get(0);
+        topCoordinateInSpiralY = spiralCoordinates.get(spiralCoordinates.size()-1).get(1);
+
+        float secondTopCoordinateInSpiralX = spiralCoordinates.get(spiralCoordinates.size()-2).get(0);
+        float secondTopCoordinateInSpiralY = spiralCoordinates.get(spiralCoordinates.size()-2).get(1);
+
+        //when q += 12f, top lines circles next to each other the whole time\
+        //must change the same time as getCoordinates()
+        for (float q = 0; q < 20; q += 1) {
+
+            ArrayList<Float> oneSpiralCoordinateTop = new ArrayList<>();
+
+            float xDirection = topCoordinateInSpiralX - secondTopCoordinateInSpiralX;
+            float yDirection = topCoordinateInSpiralY - secondTopCoordinateInSpiralY;
+
+            float step = q * 30;
+            oneSpiralCoordinateTop.add(xDirection / Math.abs(xDirection) * step + secondTopCoordinateInSpiralX);
+            oneSpiralCoordinateTop.add(yDirection / Math.abs(yDirection) * step + secondTopCoordinateInSpiralY);
+
+            ArrayList<Float> oneSpiralCoordinateTopCopy = new ArrayList<>();
+            oneSpiralCoordinateTopCopy.addAll(oneSpiralCoordinateTop);
+            spiralCoordinates.add(oneSpiralCoordinateTopCopy);
+            oneSpiralCoordinateTop.clear();
+        }
+
+        //Toast.makeText(getContext(), spiralCoordinates.size() + " ", Toast.LENGTH_SHORT).show();
+
+
+
+        Collections.reverse(spiralCoordinates);
+
+    }
+
+
+    public void getCoordinatesRotateZoom() {
+
+        //spiral are impacted a lot by initialR.
+        //circles locations remain whether landscape or portrait
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+
+            //initialRForLocation is 0 when app launches, causing spiral becomes a dot.
+            //when first launch, I treat windowHeight as initial R, which is just screen width later
+            //(有差距，因为有状态栏，so window height is slightly smaller than screen width)
+
+            if (coordinatesAndSizesUpdated == FALSE) {
+                initialR = windowHeight / 10;
+            } else {
+                initialR = initialRForLocation;
+            }
+
+            //initialR = initialRForLocation;
+
+            //Log.d("initialR", " " + initialR);
+
+        } else if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+            initialR = screenWidth / 10;
+
+        }
+
+        //for (float t = -30; t < 30; t += 0.02f) {
+        for (float t = -18; t < 17.5; t += 0.02f) {
+            //Equiangular spiral function：
+            //x = p * cosA, y = p * sinA, where p = N * e^(B * cotC)
+            //When C = PI/2, graph is a circle, when C = 0, graph is a straight line
+            float x = centerX + initialR * (float) (Math.exp(t * 1 / (Math.tan(47 * Math.PI / 100)))) * (float) (Math.cos(t));
+            float y = centerY + initialR * (float) (Math.exp(t * 1 / (Math.tan(47 * Math.PI / 100)))) * (float) (Math.sin(t));
+
+            //intendSize is the new size compare to original (original has width of 0.1 * screenWidth)
+
+
+            float angle = theta / 50;
+            float xNew = (x - centerX) * (float) (Math.cos(angle)) - (y - centerY) * (float) (Math.sin(angle)) + centerX;
+            float yNew = (y - centerY) * (float) (Math.cos(angle)) + (x - centerX) * (float) (Math.sin(angle)) + centerY;
+
+
+            ArrayList<Float> oneSpiralCoordinate = new ArrayList<>();
+            oneSpiralCoordinate.add(xNew);
+            oneSpiralCoordinate.add(yNew);
+
+            ArrayList<Float> oneSpiralCoordinateCopy = new ArrayList<>();
+            oneSpiralCoordinateCopy.addAll(oneSpiralCoordinate);
+            //Log.d("x y coordinate", oneSpiralCoordinate.get(0) + "<- x, y -> " + oneSpiralCoordinate.get(1));
+            spiralCoordinates.add(oneSpiralCoordinateCopy);
+            //Log.d("x y coordinate", "right after adding, spiralCoordinates are " + spiralCoordinates);
+            oneSpiralCoordinate.clear();
+        }
+
+
+        topCoordinateInSpiralX = spiralCoordinates.get(spiralCoordinates.size()-1).get(0);
+        topCoordinateInSpiralY = spiralCoordinates.get(spiralCoordinates.size()-1).get(1);
+
+        //when q += 12f, top lines circles next to each other the whole time\
+        //must change the same time as getCoordinates()
+        for (float q = 0; q < 20; q += 1) {
+
+            ArrayList<Float> oneSpiralCoordinateTop = new ArrayList<>();
+
+            float xDirection = topCoordinateInSpiralX - centerX;
+            float yDirection = topCoordinateInSpiralY - centerY;
+
+            float step = q * 10;
+            oneSpiralCoordinateTop.add((xDirection) / Math.abs(xDirection) * step + topCoordinateInSpiralX);
+            oneSpiralCoordinateTop.add((yDirection) / Math.abs(yDirection) * step + topCoordinateInSpiralY);
+
+            ArrayList<Float> oneSpiralCoordinateTopCopy = new ArrayList<>();
+            oneSpiralCoordinateTopCopy.addAll(oneSpiralCoordinateTop);
+            spiralCoordinates.add(oneSpiralCoordinateTopCopy);
+            oneSpiralCoordinateTop.clear();
+        }
+
+        //Toast.makeText(getContext(), spiralCoordinates.size() + " ", Toast.LENGTH_SHORT).show();
+
+
+
+        Collections.reverse(spiralCoordinates);
+
+    }
+
+    public void getCoordinatesThreeD() {
+
+        //spiral are impacted a lot by initialR.
+        //circles locations remain whether landscape or portrait
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+
+            //initialRForLocation is 0 when app launches, causing spiral becomes a dot.
+            //when first launch, I treat windowHeight as initial R, which is just screen width later
+            //(有差距，因为有状态栏，so window height is slightly smaller than screen width)
+
+            if (coordinatesAndSizesUpdated == FALSE) {
+                initialR = windowHeight / 10;
+            } else {
+                initialR = initialRForLocation;
+            }
+
+            //initialR = initialRForLocation;
+
+            //Log.d("initialR", " " + initialR);
+
+        } else if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+            initialR = screenWidth / 10;
+
+        }
+
+        //for (float t = -30; t < 30; t += 0.02f) {
+        for (float t = -18; t < 17.5; t += 0.02f) {
+            //Equiangular spiral function：
+            //x = p * cosA, y = p * sinA, where p = N * e^(B * cotC)
+            //When C = PI/2, graph is a circle, when C = 0, graph is a straight line
+            float x = centerX + initialR * (float) (Math.exp(t * 1 / (Math.tan(47 * Math.PI / 100)))) * (float) (Math.cos(t));
+            float y = centerY + initialR * (float) (Math.exp(t * 1 / (Math.tan(47 * Math.PI / 100)))) * (float) (Math.sin(t));
+
+            //intendSize is the new size compare to original (original has width of 0.1 * screenWidth)
+
+            float angle = theta / 500;
+            x = (x - centerX) * (float) (Math.cos(angle)) - (y - centerY) * (float) (Math.sin(angle)) + centerX;
+            y = (y - centerY) * (float) (Math.cos(angle)) + (x - centerX) * (float) (Math.sin(angle)) + centerY;
+
+            ArrayList<Float> oneSpiralCoordinate = new ArrayList<>();
+            oneSpiralCoordinate.add(x);
+            oneSpiralCoordinate.add(y);
+
+            ArrayList<Float> oneSpiralCoordinateCopy = new ArrayList<>();
+            oneSpiralCoordinateCopy.addAll(oneSpiralCoordinate);
+            //Log.d("x y coordinate", oneSpiralCoordinate.get(0) + "<- x, y -> " + oneSpiralCoordinate.get(1));
+            spiralCoordinates.add(oneSpiralCoordinateCopy);
+            //Log.d("x y coordinate", "right after adding, spiralCoordinates are " + spiralCoordinates);
+            oneSpiralCoordinate.clear();
+        }
+
+        topCoordinateInSpiralX = spiralCoordinates.get(spiralCoordinates.size()-1).get(0);
+        topCoordinateInSpiralY = spiralCoordinates.get(spiralCoordinates.size()-1).get(1);
+
+        //when q += 12f, top lines circles next to each other the whole time\
+        //must change the same time as getCoordinates()
+        for (float q = topCoordinateInSpiralX; q < screenWidth*1.25; q += 48f) {
+
+            ArrayList<Float> oneSpiralCoordinateTop = new ArrayList<>();
+            oneSpiralCoordinateTop.add(q);
+            oneSpiralCoordinateTop.add(topCoordinateInSpiralY);
+
+            ArrayList<Float> oneSpiralCoordinateTopCopy = new ArrayList<>();
+            oneSpiralCoordinateTopCopy.addAll(oneSpiralCoordinateTop);
+            spiralCoordinates.add(oneSpiralCoordinateTopCopy);
+            oneSpiralCoordinateTop.clear();
+        }
+
+        //Toast.makeText(getContext(), spiralCoordinates.size() + " ", Toast.LENGTH_SHORT).show();
+
+        Collections.reverse(spiralCoordinates);
+
+    }
+
+
+/*
     public void getCoordinatesRotate() {
 
-        Log.d("spiralCoordinates size", "r " + spiralCoordinates.size());
+        //Log.d("spiralCoordinates size", "r " + spiralCoordinates.size());
         //if you want to move the images and spin the spiral, you want this
         //meaning if use justDraw(), no need this line, if use getCoordinatesRotate(), need this line, and add getCoordinatesRotate() in getCoordinatesAndSizes method below.
         spiralCoordinates.clear();
@@ -2008,7 +2292,7 @@ public class TempleView extends View {
 
 
     }
-
+*/
 
     public void getSizes() {
         float pi = (float) Math.PI;
@@ -2106,9 +2390,9 @@ public class TempleView extends View {
 
         }
 
-        Log.d("sizes 1400 are ", " " + sizes.get(1400));
-        Log.d("sizes size is ", " " + sizes.size());
-        Log.d("initialR is ", " " + initialR);
+        //Log.d("sizes 1400 are ", " " + sizes.get(1400));
+        //Log.d("sizes size is ", " " + sizes.size());
+        //Log.d("initialR is ", " " + initialR);
 
         float t = 17.5f;
         int sizesSizeInSpiralPart = sizes.size();
