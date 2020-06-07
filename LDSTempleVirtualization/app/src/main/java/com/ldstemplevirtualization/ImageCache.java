@@ -1418,7 +1418,8 @@ public class ImageCache {
         templesList.add(syracuse_utah_temple);
         templesList.add(dubai_united_arab_emirates_temple);
 
-        templesList.add(shanghai_china_temple);
+        //not include shanghai temple, according to list of temples page on official church website
+        //templesList.add(shanghai_china_temple);
 
         /*
         //temples under construction
