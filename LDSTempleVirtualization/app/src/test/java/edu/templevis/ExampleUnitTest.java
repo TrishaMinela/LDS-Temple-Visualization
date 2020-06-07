@@ -1,4 +1,4 @@
-package com.ldstemplevirtualization;
+package edu.templevis;
 
 import org.junit.Test;
 

@@ -1,27 +1,21 @@
-package com.ldstemplevirtualization;
+package edu.byuh.cis.templevis;
 
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Path;
-import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.SeekBar;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.loader.content.Loader;
+import com.ldstemplevirtualization.R;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -29,7 +23,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Date;
 
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;

@@ -13,7 +13,7 @@
             android:name="com.google.android.actions"
             android:resource="@xml/actions" />
 
-        <activity android:name=".MainActivity"
+        <activity android:name="edu.byuh.cis.templevis.MainActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             >
             <intent-filter>
@@ -24,7 +24,7 @@
         </activity>
 
 
-        <activity android:name=".ImageActivity">
+        <activity android:name="edu.byuh.cis.templevis.ImageActivity">
         </activity>
 
 

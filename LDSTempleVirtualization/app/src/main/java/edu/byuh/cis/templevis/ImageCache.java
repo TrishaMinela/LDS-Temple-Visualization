@@ -1,10 +1,12 @@
-package com.ldstemplevirtualization;
+package edu.byuh.cis.templevis;
 
 
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
+
+import com.ldstemplevirtualization.R;
 
 import java.util.ArrayList;
 

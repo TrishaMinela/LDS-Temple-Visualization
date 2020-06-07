@@ -7,7 +7,7 @@
     android:layout_height="200dp"
     android:orientation="horizontal"
     android:visibility="visible"
-    tools:context=".MainActivity">
+    tools:context="edu.byuh.cis.templevis.MainActivity">
 
     <LinearLayout
         android:id="@+id/sliderLabel"

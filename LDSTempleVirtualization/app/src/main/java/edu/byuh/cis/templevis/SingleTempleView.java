@@ -1,4 +1,4 @@
-package com.ldstemplevirtualization;
+package edu.byuh.cis.templevis;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -13,7 +13,8 @@ import android.graphics.Paint;
 import android.net.Uri;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Toast;
+
+import com.ldstemplevirtualization.R;
 
 public class SingleTempleView extends View {
 
