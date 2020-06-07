@@ -640,8 +640,8 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this, "Setting", Toast.LENGTH_SHORT).show();
 
 
-                
 
+                
 
                 break;
             case GREEN:
