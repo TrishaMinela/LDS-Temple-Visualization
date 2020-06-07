@@ -613,7 +613,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        menu.add(1,RED,1,"Setting");
+        menu.add(1,RED,1,"Settings");
         menu.add(1,GREEN,2,"About");
         return true;
     }
@@ -626,7 +626,7 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
         switch (id){
             case RED:
-                Toast.makeText(this, "Setting", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "Setting", Toast.LENGTH_SHORT).show();
 
 
 
