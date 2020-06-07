@@ -28,7 +28,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.ldstemplevirtualization.R;
+import edu.byuh.cis.templevis.R;
 
 import static android.graphics.Color.GREEN;
 import static android.graphics.Color.RED;

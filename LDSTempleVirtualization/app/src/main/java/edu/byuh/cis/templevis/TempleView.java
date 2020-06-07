@@ -15,7 +15,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.SeekBar;
 
-import com.ldstemplevirtualization.R;
+import edu.byuh.cis.templevis.R;
 
 import java.io.BufferedReader;
 import java.io.IOException;

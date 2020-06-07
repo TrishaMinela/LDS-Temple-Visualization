@@ -6,7 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
 
-import com.ldstemplevirtualization.R;
+import edu.byuh.cis.templevis.R;
 
 import java.util.ArrayList;
 

@@ -14,7 +14,7 @@ import android.net.Uri;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.ldstemplevirtualization.R;
+
 
 public class SingleTempleView extends View {
 

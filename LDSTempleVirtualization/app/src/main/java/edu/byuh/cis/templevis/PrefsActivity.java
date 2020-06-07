@@ -10,7 +10,7 @@ import android.preference.PreferenceScreen;
 import android.util.Log;
 import android.widget.TextView;
 
-import com.ldstemplevirtualization.R;
+import edu.byuh.cis.templevis.R;
 
 public class PrefsActivity extends PreferenceActivity {
 

@@ -20,7 +20,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.ldstemplevirtualization.R;
+
 
 import java.io.BufferedReader;
 import java.io.IOException;
