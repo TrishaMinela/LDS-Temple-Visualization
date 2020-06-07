@@ -1,5 +1,21 @@
 <resources>
     <string name="app_name">Latter-day Temples</string>
-    <string name="textview">TextViewmmmmmmmmm</string>
     <string name="app_website"><a href="https://litianzhang.com/latter-day-temples-virtualization-android-app">Visit app website</a></string>
+
+
+    <string-array name="SpiralEffect">
+        <item>Static</item>
+        <item>Spin</item>
+        <item>Zoom</item>
+        <item>3D</item>
+    </string-array>
+    <string-array name="SpiralEffect_value">
+        <item>static</item>
+        <item>spin</item>
+        <item>zoom</item>
+        <item>threeD</item>
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

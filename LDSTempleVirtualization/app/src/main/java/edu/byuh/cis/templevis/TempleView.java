@@ -104,6 +104,8 @@ public class TempleView extends View {
 
     private static ArrayList<Integer> allSpiralImageIds;
 
+    private String lastSpiralEffectHolder;
+
     public TempleView(Context context) {
         super(context);
 
@@ -860,10 +862,20 @@ public class TempleView extends View {
 
 
 
+/*
+    public void getNewSpiralCoordinatesStatic() {
+        spiralCoordinates.clear();
+        getCoordinates();
+
+    }
+
+
+ */
     @Override
     public void onDraw(Canvas c) {
         thetaSmall = theta / 4;
         //spiralCoordinates.clear();
+
 
 
 
@@ -995,6 +1007,56 @@ public class TempleView extends View {
         //getCoordinatesAndSizes();
 
 
+        String spiral_effect = PrefsActivity.getSpiralEffectPref(getContext());
+
+        Log.d("spiral effect ", spiral_effect + " ");
+
+     /*
+        boolean justTurnToStaticEffect;
+
+        if (spiral_effect.equalsIgnoreCase("static")) {
+            justTurnToStaticEffect = TRUE;
+        } else {
+            justTurnToStaticEffect= FALSE;
+        }
+
+      */
+
+        // we need to update the coordinates when switching to static mode from other effect. other wise coordinates for other effect will be kept.
+        if (spiral_effect.equalsIgnoreCase("static")) {
+            //just turn to static or it was static before?
+            if (lastSpiralEffectHolder == null) {
+                //first time run, do noting
+            } else {
+                if (lastSpiralEffectHolder.equalsIgnoreCase(spiral_effect)) {
+                    //do nothing, it have been static last time
+                } else {
+                    //just turn to static, get a new coordinates
+                    spiralCoordinates.clear();
+                    getCoordinates();
+                }
+            }
+        } else {
+            //not static, do nothing
+        }
+
+        lastSpiralEffectHolder = spiral_effect;
+
+
+
+
+        if (spiral_effect.equalsIgnoreCase("spin")) {
+            spiralCoordinates.clear();
+            getCoordinatesRotateRegular();
+        } else if (spiral_effect.equalsIgnoreCase("zoom")) {
+            spiralCoordinates.clear();
+            getCoordinatesRotateZoom();
+        } else if (spiral_effect.equalsIgnoreCase("threeD")) {
+            spiralCoordinates.clear();
+            getCoordinatesThreeD();
+        }
+
+
         //three different effects here
         //spiralCoordinates.clear();
 
@@ -1072,6 +1134,11 @@ public class TempleView extends View {
 
 
             //getCoordinatesAndSizes();
+
+
+
+
+
 
         }
 
