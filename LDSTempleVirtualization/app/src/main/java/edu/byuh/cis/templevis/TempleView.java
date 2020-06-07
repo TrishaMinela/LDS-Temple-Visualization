@@ -996,11 +996,11 @@ public class TempleView extends View {
 
 
         //three different effects here
-        spiralCoordinates.clear();
+        //spiralCoordinates.clear();
 
         //getCoordinatesRotateRegular();
         //getCoordinatesRotateZoom();
-        getCoordinatesThreeD();
+        //getCoordinatesThreeD();
 
 
 

@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
+import android.database.DataSetObserver;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -20,15 +21,28 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.PopupMenu;
 import android.widget.SeekBar;
+import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ldstemplevirtualization.R;
 
+import static android.graphics.Color.BLACK;
+import static android.graphics.Color.BLUE;
+import static android.graphics.Color.CYAN;
+import static android.graphics.Color.GRAY;
+import static android.graphics.Color.GREEN;
+import static android.graphics.Color.RED;
+import static android.graphics.Color.YELLOW;
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
 
@@ -607,7 +621,113 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        menu.add(1,RED,1,"Setting");
+        menu.add(1,GREEN,2,"About");
+        return true;
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+        switch (id){
+            case RED:
+                Toast.makeText(this, "Setting", Toast.LENGTH_SHORT).show();
+
+
+                
+
+
+                break;
+            case GREEN:
+                //Toast.makeText(this, "About", Toast.LENGTH_SHORT).show();
+                showAboutDialog();
+
+                break;
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
+    public void showAboutDialog() {
+
+        String about = "Programming by Litian Zhang under the supervision of Dr. Geoffrey Draper at Brigham Young University--Hawaii.\n" +
+                "Visit the app's website: " + R.string.app_website + "\n" +
+                "\n" +
+                "Temple photos are copyrighted by Intellectual Reserve, Inc. Used by permission.\n" +
+                "\n" +
+                "This app is a research project funded by Brigham Young University--Hawaii, however the contents are the responsibility of its developers. This app is not an \"official\" publication of the Church of Jesus Christ of Latter-day Saints.\n";
+
+        String html = "Programming by Litian Zhang under the supervision of Dr. Geoffrey Draper at Brigham Young University--Hawaii.<br><br>";
+        html += "<a href='https://litianzhang.com/latter-day-temples-visualization-android-app/'>Visit the app's website</a> <br>";
+        html += "<br>" +
+                "Temple photos are copyrighted by Intellectual Reserve, Inc. Used by permission.<br>" +
+                "<br>" +
+                "This app is a research project funded by Brigham Young University--Hawaii, however the contents are the responsibility of its developers. This app is not an \"official\" publication of the Church of Jesus Christ of Latter-day Saints.<br>";
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Latter-day Temples");
+
+        TextView aboutTv = new TextView(this);
+
+        //aboutTv.setText(about + R.string.app_website);
+
+        aboutTv.setText(Html.fromHtml(html));
+
+        //aboutTv.setText(Html.fromHtml(about));
+
+        aboutTv.setMovementMethod(LinkMovementMethod.getInstance());
+        aboutTv.setGravity(Gravity.LEFT);
+        aboutTv.setTextSize(20);
+        aboutTv.setPadding(50,50,50,50);
+
+        aboutTv.setBackgroundColor(Color.parseColor("#ffffee"));
+
+        //builder.setMessage(about);
+
+        builder.setView(aboutTv);
+
+        builder.setIcon(R.mipmap.ic_launcher_round);
+
+        //ImageView im = new ImageView(this);
+        //im.setImageResource(R.drawable.aa_imnothing);
+        //builder.setView(im);
+
+        //点击对话框以外的区域是否让对话框消失
+        builder.setCancelable(true);
+
+        builder.setNeutralButton("OK", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                //finish();
+
+                //do nothing
+
+            }
+        });
+
+        final AlertDialog dialog = builder.create();
+
+        dialog.show();
+
+        final Button positiveButton=dialog.getButton(AlertDialog.BUTTON_NEUTRAL);
+        LinearLayout.LayoutParams positiveButtonLL =(LinearLayout.LayoutParams)positiveButton.getLayoutParams();
+        positiveButtonLL.gravity=Gravity.CENTER;
+        positiveButtonLL.width=ViewGroup.LayoutParams.MATCH_PARENT;
+        positiveButton.setLayoutParams(positiveButtonLL);
+
+
+    }
+
+
+/*
+
+//THIS IS THE OLD ABOUT BUTTON
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
@@ -615,6 +735,7 @@ public class MainActivity extends AppCompatActivity {
         inflater.inflate(R.menu.main, menu);
         return true;
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
@@ -653,9 +774,6 @@ public class MainActivity extends AppCompatActivity {
 
                 aboutTv.setBackgroundColor(Color.parseColor("#ffffee"));
 
-
-
-
                 //builder.setMessage(about);
 
                 builder.setView(aboutTv);
@@ -675,29 +793,8 @@ public class MainActivity extends AppCompatActivity {
 
                         //do nothing
 
-
-
                     }
                 });
-
-
-                /*
-
-                builder.setNeutralButton("Visit App's Website", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        //finish();
-
-                        Uri uri = Uri.parse("https://litianzhang.com/latter-day-temples-virtualization-android-app/");
-                        Intent intent = new Intent(Intent.ACTION_VIEW);
-                        intent.setData(uri);
-                        startActivity(intent);
-
-                    }
-                });
-
-                 */
-
-
 
                 final AlertDialog dialog = builder.create();
 
@@ -708,10 +805,64 @@ public class MainActivity extends AppCompatActivity {
                 positiveButtonLL.gravity=Gravity.CENTER;
                 positiveButtonLL.width=ViewGroup.LayoutParams.MATCH_PARENT;
                 positiveButton.setLayoutParams(positiveButtonLL);
+
                 break;
         }
         return super.onOptionsItemSelected(item);
     }
+
+    */
+
+
+    /*
+    //FAILED DOING POPUP MENU!!!
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch (item.getItemId()) {
+            case R.id.action_cart://监听菜单按钮
+
+                Toast.makeText(this, "Hello", Toast.LENGTH_SHORT).show();
+
+                PopupMenu menu = new PopupMenu(this,);
+
+                showPopMenu();
+
+
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
+    public void showPopMenu(View view){
+        PopupMenu menu = new PopupMenu(this,view);
+        menu.getMenuInflater().inflate(R.menu.main_for_popupmenu,menu.getMenu());
+        menu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.add_item:
+                        Toast.makeText(MainActivity.this, "Add selected", Toast.LENGTH_SHORT).show();
+                        break;
+
+                    case R.id.delete_item:
+                        Toast.makeText(MainActivity.this, "Delete Selected", Toast.LENGTH_SHORT).show();
+                        break;
+
+                }
+                return true;
+            }
+        });
+        menu.setOnDismissListener(new PopupMenu.OnDismissListener() {
+            @Override
+            public void onDismiss(PopupMenu menu) {
+                Toast.makeText(MainActivity.this, "关闭了", Toast.LENGTH_SHORT).show();
+            }
+        });
+        menu.show();
+    }
+
+     */
 
 
 
