@@ -24,7 +24,7 @@
             android:layout_weight="1"
             android:gravity="start"
             android:textSize="20sp"
-            android:text="1884"
+            android:text="1836"
             android:textColor="#3d4245"/>
 
         <TextView
