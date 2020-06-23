@@ -2,6 +2,7 @@ package edu.byuh.cis.templevis;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
@@ -10,10 +11,19 @@ import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.SeekBar;
+import android.widget.TextClock;
+import android.widget.TextView;
 
 import edu.byuh.cis.templevis.R;
 
@@ -105,6 +115,12 @@ public class TempleView extends View {
     private static ArrayList<Integer> allSpiralImageIds;
 
     private String lastSpiralEffectHolder;
+
+    private static ArrayList<Integer> allLargeImageIds;
+
+    private String oneTempleInfo;
+
+    private static ArrayList<Integer> allTempleInfoFileIds;
 
     public TempleView(Context context) {
         super(context);
@@ -354,6 +370,39 @@ public class TempleView extends View {
         }
 
     }
+
+
+    public void readOneInfoFile(int id) {
+
+
+        //String s = "temple_info";
+
+        try {
+            InputStream allTempleInfoFile =  this.getResources().openRawResource(id);
+            if (allTempleInfoFile != null)
+            {
+                InputStreamReader ir = new InputStreamReader(allTempleInfoFile);
+                BufferedReader br = new BufferedReader(ir);
+                String line;
+                //read each line
+                while (( line = br.readLine()) != null) {
+                    oneTempleInfo = oneTempleInfo + line+"\n";
+
+                }
+                allTempleInfoFile.close();
+            }
+        }
+        catch (java.io.FileNotFoundException e)
+        {
+            Log.d("TestFile", "The File doesn't not exist.");
+        }
+        catch (IOException e)
+        {
+            Log.d("TestFile", e.getMessage());
+        }
+
+    }
+
 
     public void readInfoFile() {
 
@@ -747,7 +796,67 @@ public class TempleView extends View {
 
                         if (eachIndex <= 226) {
 
+                            LinearLayout.LayoutParams nice = new LinearLayout.LayoutParams
+                                    (LinearLayout.LayoutParams.WRAP_CONTENT,
+                                            LinearLayout.LayoutParams.WRAP_CONTENT, 1);
 
+                            LinearLayout lnl = new LinearLayout(getContext());
+
+                            lnl.setOrientation(LinearLayout.VERTICAL);
+
+                            ImageView singleTempleImageView = new ImageView(getContext());
+                            singleTempleImageView.setImageResource(allLargeImageIds.get(eachIndex));
+                            //singleTempleImageView.setBackgroundColor(Color.RED);
+
+
+                            oneTempleInfo = "";
+                            readOneInfoFile(allTempleInfoFileIds.get(eachIndex));
+
+                            TextView singleTempleTextView = new TextView(getContext());
+                            singleTempleTextView.setText(oneTempleInfo);
+                            //singleTempleTextView.setBackgroundColor(Color.BLUE);
+                            singleTempleTextView.setGravity(Gravity.CENTER);
+
+                            ScrollView sv = new ScrollView(getContext());
+                            sv.addView(singleTempleTextView);
+
+
+                            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                            builder.setTitle(allTempleInfo.get(eachIndex*3));
+                            //builder.setMessage(allLargeImageIds.get(eachIndex) + " Content is here here here");
+                            //builder.setIcon(R.mipmap.ic_launcher_round);
+
+                            lnl.addView(singleTempleImageView);
+                            lnl.addView(sv);
+
+                            singleTempleImageView.setLayoutParams(nice);
+                            //sv.setLayoutParams(nice);
+
+                            builder.setView(lnl);
+
+                            //点击对话框以外的区域是否让对话框消失
+                            builder.setCancelable(true);
+
+                            builder.setNeutralButton("OK", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    //finish();
+
+                                    //do nothing
+
+                                }
+                            });
+
+                            final AlertDialog dialog = builder.create();
+
+                            dialog.show();
+
+                            final Button positiveButton=dialog.getButton(AlertDialog.BUTTON_NEUTRAL);
+                            LinearLayout.LayoutParams positiveButtonLL =(LinearLayout.LayoutParams)positiveButton.getLayoutParams();
+                            positiveButtonLL.gravity=Gravity.CENTER;
+                            positiveButtonLL.width=ViewGroup.LayoutParams.MATCH_PARENT;
+                            positiveButton.setLayoutParams(positiveButtonLL);
+
+                            /*
                             Intent thisTemple = new Intent(getContext(), ImageActivity.class);
 
                             //传值给下一个Activity
@@ -758,6 +867,8 @@ public class TempleView extends View {
                             thisTemple.putExtra("templeUrl", templeUrl);
 
                             getContext().startActivity(thisTemple);
+
+                             */
 
 /*
                             Intent eachTemplePage= new Intent();
@@ -1100,6 +1211,8 @@ public class TempleView extends View {
 
             ImageCache.init(getResources(), temp, screenHeight);
 
+            allLargeImageIds = ImageCache.getAllImageIds();
+            allTempleInfoFileIds = ImageCache.getAllTempleInfoFileIds();
 
             temples = ImageCache.getTemplesList();
             //Collections.reverse(temples);
@@ -2509,5 +2622,13 @@ public class TempleView extends View {
 
 
     }
+
+
+
+
+
+
+
+
 
 }
