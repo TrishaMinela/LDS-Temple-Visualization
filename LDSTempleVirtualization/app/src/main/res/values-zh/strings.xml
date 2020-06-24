@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">后期圣殿</string>
+
+    <string-array name="SpiralEffect">
+        <item>静态</item>
+        <item>旋转</item>
+        <item>变焦</item>
+        <item>3D</item>
+    </string-array>
+    <string-array name="SpiralEffect_value">
+        <item>static</item>
+        <item>spin</item>
+        <item>zoom</item>
+        <item>threeD</item>
+    </string-array>
+
+    <string name="SpiralEffectTitle">螺旋效果</string>
+    <string name="SpiralEffectSummary">选择螺旋旋转时的效果</string>
+
+    <string name="settings">设置</string>
+    <string name="about">关于</string>
+
+    <string name="years_of_temples">圣殿奉献时间:</string>
+    <string name="welcome_to_view">欢迎欣赏</string>
+    <string name="lds_temples">后期圣殿！</string>
+    <string name="future_temples">即将奉献的圣殿</string>
+
+    <string name="about_content_one">此应用由杨百翰大学夏威夷分校学生张力天在杰弗里·德拉普尔教授指导下编写。</string>
+    <string name="about_content_two">访问应用网站</string>
+    <string name="about_content_three">圣殿图片知识版权由耶稣基督后期圣徒教会所有，此应用在经其许可的条件下使用。</string>
+    <string name="about_content_four">此应用是由杨百翰大学夏威夷分校资助的研究项目，但其内容由其开发人员负责。此应用不是耶稣基督后期圣徒教会的\"官方\"出版物</string>
+
+    <string name="ok_capital">OK</string>
+
+
+
+</resources>
