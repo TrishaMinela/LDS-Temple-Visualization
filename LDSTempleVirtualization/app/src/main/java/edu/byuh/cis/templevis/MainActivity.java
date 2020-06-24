@@ -613,8 +613,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        menu.add(1,RED,1,"Settings");
-        menu.add(1,GREEN,2,"About");
+        menu.add(1,RED,1,R.string.settings);
+        menu.add(1,GREEN,2,R.string.about);
         return true;
     }
 
@@ -651,19 +651,12 @@ public class MainActivity extends AppCompatActivity {
 
     public void showAboutDialog() {
 
-        String about = "Programming by Litian Zhang under the supervision of Dr. Geoffrey Draper at Brigham Young University--Hawaii.\n" +
-                "Visit the app's website: " + R.string.app_website + "\n" +
-                "\n" +
-                "Temple photos are copyrighted by Intellectual Reserve, Inc. Used by permission.\n" +
-                "\n" +
-                "This app is a research project funded by Brigham Young University--Hawaii, however the contents are the responsibility of its developers. This app is not an \"official\" publication of the Church of Jesus Christ of Latter-day Saints.\n";
-
-        String html = "Programming by Litian Zhang under the supervision of Dr. Geoffrey Draper at Brigham Young University--Hawaii.<br><br>";
-        html += "<a href='https://litianzhang.com/latter-day-temples-visualization-android-app/'>Visit the app's website</a> <br>";
+        String html = getResources().getString(R.string.about_content_one) + "<br><br>";
+        html += "<a href='https://litianzhang.com/latter-day-temples-visualization-android-app/'>" + getResources().getString(R.string.about_content_two)+ "</a> <br>";
         html += "<br>" +
-                "Temple photos are copyrighted by Intellectual Reserve, Inc. Used by permission.<br>" +
+                 getResources().getString(R.string.about_content_three)+ "<br>" +
                 "<br>" +
-                "This app is a research project funded by Brigham Young University--Hawaii, however the contents are the responsibility of its developers. This app is not an \"official\" publication of the Church of Jesus Christ of Latter-day Saints.<br>";
+                getResources().getString(R.string.about_content_four);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Latter-day Temples");
@@ -696,7 +689,7 @@ public class MainActivity extends AppCompatActivity {
         //点击对话框以外的区域是否让对话框消失
         builder.setCancelable(true);
 
-        builder.setNeutralButton("OK", new DialogInterface.OnClickListener() {
+        builder.setNeutralButton(getResources().getString(R.string.ok_capital), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 //finish();
 

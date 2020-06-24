@@ -837,7 +837,7 @@ public class TempleView extends View {
                             //点击对话框以外的区域是否让对话框消失
                             builder.setCancelable(true);
 
-                            builder.setNeutralButton("OK", new DialogInterface.OnClickListener() {
+                            builder.setNeutralButton(getResources().getString(R.string.ok_capital), new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
                                     //finish();
 
@@ -1959,16 +1959,16 @@ public class TempleView extends View {
             //Log.d("years are ", startYear.substring(startYear.length()-5) + " " + endYear.substring(endYear.length()-5));
             //Log.d("years are ", firstOnScreenTempleIndex+" "+lastOnScreenTempleIndex);
 
-            c.drawText("Years of Temples: " + startYear + "--- " + endYear, screenWidth / 2, 39 * screenHeight / 40, yearDisplayPaint);
+            c.drawText( getResources().getString(R.string.years_of_temples) + " "  + startYear + "--- " + endYear, screenWidth / 2, 39 * screenHeight / 40, yearDisplayPaint);
         } else if (theta >= 4850 && theta <= 5550) {
             firstOnScreenTempleIndex = (onScreenTemples.get(0).get(0));
             String startYear = allTempleInfo.get((int)(firstOnScreenTempleIndex) * 3 + 2);
             startYear = startYear.substring(startYear.length()-5);
-            c.drawText("Years of Temples: " + startYear + " --- " + "2020", screenWidth / 2, 39 * screenHeight / 40, yearDisplayPaint);
+            c.drawText( getResources().getString(R.string.years_of_temples) + " " + startYear + " --- " + "2020", screenWidth / 2, 39 * screenHeight / 40, yearDisplayPaint);
         } else if (theta > 5550 ) {
-            c.drawText("Future Temples", screenWidth / 2, 39 * screenHeight / 40, yearDisplayPaint);
+            c.drawText( getResources().getString(R.string.future_temples), screenWidth / 2, 39 * screenHeight / 40, yearDisplayPaint);
         } else if (theta == 0){
-            c.drawText("Welcome to View LDS Temples!", screenWidth / 2, 39 * screenHeight / 40, yearDisplayPaint);
+            c.drawText( getResources().getString(R.string.welcome_to_view) + " " + getResources().getString(R.string.lds_temples), screenWidth / 2, 39 * screenHeight / 40, yearDisplayPaint);
         } else {
             //c.drawText("Future Temples", screenWidth / 2, 39 * screenHeight / 40, yearDisplayPaint);
         }
@@ -2020,7 +2020,7 @@ public class TempleView extends View {
             //Log.d("years are ", startYear.substring(startYear.length()-5) + " " + endYear.substring(endYear.length()-5));
             //Log.d("years are ", firstOnScreenTempleIndex+" "+lastOnScreenTempleIndex);
 
-            c.drawText("Years of Temples: ", 6.5f * screenWidth / 4, 15 * screenHeight / 40, yearDisplayPaint);
+            c.drawText(getResources().getString(R.string.years_of_temples) + " " , 6.5f * screenWidth / 4, 15 * screenHeight / 40, yearDisplayPaint);
 
             c.drawText(startYear + "--- " + endYear, 6.5f * screenWidth / 4, 25 * screenHeight / 40, yearDisplayPaint);
 
@@ -2029,17 +2029,17 @@ public class TempleView extends View {
             String startYear = allTempleInfo.get((int)(firstOnScreenTempleIndex) * 3 + 2);
             startYear = startYear.substring(startYear.length()-5);
 
-            c.drawText("Years of Temples: ", 6.5f * screenWidth / 4, 15 * screenHeight / 40, yearDisplayPaint);
+            c.drawText(getResources().getString(R.string.years_of_temples) + " " , 6.5f * screenWidth / 4, 15 * screenHeight / 40, yearDisplayPaint);
 
             c.drawText(startYear + " --- " + "2020", 6.5f * screenWidth / 4, 25 * screenHeight / 40, yearDisplayPaint);
 
         } else if (theta >= 5550) {
-            c.drawText("Future Temples", 6.5f * screenWidth / 4, 20 * screenHeight / 40, yearDisplayPaint);
+            c.drawText(getResources().getString(R.string.future_temples), 6.5f * screenWidth / 4, 20 * screenHeight / 40, yearDisplayPaint);
         } else {
 
-            c.drawText("Welcome to", 6.5f * screenWidth / 4, 18 * screenHeight / 40, yearDisplayPaint);
+            c.drawText(getResources().getString(R.string.welcome_to_view), 6.5f * screenWidth / 4, 18 * screenHeight / 40, yearDisplayPaint);
 
-            c.drawText("LDS Temples!", 6.5f * screenWidth / 4, 22 * screenHeight / 40, yearDisplayPaint);
+            c.drawText(getResources().getString(R.string.lds_temples), 6.5f * screenWidth / 4, 22 * screenHeight / 40, yearDisplayPaint);
 
         }
     }

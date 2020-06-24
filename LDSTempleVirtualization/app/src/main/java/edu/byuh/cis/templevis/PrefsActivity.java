@@ -25,11 +25,12 @@ public class PrefsActivity extends PreferenceActivity {
         PreferenceScreen screen = getPreferenceManager().createPreferenceScreen(this);
 
         ListPreference spiral_effect = new ListPreference(this);
-        spiral_effect.setTitle("Spiral Effect");
-        spiral_effect.setSummary("select an effect of how spiral moves");
+        spiral_effect.setTitle(R.string.SpiralEffectTitle);
+        spiral_effect.setSummary(R.string.SpiralEffectSummary);
         spiral_effect.setKey(SPIRAL_EFFECT);
         spiral_effect.setEntries(R.array.SpiralEffect);
         spiral_effect.setEntryValues(R.array.SpiralEffect_value);
+        spiral_effect.setValue("static");
 
         screen.addPreference(spiral_effect);
 
