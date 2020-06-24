@@ -38,12 +38,14 @@ public class PrefsActivity extends PreferenceActivity {
         screen.addPreference(spiral_effect);
 
         ListPreference language_pref = new ListPreference(this);
-        language_pref.setTitle("Language");
-        language_pref.setSummary("set display language");
+        language_pref.setTitle(R.string.language_prefs_title);
+        language_pref.setSummary(R.string.language_prefs_summary);
         language_pref.setKey(LANGUAGE_PREF);
         language_pref.setEntries(R.array.language_prefs);
         language_pref.setEntryValues(R.array.language_prefs_value);
-        screen.addPreference(language_pref);
+
+        //disable users ability to change language in the app, because there is a bug i cant fix
+        //screen.addPreference(language_pref);
 
 
         setPreferenceScreen(screen);

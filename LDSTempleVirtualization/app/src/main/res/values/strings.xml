@@ -33,13 +33,16 @@
     <string name="ok_capital">OK</string>
 
     <string-array name="language_prefs">
-        <item>English</item>
         <item>Chinese</item>
+        <item>English</item>
     </string-array>
     <string-array name="language_prefs_value">
-        <item>english</item>
         <item>chinese</item>
+        <item>english</item>
     </string-array>
+
+    <string name="language_prefs_title">Language</string>
+    <string name="language_prefs_summary">set display language</string>
 
 
 </resources>

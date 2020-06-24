@@ -547,6 +547,14 @@ public class MainActivity extends AppCompatActivity {
     public void onResume() {
         super.onResume();
 
+        //changeLanguage();
+
+
+
+
+    }
+
+    public void changeLanguage() {
         String languagePref = PrefsActivity.getLanguagePref(this);
         //Toast.makeText(mContext, "language pref is " + languagePref, Toast.LENGTH_SHORT).show();
 
@@ -555,11 +563,7 @@ public class MainActivity extends AppCompatActivity {
         } else if (languagePref.equalsIgnoreCase("chinese")) {
             LanguageUtil.changeAppLanguage(this, Locale.SIMPLIFIED_CHINESE, true);
         }
-
-
-
     }
-
 
     private void removeView() {
         //获取linearlayout子view的个数
