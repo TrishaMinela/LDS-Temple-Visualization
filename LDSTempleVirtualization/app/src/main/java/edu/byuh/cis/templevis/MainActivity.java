@@ -28,6 +28,8 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Locale;
+
 import edu.byuh.cis.templevis.R;
 
 import static android.graphics.Color.GREEN;
@@ -165,6 +167,7 @@ public class MainActivity extends AppCompatActivity {
         //tv = new TempleView(this);
         //setContentView(tv);
         mContext = MainActivity.this;
+
 
         //not using Timer to make slider smooth anymore
         //timA = new MyTimer();
@@ -487,11 +490,18 @@ public class MainActivity extends AppCompatActivity {
 
         //tv.firstLaunchCoordinatesAndSizes();
 
+
+
+
+
+
+
         if(getResources().getConfiguration().orientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT){
             setContentView(lnl);
-        } else {
 
+        } else {
             setContentView(lnl);
+            finish();
 
             /*
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -517,26 +527,39 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
         //setContentView(lnl);
 
+    }
 
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        String languagePref = PrefsActivity.getLanguagePref(this);
+        //Toast.makeText(mContext, "language pref is " + languagePref, Toast.LENGTH_SHORT).show();
+
+        if (languagePref.equalsIgnoreCase("english")) {
+            LanguageUtil.changeAppLanguage(this, Locale.ENGLISH, true);
+        } else if (languagePref.equalsIgnoreCase("chinese")) {
+            LanguageUtil.changeAppLanguage(this, Locale.SIMPLIFIED_CHINESE, true);
+        }
 
 
 
     }
+
 
     private void removeView() {
         //获取linearlayout子view的个数

@@ -9,6 +9,9 @@ import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
 import android.util.Log;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.Locale;
 
 import edu.byuh.cis.templevis.R;
 
@@ -16,6 +19,7 @@ public class PrefsActivity extends PreferenceActivity {
 
 
     public static final String SPIRAL_EFFECT= "SPIRAL_EFFECT";
+    public static final String LANGUAGE_PREF= "LANGUAGE_PREF";
 
     @Override
     public void onCreate(Bundle b) {
@@ -31,9 +35,15 @@ public class PrefsActivity extends PreferenceActivity {
         spiral_effect.setEntries(R.array.SpiralEffect);
         spiral_effect.setEntryValues(R.array.SpiralEffect_value);
         spiral_effect.setValue("static");
-
         screen.addPreference(spiral_effect);
 
+        ListPreference language_pref = new ListPreference(this);
+        language_pref.setTitle("Language");
+        language_pref.setSummary("set display language");
+        language_pref.setKey(LANGUAGE_PREF);
+        language_pref.setEntries(R.array.language_prefs);
+        language_pref.setEntryValues(R.array.language_prefs_value);
+        screen.addPreference(language_pref);
 
 
         setPreferenceScreen(screen);
@@ -53,9 +63,25 @@ public class PrefsActivity extends PreferenceActivity {
 
          */
 
-
-
         return effect;
+    }
+
+    public static String getLanguagePref(Context c) {
+
+//        //获取当前语言环境
+//        String currentLanguage = Locale.getDefault().getLanguage();
+//
+//        Log.d("current language is", currentLanguage);
+//
+//        if (currentLanguage.equalsIgnoreCase("en")) {
+//            currentLanguage = "english";
+//        } else if (currentLanguage.equalsIgnoreCase("zh")) {
+//            currentLanguage = "chinese";
+//        }
+
+        String language = PreferenceManager.
+                getDefaultSharedPreferences(c).getString(LANGUAGE_PREF, "currentLanguage");
+        return language;
     }
 
 }

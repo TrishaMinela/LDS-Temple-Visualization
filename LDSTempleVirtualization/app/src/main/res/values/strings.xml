@@ -32,6 +32,14 @@
 
     <string name="ok_capital">OK</string>
 
+    <string-array name="language_prefs">
+        <item>English</item>
+        <item>Chinese</item>
+    </string-array>
+    <string-array name="language_prefs_value">
+        <item>english</item>
+        <item>chinese</item>
+    </string-array>
 
 
 </resources>
