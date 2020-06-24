@@ -659,7 +659,7 @@ public class MainActivity extends AppCompatActivity {
                 getResources().getString(R.string.about_content_four);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Latter-day Temples");
+        builder.setTitle(getResources().getString(R.string.app_name));
 
         TextView aboutTv = new TextView(this);
 
