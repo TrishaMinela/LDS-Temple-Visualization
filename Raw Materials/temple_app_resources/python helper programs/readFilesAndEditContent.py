@@ -10,7 +10,7 @@ def file_names(file_dir):
         
 
 
-files = file_names("D:\\whatsthisD\\LDSTempleVirtualizationApp\\Raw Materials\\temple_app_resources\\new temple images - origina - changes due to permission of use - circles")
+files = file_names("D:\\whatsthisD\\LDSTempleVisualizationApp\\Raw Materials\\temple_app_resources\\temple_info_documents_zh")
 
 
 #print(files)
@@ -18,11 +18,42 @@ files = file_names("D:\\whatsthisD\\LDSTempleVirtualizationApp\\Raw Materials\\t
 names = []
 for i in files:
     #i = i[9:-4]
-    i = i[0:-4]
-    print(i)
+    #i = i[0:-4]
+    #print(i)
     names.append(i)
 
+#print(len(names))
 
+
+def alter(file,old_str,new_str):
+    """
+    替换文件中的字符串
+    :param file:文件名
+    :param old_str:就字符串
+    :param new_str:新字符串
+    :return:
+    
+    """
+    file_data = ""
+    with open(file, "r", encoding="utf-8") as f:
+        for line in f:
+            if old_str in line:
+                line = line.replace(old_str,new_str)
+            file_data += line
+    with open(file,"w",encoding="utf-8") as f:
+        f.write(file_data)
+ 
+x = 0
+for eachfile in names:
+    thisfile = "D:\\whatsthisD\\LDSTempleVisualizationApp\\Raw Materials\\temple_app_resources\\temple_info_documents_zh\\" + eachfile
+    alter(thisfile, "公告", "宣告日")
+    alter(thisfile, "开创性", "动工日")
+    alter(thisfile, "奉献", "奉献日")
+    alter(thisfile, "破土动工", "动工日")
+    alter(thisfile, "重新指定", "再次奉献")
+    print(x)
+    print("edited file: " + eachfile)
+    x = x + 1
 
 
 
