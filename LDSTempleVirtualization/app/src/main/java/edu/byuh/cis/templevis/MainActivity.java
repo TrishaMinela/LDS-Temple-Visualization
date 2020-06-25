@@ -185,6 +185,8 @@ public class MainActivity extends AppCompatActivity {
                 (LinearLayout.LayoutParams.MATCH_PARENT,
                         LinearLayout.LayoutParams.MATCH_PARENT, 1);
 
+
+
         tv = new TempleView(this);
 
         tv.getWindowSize(width, height);
@@ -205,6 +207,8 @@ public class MainActivity extends AppCompatActivity {
         timA = new MyTimer();
 
         progress = 5550;
+
+
 
 
         slider.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -501,7 +505,7 @@ public class MainActivity extends AppCompatActivity {
 
         } else {
             setContentView(lnl);
-            finish();
+            //finish();
 
             /*
             AlertDialog.Builder builder = new AlertDialog.Builder(this);

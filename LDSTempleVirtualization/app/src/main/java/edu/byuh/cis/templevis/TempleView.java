@@ -5,7 +5,9 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Matrix;
@@ -431,6 +433,12 @@ public class TempleView extends View {
 
     }
 
+    private Bitmap loadAndScale(Resources res, int id, float newWidth) {
+        Bitmap original = BitmapFactory.decodeResource(res, id);
+        float aspectRatio = (float)original.getHeight()/(float)original.getWidth();
+        float newHeight = newWidth * aspectRatio;
+        return Bitmap.createScaledBitmap(original, (int)newWidth, (int)newHeight, true);
+    }
 
 
     @Override
@@ -797,15 +805,34 @@ public class TempleView extends View {
                         if (eachIndex <= 226) {
 
                             LinearLayout.LayoutParams nice = new LinearLayout.LayoutParams
-                                    (LinearLayout.LayoutParams.WRAP_CONTENT,
-                                            LinearLayout.LayoutParams.WRAP_CONTENT, 1);
+                                    (LinearLayout.LayoutParams.MATCH_PARENT,
+                                            LinearLayout.LayoutParams.MATCH_PARENT, 1);
 
                             LinearLayout lnl = new LinearLayout(getContext());
 
                             lnl.setOrientation(LinearLayout.VERTICAL);
 
                             ImageView singleTempleImageView = new ImageView(getContext());
-                            singleTempleImageView.setImageResource(allLargeImageIds.get(eachIndex));
+
+                            Bitmap b;
+
+//                            if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+//                                b = loadAndScale(getResources(), allLargeImageIds.get(eachIndex), 20f*initialR);
+//                                singleTempleImageView.setImageBitmap(b);
+//                            } else if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+//                                b = loadAndScale(getResources(), allLargeImageIds.get(eachIndex), 10f*initialR);
+//                                singleTempleImageView.setImageBitmap(b);
+//
+//                            }
+
+                            b = loadAndScale(getResources(), allLargeImageIds.get(eachIndex), 10f*initialR);
+                            singleTempleImageView.setImageBitmap(b);
+
+
+
+
+
+                            //singleTempleImageView.setImageResource(allLargeImageIds.get(eachIndex));
                             //singleTempleImageView.setBackgroundColor(Color.RED);
 
 
@@ -818,6 +845,7 @@ public class TempleView extends View {
                             singleTempleTextView.setGravity(Gravity.CENTER);
 
                             ScrollView sv = new ScrollView(getContext());
+                            //sv.setPadding(100,100,100,100);
                             sv.addView(singleTempleTextView);
 
 
