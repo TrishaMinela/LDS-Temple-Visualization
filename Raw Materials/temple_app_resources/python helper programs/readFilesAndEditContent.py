@@ -24,6 +24,7 @@ for i in files:
 
 #print(len(names))
 
+x = 0
 
 def alter(file,old_str,new_str):
     """
@@ -38,21 +39,27 @@ def alter(file,old_str,new_str):
     with open(file, "r", encoding="utf-8") as f:
         for line in f:
             if old_str in line:
-                line = line.replace(old_str,new_str)
+                line = line.replace(old_str, new_str)
+                print(x)
+                print("edited file: " + thisfile)
             file_data += line
     with open(file,"w",encoding="utf-8") as f:
         f.write(file_data)
  
-x = 0
+
 for eachfile in names:
     thisfile = "D:\\whatsthisD\\LDSTempleVisualizationApp\\Raw Materials\\temple_app_resources\\temple_info_documents_zh\\" + eachfile
-    alter(thisfile, "公告", "宣告日")
-    alter(thisfile, "开创性", "动工日")
-    alter(thisfile, "奉献", "奉献日")
-    alter(thisfile, "破土动工", "动工日")
-    alter(thisfile, "重新指定", "再次奉献")
-    print(x)
-    print("edited file: " + eachfile)
+
+    # alter(thisfile, "公告", "宣告日")
+    # alter(thisfile, "开创性", "动工日")
+    # alter(thisfile, "奉献", "奉献日")
+    # alter(thisfile, "破土动工", "动工日")
+    # alter(thisfile, "重新指定", "再次奉献")
+    alter(thisfile, "重新兑换", "再次奉献")
+
+    
+    # print(x)
+   
     x = x + 1
 
 
