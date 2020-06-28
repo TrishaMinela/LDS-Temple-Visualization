@@ -30,7 +30,8 @@
     <string name="about_content_three">Temple photos are copyrighted by Intellectual Reserve, Inc. Used by permission.</string>
     <string name="about_content_four">This app is a research project funded by Brigham Young University--Hawaii, however the contents are the responsibility of its developers. This app is not an \"official\" publication of the Church of Jesus Christ of Latter-day Saints.</string>
 
-    <string name="ok_capital">OK</string>
+    <string name="return_button">Return</string>
+    <string name="website_button">Website</string>
 
     <string-array name="language_prefs">
         <item>Chinese</item>

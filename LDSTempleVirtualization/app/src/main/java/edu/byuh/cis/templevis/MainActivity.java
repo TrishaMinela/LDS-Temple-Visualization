@@ -720,7 +720,7 @@ public class MainActivity extends AppCompatActivity {
         //点击对话框以外的区域是否让对话框消失
         builder.setCancelable(true);
 
-        builder.setNeutralButton(getResources().getString(R.string.ok_capital), new DialogInterface.OnClickListener() {
+        builder.setNeutralButton(getResources().getString(R.string.return_button), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 //finish();
 

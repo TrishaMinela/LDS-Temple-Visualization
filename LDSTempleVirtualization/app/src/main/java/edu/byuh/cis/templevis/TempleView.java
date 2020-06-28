@@ -13,6 +13,10 @@ import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
+import android.text.Html;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.Gravity;
@@ -33,6 +37,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.sql.BatchUpdateException;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -827,6 +832,8 @@ public class TempleView extends View {
 
                             b = loadAndScale(getResources(), allLargeImageIds.get(eachIndex), 10f*initialR);
                             singleTempleImageView.setImageBitmap(b);
+                            singleTempleImageView.setPadding(0,0,0,0);
+                            singleTempleImageView.setMaxHeight(singleTempleImageView.getWidth());
 
 
 
@@ -850,10 +857,37 @@ public class TempleView extends View {
 
 
                             AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+
+//                            String link =  "<a href='" + allTempleLinks.get(eachIndex) + "'>" + "visit on website" + "</a> <br>";
+//                            TextView linkTextView = new TextView(getContext());
+//                            linkTextView.setText(Html.fromHtml(link));
+//                            linkTextView.setTextSize(80);
+//                            linkTextView.setPadding(0,0,0,0);
+
+
+                            //builder.setTitle(allTempleInfo.get(eachIndex*3));
+
+                            //builder.setMessage(Html.fromHtml(link));
+
+                            //Drawable thisIcon = new BitmapDrawable(temples.get(eachIndex));
+                            //builder.setIcon(thisIcon);
+
+//                            TextView title =  new TextView(getContext());
+//                            title.setText(allTempleInfo.get(eachIndex*3));
+//                            title.setGravity(Gravity.CENTER);
+//                            title.setTextSize(20);
+//                            title.setPadding(0,0,0,0);
+//                            title.setBackgroundColor(Color.GRAY);
+//                            builder.setCustomTitle(title);
+
                             builder.setTitle(allTempleInfo.get(eachIndex*3));
+
+
+
                             //builder.setMessage(allLargeImageIds.get(eachIndex) + " Content is here here here");
                             //builder.setIcon(R.mipmap.ic_launcher_round);
 
+//                            lnl.addView(linkTextView);
                             lnl.addView(singleTempleImageView);
                             lnl.addView(sv);
 
@@ -865,7 +899,7 @@ public class TempleView extends View {
                             //点击对话框以外的区域是否让对话框消失
                             builder.setCancelable(true);
 
-                            builder.setNeutralButton(getResources().getString(R.string.ok_capital), new DialogInterface.OnClickListener() {
+                            builder.setPositiveButton(getResources().getString(R.string.return_button), new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
                                     //finish();
 
@@ -874,15 +908,69 @@ public class TempleView extends View {
                                 }
                             });
 
+                            builder.setNegativeButton(getResources().getString(R.string.website_button), new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    //set onclick method for this button below
+                                }
+                            });
+
                             final AlertDialog dialog = builder.create();
 
                             dialog.show();
 
-                            final Button positiveButton=dialog.getButton(AlertDialog.BUTTON_NEUTRAL);
+                            Button btnPositive = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
+                            Button btnNegative = dialog.getButton(AlertDialog.BUTTON_NEGATIVE);
+
+                            LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) btnPositive.getLayoutParams();
+                            layoutParams.weight = 10;
+                            btnPositive.setLayoutParams(layoutParams);
+                            btnNegative.setLayoutParams(layoutParams);
+
+                            dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    //dialog.dismiss();
+                                    //dialog stays when click on website button
+
+                                    String templeUrl = allTempleLinks.get(eachIndex);
+
+                                    if (templeUrl.equals("" + "\n")) {
+                                        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                                        builder.setTitle("No Link Available");
+                                        builder.setMessage("Temple does not have a website yet");
+                                        builder.setIcon(R.mipmap.ic_launcher_round);
+                                        //点击对话框以外的区域是否让对话框消失
+                                        builder.setCancelable(true);
+                                        final AlertDialog dialog = builder.create();
+                                        dialog.show();
+
+                                    } else {
+                                        Intent eachTemplePage= new Intent();
+                                        eachTemplePage.setAction("android.intent.action.VIEW");
+                                        Uri eachTemplePage_url = Uri.parse(templeUrl);
+                                        eachTemplePage.setData(eachTemplePage_url);
+                                        getContext().startActivity(eachTemplePage);
+                                    }
+
+                                }
+                            });
+
+/*
+                            final Button positiveButton=dialog.getButton(AlertDialog.BUTTON_POSITIVE);
                             LinearLayout.LayoutParams positiveButtonLL =(LinearLayout.LayoutParams)positiveButton.getLayoutParams();
-                            positiveButtonLL.gravity=Gravity.CENTER;
-                            positiveButtonLL.width=ViewGroup.LayoutParams.MATCH_PARENT;
+                            positiveButtonLL.gravity=Gravity.RIGHT;
+                            positiveButtonLL.width=ViewGroup.LayoutParams.WRAP_CONTENT;
                             positiveButton.setLayoutParams(positiveButtonLL);
+
+                            final Button negativeButton=dialog.getButton(AlertDialog.BUTTON_NEGATIVE);
+                            LinearLayout.LayoutParams negativeButtonLL =(LinearLayout.LayoutParams)negativeButton.getLayoutParams();
+                            negativeButtonLL.gravity=Gravity.LEFT;
+                            negativeButtonLL.width=ViewGroup.LayoutParams.WRAP_CONTENT;
+                            negativeButton.setLayoutParams(negativeButtonLL);
+
+ */
+
+
 
                             /*
                             Intent thisTemple = new Intent(getContext(), ImageActivity.class);

@@ -30,7 +30,8 @@
     <string name="about_content_three">圣殿图片知识版权由耶稣基督后期圣徒教会所有，此应用在经其许可的条件下使用。</string>
     <string name="about_content_four">此应用是由杨百翰大学夏威夷分校资助的研究项目，但其内容由其开发人员负责。此应用不是耶稣基督后期圣徒教会的\"官方\"出版物</string>
 
-    <string name="ok_capital">OK</string>
+    <string name="return_button">返回</string>
+    <string name="website_button">网站</string>
 
 
     <string-array name="language_prefs">
