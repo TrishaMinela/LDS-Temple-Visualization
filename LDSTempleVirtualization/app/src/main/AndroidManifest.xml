@@ -25,10 +25,6 @@
         </activity>
 
 
-        <activity android:name="edu.byuh.cis.templevis.ImageActivity"
-            android:theme="@style/AppTheme">
-        </activity>
-
         <activity android:name="edu.byuh.cis.templevis.PrefsActivity">
         </activity>
 
