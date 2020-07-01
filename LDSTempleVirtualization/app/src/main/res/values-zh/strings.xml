@@ -2,7 +2,7 @@
     <string name="app_name">后期圣殿</string>
 
     <string-array name="SpiralEffect">
-        <item>静态</item>
+        <item>默认</item>
         <item>旋转</item>
         <item>变焦</item>
         <item>3D</item>
@@ -15,7 +15,7 @@
     </string-array>
 
     <string name="SpiralEffectTitle">螺旋效果</string>
-    <string name="SpiralEffectSummary">选择螺旋旋转时的效果</string>
+    <string name="SpiralEffectSummary">为螺旋选择一个动画样式</string>
 
     <string name="settings">设置</string>
     <string name="about">关于</string>

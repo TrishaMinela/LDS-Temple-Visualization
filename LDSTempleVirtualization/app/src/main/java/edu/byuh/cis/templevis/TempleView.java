@@ -1968,7 +1968,7 @@ public class TempleView extends View {
             }
         }
 
-        // we need this line of code, so that in 3 d view, only the front temple opens when user clicks 
+        // we need this line of code, so that in 3 d view, only the front temple opens when user clicks
         Collections.reverse(onScreenTemples);
 
         //i hope this will work but it seems it's not working well.
