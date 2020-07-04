@@ -12,7 +12,7 @@
         <item>spin</item>
         <item>zoom</item>
         <item>threeD</item>
-    </string-array>
+    </string-array>+
 
     <string name="SpiralEffectTitle">螺旋效果</string>
     <string name="SpiralEffectSummary">为螺旋选择一个动画样式</string>

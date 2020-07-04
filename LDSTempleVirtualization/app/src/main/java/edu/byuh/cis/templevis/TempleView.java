@@ -2075,8 +2075,8 @@ public class TempleView extends View {
                 firstOnScreenTempleIndex = (onScreenTemples.get(0).get(0));
             }
 
-            String startYear = allTempleInfo.get((int)(firstOnScreenTempleIndex) * 3 + 2);
-            String endYear = allTempleInfo.get((int)(lastOnScreenTempleIndex) * 3 + 2) ;
+            String endYear = allTempleInfo.get((int)(firstOnScreenTempleIndex) * 3 + 2);
+            String startYear = allTempleInfo.get((int)(lastOnScreenTempleIndex) * 3 + 2) ;
 
             startYear = startYear.substring(startYear.length()-5);
             endYear = endYear.substring(endYear.length()-5);
@@ -2086,7 +2086,7 @@ public class TempleView extends View {
 
             c.drawText( getResources().getString(R.string.years_of_temples) + " "  + startYear + "--- " + endYear, screenWidth / 2, 39 * screenHeight / 40, yearDisplayPaint);
         } else if (theta >= 4850 && theta <= 5550) {
-            firstOnScreenTempleIndex = (onScreenTemples.get(0).get(0));
+            firstOnScreenTempleIndex = (onScreenTemples.get(onScreenTemples.size()-1).get(0));
             String startYear = allTempleInfo.get((int)(firstOnScreenTempleIndex) * 3 + 2);
             startYear = startYear.substring(startYear.length()-5);
             c.drawText( getResources().getString(R.string.years_of_temples) + " " + startYear + "--- " + "2020", screenWidth / 2, 39 * screenHeight / 40, yearDisplayPaint);
@@ -2136,8 +2136,8 @@ public class TempleView extends View {
                 firstOnScreenTempleIndex = (onScreenTemples.get(0).get(0));
             }
 
-            String startYear = allTempleInfo.get((int)(firstOnScreenTempleIndex) * 3 + 2);
-            String endYear = allTempleInfo.get((int)(lastOnScreenTempleIndex) * 3 + 2) ;
+            String endYear = allTempleInfo.get((int)(firstOnScreenTempleIndex) * 3 + 2);
+            String startYear = allTempleInfo.get((int)(lastOnScreenTempleIndex) * 3 + 2) ;
 
             startYear = startYear.substring(startYear.length()-5);
             endYear = endYear.substring(endYear.length()-5);
@@ -2150,7 +2150,7 @@ public class TempleView extends View {
             c.drawText(startYear + " --- " + endYear, 6.5f * screenWidth / 4, 25 * screenHeight / 40, yearDisplayPaint);
 
         } else if (theta >= 4850  && theta <= 5550) {
-            firstOnScreenTempleIndex = (onScreenTemples.get(0).get(0));
+            firstOnScreenTempleIndex = (onScreenTemples.get(onScreenTemples.size()-1).get(0));
             String startYear = allTempleInfo.get((int)(firstOnScreenTempleIndex) * 3 + 2);
             startYear = startYear.substring(startYear.length()-5);
 
