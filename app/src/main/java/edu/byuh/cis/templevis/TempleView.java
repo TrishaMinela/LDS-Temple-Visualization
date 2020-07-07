@@ -376,6 +376,9 @@ public class TempleView extends View {
             Log.d("TestFile", e.getMessage());
         }
 
+        //Log.d("allTempleLinks is ", allTempleLinks.get(1) + "");
+
+
     }
 
 
@@ -795,7 +798,7 @@ public class TempleView extends View {
             if (y < 9 * screenHeight / 10 && period < 100) {
                 boolean singleTempleViewOpened = false;
 
-
+                Collections.reverse(onScreenTemples);
                 for (ArrayList<Float> eachOnScreenTemple : onScreenTemples) {
                     //remember each Float in inner class is a object, when convert it to int you need to use some method.
                     eachIndex = (int)(eachOnScreenTemple.get(0).floatValue());
@@ -815,6 +818,8 @@ public class TempleView extends View {
 
                             if (eachIndex <= 226) {
                                 singleTempleViewOpened = true;
+
+                                Log.d("eachIndex is ", eachIndex + " when click on circle");
 
 
                                 LinearLayout.LayoutParams nice = new LinearLayout.LayoutParams
@@ -884,6 +889,7 @@ public class TempleView extends View {
 
                                 builder.setTitle(allTempleInfo.get(eachIndex*3));
 
+
                                 //builder.setMessage(allLargeImageIds.get(eachIndex) + " Content is here here here");
                                 //builder.setIcon(R.mipmap.ic_launcher_round);
 
@@ -918,6 +924,9 @@ public class TempleView extends View {
 
                                 dialog.show();
 
+                                // here is where we get templeUrl, to avoid the eachIndex change error
+                                final String templeUrl = allTempleLinks.get(eachIndex);
+
                                 Button btnPositive = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
                                 Button btnNegative = dialog.getButton(AlertDialog.BUTTON_NEGATIVE);
 
@@ -932,7 +941,13 @@ public class TempleView extends View {
                                         //dialog.dismiss();
                                         //dialog stays when click on website button
 
-                                        String templeUrl = allTempleLinks.get(eachIndex);
+                                        // for some reason, i don't why, but each index is changed in here,
+                                        // so we get templeUrl before this, according to the correct eachIndex
+                                        //String templeUrl = allTempleLinks.get(eachIndex);
+
+                                        Log.d("eachIndex is ", eachIndex + " when click on website button");
+
+                                        Log.d("templeUrl is ", templeUrl + "");
 
                                         if (templeUrl.equals("" + "\n")) {
                                             AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
@@ -1043,6 +1058,9 @@ public class TempleView extends View {
 
                     }
                 }
+
+                Collections.reverse(onScreenTemples);
+
             }
 
 
