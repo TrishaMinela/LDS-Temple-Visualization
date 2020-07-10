@@ -13,31 +13,22 @@ import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Path;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.text.Html;
-import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.SeekBar;
-import android.widget.TextClock;
 import android.widget.TextView;
-
-import edu.byuh.cis.templevis.R;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.sql.BatchUpdateException;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -128,6 +119,8 @@ public class TempleView extends View {
     private String oneTempleInfo;
 
     private static ArrayList<Integer> allTempleInfoFileIds;
+
+
 
     public TempleView(Context context) {
         super(context);
@@ -1917,6 +1910,7 @@ public class TempleView extends View {
                 //this one works
                 actuallyDrawing(ts, t, c);
 
+
 /*
                 //this one is a testing
                 float temp;
@@ -2003,7 +1997,6 @@ public class TempleView extends View {
 
         //Log.d("onscreen temples ", "" + onScreenTemples.size());
 
-
     }
 
 
@@ -2079,9 +2072,13 @@ public class TempleView extends View {
 
         c.drawRect(0, 9 * screenHeight / 10, screenWidth, screenHeight, bluePaint);
 
-        float firstOnScreenTempleIndex;
-        float lastOnScreenTempleIndex;
+        float firstOnScreenTempleIndex = 0;
+        float lastOnScreenTempleIndex = 0;
 
+
+
+        /*
+        // old year display logic
         if (theta > 0 && theta < 4850) {
 
             //ignore the small temples
@@ -2115,6 +2112,31 @@ public class TempleView extends View {
         } else {
             //c.drawText("Future Temples", screenWidth / 2, 39 * screenHeight / 40, yearDisplayPaint);
         }
+        */
+
+        // new year display logic
+
+        if (onScreenTemples.size() != 0) {
+            lastOnScreenTempleIndex = (onScreenTemples.get(onScreenTemples.size()-1).get(0));
+            firstOnScreenTempleIndex = (onScreenTemples.get(0).get(0));
+        }
+
+        String endYear = allTempleInfo.get((int)(firstOnScreenTempleIndex) * 3 + 2);
+        String startYear = allTempleInfo.get((int)(lastOnScreenTempleIndex) * 3 + 2) ;
+
+        startYear = startYear.substring(startYear.length()-5);
+        endYear = endYear.substring(endYear.length()-5);
+
+        if (theta == 0){
+            c.drawText( getResources().getString(R.string.welcome_to_view) + " " + getResources().getString(R.string.lds_temples), screenWidth / 2, 39 * screenHeight / 40, yearDisplayPaint);
+        } else if (theta > 5550 ) {
+            c.drawText( getResources().getString(R.string.future_temples), screenWidth / 2, 39 * screenHeight / 40, yearDisplayPaint);
+        } else if (endYear.contains("ere") || endYear.contains("这里没有")){
+            c.drawText( getResources().getString(R.string.years_of_temples) + " "  + startYear + "--- " + 2020, screenWidth / 2, 39 * screenHeight / 40, yearDisplayPaint);
+        } else {
+            //Log.d("endYeas is ", endYear);
+            c.drawText( getResources().getString(R.string.years_of_temples) + " "  + startYear + "--- " + endYear, screenWidth / 2, 39 * screenHeight / 40, yearDisplayPaint);
+        }
     }
 
     public void yearDisplayLandscape(Canvas c) {
@@ -2140,9 +2162,11 @@ public class TempleView extends View {
 
         c.drawRect( 5 * screenWidth / 4, 0, 2 * screenWidth, screenHeight, bluePaint);
 
-        float firstOnScreenTempleIndex;
-        float lastOnScreenTempleIndex;
+        float firstOnScreenTempleIndex = 0;
+        float lastOnScreenTempleIndex = 0;
 
+        // old year display logic
+        /*
         if (theta > 0 && theta < 4850) {
 
             //ignore the small temples
@@ -2185,6 +2209,33 @@ public class TempleView extends View {
             c.drawText(getResources().getString(R.string.lds_temples), 6.5f * screenWidth / 4, 22 * screenHeight / 40, yearDisplayPaint);
 
         }
+         */
+
+        // new year display logic
+
+        if (onScreenTemples.size() != 0) {
+            lastOnScreenTempleIndex = (onScreenTemples.get(onScreenTemples.size()-1).get(0));
+            firstOnScreenTempleIndex = (onScreenTemples.get(0).get(0));
+        }
+
+        String endYear = allTempleInfo.get((int)(firstOnScreenTempleIndex) * 3 + 2);
+        String startYear = allTempleInfo.get((int)(lastOnScreenTempleIndex) * 3 + 2) ;
+
+        startYear = startYear.substring(startYear.length()-5);
+        endYear = endYear.substring(endYear.length()-5);
+
+        if (theta == 0){
+            c.drawText(getResources().getString(R.string.welcome_to_view), 6.5f * screenWidth / 4, 18 * screenHeight / 40, yearDisplayPaint);
+            c.drawText(getResources().getString(R.string.lds_temples), 6.5f * screenWidth / 4, 22 * screenHeight / 40, yearDisplayPaint);
+        } else if (theta > 5550 ) {
+            c.drawText(getResources().getString(R.string.future_temples), 6.5f * screenWidth / 4, 20 * screenHeight / 40, yearDisplayPaint);
+        } else if (endYear.contains("ere") || endYear.contains("这里没有")){
+            c.drawText(getResources().getString(R.string.years_of_temples) + " " , 6.5f * screenWidth / 4, 15 * screenHeight / 40, yearDisplayPaint);
+            c.drawText(startYear + " --- " + 2020, 6.5f * screenWidth / 4, 25 * screenHeight / 40, yearDisplayPaint);
+        } else {
+            c.drawText(startYear + " --- " + endYear, 6.5f * screenWidth / 4, 25 * screenHeight / 40, yearDisplayPaint);
+       }
+
     }
 
 
