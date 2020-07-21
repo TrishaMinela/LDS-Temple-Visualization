@@ -2262,6 +2262,7 @@ public class TempleView extends View {
             c.drawText(getResources().getString(R.string.years_of_temples) + " " , 6.5f * screenWidth / 4, 15 * screenHeight / 40, yearDisplayPaint);
             c.drawText(startYear + " --- " + 2020, 6.5f * screenWidth / 4, 25 * screenHeight / 40, yearDisplayPaint);
         } else {
+            c.drawText(getResources().getString(R.string.years_of_temples) + " " , 6.5f * screenWidth / 4, 15 * screenHeight / 40, yearDisplayPaint);
             c.drawText(startYear + " --- " + endYear, 6.5f * screenWidth / 4, 25 * screenHeight / 40, yearDisplayPaint);
        }
 
