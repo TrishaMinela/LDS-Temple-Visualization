@@ -1589,8 +1589,9 @@ public class TempleView extends View {
         String thisTempleName = allTempleInfo.get(thisTempleIndex*3);
 
         if (ts < 200) {
-            c.drawText(thisTempleName, currentTempleX, currentTempleY + newCurrentTempleRadius + thisTempleLabelPaint.getTextSize(), thisTempleLabelPaint);
-            
+            if (thisTempleIndex < 185) {
+                c.drawText(thisTempleName, currentTempleX, currentTempleY + newCurrentTempleRadius + thisTempleLabelPaint.getTextSize(), thisTempleLabelPaint);
+            }
         }
     }
 
