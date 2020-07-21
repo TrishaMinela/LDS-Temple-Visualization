@@ -20,6 +20,7 @@ public class PrefsActivity extends PreferenceActivity {
 
     public static final String SPIRAL_EFFECT= "SPIRAL_EFFECT";
     public static final String LANGUAGE_PREF= "LANGUAGE_PREF";
+    public static final String SHOW_LABEL= "SHOW_LABEL";
 
     @Override
     public void onCreate(Bundle b) {
@@ -46,6 +47,14 @@ public class PrefsActivity extends PreferenceActivity {
 
         //disable users ability to change language in the app, because there is a bug i cant fix
         //screen.addPreference(language_pref);
+
+        CheckBoxPreference show_label = new CheckBoxPreference(this);
+        show_label.setTitle("label");
+        show_label.setSummaryOn("show label");
+        show_label.setSummaryOff("does not show label");
+        show_label.setKey(SHOW_LABEL);
+        show_label.setChecked(true);
+        screen.addPreference(show_label);
 
 
         setPreferenceScreen(screen);
@@ -86,4 +95,7 @@ public class PrefsActivity extends PreferenceActivity {
         return language;
     }
 
+    public static boolean getShowLabelPref(Context c) {
+        return PreferenceManager.getDefaultSharedPreferences(c).getBoolean(SHOW_LABEL, true);
+    }
 }

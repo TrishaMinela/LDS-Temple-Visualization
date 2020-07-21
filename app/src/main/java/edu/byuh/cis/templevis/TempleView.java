@@ -120,6 +120,7 @@ public class TempleView extends View {
 
     private static ArrayList<Integer> allTempleInfoFileIds;
 
+    private Boolean show_label;
 
 
     public TempleView(Context context) {
@@ -1251,6 +1252,7 @@ public class TempleView extends View {
 
 
         String spiral_effect = PrefsActivity.getSpiralEffectPref(getContext());
+        show_label = PrefsActivity.getShowLabelPref(getContext());
 
         Log.d("spiral effect ", spiral_effect + " ");
 
@@ -1588,7 +1590,7 @@ public class TempleView extends View {
 
         String thisTempleName = allTempleInfo.get(thisTempleIndex*3);
 
-        if (sliderMoving == false && ts < 200 && thisTempleIndex < 185) {
+        if (sliderMoving == false && ts < 200 && thisTempleIndex < 185 && show_label) {
             c.drawText(thisTempleName, currentTempleX, currentTempleY + newCurrentTempleRadius + thisTempleLabelPaint.getTextSize(), thisTempleLabelPaint);
         }
 
