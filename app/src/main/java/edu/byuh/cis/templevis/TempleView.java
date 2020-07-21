@@ -1580,9 +1580,9 @@ public class TempleView extends View {
 
         thisTempleLabelPaint.setColor(Color.parseColor("#def2f1"));
         thisTempleLabelPaint.setStyle(Paint.Style.FILL);
-        thisTempleLabelPaint.setTextSize((int)(30));
+        thisTempleLabelPaint.setTextSize((int)(newCurrentTempleRadius / 5));
         thisTempleLabelPaint.setTextAlign(Paint.Align.CENTER);
-        thisTempleLabelPaint.setShadowLayer(10,0,-5,Color.GRAY);
+        //thisTempleLabelPaint.setShadowLayer(10,0,-5,Color.GRAY);
 
         int thisTempleIndex = temples.indexOf(t);
 
@@ -1591,7 +1591,7 @@ public class TempleView extends View {
         if (sliderMoving == false && ts < 200 && thisTempleIndex < 185) {
             c.drawText(thisTempleName, currentTempleX, currentTempleY + newCurrentTempleRadius + thisTempleLabelPaint.getTextSize(), thisTempleLabelPaint);
         }
-     
+
     }
 
     public void actuallyDrawing(float ts, Bitmap t, Canvas c) {
