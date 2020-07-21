@@ -1609,13 +1609,22 @@ public class TempleView extends View {
         c.drawBitmap(t, currentTempleMatrix, null);
 
 
+        Paint thisTempleLabelPaint = new Paint();
+
+        thisTempleLabelPaint.setColor(Color.parseColor("#def2f1"));
+        thisTempleLabelPaint.setStyle(Paint.Style.FILL);
+        thisTempleLabelPaint.setTextSize((int)(screenHeight / 50));
+        thisTempleLabelPaint.setTextAlign(Paint.Align.CENTER);
+        thisTempleLabelPaint.setShadowLayer(10,0,-5,Color.GRAY);
+
         int thisTempleIndex = temples.indexOf(t);
 
         String thisTempleName = allTempleInfo.get(thisTempleIndex*3);
 
         if (ts < 250) {
             //allTempleInfo.get((int)(ts) * 3)
-            c.drawText(thisTempleName, currentTempleX, currentTempleY + newCurrentTempleRadius + yearDisplayPaint.getTextSize(), yearDisplayPaint);
+            c.drawText(thisTempleName, currentTempleX, currentTempleY + newCurrentTempleRadius + thisTempleLabelPaint.getTextSize(), thisTempleLabelPaint);
+
         }
 
 
