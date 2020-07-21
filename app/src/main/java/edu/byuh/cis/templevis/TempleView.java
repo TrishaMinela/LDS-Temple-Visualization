@@ -1588,11 +1588,10 @@ public class TempleView extends View {
 
         String thisTempleName = allTempleInfo.get(thisTempleIndex*3);
 
-        if (ts < 200) {
-            if (thisTempleIndex < 185) {
-                c.drawText(thisTempleName, currentTempleX, currentTempleY + newCurrentTempleRadius + thisTempleLabelPaint.getTextSize(), thisTempleLabelPaint);
-            }
+        if (sliderMoving == false && ts < 200 && thisTempleIndex < 185) {
+            c.drawText(thisTempleName, currentTempleX, currentTempleY + newCurrentTempleRadius + thisTempleLabelPaint.getTextSize(), thisTempleLabelPaint);
         }
+     
     }
 
     public void actuallyDrawing(float ts, Bitmap t, Canvas c) {
