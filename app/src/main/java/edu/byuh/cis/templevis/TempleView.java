@@ -1609,10 +1609,19 @@ public class TempleView extends View {
         c.drawBitmap(t, currentTempleMatrix, null);
 
 
+        int thisTempleIndex = temples.indexOf(t);
+
+        String thisTempleName = allTempleInfo.get(thisTempleIndex*3);
+
+        if (ts < 250) {
+            //allTempleInfo.get((int)(ts) * 3)
+            c.drawText(thisTempleName, currentTempleX, currentTempleY + newCurrentTempleRadius + yearDisplayPaint.getTextSize(), yearDisplayPaint);
+        }
+
+
+
 
         if (currentTempleX + newCurrentTempleRadius < screenWidth || currentTempleY + newCurrentTempleRadius < screenHeight) {
-
-
 
         }
 
