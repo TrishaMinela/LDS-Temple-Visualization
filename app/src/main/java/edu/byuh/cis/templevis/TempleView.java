@@ -1569,6 +1569,30 @@ public class TempleView extends View {
 
     }
 
+    public void drawTempleLabels(float ts, Bitmap t, Canvas c) {
+
+        float currentTempleSize = sizes.get((int) (ts));
+        float currentTempleX = spiralCoordinates.get((int) (ts)).get(0);
+        float currentTempleY = spiralCoordinates.get((int) (ts)).get(1);
+        float newCurrentTempleRadius = currentTempleSize * screenWidth / 2;
+
+        Paint thisTempleLabelPaint = new Paint();
+
+        thisTempleLabelPaint.setColor(Color.parseColor("#def2f1"));
+        thisTempleLabelPaint.setStyle(Paint.Style.FILL);
+        thisTempleLabelPaint.setTextSize((int)(30));
+        thisTempleLabelPaint.setTextAlign(Paint.Align.CENTER);
+        thisTempleLabelPaint.setShadowLayer(10,0,-5,Color.GRAY);
+
+        int thisTempleIndex = temples.indexOf(t);
+
+        String thisTempleName = allTempleInfo.get(thisTempleIndex*3);
+
+        if (ts < 200) {
+            c.drawText(thisTempleName, currentTempleX, currentTempleY + newCurrentTempleRadius + thisTempleLabelPaint.getTextSize(), thisTempleLabelPaint);
+            
+        }
+    }
 
     public void actuallyDrawing(float ts, Bitmap t, Canvas c) {
 
@@ -1609,23 +1633,7 @@ public class TempleView extends View {
         c.drawBitmap(t, currentTempleMatrix, null);
 
 
-        Paint thisTempleLabelPaint = new Paint();
 
-        thisTempleLabelPaint.setColor(Color.parseColor("#def2f1"));
-        thisTempleLabelPaint.setStyle(Paint.Style.FILL);
-        thisTempleLabelPaint.setTextSize((int)(screenHeight / 50));
-        thisTempleLabelPaint.setTextAlign(Paint.Align.CENTER);
-        thisTempleLabelPaint.setShadowLayer(10,0,-5,Color.GRAY);
-
-        int thisTempleIndex = temples.indexOf(t);
-
-        String thisTempleName = allTempleInfo.get(thisTempleIndex*3);
-
-        if (ts < 250) {
-            //allTempleInfo.get((int)(ts) * 3)
-            c.drawText(thisTempleName, currentTempleX, currentTempleY + newCurrentTempleRadius + thisTempleLabelPaint.getTextSize(), thisTempleLabelPaint);
-
-        }
 
 
 
@@ -1927,6 +1935,7 @@ public class TempleView extends View {
             if (ts > 0 && ts < spiralCoordinates.size() - 150) {
                 //this one works
                 actuallyDrawing(ts, t, c);
+                drawTempleLabels(ts, t, c);
 
 
 /*
