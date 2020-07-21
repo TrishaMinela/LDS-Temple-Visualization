@@ -49,9 +49,9 @@ public class PrefsActivity extends PreferenceActivity {
         //screen.addPreference(language_pref);
 
         CheckBoxPreference show_label = new CheckBoxPreference(this);
-        show_label.setTitle("label");
-        show_label.setSummaryOn("show label");
-        show_label.setSummaryOff("does not show label");
+        show_label.setTitle(R.string.show_label_title);
+        show_label.setSummaryOn(R.string.show_label_on);
+        show_label.setSummaryOff(R.string.show_label_off);
         show_label.setKey(SHOW_LABEL);
         show_label.setChecked(true);
         screen.addPreference(show_label);

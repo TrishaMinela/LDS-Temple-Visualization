@@ -45,5 +45,9 @@
     <string name="language_prefs_title">Language</string>
     <string name="language_prefs_summary">set display language</string>
 
+    <string name="show_label_title">Temple Label</string>
+    <string name="show_label_on">Temple names will show for larger temples</string>
+    <string name="show_label_off">Temple names will not show for any temples</string>
+
 
 </resources>

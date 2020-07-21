@@ -46,4 +46,8 @@
     <string name="language_prefs_title">语言</string>
     <string name="language_prefs_summary">选择应用显示语言</string>
 
+    <string name="show_label_title">圣殿标签</string>
+    <string name="show_label_on">较大的圣殿图片将会显示名称</string>
+    <string name="show_label_off">不显示任何圣殿名称</string>
+
 </resources>
