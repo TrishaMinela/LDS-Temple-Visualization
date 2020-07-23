@@ -226,33 +226,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onResume() {
         super.onResume();
-
-        //changeLanguage();
-
-    }
-
-    public void changeLanguage() {
-        String languagePref = PrefsActivity.getLanguagePref(this);
-        //Toast.makeText(mContext, "language pref is " + languagePref, Toast.LENGTH_SHORT).show();
-
-        if (languagePref.equalsIgnoreCase("english")) {
-            LanguageUtil.changeAppLanguage(this, Locale.ENGLISH, true);
-        } else if (languagePref.equalsIgnoreCase("chinese")) {
-            LanguageUtil.changeAppLanguage(this, Locale.SIMPLIFIED_CHINESE, true);
-        }
-    }
-
-    private void removeView() {
-        //获取linearlayout子view的个数
-        int count = lnl.getChildCount();
-        //研究整个LAYOUT布局，第0位的是含add和remove两个button的layout
-        //第count-1个是那个文字被置中的textview
-        //因此，在remove的时候，只能操作的是0<location<count-1这个范围的
-        //在执行每次remove时，我们从count-2的位置即textview上面的那个控件开始删除~
-        if (count - 2 > 0) {
-            //count-2>0用来判断当前linearlayout子view数多于2个，即还有我们点add增加的button
-            lnl.removeViewAt(count - 2);
-        }
     }
 
 
