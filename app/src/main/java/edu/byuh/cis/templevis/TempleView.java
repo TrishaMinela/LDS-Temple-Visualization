@@ -691,7 +691,7 @@ public class TempleView extends View {
             for (int i = thisTempleLocationWords.length / 2; i < thisTempleLocationWords.length ; i ++) {
                 thisTempleNameTwo += thisTempleLocationWords[i] + " ";
             }
-        } else { // if there are odd number of words in location, then first line has one more line than second line 
+        } else { // if there are odd number of words in location, then first line has one more line than second line
             for (int i = 0; i < thisTempleLocationWords.length / 2 + 1; i ++) {
                 thisTempleNameOne += thisTempleLocationWords[i] + " ";
             }
@@ -786,7 +786,7 @@ public class TempleView extends View {
         //go to temple info file, the specific line to get years
         //3 lines each temple in the file
 
-        c.drawRect(0, 9 * screenHeight / 10, screenWidth, screenHeight, bluePaint);
+        //c.drawRect(0, 9 * screenHeight / 10, screenWidth, screenHeight, bluePaint);
         float firstOnScreenTempleIndex = 0;
         float lastOnScreenTempleIndex = 0;
 
