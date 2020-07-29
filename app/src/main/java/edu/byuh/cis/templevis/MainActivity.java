@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
     private float startPoint;
     private float stopPoint;
     private LinearLayout lnl;
-    private LinearLayout lnl2;
+    private LinearLayout lnlH;
 
     public class MyTimer extends Handler {
 
@@ -130,6 +130,7 @@ public class MainActivity extends AppCompatActivity {
         slider.setBackgroundColor(Color.parseColor("#287a78"));
         slider.setProgress(5550);
 
+
         timA = new MyTimer();
 
         progress = 5550;
@@ -179,6 +180,39 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Button leftButton = new Button(this);
+
+
+        Button rightButton = new Button(this);
+
+
+        LinearLayout.LayoutParams one = new LinearLayout.LayoutParams
+                (LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.MATCH_PARENT, 1);
+        LinearLayout.LayoutParams two = new LinearLayout.LayoutParams
+                (LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.MATCH_PARENT, 4);
+
+        leftButton.setLayoutParams(two);
+        rightButton.setLayoutParams(two);
+        slider.setLayoutParams(one);
+
+        lnlH = new LinearLayout(this);
+        lnlH.setOrientation(LinearLayout.HORIZONTAL);
+        lnlH.setBackgroundColor(Color.parseColor("#287a78"));
+
+        //((ViewGroup)leftButton.getParent()).removeView(leftButton);
+        lnlH.addView(leftButton);
+
+        //((ViewGroup)rightButton.getParent()).removeView(rightButton);
+        //lnlH.addView(rightButton);
+
+        ((ViewGroup)slider.getParent()).removeView(slider);
+        lnlH.addView(slider);
+
+        //((ViewGroup)rightButton.getParent()).removeView(rightButton);
+        lnlH.addView(rightButton);
+
         LinearLayout sliderLabel = findViewById(R.id.sliderLabel);
         //sliderLabel.setBackgroundColor(Color.parseColor("#669cff"));
         //sliderLabel.setBackgroundColor(Color.parseColor("#202224"));
@@ -194,8 +228,11 @@ public class MainActivity extends AppCompatActivity {
         ((ViewGroup)sliderLabelNoText.getParent()).removeView(sliderLabelNoText);
         lnl.addView(sliderLabelNoText);
 
-        ((ViewGroup)slider.getParent()).removeView(slider);
-        lnl.addView(slider);
+//        ((ViewGroup)slider.getParent()).removeView(slider);
+//        lnl.addView(slider);
+
+        //((ViewGroup)lnlH.getParent()).removeView(lnlH);
+        lnl.addView(lnlH);
 
         ((ViewGroup)sliderLabel.getParent()).removeView(sliderLabel);
         lnl.addView(sliderLabel);
