@@ -56,7 +56,7 @@ public class PrefsActivity extends PreferenceActivity {
                 getDefaultSharedPreferences(c).getString(SPIRAL_EFFECT, "static");
         return effect;
     }
-    
+
     public static boolean getShowLabelPref(Context c) {
         return PreferenceManager.getDefaultSharedPreferences(c).getBoolean(SHOW_LABEL, true);
     }

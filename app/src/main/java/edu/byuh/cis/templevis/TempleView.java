@@ -29,7 +29,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 
 import static java.lang.Boolean.FALSE;
@@ -677,11 +679,33 @@ public class TempleView extends View {
         int thisTempleIndex = temples.indexOf(t);
 
         String thisTempleName = allTempleInfo.get(thisTempleIndex*3);
+        String thisTempleLocation = thisTempleName.substring(0, thisTempleName.length() - 7);
+        String[] thisTempleLocationWords = thisTempleLocation.split(" ");
 
-        if (sliderMoving == false && ts < 200 && thisTempleIndex < 185 && show_label) {
-            c.drawText(thisTempleName, currentTempleX, currentTempleY + newCurrentTempleRadius + thisTempleLabelPaint.getTextSize(), thisTempleLabelPaint);
+        String thisTempleNameOne = "";
+        String thisTempleNameTwo = "";
+        if (thisTempleLocationWords.length % 2 == 0) { // if there are even number of words in location, then each line has the same number of words
+            for (int i = 0; i < thisTempleLocationWords.length / 2; i ++) {
+                thisTempleNameOne += thisTempleLocationWords[i] + " ";
+            }
+            for (int i = thisTempleLocationWords.length / 2; i < thisTempleLocationWords.length ; i ++) {
+                thisTempleNameTwo += thisTempleLocationWords[i] + " ";
+            }
+        } else { // if there are odd number of words in location, then first line has one more line than second line 
+            for (int i = 0; i < thisTempleLocationWords.length / 2 + 1; i ++) {
+                thisTempleNameOne += thisTempleLocationWords[i] + " ";
+            }
+            for (int i = thisTempleLocationWords.length / 2 + 1; i < thisTempleLocationWords.length ; i ++) {
+                thisTempleNameTwo += thisTempleLocationWords[i] + " ";
+            }
         }
 
+
+        if (sliderMoving == false && ts < 200 && thisTempleIndex < 185 && show_label) {
+            //c.drawText(thisTempleName, currentTempleX, currentTempleY + newCurrentTempleRadius + thisTempleLabelPaint.getTextSize(), thisTempleLabelPaint);
+            c.drawText(thisTempleNameOne, currentTempleX, currentTempleY + newCurrentTempleRadius - thisTempleLabelPaint.getTextSize(), thisTempleLabelPaint);
+            c.drawText(thisTempleNameTwo, currentTempleX, currentTempleY + newCurrentTempleRadius, thisTempleLabelPaint);
+        }
     }
 
     public void actuallyDrawing(float ts, Bitmap t, Canvas c) {
