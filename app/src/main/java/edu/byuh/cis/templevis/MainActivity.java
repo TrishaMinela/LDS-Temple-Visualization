@@ -213,15 +213,14 @@ public class MainActivity extends AppCompatActivity {
             public boolean onTouch(View v, MotionEvent event) {
                 if(event.getAction() == MotionEvent.ACTION_DOWN){
                     //Toast.makeText(MainActivity.this,"按下了" ,Toast.LENGTH_SHORT).show();
-                    leftButton.setBackgroundColor(Color.RED);
+                    leftButton.setBackgroundColor(Color.parseColor("#17252a"));
                 }else if(event.getAction() == MotionEvent.ACTION_UP){
                     //Toast.makeText(MainActivity.this,"松开了" + slider.getProgress() ,Toast.LENGTH_SHORT).show();
-                    leftButton.setBackgroundColor(Color.BLUE);
+                    leftButton.setBackgroundResource(R.drawable.left_button_arrow);
                     //lastProgress = slider.getProgress() - 30;
                     progress = slider.getProgress() - 30;
                     slider.setProgress(lastProgress);
                     tv.setDegree(slider.getProgress());
-                    //tv.invalidate();
                     tv.invalidate();
                     sliderChangedByButton = true;
                 }
@@ -239,6 +238,27 @@ public class MainActivity extends AppCompatActivity {
 //            rightButton.setForeground(rightButtonForeground);
 //        }
 //        rightButton.setBackgroundColor(Color.parseColor("#287a78"));
+
+        rightButton.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getAction() == MotionEvent.ACTION_DOWN){
+                    //Toast.makeText(MainActivity.this,"按下了" ,Toast.LENGTH_SHORT).show();
+                    rightButton.setBackgroundColor(Color.parseColor("#17252a"));
+                }else if(event.getAction() == MotionEvent.ACTION_UP){
+                    //Toast.makeText(MainActivity.this,"松开了" + slider.getProgress() ,Toast.LENGTH_SHORT).show();
+                    rightButton.setBackgroundResource(R.drawable.right_button_arrow);
+                    //lastProgress = slider.getProgress() + 30;
+                    progress = slider.getProgress() + 30;
+                    slider.setProgress(lastProgress);
+                    tv.setDegree(slider.getProgress());
+                    tv.invalidate();
+                    sliderChangedByButton = true;
+                }
+                return false;
+            }
+        });
+
 
         LinearLayout.LayoutParams one = new LinearLayout.LayoutParams
                 (LinearLayout.LayoutParams.MATCH_PARENT,
