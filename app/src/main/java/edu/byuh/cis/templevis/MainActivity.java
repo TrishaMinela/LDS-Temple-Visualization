@@ -181,11 +181,13 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Button leftButton = new Button(this);
+        leftButton.setBackgroundResource(R.drawable.left_button_arrow);
 
 
         Button rightButton = new Button(this);
+        rightButton.setBackgroundResource(R.drawable.right_button_arrow);
 
-
+        
         LinearLayout.LayoutParams one = new LinearLayout.LayoutParams
                 (LinearLayout.LayoutParams.MATCH_PARENT,
                         LinearLayout.LayoutParams.MATCH_PARENT, 1);
