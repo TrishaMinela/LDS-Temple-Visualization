@@ -4,6 +4,7 @@ package edu.byuh.cis.templevis;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -23,6 +24,8 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -106,6 +109,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -184,7 +188,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button leftButton = new Button(this);
+        final Button leftButton = new Button(this);
         leftButton.setBackgroundResource(R.drawable.left_button_arrow);
 
         // this following is set the foreground of button, when we press, there is a little press down effect on button which is good, but we can see some edges of button which is not good
@@ -194,7 +198,29 @@ public class MainActivity extends AppCompatActivity {
 //        }
 //        leftButton.setBackgroundColor(Color.parseColor("#287a78"));
 
-        Button rightButton = new Button(this);
+        leftButton.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getAction() == MotionEvent.ACTION_DOWN){
+                    //Toast.makeText(MainActivity.this,"按下了" ,Toast.LENGTH_SHORT).show();
+                    leftButton.setBackgroundColor(Color.RED);
+                }else if(event.getAction() == MotionEvent.ACTION_UP){
+                    Toast.makeText(MainActivity.this,"松开了" + slider.getProgress() ,Toast.LENGTH_SHORT).show();
+                    leftButton.setBackgroundColor(Color.BLUE);
+                    lastProgress = slider.getProgress() - 30;
+                    progress = slider.getProgress() - 30;
+                    slider.setProgress(lastProgress);
+                    tv.setDegree(slider.getProgress());
+                    //tv.invalidate();
+                    tv.invalidate();
+                }
+                return false;
+            }
+        });
+
+
+
+        final  Button rightButton = new Button(this);
         rightButton.setBackgroundResource(R.drawable.right_button_arrow);
 
 //        Drawable rightButtonForeground = getDrawable(R.drawable.right_button_arrow);
