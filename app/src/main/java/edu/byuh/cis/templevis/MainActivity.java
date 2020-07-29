@@ -60,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
     private float stopPoint;
     private LinearLayout lnl;
     private LinearLayout lnlH;
+    private Boolean sliderChangedByButton = false;
 
     public class MyTimer extends Handler {
 
@@ -79,14 +80,22 @@ public class MainActivity extends AppCompatActivity {
             lastProgress = (int)lastProgressF;
             float difference = Math.abs(lastProgress - progress);
 
-            if (difference > 8) {
+            int eachStep = 0;
+            if (sliderChangedByButton) {
+                eachStep = 1;
+            } else {
+                eachStep = 8;
+            }
+
+
+            if (difference > eachStep) {
                 tv.sliderInProgress(TRUE);
                 if (lastProgress > progress) {
-                    lastProgress = lastProgress - 8;
+                    lastProgress = lastProgress - eachStep;
                     slider.setProgress((int)(lastProgress));
                     tv.setDegree((int)(lastProgress));
                 } else if (lastProgress < progress) {
-                    lastProgress = lastProgress + 8;
+                    lastProgress = lastProgress + eachStep;
                     slider.setProgress((int)(lastProgress));
                     tv.setDegree((int) (lastProgress));
                 }
@@ -97,6 +106,7 @@ public class MainActivity extends AppCompatActivity {
                 if (stop == 0) {
                     tv.sliderInProgress(FALSE);
                     tv.invalidate();
+                    sliderChangedByButton = false;
                 }
                 stop ++;
             }
@@ -205,14 +215,15 @@ public class MainActivity extends AppCompatActivity {
                     //Toast.makeText(MainActivity.this,"按下了" ,Toast.LENGTH_SHORT).show();
                     leftButton.setBackgroundColor(Color.RED);
                 }else if(event.getAction() == MotionEvent.ACTION_UP){
-                    Toast.makeText(MainActivity.this,"松开了" + slider.getProgress() ,Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(MainActivity.this,"松开了" + slider.getProgress() ,Toast.LENGTH_SHORT).show();
                     leftButton.setBackgroundColor(Color.BLUE);
-                    lastProgress = slider.getProgress() - 30;
+                    //lastProgress = slider.getProgress() - 30;
                     progress = slider.getProgress() - 30;
                     slider.setProgress(lastProgress);
                     tv.setDegree(slider.getProgress());
                     //tv.invalidate();
                     tv.invalidate();
+                    sliderChangedByButton = true;
                 }
                 return false;
             }
