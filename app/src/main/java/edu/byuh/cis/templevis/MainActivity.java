@@ -1,6 +1,7 @@
 package edu.byuh.cis.templevis;
 
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
@@ -10,6 +11,8 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -103,6 +106,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -183,11 +187,22 @@ public class MainActivity extends AppCompatActivity {
         Button leftButton = new Button(this);
         leftButton.setBackgroundResource(R.drawable.left_button_arrow);
 
+        // this following is set the foreground of button, when we press, there is a little press down effect on button which is good, but we can see some edges of button which is not good
+//        Drawable leftButtonForeground = getDrawable(R.drawable.left_button_arrow);
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//            leftButton.setForeground(leftButtonForeground);
+//        }
+//        leftButton.setBackgroundColor(Color.parseColor("#287a78"));
 
         Button rightButton = new Button(this);
         rightButton.setBackgroundResource(R.drawable.right_button_arrow);
 
-        
+//        Drawable rightButtonForeground = getDrawable(R.drawable.right_button_arrow);
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//            rightButton.setForeground(rightButtonForeground);
+//        }
+//        rightButton.setBackgroundColor(Color.parseColor("#287a78"));
+
         LinearLayout.LayoutParams one = new LinearLayout.LayoutParams
                 (LinearLayout.LayoutParams.MATCH_PARENT,
                         LinearLayout.LayoutParams.MATCH_PARENT, 1);
