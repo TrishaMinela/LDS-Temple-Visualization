@@ -1,9 +1,6 @@
 package edu.byuh.cis.templevis;
 
 
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -12,7 +9,6 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -29,14 +25,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.LinearLayout;
+import android.widget.NumberPicker;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.util.Locale;
-
-import edu.byuh.cis.templevis.R;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
 
 import static android.graphics.Color.BLUE;
 import static android.graphics.Color.GREEN;
@@ -390,6 +386,9 @@ public class MainActivity extends AppCompatActivity {
                 //Toast.makeText(this, "About", Toast.LENGTH_SHORT).show();
                 showAboutDialog();
                 break;
+            case BLUE:
+                showYearPickerDialog();
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -429,6 +428,58 @@ public class MainActivity extends AppCompatActivity {
         positiveButtonLL.gravity=Gravity.CENTER;
         positiveButtonLL.width=ViewGroup.LayoutParams.MATCH_PARENT;
         positiveButton.setLayoutParams(positiveButtonLL);
+
+    }
+
+    public void showYearPickerDialog() {
+
+        NumberPicker picker = new NumberPicker(this);
+
+        String[] s = new String[3];
+        s[0]="a"; s[1]="b"; s[2]="c";
+
+        //picker.setDisplayedValues(s);
+        //picker.setMinValue(0);
+        //picker.setMaxValue(10);
+        String[] datas = new String[]{"北京","上海","广州","深圳"};
+        picker.setDisplayedValues(datas); //设置文字
+        picker.setMaxValue(datas.length - 1); //设置最大值，最大值是datas[3]
+
+        //DatePicker datePicker = findViewById(R.id.datePicker);
+        DatePicker datePicker = new DatePicker(this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(getResources().getString(R.string.app_name));
+
+        //builder.setView(datePicker);
+        builder.setView(picker);
+        final AlertDialog dialog = builder.create();
+        dialog.show();
+
+
+
+//        Calendar calendar;
+//        int year;
+//        int month;
+//        int day;
+//
+//        // 获取日历对象
+//        calendar = Calendar.getInstance();
+//        // 获取当前对应的年、月、日的信息
+//        year = calendar.get(Calendar.YEAR);
+//        month = calendar.get(Calendar.MONTH) + 1;
+//        day = calendar.get(Calendar.DAY_OF_MONTH);
+//
+//       //NumberPicker datePicker = (NumberPicker) findViewById(R.id.picker_year);
+//
+//        // 初始化DatePickerDialog
+//        new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+//            @Override
+//            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+//                setTitle(year + "-" + (monthOfYear + 1) + "-" + dayOfMonth);
+//            }
+//        }, year, month, day).show();
+
+
 
     }
 
