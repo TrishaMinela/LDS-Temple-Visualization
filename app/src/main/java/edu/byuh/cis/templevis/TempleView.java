@@ -30,6 +30,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Locale;
 
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
@@ -689,7 +690,20 @@ public class TempleView extends View {
         int thisTempleIndex = temples.indexOf(t);
 
         String thisTempleName = allTempleInfo.get(thisTempleIndex*3);
-        String thisTempleLocation = thisTempleName.substring(0, thisTempleName.length() - 7);
+        Locale curLocale = getResources().getConfiguration().locale;
+
+
+        String thisTempleLocation = "";
+        //通过Locale的equals方法，判断出当前语言环境
+        if (curLocale.equals(Locale.SIMPLIFIED_CHINESE)) {
+            //中文
+            thisTempleLocation = thisTempleName.substring(0, thisTempleName.length() - 3);
+        } else {
+            //英文
+            thisTempleLocation = thisTempleName.substring(0, thisTempleName.length() - 7);
+        }
+        //String thisTempleLocation = thisTempleName ;//.substring(0, thisTempleName.length() - 7);
+
         String[] thisTempleLocationWords = thisTempleLocation.split(" ");
 
         String thisTempleNameOne = "";
