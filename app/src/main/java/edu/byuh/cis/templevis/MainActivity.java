@@ -29,9 +29,12 @@ import android.widget.LinearLayout;
 import android.widget.NumberPicker;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.ArrayList;
 
 import static android.graphics.Color.BLUE;
 import static android.graphics.Color.GREEN;
@@ -439,13 +442,37 @@ public class MainActivity extends AppCompatActivity {
         //picker.setMaxValue(10);
         //String[] test = new String[]{"北京","上海","广州","深圳"};
 
-        // i have to use this for loop to covert allYears arraylist to String[], I used toArray() on the arraylist, but did work 
-        //ArrayList<String> temporary = new ArrayList<>();
-        String[] temporary = new String[tv.allYears.size()];
-        for (int i = 0; i < tv.allYears.size(); i++) {
-            temporary[i] = tv.allYears.get(i);
+//        ArrayList<String> allYearsWithoutDuplicates = new ArrayList<String>();
+//        for (int i=0; i<tv.allYears.size(); i++) {
+//            if(!allYearsWithoutDuplicates.contains(tv.allYears.get(i))) {
+//                allYearsWithoutDuplicates.add(tv.allYears.get(i));
+//            }
+//        }
+
+        ArrayList<String> allYearsWithoutDuplicates = new ArrayList<>();
+        for (int i=0; i<tv.allYears.size(); i++) {
+            String toBeAdded = tv.allYears.get(i);
+            if (toBeAdded.equals("0000" + "\n")) {
+                toBeAdded = "temples under construction";
+            } else if (toBeAdded.equals("1111" + "\n")) {
+                toBeAdded = "future temples";
+            }
+            if(!allYearsWithoutDuplicates.contains(toBeAdded)) {
+                allYearsWithoutDuplicates.add(toBeAdded);
+            }
         }
 
+
+        // i have to use this for loop to covert allYears arraylist to String[], I used toArray() on the arraylist, but did work
+        //ArrayList<String> temporary = new ArrayList<>();
+        String[] temporary = new String[allYearsWithoutDuplicates.size()];
+        for (int i = 0; i < allYearsWithoutDuplicates.size(); i++) {
+            temporary[i] = allYearsWithoutDuplicates.get(i);
+        }
+
+
+
+        Toast.makeText(mContext, "temporary length is: " + temporary.length + "", Toast.LENGTH_SHORT).show();
         //Toast.makeText(mContext, "allYeas size: " + tv.allYears.size() + "", Toast.LENGTH_SHORT).show();
         //Toast.makeText(mContext, temporary[100] + "", Toast.LENGTH_SHORT).show();
 
