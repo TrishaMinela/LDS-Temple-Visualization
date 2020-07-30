@@ -442,13 +442,6 @@ public class MainActivity extends AppCompatActivity {
         //picker.setMaxValue(10);
         //String[] test = new String[]{"北京","上海","广州","深圳"};
 
-//        ArrayList<String> allYearsWithoutDuplicates = new ArrayList<String>();
-//        for (int i=0; i<tv.allYears.size(); i++) {
-//            if(!allYearsWithoutDuplicates.contains(tv.allYears.get(i))) {
-//                allYearsWithoutDuplicates.add(tv.allYears.get(i));
-//            }
-//        }
-
         ArrayList<String> allYearsWithoutDuplicates = new ArrayList<>();
         for (int i=0; i<tv.allYears.size(); i++) {
             String toBeAdded = tv.allYears.get(i);
@@ -461,8 +454,6 @@ public class MainActivity extends AppCompatActivity {
                 allYearsWithoutDuplicates.add(toBeAdded);
             }
         }
-
-
         // i have to use this for loop to covert allYears arraylist to String[], I used toArray() on the arraylist, but did work
         //ArrayList<String> temporary = new ArrayList<>();
         String[] temporary = new String[allYearsWithoutDuplicates.size()];
@@ -470,22 +461,46 @@ public class MainActivity extends AppCompatActivity {
             temporary[i] = allYearsWithoutDuplicates.get(i);
         }
 
-
-
         Toast.makeText(mContext, "temporary length is: " + temporary.length + "", Toast.LENGTH_SHORT).show();
         //Toast.makeText(mContext, "allYeas size: " + tv.allYears.size() + "", Toast.LENGTH_SHORT).show();
         //Toast.makeText(mContext, temporary[100] + "", Toast.LENGTH_SHORT).show();
-
 
         picker.setDisplayedValues(temporary); //设置文字
         picker.setMaxValue(temporary.length - 1); //设置最大值
 
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle(getResources().getString(R.string.app_name));
+        builder.setTitle("Pick a Year");
         builder.setView(picker);
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                //do nothing
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                //set onclick method for this button below
+            }
+        });
+
         final AlertDialog dialog = builder.create();
         dialog.show();
+
+        Button btnPositive = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
+        Button btnNegative = dialog.getButton(AlertDialog.BUTTON_NEGATIVE);
+
+        LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) btnPositive.getLayoutParams();
+        layoutParams.weight = 10;
+        btnPositive.setLayoutParams(layoutParams);
+        btnNegative.setLayoutParams(layoutParams);
+
+        dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //do something
+            }
+        });
 
 
 
