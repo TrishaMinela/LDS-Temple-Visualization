@@ -25,7 +25,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.LinearLayout;
 import android.widget.NumberPicker;
 import android.widget.SeekBar;
@@ -435,49 +434,31 @@ public class MainActivity extends AppCompatActivity {
 
         NumberPicker picker = new NumberPicker(this);
 
-        String[] s = new String[3];
-        s[0]="a"; s[1]="b"; s[2]="c";
-
         //picker.setDisplayedValues(s);
         //picker.setMinValue(0);
         //picker.setMaxValue(10);
-        String[] datas = new String[]{"北京","上海","广州","深圳"};
-        picker.setDisplayedValues(datas); //设置文字
-        picker.setMaxValue(datas.length - 1); //设置最大值，最大值是datas[3]
+        //String[] test = new String[]{"北京","上海","广州","深圳"};
 
-        //DatePicker datePicker = findViewById(R.id.datePicker);
-        DatePicker datePicker = new DatePicker(this);
+        // i have to use this for loop to covert allYears arraylist to String[], I used toArray() on the arraylist, but did work 
+        //ArrayList<String> temporary = new ArrayList<>();
+        String[] temporary = new String[tv.allYears.size()];
+        for (int i = 0; i < tv.allYears.size(); i++) {
+            temporary[i] = tv.allYears.get(i);
+        }
+
+        //Toast.makeText(mContext, "allYeas size: " + tv.allYears.size() + "", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(mContext, temporary[100] + "", Toast.LENGTH_SHORT).show();
+
+
+        picker.setDisplayedValues(temporary); //设置文字
+        picker.setMaxValue(temporary.length - 1); //设置最大值
+
+
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(getResources().getString(R.string.app_name));
-
-        //builder.setView(datePicker);
         builder.setView(picker);
         final AlertDialog dialog = builder.create();
         dialog.show();
-
-
-
-//        Calendar calendar;
-//        int year;
-//        int month;
-//        int day;
-//
-//        // 获取日历对象
-//        calendar = Calendar.getInstance();
-//        // 获取当前对应的年、月、日的信息
-//        year = calendar.get(Calendar.YEAR);
-//        month = calendar.get(Calendar.MONTH) + 1;
-//        day = calendar.get(Calendar.DAY_OF_MONTH);
-//
-//       //NumberPicker datePicker = (NumberPicker) findViewById(R.id.picker_year);
-//
-//        // 初始化DatePickerDialog
-//        new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
-//            @Override
-//            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-//                setTitle(year + "-" + (monthOfYear + 1) + "-" + dayOfMonth);
-//            }
-//        }, year, month, day).show();
 
 
 

@@ -57,6 +57,7 @@ public class TempleView extends View {
     private Bitmap logo_circle;
     private ArrayList<String> allTempleLinks;
     private ArrayList<String> allTempleInfo;
+    public ArrayList<String> allYears;
     private float sliderProgress;
     private float thetaPre;
     private int eachIndex;
@@ -108,6 +109,7 @@ public class TempleView extends View {
         oneOnScreenTemple = new ArrayList<>();
         allTempleLinks = new ArrayList<>();
         allTempleInfo = new ArrayList<>();
+        allYears = new ArrayList<>();
         theta = 5550;
         thetaPre = 0;
         currentTempleMatrix = new Matrix();
@@ -207,6 +209,7 @@ public class TempleView extends View {
                     allTempleInfo.add(line+"\n");
                 }
                 allTempleInfoFile.close();
+                allYears = getAllYearsFromAllTempleInfo(allTempleInfo);
             }
         }
         catch (java.io.FileNotFoundException e)
@@ -218,6 +221,16 @@ public class TempleView extends View {
             Log.d("TestFile", e.getMessage());
         }
 
+    }
+
+    public ArrayList<String> getAllYearsFromAllTempleInfo(ArrayList<String> allTempleInfoPassIn) {
+        ArrayList<String> temporary = new ArrayList<>();
+        for (int i = 0; i < temples.size(); i++) {
+            String year = allTempleInfo.get(i * 3 + 2) ;
+            year = year.substring(year.length()-5);
+            temporary.add(year);
+        }
+        return temporary;
     }
 
     private Bitmap loadAndScale(Resources res, int id, float newWidth) {
