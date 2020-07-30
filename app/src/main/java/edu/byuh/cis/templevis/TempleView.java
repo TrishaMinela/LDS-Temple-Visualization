@@ -22,16 +22,13 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
-import android.widget.SeekBar;
 import android.widget.TextView;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 
 import static java.lang.Boolean.FALSE;
@@ -806,7 +803,7 @@ public class TempleView extends View {
             c.drawText( getResources().getString(R.string.welcome_to_view) + " " + getResources().getString(R.string.lds_temples), screenWidth / 2, 39 * screenHeight / 40, yearDisplayPaint);
         } else if (theta > 5550 ) {
             c.drawText( getResources().getString(R.string.future_temples), screenWidth / 2, 39 * screenHeight / 40, yearDisplayPaint);
-        } else if (endYear.contains("ere") || endYear.contains("这里没有")){
+        } else if (endYear.contains("0000") || endYear.contains("1111")){
             c.drawText( getResources().getString(R.string.years_of_temples) + " "  + startYear + "--- " + 2020, screenWidth / 2, 39 * screenHeight / 40, yearDisplayPaint);
         } else {
             //Log.d("endYeas is ", endYear);
@@ -835,7 +832,7 @@ public class TempleView extends View {
             c.drawText(getResources().getString(R.string.lds_temples), 6.5f * screenWidth / 4, 22 * screenHeight / 40, yearDisplayPaint);
         } else if (theta > 5550 ) {
             c.drawText(getResources().getString(R.string.future_temples), 6.5f * screenWidth / 4, 20 * screenHeight / 40, yearDisplayPaint);
-        } else if (endYear.contains("ere") || endYear.contains("这里没有")){
+        } else if (endYear.contains("0000") || endYear.contains("1111")){
             c.drawText(getResources().getString(R.string.years_of_temples) + " " , 6.5f * screenWidth / 4, 15 * screenHeight / 40, yearDisplayPaint);
             c.drawText(startYear + " --- " + 2020, 6.5f * screenWidth / 4, 25 * screenHeight / 40, yearDisplayPaint);
         } else {
