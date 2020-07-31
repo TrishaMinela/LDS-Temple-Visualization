@@ -203,12 +203,15 @@ public class MainActivity extends AppCompatActivity {
         //leftButton.setBackgroundResource(R.drawable.left_button_arrow);
 
         // this following is set the foreground of button, when we press, there is a little press down effect on button which is good, but we can see some edges of button which is not good
-        Drawable leftButtonForeground = getDrawable(R.drawable.left_button_arrow);
+        Drawable leftButtonForeground = getResources().getDrawable(R.drawable.left_button_arrow);
+        //ContextCompat.getDrawable(getApplicationContext(),R.drawable.left_button_arrow);
+        //ResourcesCompat.getDrawable(getResources(), R.drawable.left_button_arrow, null);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             leftButton.setForeground(leftButtonForeground);
         }
         //leftButton.setBackgroundColor(Color.parseColor("#007a66"));
         leftButton.setBackgroundResource(R.drawable.left_right_button_background);
+
 
         leftButton.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -237,7 +240,8 @@ public class MainActivity extends AppCompatActivity {
         final  Button rightButton = new Button(this);
         //rightButton.setBackgroundResource(R.drawable.right_button_arrow);
 
-        Drawable rightButtonForeground = getDrawable(R.drawable.right_button_arrow);
+        Drawable rightButtonForeground = getResources().getDrawable(R.drawable.right_button_arrow);
+        //ContextCompat.getDrawable(getBaseContext(),R.drawable.right_button_arrow);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             rightButton.setForeground(rightButtonForeground);
         }
