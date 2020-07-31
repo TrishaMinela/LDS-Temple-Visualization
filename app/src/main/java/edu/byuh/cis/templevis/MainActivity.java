@@ -477,6 +477,7 @@ public class MainActivity extends AppCompatActivity {
         tx.setText("View Temple dedicated in " + "1836");
         tx.setTextSize(20);
         tx.setPadding(5,20,5,5);
+        tx.setTextColor(Color.BLACK);
         picker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker picker, int i, int i1) {
@@ -506,7 +507,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int id) {
                 //set onclick method for this button below
                 Toast.makeText(mContext, "click on yes " + selectedYear, Toast.LENGTH_SHORT).show();
-                //we can use this selected year value to update spiral 
+                //we can use this selected year value to update spiral
 
             }
         });
