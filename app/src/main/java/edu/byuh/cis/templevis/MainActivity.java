@@ -38,6 +38,7 @@ import java.util.Locale;
 
 import edu.byuh.cis.templevis.R;
 
+import static android.graphics.Color.BLUE;
 import static android.graphics.Color.GREEN;
 import static android.graphics.Color.RED;
 import static java.lang.Boolean.FALSE;
@@ -363,6 +364,12 @@ public class MainActivity extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         menu.add(1,RED,1,R.string.settings);
         menu.add(1,GREEN,2,R.string.about);
+
+        MenuItem item=menu.add(0,BLUE,0,"hi");
+        item.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);//主要是这句话
+        //item.setOnMenuItemClickListener(listener);//添加监听事件
+        item.setIcon(R.drawable.calendar);//设置图标
+
         return true;
     }
 
