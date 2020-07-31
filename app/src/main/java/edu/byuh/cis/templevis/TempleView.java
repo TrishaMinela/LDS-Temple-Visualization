@@ -229,7 +229,7 @@ public class TempleView extends View {
         for (int i = 0; i < temples.size(); i++) {
             String year = allTempleInfo.get(i * 3 + 2) ;
             year = year.substring(year.length()-5);
-            temporary.add(year);
+            temporary.add(year.substring(0,4));
         }
         return temporary;
     }

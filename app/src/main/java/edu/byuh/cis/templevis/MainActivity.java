@@ -60,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
     private LinearLayout lnl;
     private LinearLayout lnlH;
     private Boolean sliderChangedByButton = false;
+    private String selectedYear;
 
     public class MyTimer extends Handler {
 
@@ -435,7 +436,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void showYearPickerDialog() {
 
-        NumberPicker picker = new NumberPicker(this);
+        final NumberPicker picker = new NumberPicker(this);
 
         //picker.setDisplayedValues(s);
         //picker.setMinValue(0);
@@ -445,9 +446,9 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<String> allYearsWithoutDuplicates = new ArrayList<>();
         for (int i=0; i<tv.allYears.size(); i++) {
             String toBeAdded = tv.allYears.get(i);
-            if (toBeAdded.equals("0000" + "\n")) {
+            if (toBeAdded.equals("0000")) {
                 toBeAdded = "temples under construction";
-            } else if (toBeAdded.equals("1111" + "\n")) {
+            } else if (toBeAdded.equals("1111")) {
                 toBeAdded = "future temples";
             }
             if(!allYearsWithoutDuplicates.contains(toBeAdded)) {
@@ -456,30 +457,61 @@ public class MainActivity extends AppCompatActivity {
         }
         // i have to use this for loop to covert allYears arraylist to String[], I used toArray() on the arraylist, but did work
         //ArrayList<String> temporary = new ArrayList<>();
-        String[] temporary = new String[allYearsWithoutDuplicates.size()];
+        final String[] temporary = new String[allYearsWithoutDuplicates.size()];
         for (int i = 0; i < allYearsWithoutDuplicates.size(); i++) {
             temporary[i] = allYearsWithoutDuplicates.get(i);
         }
 
-        Toast.makeText(mContext, "temporary length is: " + temporary.length + "", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(mContext, "temporary length is: " + temporary.length + "", Toast.LENGTH_SHORT).show();
         //Toast.makeText(mContext, "allYeas size: " + tv.allYears.size() + "", Toast.LENGTH_SHORT).show();
         //Toast.makeText(mContext, temporary[100] + "", Toast.LENGTH_SHORT).show();
 
         picker.setDisplayedValues(temporary); //设置文字
         picker.setMaxValue(temporary.length - 1); //设置最大值
+        //picker.setValue(0);
+
+
+        // we use this textview to pass over want ever year is selected, or we can use a field so that it can be accessed from inner class
+        final TextView tx = new TextView(this);
+        tx.setGravity(Gravity.CENTER);
+        tx.setText("view temple dedicated in " + "1836");
+        picker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
+            @Override
+            public void onValueChange(NumberPicker picker, int i, int i1) {
+                selectedYear = temporary[i1];
+
+                if (temporary[i1].length() == 4) {
+                    tx.setText("view temple dedicated in " + temporary[i1]);
+                } else {
+                    tx.setText("view " + temporary[i1]);
+                }
+            }
+        });
+
+
+
+        LinearLayout yearPickerView = new LinearLayout(this);
+        yearPickerView.setOrientation(LinearLayout.VERTICAL);
+        yearPickerView.addView(tx);
+        yearPickerView.addView(picker);
+
 
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Pick a Year");
-        builder.setView(picker);
+        //builder.setTitle("hi");
+        builder.setView(yearPickerView);
+        builder.setCancelable(true);
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
-                //do nothing
+                //set onclick method for this button below
+                Toast.makeText(mContext, "click on yes " + selectedYear, Toast.LENGTH_SHORT).show();
+
             }
         });
         builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
-                //set onclick method for this button below
+                //do nothing
+                Toast.makeText(mContext, "click on no", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -494,13 +526,23 @@ public class MainActivity extends AppCompatActivity {
         btnPositive.setLayoutParams(layoutParams);
         btnNegative.setLayoutParams(layoutParams);
 
-        dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                //do something
-            }
-        });
+        // these will override the onclick above
+//        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                //do something
+//                Toast.makeText(mContext, "click on yes", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//        dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                //do something
+//                Toast.makeText(mContext, "click on no", Toast.LENGTH_SHORT).show();
+//
+//            }
+//        });
 
 
 
