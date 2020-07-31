@@ -294,6 +294,22 @@ public class MainActivity extends AppCompatActivity {
         //((ViewGroup)rightButton.getParent()).removeView(rightButton);
         lnlH.addView(rightButton);
 
+        Integer sliderHeight = (int)(height * 0.1);
+        lnlH.setMinimumHeight(sliderHeight);
+
+        // any setting button size is not working, because it's match parent linear layout already.
+        //leftButton.setWidth((int)(width*0.2));
+        //leftButton.setWidth(lnlH.getHeight());
+
+//        if (leftButton.getWidth() > leftButton.getHeight()) {
+//            leftButton.setWidth(leftButton.getHeight());
+//        } else {
+//            leftButton.setHeight(leftButton.getWidth());
+//        }
+
+//        leftButton.setWidth(leftButton.getHeight());
+//        rightButton.setWidth(rightButton.getHeight());
+
         LinearLayout sliderLabel = findViewById(R.id.sliderLabel);
         //sliderLabel.setBackgroundColor(Color.parseColor("#669cff"));
         //sliderLabel.setBackgroundColor(Color.parseColor("#202224"));
@@ -306,8 +322,8 @@ public class MainActivity extends AppCompatActivity {
         lnl.setOrientation(LinearLayout.VERTICAL);
         lnl.addView(tv);
 
-        ((ViewGroup)sliderLabelNoText.getParent()).removeView(sliderLabelNoText);
-        lnl.addView(sliderLabelNoText);
+//        ((ViewGroup)sliderLabelNoText.getParent()).removeView(sliderLabelNoText);
+//        lnl.addView(sliderLabelNoText);
 
 //        ((ViewGroup)slider.getParent()).removeView(slider);
 //        lnl.addView(slider);
@@ -315,8 +331,8 @@ public class MainActivity extends AppCompatActivity {
         //((ViewGroup)lnlH.getParent()).removeView(lnlH);
         lnl.addView(lnlH);
 
-        ((ViewGroup)sliderLabel.getParent()).removeView(sliderLabel);
-        lnl.addView(sliderLabel);
+//        ((ViewGroup)sliderLabel.getParent()).removeView(sliderLabel);
+//        lnl.addView(sliderLabel);
 
 
         if (getResources().getConfiguration().orientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT) {
