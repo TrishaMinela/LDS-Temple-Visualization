@@ -447,9 +447,9 @@ public class MainActivity extends AppCompatActivity {
         for (int i=0; i<tv.allYears.size(); i++) {
             String toBeAdded = tv.allYears.get(i);
             if (toBeAdded.equals("0000")) {
-                toBeAdded = "temples under construction";
+                toBeAdded = "Temples under construction";
             } else if (toBeAdded.equals("1111")) {
-                toBeAdded = "future temples";
+                toBeAdded = "Future Temples";
             }
             if(!allYearsWithoutDuplicates.contains(toBeAdded)) {
                 allYearsWithoutDuplicates.add(toBeAdded);
@@ -474,16 +474,17 @@ public class MainActivity extends AppCompatActivity {
         // we use this textview to pass over want ever year is selected, or we can use a field so that it can be accessed from inner class
         final TextView tx = new TextView(this);
         tx.setGravity(Gravity.CENTER);
-        tx.setText("view temple dedicated in " + "1836");
+        tx.setText("View Temple dedicated in " + "1836");
+        tx.setTextSize(20);
+        tx.setPadding(5,20,5,5);
         picker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker picker, int i, int i1) {
                 selectedYear = temporary[i1];
-
                 if (temporary[i1].length() == 4) {
-                    tx.setText("view temple dedicated in " + temporary[i1]);
+                    tx.setText("View Temple dedicated in " + temporary[i1]);
                 } else {
-                    tx.setText("view " + temporary[i1]);
+                    tx.setText("View " + temporary[i1]);
                 }
             }
         });
