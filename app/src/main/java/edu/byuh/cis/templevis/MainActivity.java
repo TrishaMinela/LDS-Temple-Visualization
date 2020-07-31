@@ -480,7 +480,7 @@ public class MainActivity extends AppCompatActivity {
         picker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker picker, int i, int i1) {
-                selectedYear = temporary[i1];
+                selectedYear = temporary[i1]; // pass this selected value to dialog button, we can use a field so that it can be accessed from inner class
                 if (temporary[i1].length() == 4) {
                     tx.setText("View Temple dedicated in " + temporary[i1]);
                 } else {
@@ -506,6 +506,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int id) {
                 //set onclick method for this button below
                 Toast.makeText(mContext, "click on yes " + selectedYear, Toast.LENGTH_SHORT).show();
+                //we can use this selected year value to update spiral 
 
             }
         });
