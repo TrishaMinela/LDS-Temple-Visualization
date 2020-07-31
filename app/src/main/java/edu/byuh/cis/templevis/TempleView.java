@@ -685,7 +685,7 @@ public class TempleView extends View {
         thisTempleLabelPaint.setStyle(Paint.Style.FILL);
         thisTempleLabelPaint.setTextSize((int)(newCurrentTempleRadius / 5));
         thisTempleLabelPaint.setTextAlign(Paint.Align.CENTER);
-        //thisTempleLabelPaint.setShadowLayer(10,0,-5,Color.GRAY);
+        thisTempleLabelPaint.setShadowLayer(20,0,-5,Color.BLACK);
 
         int thisTempleIndex = temples.indexOf(t);
 
