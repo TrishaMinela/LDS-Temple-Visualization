@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -199,24 +200,27 @@ public class MainActivity extends AppCompatActivity {
         });
 
         final Button leftButton = new Button(this);
-        leftButton.setBackgroundResource(R.drawable.left_button_arrow);
+        //leftButton.setBackgroundResource(R.drawable.left_button_arrow);
 
         // this following is set the foreground of button, when we press, there is a little press down effect on button which is good, but we can see some edges of button which is not good
-//        Drawable leftButtonForeground = getDrawable(R.drawable.left_button_arrow);
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-//            leftButton.setForeground(leftButtonForeground);
-//        }
-//        leftButton.setBackgroundColor(Color.parseColor("#287a78"));
+        Drawable leftButtonForeground = getDrawable(R.drawable.left_button_arrow);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            leftButton.setForeground(leftButtonForeground);
+        }
+        //leftButton.setBackgroundColor(Color.parseColor("#007a66"));
+        leftButton.setBackgroundResource(R.drawable.left_right_button_background);
 
         leftButton.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 if(event.getAction() == MotionEvent.ACTION_DOWN){
                     //Toast.makeText(MainActivity.this,"按下了" ,Toast.LENGTH_SHORT).show();
-                    leftButton.setBackgroundColor(Color.parseColor("#17252a"));
+                    //leftButton.setBackgroundColor(Color.parseColor("#17252a"));
+                    leftButton.setBackgroundResource(R.drawable.left_right_button_background_pressed);
                 }else if(event.getAction() == MotionEvent.ACTION_UP){
                     //Toast.makeText(MainActivity.this,"松开了" + slider.getProgress() ,Toast.LENGTH_SHORT).show();
-                    leftButton.setBackgroundResource(R.drawable.left_button_arrow);
+                    //leftButton.setBackgroundResource(R.drawable.left_button_arrow);
+                    leftButton.setBackgroundResource(R.drawable.left_right_button_background);
                     //lastProgress = slider.getProgress() - 30;
                     progress = slider.getProgress() - 30;
                     slider.setProgress(lastProgress);
@@ -231,23 +235,26 @@ public class MainActivity extends AppCompatActivity {
 
 
         final  Button rightButton = new Button(this);
-        rightButton.setBackgroundResource(R.drawable.right_button_arrow);
+        //rightButton.setBackgroundResource(R.drawable.right_button_arrow);
 
-//        Drawable rightButtonForeground = getDrawable(R.drawable.right_button_arrow);
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-//            rightButton.setForeground(rightButtonForeground);
-//        }
-//        rightButton.setBackgroundColor(Color.parseColor("#287a78"));
+        Drawable rightButtonForeground = getDrawable(R.drawable.right_button_arrow);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            rightButton.setForeground(rightButtonForeground);
+        }
+        //rightButton.setBackgroundColor(Color.parseColor("#287a78"));
+        rightButton.setBackgroundResource(R.drawable.left_right_button_background);
 
         rightButton.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 if(event.getAction() == MotionEvent.ACTION_DOWN){
                     //Toast.makeText(MainActivity.this,"按下了" ,Toast.LENGTH_SHORT).show();
-                    rightButton.setBackgroundColor(Color.parseColor("#17252a"));
+                    //rightButton.setBackgroundColor(Color.parseColor("#17252a"));
+                    rightButton.setBackgroundResource(R.drawable.left_right_button_background_pressed);
                 }else if(event.getAction() == MotionEvent.ACTION_UP){
                     //Toast.makeText(MainActivity.this,"松开了" + slider.getProgress() ,Toast.LENGTH_SHORT).show();
-                    rightButton.setBackgroundResource(R.drawable.right_button_arrow);
+                    //rightButton.setBackgroundResource(R.drawable.right_button_arrow);
+                    rightButton.setBackgroundResource(R.drawable.left_right_button_background);
                     //lastProgress = slider.getProgress() + 30;
                     progress = slider.getProgress() + 30;
                     slider.setProgress(lastProgress);
