@@ -760,7 +760,7 @@ public class TempleView extends View {
             Paint selectedYearTempleFramePaint = new Paint();
             selectedYearTempleFramePaint.setColor(Color.parseColor("#287a78"));
             selectedYearTempleFramePaint.setStyle(Paint.Style.FILL);
-            c.drawCircle(currentTempleX, currentTempleY, newCurrentTempleRadius + 10 , selectedYearTempleFramePaint);
+            c.drawCircle(currentTempleX, currentTempleY, newCurrentTempleRadius * 1.1f , selectedYearTempleFramePaint);
             c.drawText(selectedYear, 100, 100, yearDisplayPaint);
         } else {
             // do nothing
