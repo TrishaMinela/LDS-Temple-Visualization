@@ -538,6 +538,7 @@ public class MainActivity extends AppCompatActivity {
         picker.setDisplayedValues(temporary); //设置文字
         picker.setMaxValue(temporary.length - 1); //设置最大值
         //picker.setValue(0);
+        picker.setValue(selectedYearIndex);
 
 
         // we can use this text view to pass over want ever year is selected, or we can use a field so that it can be accessed from inner class
