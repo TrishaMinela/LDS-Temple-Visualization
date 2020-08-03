@@ -748,7 +748,17 @@ public class TempleView extends View {
         currentTempleMatrix.setScale(4 * currentTempleSize, 4 * currentTempleSize);
         currentTempleMatrix.postTranslate(currentTempleX - t.getWidth()  *currentTempleSize*2, currentTempleY - t.getHeight() * currentTempleSize*2);
 
+
+        Paint selectedYearTempleFramePaint = new Paint();
+
+        selectedYearTempleFramePaint.setColor(Color.parseColor("#287a78"));
+        selectedYearTempleFramePaint.setStyle(Paint.Style.FILL);
+
+        c.drawCircle(currentTempleX, currentTempleY, newCurrentTempleRadius + 10 , selectedYearTempleFramePaint);
+
         c.drawBitmap(t, currentTempleMatrix, null);
+
+
     }
 
     //place all circles, and get the index of on screen temples
