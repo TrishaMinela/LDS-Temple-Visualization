@@ -549,6 +549,7 @@ public class MainActivity extends AppCompatActivity {
         tx.setTextSize(20);
         tx.setPadding(5,20,5,5);
         tx.setTextColor(Color.BLACK);
+        selectedYear = "1836"; // we need this here, other wise, selectedYear is null when first time open year picker dialog and not moving the picker when passed in TempleView through method.
         picker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker picker, int i, int i1) {
@@ -587,6 +588,7 @@ public class MainActivity extends AppCompatActivity {
                 slider.setProgress(lastProgress);
                 tv.setDegree(slider.getProgress());
                 tv.invalidate();
+                tv.getSelectedYear(selectedYear);
             }
         });
         builder.setNegativeButton("No", new DialogInterface.OnClickListener() {

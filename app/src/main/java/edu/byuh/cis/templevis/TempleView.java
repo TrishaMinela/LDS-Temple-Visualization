@@ -59,6 +59,7 @@ public class TempleView extends View {
     private ArrayList<String> allTempleLinks;
     private ArrayList<String> allTempleInfo;
     public ArrayList<String> allYears;
+
     private float sliderProgress;
     private float thetaPre;
     private int eachIndex;
@@ -84,6 +85,7 @@ public class TempleView extends View {
     private String oneTempleInfo;
     private static ArrayList<Integer> allTempleInfoFileIds;
     private Boolean show_label;
+    private String selectedYear;
 
 
     public TempleView(Context context) {
@@ -120,6 +122,7 @@ public class TempleView extends View {
         yearDisplayPaint = new Paint();
         firstLaunch = TRUE;
         allSpiralImageIds = new ArrayList<>();
+        selectedYear = "";
 
     }
 
@@ -732,7 +735,11 @@ public class TempleView extends View {
         }
     }
 
-    public void actuallyDrawing(float ts, Bitmap t, Canvas c) {
+    public void getSelectedYear(String s) {
+        selectedYear = s;
+    }
+
+    public void actuallyDrawing(float ts, Bitmap t, Canvas c, int thisTempleIndex) {
 
         float currentTempleSize = sizes.get((int) (ts));
 
@@ -748,13 +755,18 @@ public class TempleView extends View {
         currentTempleMatrix.setScale(4 * currentTempleSize, 4 * currentTempleSize);
         currentTempleMatrix.postTranslate(currentTempleX - t.getWidth()  *currentTempleSize*2, currentTempleY - t.getHeight() * currentTempleSize*2);
 
+        // if current temple is with selected year then draw a circle frame
+        if (allYears.get(thisTempleIndex).equals(selectedYear)) {
+            Paint selectedYearTempleFramePaint = new Paint();
+            selectedYearTempleFramePaint.setColor(Color.parseColor("#287a78"));
+            selectedYearTempleFramePaint.setStyle(Paint.Style.FILL);
+            c.drawCircle(currentTempleX, currentTempleY, newCurrentTempleRadius + 10 , selectedYearTempleFramePaint);
+            c.drawText(selectedYear, 150, 100, yearDisplayPaint);
+        } else {
+            // do nothing 
+        }
 
-        Paint selectedYearTempleFramePaint = new Paint();
 
-        selectedYearTempleFramePaint.setColor(Color.parseColor("#287a78"));
-        selectedYearTempleFramePaint.setStyle(Paint.Style.FILL);
-
-        c.drawCircle(currentTempleX, currentTempleY, newCurrentTempleRadius + 10 , selectedYearTempleFramePaint);
 
         c.drawBitmap(t, currentTempleMatrix, null);
 
@@ -769,9 +781,10 @@ public class TempleView extends View {
 
         onScreenTemples.clear();
         for (Bitmap t : temples) {
+            int thisTempleIndex = temples.indexOf(t);
             float ts = theta - 30 * temples.indexOf(t);
             if (ts > 0 && ts < spiralCoordinates.size() - 150) {
-                actuallyDrawing(ts, t, c);
+                actuallyDrawing(ts, t, c, thisTempleIndex);
                 drawTempleLabels(ts, t, c);
 
                 //add all on screen temples index to a array list once the slider stopped moving,
