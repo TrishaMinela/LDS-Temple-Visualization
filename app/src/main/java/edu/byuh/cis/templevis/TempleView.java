@@ -763,7 +763,7 @@ public class TempleView extends View {
             c.drawCircle(currentTempleX, currentTempleY, newCurrentTempleRadius + 10 , selectedYearTempleFramePaint);
             c.drawText(selectedYear, 150, 100, yearDisplayPaint);
         } else {
-            // do nothing 
+            // do nothing
         }
 
 

@@ -582,9 +582,9 @@ public class MainActivity extends AppCompatActivity {
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 //set onclick method for this button below
-                Toast.makeText(mContext, yearPickerString + " index of " + selectedYearIndex, Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, yearPickerString + " theta is " + templeYearsThetaFriends.get(selectedYearIndex), Toast.LENGTH_SHORT).show();
                 //we can use this selected year value to update spiral
-                progress = templeYearsThetaFriends.get(selectedYearIndex);
+                progress = templeYearsThetaFriends.get(selectedYearIndex) - 200;
                 slider.setProgress(lastProgress);
                 tv.setDegree(slider.getProgress());
                 tv.invalidate();
