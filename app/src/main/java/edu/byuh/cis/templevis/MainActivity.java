@@ -36,6 +36,8 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import static android.graphics.Color.BLUE;
 import static android.graphics.Color.GREEN;
@@ -64,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
     private String selectedYear;
     private int selectedYearIndex;
     private String yearPickerString;
+    private ArrayList<Integer> templeYearsThetaFriends = new ArrayList<Integer>();
 
     public class MyTimer extends Handler {
 
@@ -129,6 +132,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         super.setContentView(R.layout.activity_main);
         mContext = MainActivity.this;
+
+
+        //(245, 300, 325, 340, 380, 420, 450, 490, 520, 540, 570, 610, 680, 715, 750, 780, 810, 850, 890, 1070, 1290, 1430, 1520, 1540, 1575, 1630, 1660, 1700, 1710, 1755, 1850, 1890, 2315, 3330, 3540, 3720, 3800, 3850, 3950, 4030, 4110, 4200, 4300, 4400, 4520, 4540, 4650, 4785, 4935, 5100, 5110, 5320, 5330, 5800, 6990)
+        List<Integer> temporaryHolder = Arrays.asList(245, 300, 325, 340, 380, 420, 450, 490, 520, 540, 570, 610, 680, 715, 750, 780, 810, 850, 890, 1070, 1290, 1430, 1520, 1540, 1575, 1630, 1660, 1700, 1710, 1755, 1850, 1890, 2315, 3330, 3540, 3720, 3800, 3850, 3950, 4030, 4110, 4200, 4300, 4400, 4520, 4540, 4650, 4785, 4935, 5100, 5110, 5320, 5330, 5800, 6990);
+        for (int i : temporaryHolder) {
+            templeYearsThetaFriends.add(i);
+        }
 
         WindowManager manager = this.getWindowManager();
         DisplayMetrics outMetrics = new DisplayMetrics();
@@ -502,7 +512,7 @@ public class MainActivity extends AppCompatActivity {
         //picker.setMaxValue(10);
         //String[] test = new String[]{"北京","上海","广州","深圳"};
 
-        ArrayList<String> allYearsWithoutDuplicates = new ArrayList<>();
+        final ArrayList<String> allYearsWithoutDuplicates = new ArrayList<>();
         for (int i=0; i<tv.allYears.size(); i++) {
             String toBeAdded = tv.allYears.get(i);
             if (toBeAdded.equals("0000")) {
@@ -573,7 +583,7 @@ public class MainActivity extends AppCompatActivity {
                 //set onclick method for this button below
                 Toast.makeText(mContext, yearPickerString + " index of " + selectedYearIndex, Toast.LENGTH_SHORT).show();
                 //we can use this selected year value to update spiral
-                progress = 1000;
+                progress = templeYearsThetaFriends.get(selectedYearIndex);
                 slider.setProgress(lastProgress);
                 tv.setDegree(slider.getProgress());
                 tv.invalidate();
@@ -582,7 +592,7 @@ public class MainActivity extends AppCompatActivity {
         builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 //do nothing
-                Toast.makeText(mContext, "Year Picker Dismissed", Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, "Year Picker Dismissed" + templeYearsThetaFriends.size(), Toast.LENGTH_SHORT).show();
             }
         });
 
