@@ -68,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
     private String yearPickerString;
     private ArrayList<Integer> templeYearsThetaFriends = new ArrayList<Integer>();
     private AlertDialog.Builder yearPickerDialogBuilder;
+    private boolean yearPickerDialogDismissedByPositiveButton;
 
     public class MyTimer extends Handler {
 
@@ -141,6 +142,7 @@ public class MainActivity extends AppCompatActivity {
             templeYearsThetaFriends.add(i);
         }
         yearPickerDialogBuilder = new AlertDialog.Builder(this);
+        yearPickerDialogDismissedByPositiveButton = false;
 
 
         WindowManager manager = this.getWindowManager();
@@ -444,6 +446,7 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -506,6 +509,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     public void showYearPickerDialog() {
 
         final NumberPicker picker = new NumberPicker(this);
@@ -570,6 +574,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
         LinearLayout yearPickerView = new LinearLayout(this);
         yearPickerView.setOrientation(LinearLayout.VERTICAL);
         yearPickerView.addView(tx);
@@ -590,24 +595,36 @@ public class MainActivity extends AppCompatActivity {
 //            Toast.makeText(MainActivity.this, "没显示", Toast.LENGTH_SHORT).show();
 //        }
 //
-        yearPickerDialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+        yearPickerDialogBuilder.setPositiveButton("View", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 // this enables year picker setOnValueChangedListener get called when click on positive button after entering a value.
                 picker.clearFocus();
                 //set onclick method for this button below
-                Toast.makeText(mContext, yearPickerString + " theta is " + templeYearsThetaFriends.get(selectedYearIndex), Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, yearPickerString, Toast.LENGTH_SHORT).show();
                 //we can use this selected year value to update spiral
                 progress = templeYearsThetaFriends.get(selectedYearIndex) - 200;
                 slider.setProgress(lastProgress);
                 tv.setDegree(slider.getProgress());
                 tv.invalidate();
                 tv.getSelectedYear(selectedYear);
+                yearPickerDialogDismissedByPositiveButton = true;
             }
         });
-        yearPickerDialogBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+        yearPickerDialogBuilder.setNegativeButton("Dismiss", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
-                //do nothing
-                Toast.makeText(mContext, "Year Picker Dismissed" + templeYearsThetaFriends.size(), Toast.LENGTH_SHORT).show();
+                // do nothing
+                //Toast.makeText(mContext, "Year Picker Dismissed" + templeYearsThetaFriends.size(), Toast.LENGTH_SHORT).show();
+            }
+        });
+        yearPickerDialogBuilder.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialog) {
+                //处理监听事件
+                if(!yearPickerDialogDismissedByPositiveButton) {
+                    Toast.makeText(mContext, "You didn't pick any year", Toast.LENGTH_SHORT).show();
+                }
+                yearPickerDialogDismissedByPositiveButton = false;
+
             }
         });
 
