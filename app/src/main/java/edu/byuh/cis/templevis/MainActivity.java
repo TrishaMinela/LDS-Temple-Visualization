@@ -62,6 +62,8 @@ public class MainActivity extends AppCompatActivity {
     private LinearLayout lnlH;
     private Boolean sliderChangedByButton = false;
     private String selectedYear;
+    private int selectedYearIndex;
+    private String yearPickerString;
 
     public class MyTimer extends Handler {
 
@@ -528,10 +530,12 @@ public class MainActivity extends AppCompatActivity {
         //picker.setValue(0);
 
 
-        // we use this textview to pass over want ever year is selected, or we can use a field so that it can be accessed from inner class
+        // we can use this text view to pass over want ever year is selected, or we can use a field so that it can be accessed from inner class
+        // this text view is the title
         final TextView tx = new TextView(this);
         tx.setGravity(Gravity.CENTER);
-        tx.setText("View Temple dedicated in " + "1836");
+        yearPickerString = "View Temple dedicated in " + "1836";
+        tx.setText(yearPickerString);
         tx.setTextSize(20);
         tx.setPadding(5,20,5,5);
         tx.setTextColor(Color.BLACK);
@@ -539,13 +543,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onValueChange(NumberPicker picker, int i, int i1) {
                 selectedYear = temporary[i1]; // pass this selected value to dialog button, we can use a field so that it can be accessed from inner class
+                selectedYearIndex = i1;
                 if (temporary[i1].length() == 4) {
-                    tx.setText("View Temple dedicated in " + temporary[i1]);
+                    yearPickerString = "View Temple dedicated in " + temporary[i1];
+                    tx.setText(yearPickerString);
                 } else {
-                    tx.setText("View " + temporary[i1]);
+                    yearPickerString = "View " + temporary[i1];
+                    tx.setText(yearPickerString);
                 }
             }
         });
+
 
 
 
@@ -563,15 +571,18 @@ public class MainActivity extends AppCompatActivity {
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 //set onclick method for this button below
-                Toast.makeText(mContext, "click on yes " + selectedYear, Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, yearPickerString + " index of " + selectedYearIndex, Toast.LENGTH_SHORT).show();
                 //we can use this selected year value to update spiral
-
+                progress = 1000;
+                slider.setProgress(lastProgress);
+                tv.setDegree(slider.getProgress());
+                tv.invalidate();
             }
         });
         builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 //do nothing
-                Toast.makeText(mContext, "click on no", Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, "Year Picker Dismissed", Toast.LENGTH_SHORT).show();
             }
         });
 
