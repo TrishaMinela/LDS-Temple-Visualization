@@ -755,13 +755,21 @@ public class TempleView extends View {
         currentTempleMatrix.setScale(4 * currentTempleSize, 4 * currentTempleSize);
         currentTempleMatrix.postTranslate(currentTempleX - t.getWidth()  *currentTempleSize*2, currentTempleY - t.getHeight() * currentTempleSize*2);
 
+        Paint selectedYearTempleFramePaint = new Paint();
+        selectedYearTempleFramePaint.setColor(Color.parseColor("#287a78"));
+        selectedYearTempleFramePaint.setStyle(Paint.Style.FILL);
+        if (selectedYear.equals("Temples under construction")) {
+            selectedYear = "0000";
+        } else if (selectedYear.equals("Future Temples")) {
+            selectedYear = "1111";
+        }
         // if current temple is with selected year then draw a circle frame
         if (allYears.get(thisTempleIndex).equals(selectedYear)) {
-            Paint selectedYearTempleFramePaint = new Paint();
-            selectedYearTempleFramePaint.setColor(Color.parseColor("#287a78"));
-            selectedYearTempleFramePaint.setStyle(Paint.Style.FILL);
             c.drawCircle(currentTempleX, currentTempleY, newCurrentTempleRadius * 1.1f , selectedYearTempleFramePaint);
-            c.drawText(selectedYear, 100, 100, yearDisplayPaint);
+            if (!(selectedYear.equals("0000") || selectedYear.equals("1111"))) {
+                c.drawText(selectedYear, 100, 100, yearDisplayPaint);
+            }
+
         } else {
             // do nothing
         }

@@ -592,6 +592,7 @@ public class MainActivity extends AppCompatActivity {
 //
         yearPickerDialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
+                // this enables year picker setOnValueChangedListener get called when click on positive button after entering a value.
                 picker.clearFocus();
                 //set onclick method for this button below
                 Toast.makeText(mContext, yearPickerString + " theta is " + templeYearsThetaFriends.get(selectedYearIndex), Toast.LENGTH_SHORT).show();
