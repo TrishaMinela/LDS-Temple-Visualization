@@ -145,6 +145,7 @@ public class MainActivity extends AppCompatActivity {
         }
         yearPickerDialogBuilder = new AlertDialog.Builder(this);
         yearPickerDialogDismissedByPositiveButton = false;
+        selectedYearIndex = 52;
 
 
         WindowManager manager = this.getWindowManager();
@@ -514,11 +515,11 @@ public class MainActivity extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     public void showYearPickerDialog() {
 
-        final NumberPicker picker = new NumberPicker(this);
+        final NumberPicker yearPickerPicker = new NumberPicker(this);
 
-        //picker.setDisplayedValues(s);
-        //picker.setMinValue(0);
-        //picker.setMaxValue(10);
+        //yearPickerPicker.setDisplayedValues(s);
+        //yearPickerPicker.setMinValue(0);
+        //yearPickerPicker.setMaxValue(10);
         //String[] test = new String[]{"北京","上海","广州","深圳"};
 
         final ArrayList<String> allYearsWithoutDuplicates = new ArrayList<>();
@@ -544,23 +545,21 @@ public class MainActivity extends AppCompatActivity {
         //Toast.makeText(mContext, "allYeas size: " + tv.allYears.size() + "", Toast.LENGTH_SHORT).show();
         //Toast.makeText(mContext, temporary[100] + "", Toast.LENGTH_SHORT).show();
 
-        picker.setDisplayedValues(temporary); //设置文字
-        picker.setMaxValue(temporary.length - 1); //设置最大值
-        //picker.setValue(0);
-        picker.setValue(selectedYearIndex);
-
-
+        yearPickerPicker.setDisplayedValues(temporary); //设置文字
+        yearPickerPicker.setMaxValue(temporary.length - 1); //设置最大值
+        //yearPickerPicker.setValue(0);
+        yearPickerPicker.setValue(selectedYearIndex);
+        selectedYear = "2020"; // we need this here, other wise, selectedYear is null when first time open year yearPickerPicker dialog and not moving the yearPickerPicker when passed in TempleView through method.
 
         // we can use this text view to pass over want ever year is selected, or we can use a field so that it can be accessed from inner class
         // this text view is the title
         final TextView tx = new TextView(this);
         tx.setGravity(Gravity.CENTER);
-        yearPickerString = getResources().getString(R.string.view_temples_dedicated_In) + "1836";
+        yearPickerString = getResources().getString(R.string.view_temples_dedicated_In) + "2020";
         tx.setText(yearPickerString);
         tx.setTextSize(20);
         tx.setPadding(5,20,5,5);
         tx.setTextColor(Color.BLACK);
-        selectedYear = "1836"; // we need this here, other wise, selectedYear is null when first time open year picker dialog and not moving the picker when passed in TempleView through method.
 
 
         Locale curLocale = getResources().getConfiguration().locale;
@@ -570,7 +569,7 @@ public class MainActivity extends AppCompatActivity {
             spaceDependingOnLanguage = " "; //英文
         }
 
-        picker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
+        yearPickerPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker picker, int i, int i1) {
                 selectedYear = temporary[i1]; // pass this selected value to dialog button, we can use a field so that it can be accessed from inner class
@@ -589,7 +588,7 @@ public class MainActivity extends AppCompatActivity {
         LinearLayout yearPickerView = new LinearLayout(this);
         yearPickerView.setOrientation(LinearLayout.VERTICAL);
         yearPickerView.addView(tx);
-        yearPickerView.addView(picker);
+        yearPickerView.addView(yearPickerPicker);
 
 
         //builder.setTitle("hi");
@@ -597,7 +596,7 @@ public class MainActivity extends AppCompatActivity {
         yearPickerDialogBuilder.setCancelable(true);
 
         // user cannot enter a value
-        //picker.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
+        //yearPickerPicker.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
 
 //
 //        if(getWindow().getAttributes().softInputMode == WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE){
@@ -608,8 +607,8 @@ public class MainActivity extends AppCompatActivity {
 //
         yearPickerDialogBuilder.setPositiveButton(getResources().getString(R.string.view), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
-                // this enables year picker setOnValueChangedListener get called when click on positive button after entering a value.
-                picker.clearFocus();
+                // this enables year yearPickerPicker setOnValueChangedListener get called when click on positive button after entering a value.
+                yearPickerPicker.clearFocus();
                 //set onclick method for this button below
                 Toast.makeText(mContext, yearPickerString, Toast.LENGTH_SHORT).show();
                 //we can use this selected year value to update spiral
