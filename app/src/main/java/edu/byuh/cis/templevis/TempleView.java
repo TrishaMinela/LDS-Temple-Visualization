@@ -758,9 +758,9 @@ public class TempleView extends View {
         Paint selectedYearTempleFramePaint = new Paint();
         selectedYearTempleFramePaint.setColor(Color.parseColor("#287a78"));
         selectedYearTempleFramePaint.setStyle(Paint.Style.FILL);
-        if (selectedYear.equals("Temples under construction")) {
+        if (selectedYear.equals("Temples under construction") || selectedYear.equals("建设中的圣殿")) {
             selectedYear = "0000";
-        } else if (selectedYear.equals("Future Temples")) {
+        } else if (selectedYear.equals("Future Temples") || selectedYear.equals("即将奉献的圣殿")) {
             selectedYear = "1111";
         }
         // if current temple is with selected year then draw a circle frame
