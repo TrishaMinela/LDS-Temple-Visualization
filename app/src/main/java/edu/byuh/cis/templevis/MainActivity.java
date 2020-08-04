@@ -550,7 +550,8 @@ public class MainActivity extends AppCompatActivity {
         //yearPickerPicker.setValue(0);
         yearPickerPicker.setValue(selectedYearIndex);
         selectedYear = "2020"; // we need this here, other wise, selectedYear is null when first time open year yearPickerPicker dialog and not moving the yearPickerPicker when passed in TempleView through method.
-        yearPickerPicker.setTextColor(Color.GRAY);
+        //yearPickerPicker.setTextColor(Color.GRAY);
+
 
 
 
