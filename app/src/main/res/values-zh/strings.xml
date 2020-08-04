@@ -50,8 +50,9 @@
     <string name="show_label_on">较大的圣殿图片将会显示名称</string>
     <string name="show_label_off">不显示任何圣殿名称</string>
     <string name="temples_under_construction">建设中的圣殿</string>
-    <string name="view_temples_dedicated_In">显示在这年奉献的圣殿：</string>
+    <string name="view_temples_dedicated_In">奉献的圣殿</string>
     <string name="view">显示</string>
     <string name="you_didnt_pick_any_year">你没有选择任何年份</string>
+    <string name="year">年</string>
 
 </resources>

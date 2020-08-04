@@ -551,15 +551,7 @@ public class MainActivity extends AppCompatActivity {
         yearPickerPicker.setValue(selectedYearIndex);
         selectedYear = "2020"; // we need this here, other wise, selectedYear is null when first time open year yearPickerPicker dialog and not moving the yearPickerPicker when passed in TempleView through method.
 
-        // we can use this text view to pass over want ever year is selected, or we can use a field so that it can be accessed from inner class
-        // this text view is the title
-        final TextView tx = new TextView(this);
-        tx.setGravity(Gravity.CENTER);
-        yearPickerString = getResources().getString(R.string.view_temples_dedicated_In) + "2020";
-        tx.setText(yearPickerString);
-        tx.setTextSize(20);
-        tx.setPadding(5,20,5,5);
-        tx.setTextColor(Color.BLACK);
+
 
 
         Locale curLocale = getResources().getConfiguration().locale;
@@ -569,18 +561,39 @@ public class MainActivity extends AppCompatActivity {
             spaceDependingOnLanguage = " "; //英文
         }
 
+        // we can use this text view to pass over want ever year is selected, or we can use a field so that it can be accessed from inner class
+        // this text view is the title
+        final TextView tx = new TextView(this);
+        tx.setGravity(Gravity.CENTER);
+        if (curLocale.equals(Locale.SIMPLIFIED_CHINESE)) {
+            yearPickerString = getResources().getString(R.string.view) + " " + "2020" + " " + getResources().getString(R.string.year) + getResources().getString(R.string.view_temples_dedicated_In); //英文
+            // 中文
+        } else {
+            yearPickerString = getResources().getString(R.string.view_temples_dedicated_In) + "2020"; //英文
+        }
+        tx.setText(yearPickerString);
+        tx.setTextSize(20);
+        tx.setPadding(5,20,5,5);
+        tx.setTextColor(Color.BLACK);
+
         yearPickerPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker picker, int i, int i1) {
                 selectedYear = temporary[i1]; // pass this selected value to dialog button, we can use a field so that it can be accessed from inner class
                 selectedYearIndex = i1;
                 if (temporary[i1].length() == 4) {
-                    yearPickerString = getResources().getString(R.string.view_temples_dedicated_In) + temporary[i1];
-                    tx.setText(yearPickerString);
+                    Locale curLocale = getResources().getConfiguration().locale;
+                    if (curLocale.equals(Locale.SIMPLIFIED_CHINESE)) {
+                        yearPickerString = getResources().getString(R.string.view) + " " + temporary[i1] + " " + getResources().getString(R.string.year) + getResources().getString(R.string.view_temples_dedicated_In); //英文
+                        // 中文
+                    } else {
+                        yearPickerString = getResources().getString(R.string.view_temples_dedicated_In) + temporary[i1]; //英文
+                    }
+
                 } else {
                     yearPickerString = getResources().getString(R.string.view) + spaceDependingOnLanguage + temporary[i1];
-                    tx.setText(yearPickerString);
                 }
+                tx.setText(yearPickerString);
             }
         });
 

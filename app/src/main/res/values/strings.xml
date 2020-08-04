@@ -52,6 +52,7 @@
     <string name="view_temples_dedicated_In">View Temple(s) dedicated in</string>
     <string name="view">View</string>
     <string name="you_didnt_pick_any_year">You didn\'t pick any year</string>
+    <string name="year">Year</string>
 
 
 </resources>
