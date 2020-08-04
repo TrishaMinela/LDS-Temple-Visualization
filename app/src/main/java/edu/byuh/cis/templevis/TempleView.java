@@ -432,13 +432,13 @@ public class TempleView extends View {
 
                                 builder.setCancelable(true);
 
-                                builder.setPositiveButton(getResources().getString(R.string.return_button), new DialogInterface.OnClickListener() {
+                                builder.setPositiveButton(getResources().getString(R.string.website_button), new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int id) {
                                         //do nothing
                                     }
                                 });
 
-                                builder.setNegativeButton(getResources().getString(R.string.website_button), new DialogInterface.OnClickListener() {
+                                builder.setNegativeButton(getResources().getString(R.string.return_button), new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int id) {
                                         //set onclick method for this button below
                                     }
@@ -459,7 +459,7 @@ public class TempleView extends View {
                                 btnPositive.setLayoutParams(layoutParams);
                                 btnNegative.setLayoutParams(layoutParams);
 
-                                dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setOnClickListener(new View.OnClickListener() {
+                                dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
                                         //dialog.dismiss();
