@@ -38,6 +38,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 
 import static android.graphics.Color.BLUE;
 import static android.graphics.Color.GREEN;
@@ -69,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<Integer> templeYearsThetaFriends = new ArrayList<Integer>();
     private AlertDialog.Builder yearPickerDialogBuilder;
     private boolean yearPickerDialogDismissedByPositiveButton;
+    private String spaceDependingOnLanguage = "";
 
     public class MyTimer extends Handler {
 
@@ -523,9 +525,9 @@ public class MainActivity extends AppCompatActivity {
         for (int i=0; i<tv.allYears.size(); i++) {
             String toBeAdded = tv.allYears.get(i);
             if (toBeAdded.equals("0000")) {
-                toBeAdded = "Temples under construction";
+                toBeAdded = getResources().getString(R.string.temples_under_construction);
             } else if (toBeAdded.equals("1111")) {
-                toBeAdded = "Future Temples";
+                toBeAdded = getResources().getString(R.string.future_temples);
             }
             if(!allYearsWithoutDuplicates.contains(toBeAdded)) {
                 allYearsWithoutDuplicates.add(toBeAdded);
@@ -553,22 +555,31 @@ public class MainActivity extends AppCompatActivity {
         // this text view is the title
         final TextView tx = new TextView(this);
         tx.setGravity(Gravity.CENTER);
-        yearPickerString = "View Temple dedicated in " + "1836";
+        yearPickerString = getResources().getString(R.string.view_temples_dedicated_In) + "1836";
         tx.setText(yearPickerString);
         tx.setTextSize(20);
         tx.setPadding(5,20,5,5);
         tx.setTextColor(Color.BLACK);
         selectedYear = "1836"; // we need this here, other wise, selectedYear is null when first time open year picker dialog and not moving the picker when passed in TempleView through method.
+
+
+        Locale curLocale = getResources().getConfiguration().locale;
+        if (curLocale.equals(Locale.SIMPLIFIED_CHINESE)) {
+            // do nothing //中文
+        } else {
+            spaceDependingOnLanguage = " "; //英文
+        }
+
         picker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker picker, int i, int i1) {
                 selectedYear = temporary[i1]; // pass this selected value to dialog button, we can use a field so that it can be accessed from inner class
                 selectedYearIndex = i1;
                 if (temporary[i1].length() == 4) {
-                    yearPickerString = "View Temple dedicated in " + temporary[i1];
+                    yearPickerString = getResources().getString(R.string.view_temples_dedicated_In) + temporary[i1];
                     tx.setText(yearPickerString);
                 } else {
-                    yearPickerString = "View " + temporary[i1];
+                    yearPickerString = getResources().getString(R.string.view) + spaceDependingOnLanguage + temporary[i1];
                     tx.setText(yearPickerString);
                 }
             }
@@ -595,7 +606,7 @@ public class MainActivity extends AppCompatActivity {
 //            Toast.makeText(MainActivity.this, "没显示", Toast.LENGTH_SHORT).show();
 //        }
 //
-        yearPickerDialogBuilder.setPositiveButton("View", new DialogInterface.OnClickListener() {
+        yearPickerDialogBuilder.setPositiveButton(getResources().getString(R.string.view), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 // this enables year picker setOnValueChangedListener get called when click on positive button after entering a value.
                 picker.clearFocus();
@@ -610,7 +621,7 @@ public class MainActivity extends AppCompatActivity {
                 yearPickerDialogDismissedByPositiveButton = true;
             }
         });
-        yearPickerDialogBuilder.setNegativeButton("Dismiss", new DialogInterface.OnClickListener() {
+        yearPickerDialogBuilder.setNegativeButton(getResources().getString(R.string.return_button), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 // do nothing
                 //Toast.makeText(mContext, "Year Picker Dismissed" + templeYearsThetaFriends.size(), Toast.LENGTH_SHORT).show();

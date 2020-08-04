@@ -48,5 +48,9 @@
     <string name="show_label_title">Temple Label</string>
     <string name="show_label_on">Temple names will show for larger temples</string>
     <string name="show_label_off">Temple names will not show for any temples</string>
+    <string name="temples_under_construction">Temples under construction</string>
+    <string name="view_temples_dedicated_In">"View Temple(s) dedicated in "</string>
+    <string name="view">View</string>
+    <string name="you_didnt_pick_any_year">You didn\'t pick any year</string>
 
 </resources>
