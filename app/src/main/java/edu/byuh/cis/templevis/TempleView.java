@@ -858,7 +858,7 @@ public class TempleView extends View {
         endYear = endYear.substring(endYear.length()-5);
 
         if (theta <= 40){
-            c.drawText( getResources().getString(R.string.welcome_to_view) + " " + getResources().getString(R.string.lds_temples), screenWidth / 2, 39 * screenHeight / 40, yearDisplayPaint);
+            c.drawText( getResources().getString(R.string.first_temple) + "" + "1836", screenWidth / 2, 39 * screenHeight / 40, yearDisplayPaint);
         } else if (theta > 5550 ) {
             c.drawText( getResources().getString(R.string.future_temples), screenWidth / 2, 39 * screenHeight / 40, yearDisplayPaint);
         } else if (endYear.contains("0000") || endYear.contains("1111")){
@@ -886,8 +886,8 @@ public class TempleView extends View {
         endYear = endYear.substring(endYear.length()-5);
 
         if (theta <= 40){
-            c.drawText(getResources().getString(R.string.welcome_to_view), 6.5f * screenWidth / 4, 18 * screenHeight / 40, yearDisplayPaint);
-            c.drawText(getResources().getString(R.string.lds_temples), 6.5f * screenWidth / 4, 22 * screenHeight / 40, yearDisplayPaint);
+            c.drawText(getResources().getString(R.string.first_temple), 6.5f * screenWidth / 4, 18 * screenHeight / 40, yearDisplayPaint);
+            c.drawText("1836", 6.5f * screenWidth / 4, 22 * screenHeight / 40, yearDisplayPaint);
         } else if (theta > 5550 ) {
             c.drawText(getResources().getString(R.string.future_temples), 6.5f * screenWidth / 4, 20 * screenHeight / 40, yearDisplayPaint);
         } else if (endYear.contains("0000") || endYear.contains("1111")){

@@ -53,5 +53,6 @@
     <string name="view">View</string>
     <string name="you_didnt_pick_any_year">You didn\'t pick any year</string>
     <string name="year">Year</string>
+    <string name="first_temple">"First temple: "</string>
 
 </resources>
