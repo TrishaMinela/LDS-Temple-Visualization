@@ -300,7 +300,7 @@ public class TempleView extends View {
             int moveTheta = 10;
 
             boolean thetaMaxReached = theta >= 6800;
-            boolean thetaMinReached = theta <= 0;
+            boolean thetaMinReached = theta <= 30;
 
             if (leftThirdVertical) {
                 if (yDisplacementFromLastMove > 0) {
@@ -857,7 +857,7 @@ public class TempleView extends View {
         startYear = startYear.substring(startYear.length()-5);
         endYear = endYear.substring(endYear.length()-5);
 
-        if (theta == 0){
+        if (theta <= 40){
             c.drawText( getResources().getString(R.string.welcome_to_view) + " " + getResources().getString(R.string.lds_temples), screenWidth / 2, 39 * screenHeight / 40, yearDisplayPaint);
         } else if (theta > 5550 ) {
             c.drawText( getResources().getString(R.string.future_temples), screenWidth / 2, 39 * screenHeight / 40, yearDisplayPaint);
@@ -885,7 +885,7 @@ public class TempleView extends View {
         startYear = startYear.substring(startYear.length()-5);
         endYear = endYear.substring(endYear.length()-5);
 
-        if (theta == 0){
+        if (theta <= 40){
             c.drawText(getResources().getString(R.string.welcome_to_view), 6.5f * screenWidth / 4, 18 * screenHeight / 40, yearDisplayPaint);
             c.drawText(getResources().getString(R.string.lds_temples), 6.5f * screenWidth / 4, 22 * screenHeight / 40, yearDisplayPaint);
         } else if (theta > 5550 ) {

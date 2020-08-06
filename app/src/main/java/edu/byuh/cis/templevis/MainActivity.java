@@ -170,6 +170,7 @@ public class MainActivity extends AppCompatActivity {
         slider.setProgress(5550);
 
 
+
         timA = new MyTimer();
 
         progress = 5550;
@@ -177,21 +178,25 @@ public class MainActivity extends AppCompatActivity {
         slider.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                if (sliderTouchedByHuman) {
-                    int disableClickLastProgress = (int)(tv.getLastProgress());
-                    //Log.d("slider changing", "last progress and i are " + disableClickLastProgress + " ||| " + i + " ");
+                if (i >= 30) {
+                    if (sliderTouchedByHuman) {
+                        int disableClickLastProgress = (int)(tv.getLastProgress());
+                        //Log.d("slider changing", "last progress and i are " + disableClickLastProgress + " ||| " + i + " ");
 
-                    if (Math.abs(disableClickLastProgress - i) > 200) {
-                        slider.setProgress(disableClickLastProgress);
+                        if (Math.abs(disableClickLastProgress - i) > 200) {
+                            slider.setProgress(disableClickLastProgress);
+                        } else {
+                            tv.setDegree(i);
+                            tv.invalidate();
+                        }
+                        progress = i;
                     } else {
-                        tv.setDegree(i);
-                        tv.invalidate();
+                        slider.setProgress(lastProgress);
                     }
-                    progress = i;
-                } else {
-                    slider.setProgress(lastProgress);
+                    Log.d("progress", "IN oProgressChanged is " + i + " ");
                 }
-                //Log.d("progress", "IN oProgressChanged is " + i + " ");
+
+
             }
 
             @Override
@@ -263,7 +268,11 @@ public class MainActivity extends AppCompatActivity {
                         leftButton.setForeground(leftButtonForeground);
                     }
                     //lastProgress = slider.getProgress() - 30;
-                    progress = slider.getProgress() - 30;
+                    if (slider.getProgress() - 30 < 30) {
+                        progress = 30;
+                    } else {
+                        progress = slider.getProgress() - 30;
+                    }
                     slider.setProgress(lastProgress);
                     tv.setDegree(slider.getProgress());
                     tv.invalidate();
@@ -310,7 +319,12 @@ public class MainActivity extends AppCompatActivity {
                         rightButton.setForeground(rightButtonForeground);
                     }
                     //lastProgress = slider.getProgress() + 30;
-                    progress = slider.getProgress() + 30;
+                    if (slider.getProgress() + 30 > 6800) {
+                        progress = 6800;
+                    } else {
+                        progress = slider.getProgress() + 30;
+                    }
+                    //progress = slider.getProgress() + 30;
                     slider.setProgress(lastProgress);
                     tv.setDegree(slider.getProgress());
                     tv.invalidate();
