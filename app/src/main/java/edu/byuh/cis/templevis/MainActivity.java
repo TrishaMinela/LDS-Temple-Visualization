@@ -491,7 +491,7 @@ public class MainActivity extends AppCompatActivity {
     public void showAboutDialog() {
 
         String html = getResources().getString(R.string.about_content_one) + "<br><br>";
-        html += "<a href='https://litianzhang.com/latter-day-temples-visualization-android-app/'>" + getResources().getString(R.string.about_content_two)+ "</a> <br>";
+        html += "<a href='" + getResources().getString(R.string.app_website_link) + "'>" + getResources().getString(R.string.about_content_two)+ "</a> <br>";
         html += "<br>" +
                  getResources().getString(R.string.about_content_three)+ "<br>" +
                 "<br>" +
