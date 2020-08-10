@@ -1256,9 +1256,11 @@ public class TempleView extends View {
 
         //when q += 12f, top lines circles next to each other the whole time
         //must change the same time as getCoordinates()
-        for (float q = topCoordinateInSpiralX; q < screenWidth*1.25; q += 48f) {
+        for (float q = topCoordinateInSpiralX; q < screenWidth*2; q += 48f) {
             sizes.add(largestSizeInSpiral);
         }
+
+
         Collections.reverse(sizes);
     }
 }
