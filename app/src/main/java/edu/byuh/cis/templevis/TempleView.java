@@ -791,7 +791,7 @@ public class TempleView extends View {
         for (Bitmap t : temples) {
             int thisTempleIndex = temples.indexOf(t);
             float ts = theta - 30 * temples.indexOf(t);
-            if (ts > 0 && ts < spiralCoordinates.size() - 150) {
+            if (ts > 0 && ts < spiralCoordinates.size() - 1) {
                 actuallyDrawing(ts, t, c, thisTempleIndex);
                 drawTempleLabels(ts, t, c);
 
@@ -1201,43 +1201,51 @@ public class TempleView extends View {
         initialR = screenWidth / 10;
         //Toast.makeText(getContext(), "getSizes called, sizes.length is " + sizes.size(), Toast.LENGTH_SHORT).show();
 
+        float newSize = 0;
         //for (float t = -30; t < 30; t += 0.02f) {
         for (float t = -18; t < 17.5; t += 0.02f) {
             float x = centerX + initialR * (float) (Math.exp(t * 1 / (Math.tan(47 * Math.PI / 100)))) * (float) (Math.cos(t));
             float y = centerY + initialR * (float) (Math.exp(t * 1 / (Math.tan(47 * Math.PI / 100)))) * (float) (Math.sin(t));
-            float newSize;
 
-            if (t <= 2 * pi) {
-                newSize = (float) (Math.sqrt(Math.pow(Math.abs(x - centerX), 2) + Math.pow(Math.abs(y - centerY), 2)) - initialR);
-                //newSize = ((newSize / (screenWidth)) * screenWidth / 818); //1.32f
-                newSize = ((newSize / (screenWidth)) * 1.32f); //1.32f
 
-                if (newSize < 0.03) {
-                    newSize = 0.03f;
-                }
-                sizes.add(newSize);
+//            if (t <= 2 * pi) {
+//                newSize = (float) (Math.sqrt(Math.pow(Math.abs(x - centerX), 2) + Math.pow(Math.abs(y - centerY), 2)) - initialR);
+//                //newSize = ((newSize / (screenWidth)) * screenWidth / 818); //1.32f
+//                newSize = ((newSize / (screenWidth)) * 1.32f); //1.32f
+//
+//                if (newSize < 0.03) {
+//                    newSize = 0.03f;
+//                }
+//                //sizes.add(newSize);
+//
+//            } else if (2 * pi < t) {
+//                float t2 = t - 2 * pi;
+//                float x2 = centerX + initialR * (float) (Math.exp(t2 * 1 / (Math.tan(47 * Math.PI / 100)))) * (float) (Math.cos(t2));
+//                float y2 = centerY + initialR * (float) (Math.exp(t2 * 1 / (Math.tan(47 * Math.PI / 100)))) * (float) (Math.sin(t2));
+//                newSize = (float) (Math.sqrt(Math.pow(Math.abs(x - x2), 2) + Math.pow(Math.abs(y - y2), 2)));
+//                //newSize = (newSize / screenWidth * 1.32f);
+//                //newSize = (newSize / screenWidth) * screenWidth / 818; //1.32f
+//                //newSize = (newSize / screenWidth * 1.32f); //
+//
+//                if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+//                    //newSize = (newSize / screenWidth * 1.12f);
+//                    //newSize = (newSize / screenWidth * initialR / 60.6f);
+//                    newSize = (newSize / screenWidth * 1.3f);
+//
+//                } else if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+//                    //newSize = (newSize / screenWidth * 1.32f);
+//                    //newSize = (newSize / screenWidth * initialR / 60.6f);
+//                    newSize = (newSize / screenWidth * 1.3f);
+//                }
+//                //sizes.add(newSize);
+//            }
 
-            } else if (2 * pi < t) {
-                float t2 = t - 2 * pi;
-                float x2 = centerX + initialR * (float) (Math.exp(t2 * 1 / (Math.tan(47 * Math.PI / 100)))) * (float) (Math.cos(t2));
-                float y2 = centerY + initialR * (float) (Math.exp(t2 * 1 / (Math.tan(47 * Math.PI / 100)))) * (float) (Math.sin(t2));
-                newSize = (float) (Math.sqrt(Math.pow(Math.abs(x - x2), 2) + Math.pow(Math.abs(y - y2), 2)));
-                //newSize = (newSize / screenWidth * 1.32f);
-                //newSize = (newSize / screenWidth) * screenWidth / 818; //1.32f
-                //newSize = (newSize / screenWidth * 1.32f); //
-
-                if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
-                    //newSize = (newSize / screenWidth * 1.12f);
-                    //newSize = (newSize / screenWidth * initialR / 60.6f);
-                    newSize = (newSize / screenWidth * 1.3f);
-
-                } else if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
-                    //newSize = (newSize / screenWidth * 1.32f);
-                    //newSize = (newSize / screenWidth * initialR / 60.6f);
-                    newSize = (newSize / screenWidth * 1.3f);
-                }
-                sizes.add(newSize);
-            }
+            float t2 = t - 2 * pi;
+            float x2 = centerX + initialR * (float) (Math.exp(t2 * 1 / (Math.tan(47 * Math.PI / 100)))) * (float) (Math.cos(t2));
+            float y2 = centerY + initialR * (float) (Math.exp(t2 * 1 / (Math.tan(47 * Math.PI / 100)))) * (float) (Math.sin(t2));
+            newSize = (float) (Math.sqrt(Math.pow(Math.abs(x - x2), 2) + Math.pow(Math.abs(y - y2), 2)));
+            newSize = (newSize / screenWidth * 1.3f);
+            sizes.add(newSize);
         }
         //Log.d("sizes 1400 are ", " " + sizes.get(1400));
         //Log.d("sizes size is ", " " + sizes.size());
