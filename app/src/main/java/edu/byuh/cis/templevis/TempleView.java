@@ -231,7 +231,15 @@ public class TempleView extends View {
         ArrayList<String> temporary = new ArrayList<>();
         for (int i = 0; i < temples.size(); i++) {
             String year = allTempleInfo.get(i * 3 + 2) ;
-            year = year.substring(year.length()-5);
+            Locale curLocale = getResources().getConfiguration().locale;
+            if (curLocale.equals(Locale.SIMPLIFIED_CHINESE)) {
+                // do nothing //中文
+                year = year;
+            } else {
+                year = year.substring(year.length()-5);
+                //英文
+            }
+
             temporary.add(year.substring(0,4));
         }
         return temporary;
