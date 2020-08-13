@@ -862,8 +862,20 @@ public class TempleView extends View {
         String endYear = allTempleInfo.get((int)(firstOnScreenTempleIndex) * 3 + 2);
         String startYear = allTempleInfo.get((int)(lastOnScreenTempleIndex) * 3 + 2) ;
 
-        startYear = startYear.substring(startYear.length()-5);
-        endYear = endYear.substring(endYear.length()-5);
+
+
+        Locale curLocale = getResources().getConfiguration().locale;
+        if (curLocale.equals(Locale.SIMPLIFIED_CHINESE)) {
+            // do nothing //中文
+            startYear = startYear.substring(0,4);
+            endYear = endYear.substring(0,4);
+        } else {
+            startYear = startYear.substring(startYear.length()-5);
+            endYear = endYear.substring(endYear.length()-5);
+            //英文
+        }
+
+
 
         if (theta <= 40){
             c.drawText( getResources().getString(R.string.first_temple) + "" + "1836", screenWidth / 2, 39 * screenHeight / 40, yearDisplayPaint);
@@ -890,8 +902,16 @@ public class TempleView extends View {
         String endYear = allTempleInfo.get((int)(firstOnScreenTempleIndex) * 3 + 2);
         String startYear = allTempleInfo.get((int)(lastOnScreenTempleIndex) * 3 + 2) ;
 
-        startYear = startYear.substring(startYear.length()-5);
-        endYear = endYear.substring(endYear.length()-5);
+        Locale curLocale = getResources().getConfiguration().locale;
+        if (curLocale.equals(Locale.SIMPLIFIED_CHINESE)) {
+            // do nothing //中文
+            startYear = startYear.substring(0,4);
+            endYear = endYear.substring(0,4);
+        } else {
+            startYear = startYear.substring(startYear.length()-5);
+            endYear = endYear.substring(endYear.length()-5);
+            //英文
+        }
 
         if (theta <= 40){
             c.drawText(getResources().getString(R.string.first_temple), 6.5f * screenWidth / 4, 18 * screenHeight / 40, yearDisplayPaint);
