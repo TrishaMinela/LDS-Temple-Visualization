@@ -525,13 +525,6 @@ public class TempleView extends View {
         orientationJustChanged = b;
     }
 
-    public void firstLaunchCoordinatesAndSizes() {
-        //spiralCoordinates.clear();
-        //sizes.clear();
-        //getCoordinatesAndSizes();
-        firstLaunch = FALSE;
-    }
-
     public void getWindowSize(float w, float h) {
         windowWidth = w;
         windowHeight = h;
@@ -688,13 +681,9 @@ public class TempleView extends View {
 
     }
 
-//    public void drawTempleLabels(float ts, Bitmap t, Canvas c) {
     public void drawTempleLabels(float ts, Temple t, Canvas c) { // more OO
 
-        float currentTempleSize = sizes.get((int) (ts));
-        float currentTempleX = spiralCoordinates.get((int) (ts)).get(0);
-        float currentTempleY = spiralCoordinates.get((int) (ts)).get(1);
-        float newCurrentTempleRadius = currentTempleSize * screenWidth / 2;
+        float newCurrentTempleRadius = t.size * screenWidth / 2;
 
         Paint thisTempleLabelPaint = new Paint();
 
@@ -709,7 +698,6 @@ public class TempleView extends View {
 
         String thisTempleName = allTempleInfo.get(thisTempleIndex*3);
         Locale curLocale = getResources().getConfiguration().locale;
-
 
         String thisTempleLocation = "";
         //通过Locale的equals方法，判断出当前语言环境
@@ -742,11 +730,10 @@ public class TempleView extends View {
             }
         }
 
-
         if (sliderMoving == false && ts < 200 && thisTempleIndex < 185 && show_label) {
             //c.drawText(thisTempleName, currentTempleX, currentTempleY + newCurrentTempleRadius + thisTempleLabelPaint.getTextSize(), thisTempleLabelPaint);
-            c.drawText(thisTempleNameOne, currentTempleX, currentTempleY + newCurrentTempleRadius - thisTempleLabelPaint.getTextSize(), thisTempleLabelPaint);
-            c.drawText(thisTempleNameTwo, currentTempleX, currentTempleY + newCurrentTempleRadius, thisTempleLabelPaint);
+            c.drawText(thisTempleNameOne, t.x, t.y + newCurrentTempleRadius - thisTempleLabelPaint.getTextSize(), thisTempleLabelPaint);
+            c.drawText(thisTempleNameTwo, t.x, t.y + newCurrentTempleRadius, thisTempleLabelPaint);
         }
     }
 
@@ -754,13 +741,9 @@ public class TempleView extends View {
         selectedYear = s;
     }
 
-//    public void actuallyDrawing(float ts, Bitmap t, Canvas c, int thisTempleIndex) {
+    public void actuallyDrawing(Temple t, Canvas c, int thisTempleIndex) { // more OO
 
-    public void actuallyDrawing(float ts, Temple t, Canvas c, int thisTempleIndex) { // more OO
 
-//        float currentTempleSize = sizes.get((int) (ts));
-//        float currentTempleX = spiralCoordinates.get((int) (ts)).get(0);
-//        float currentTempleY = spiralCoordinates.get((int) (ts)).get(1);
         float newCurrentTempleRadius = t.size * screenWidth / 2;
 
         currentTempleMatrix.setScale(4 * t.size, 4 * t.size);
@@ -788,13 +771,12 @@ public class TempleView extends View {
 
 //        c.drawBitmap(t, currentTempleMatrix, null);
         c.drawBitmap(t.image, currentTempleMatrix, null); // more OO
-
-
     }
 
-    //place all circles, and get the index of on screen temples
-    //this method also call actualDrawing method to draw
     public void placeAllCircles(Canvas c) {
+        //place all circles, and get the index of on screen temples
+        //this method also call actualDrawing method to draw
+
         //Log.d("spiralcoors: ", " in placeallcircles " + spiralCoordinates + " ");
         //Log.d("spiralcoors: ", " in placeallcircles " + spiralCoordinates + " ");
 
@@ -809,7 +791,7 @@ public class TempleView extends View {
                 t.x = spiralCoordinates.get((int) (ts)).get(0);
                 t.y = spiralCoordinates.get((int) (ts)).get(1);
 
-                actuallyDrawing(ts, t, c, thisTempleIndex);
+                actuallyDrawing(t, c, thisTempleIndex);
                 drawTempleLabels(ts, t, c);
 
                 //add all on screen temples index to a array list once the slider stopped moving,
@@ -831,19 +813,6 @@ public class TempleView extends View {
         //Log.d("onscreen temples ", "" + onScreenTemples.size());
     }
 
-    public void drawMiddleCircle(Canvas c) {
-        //draw middle image ********************************
-        //float hh = logo_circle.getHeight();
-        //c.drawText("hh is " + hh + " ", 0, screenHeight - 200, redPaint);
-        //c.drawBitmap(logo_circle, centerX, centerY, null);
-        Matrix logoMatrix = new Matrix();
-        logoMatrix.postScale(2 * 2 * initialR / screenWidth, 2 * 2 * initialR / screenWidth);
-        Bitmap newLogoCircle = Bitmap.createBitmap(logo_circle, 0, 0, logo_circle.getWidth(), logo_circle.getHeight(), logoMatrix, true);
-        c.drawBitmap(newLogoCircle, centerX - newLogoCircle.getWidth() / 2, centerY - newLogoCircle.getHeight() / 2, null);
-    }
-
-
-    //improved version of yearDisplay
     public void yearDisplay(Canvas c) {
 
         //get the index of on screen temples,
@@ -929,43 +898,6 @@ public class TempleView extends View {
        }
     }
 
-    public void drawSpiral(Canvas c) {
-        float e = (float) (Math.E);
-        float a = screenWidth / 10;
-        //draw spiral
-        spiralLine.reset();
-        spiralLine.moveTo(centerX, centerY);
-        //radius of the circle in the middle
-        //c.drawCircle(centerX, centerY, initialR, spiralPaint);
-        Log.d("theta ", "is " + theta);
-        for (float t = -18; t < 17.5; t += 0.02f) {
-            //Equiangular spiral function：
-            //x = p * cosA, y = p * sinA, where p = N * e^(B * cotC)
-            //When C = PI/2, graph is a circle, when C = 0, graph is a straight line
-//            float x = centerX + a * (float) (Math.exp(t * 1 / (Math.tan(47 * Math.PI / 100)))) * (float) (Math.cos(t));
-//            float y = centerY + a * (float) (Math.exp(t * 1 / (Math.tan(47 * Math.PI / 100)))) * (float) (Math.sin(t));
-            float x = centerX + a * (float) (Math.exp(t * 1 / (Math.tan(47 * Math.PI / 100)))) * (float) (Math.cos(t));
-            float y = centerY + a * (float) (Math.exp(t * 1 / (Math.tan(47 * Math.PI / 100)))) * (float) (Math.sin(t));
-
-            // rotates about (0, 0)
-            //float xNew = x * (float)(Math.cos(theta)) + y * (float)(Math.sin(theta));
-            //float yNew = y * (float)(Math.cos(theta)) - x * (float)(Math.sin(theta));
-
-            float angle = theta / 500;
-            float xNew = (x - centerX) * (float) (Math.cos(angle)) - (y - centerY) * (float) (Math.sin(angle)) + centerX;
-            float yNew = (y - centerY) * (float) (Math.cos(angle)) + (x - centerX) * (float) (Math.sin(angle)) + centerY;
-
-            //spiral doesn't rotates
-            //spiralLine.lineTo(x, y);
-
-            //spiral rotates
-            spiralLine.lineTo(xNew, yNew);
-        }
-        //draw the spiral ****************************************
-        c.drawPath(spiralLine, spiralPaint);
-        //Toast.makeText(getContext(), count + " ", Toast.LENGTH_SHORT).show();
-    }
-    
     public void getCoordinates() {
         //spiral are impacted a lot by initialR.
         //circles locations remain whether landscape or portrait
@@ -1237,39 +1169,6 @@ public class TempleView extends View {
             float x = centerX + initialR * (float) (Math.exp(t * 1 / (Math.tan(47 * Math.PI / 100)))) * (float) (Math.cos(t));
             float y = centerY + initialR * (float) (Math.exp(t * 1 / (Math.tan(47 * Math.PI / 100)))) * (float) (Math.sin(t));
 
-
-//            if (t <= 2 * pi) {
-//                newSize = (float) (Math.sqrt(Math.pow(Math.abs(x - centerX), 2) + Math.pow(Math.abs(y - centerY), 2)) - initialR);
-//                //newSize = ((newSize / (screenWidth)) * screenWidth / 818); //1.32f
-//                newSize = ((newSize / (screenWidth)) * 1.32f); //1.32f
-//
-//                if (newSize < 0.03) {
-//                    newSize = 0.03f;
-//                }
-//                //sizes.add(newSize);
-//
-//            } else if (2 * pi < t) {
-//                float t2 = t - 2 * pi;
-//                float x2 = centerX + initialR * (float) (Math.exp(t2 * 1 / (Math.tan(47 * Math.PI / 100)))) * (float) (Math.cos(t2));
-//                float y2 = centerY + initialR * (float) (Math.exp(t2 * 1 / (Math.tan(47 * Math.PI / 100)))) * (float) (Math.sin(t2));
-//                newSize = (float) (Math.sqrt(Math.pow(Math.abs(x - x2), 2) + Math.pow(Math.abs(y - y2), 2)));
-//                //newSize = (newSize / screenWidth * 1.32f);
-//                //newSize = (newSize / screenWidth) * screenWidth / 818; //1.32f
-//                //newSize = (newSize / screenWidth * 1.32f); //
-//
-//                if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
-//                    //newSize = (newSize / screenWidth * 1.12f);
-//                    //newSize = (newSize / screenWidth * initialR / 60.6f);
-//                    newSize = (newSize / screenWidth * 1.3f);
-//
-//                } else if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
-//                    //newSize = (newSize / screenWidth * 1.32f);
-//                    //newSize = (newSize / screenWidth * initialR / 60.6f);
-//                    newSize = (newSize / screenWidth * 1.3f);
-//                }
-//                //sizes.add(newSize);
-//            }
-
             float t2 = t - 2 * pi;
             float x2 = centerX + initialR * (float) (Math.exp(t2 * 1 / (Math.tan(47 * Math.PI / 100)))) * (float) (Math.cos(t2));
             float y2 = centerY + initialR * (float) (Math.exp(t2 * 1 / (Math.tan(47 * Math.PI / 100)))) * (float) (Math.sin(t2));
@@ -1293,4 +1192,53 @@ public class TempleView extends View {
 
         Collections.reverse(sizes);
     }
+
+    public void drawMiddleCircle(Canvas c) {
+        //draw middle image ********************************
+        //float hh = logo_circle.getHeight();
+        //c.drawText("hh is " + hh + " ", 0, screenHeight - 200, redPaint);
+        //c.drawBitmap(logo_circle, centerX, centerY, null);
+        Matrix logoMatrix = new Matrix();
+        logoMatrix.postScale(2 * 2 * initialR / screenWidth, 2 * 2 * initialR / screenWidth);
+        Bitmap newLogoCircle = Bitmap.createBitmap(logo_circle, 0, 0, logo_circle.getWidth(), logo_circle.getHeight(), logoMatrix, true);
+        c.drawBitmap(newLogoCircle, centerX - newLogoCircle.getWidth() / 2, centerY - newLogoCircle.getHeight() / 2, null);
+    }
+
+    public void drawSpiral(Canvas c) {
+        float e = (float) (Math.E);
+        float a = screenWidth / 10;
+        //draw spiral
+        spiralLine.reset();
+        spiralLine.moveTo(centerX, centerY);
+        //radius of the circle in the middle
+        //c.drawCircle(centerX, centerY, initialR, spiralPaint);
+        Log.d("theta ", "is " + theta);
+        for (float t = -18; t < 17.5; t += 0.02f) {
+            //Equiangular spiral function：
+            //x = p * cosA, y = p * sinA, where p = N * e^(B * cotC)
+            //When C = PI/2, graph is a circle, when C = 0, graph is a straight line
+//            float x = centerX + a * (float) (Math.exp(t * 1 / (Math.tan(47 * Math.PI / 100)))) * (float) (Math.cos(t));
+//            float y = centerY + a * (float) (Math.exp(t * 1 / (Math.tan(47 * Math.PI / 100)))) * (float) (Math.sin(t));
+            float x = centerX + a * (float) (Math.exp(t * 1 / (Math.tan(47 * Math.PI / 100)))) * (float) (Math.cos(t));
+            float y = centerY + a * (float) (Math.exp(t * 1 / (Math.tan(47 * Math.PI / 100)))) * (float) (Math.sin(t));
+
+            // rotates about (0, 0)
+            //float xNew = x * (float)(Math.cos(theta)) + y * (float)(Math.sin(theta));
+            //float yNew = y * (float)(Math.cos(theta)) - x * (float)(Math.sin(theta));
+
+            float angle = theta / 500;
+            float xNew = (x - centerX) * (float) (Math.cos(angle)) - (y - centerY) * (float) (Math.sin(angle)) + centerX;
+            float yNew = (y - centerY) * (float) (Math.cos(angle)) + (x - centerX) * (float) (Math.sin(angle)) + centerY;
+
+            //spiral doesn't rotates
+            //spiralLine.lineTo(x, y);
+
+            //spiral rotates
+            spiralLine.lineTo(xNew, yNew);
+        }
+        //draw the spiral ****************************************
+        c.drawPath(spiralLine, spiralPaint);
+        //Toast.makeText(getContext(), count + " ", Toast.LENGTH_SHORT).show();
+    }
+
 }
