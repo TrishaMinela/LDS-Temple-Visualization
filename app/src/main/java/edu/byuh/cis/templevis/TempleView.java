@@ -49,6 +49,9 @@ public class TempleView extends View {
     private  float thetaSmall;
     private boolean sliderMoving;
     private static ArrayList<Bitmap> temples;
+
+    private static ArrayList<Temple> templeObjects; // more OO be more object oriented
+
     private ArrayList<ArrayList<Float>> onScreenTemples;
     private ArrayList<Float> oneOnScreenTemple;
     private ArrayList<ArrayList<Float>> spiralCoordinates;
@@ -643,6 +646,7 @@ public class TempleView extends View {
             allTempleInfoFileIds = ImageCache.getAllTempleInfoFileIds();
 
             temples = ImageCache.getTemplesList();
+            templeObjects = ImageCache.getTempleObjectsList(); // more OO
 
             logo_circle = ImageCache.getLogo();
 

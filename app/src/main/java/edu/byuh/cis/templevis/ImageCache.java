@@ -562,7 +562,7 @@ public class ImageCache {
         return templeObjectList;
     }
 
-    
+
     public static ArrayList<Bitmap> getTemplesList() {
         templesList = new ArrayList<>();
 
