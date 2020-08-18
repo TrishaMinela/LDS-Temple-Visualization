@@ -427,6 +427,8 @@ public class TempleView extends View {
     }
 
     public void singleTempleDialog() {
+
+
         LinearLayout.LayoutParams nice = new LinearLayout.LayoutParams
                 (LinearLayout.LayoutParams.MATCH_PARENT,
                         LinearLayout.LayoutParams.MATCH_PARENT, 1);
@@ -439,7 +441,7 @@ public class TempleView extends View {
         singleTempleImageView.setImageBitmap(b);
         singleTempleImageView.setPadding(0,0,0,0);
         singleTempleImageView.setMaxHeight(singleTempleImageView.getWidth());
-        
+
         oneTempleInfo = "";
         readOneInfoFile(allTempleInfoFileIds.get(eachIndex));
 
@@ -463,6 +465,7 @@ public class TempleView extends View {
         singleTempleImageView.setLayoutParams(nice);
 
         builder.setView(lnl);
+
 
         builder.setCancelable(true);
 
