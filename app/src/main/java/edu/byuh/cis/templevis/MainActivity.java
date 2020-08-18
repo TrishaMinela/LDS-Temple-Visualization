@@ -175,10 +175,13 @@ public class MainActivity extends AppCompatActivity {
 
         progress = 5550;
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            slider.setMin(30);
+        }
         slider.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                if (i >= 30) {
+                //if (i >= 30) {
                     if (sliderTouchedByHuman) {
                         int disableClickLastProgress = (int)(tv.getLastProgress());
                         //Log.d("slider changing", "last progress and i are " + disableClickLastProgress + " ||| " + i + " ");
@@ -188,13 +191,14 @@ public class MainActivity extends AppCompatActivity {
                         } else {
                             tv.setDegree(i);
                             tv.invalidate();
+                            Log.d("slider", "slider moved by hand");
                         }
                         progress = i;
                     } else {
                         slider.setProgress(lastProgress);
                     }
                     Log.d("progress", "IN oProgressChanged is " + i + " ");
-                }
+                //}
 
 
             }
