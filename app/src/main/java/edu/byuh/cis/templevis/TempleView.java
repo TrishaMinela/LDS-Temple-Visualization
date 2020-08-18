@@ -232,7 +232,8 @@ public class TempleView extends View {
 
     public ArrayList<String> getAllYearsFromAllTempleInfo(ArrayList<String> allTempleInfoPassIn) {
         ArrayList<String> temporary = new ArrayList<>();
-        for (int i = 0; i < temples.size(); i++) {
+//        for (int i = 0; i < temples.size(); i++) {
+        for (int i = 0; i < templeObjects.size(); i++) { // more OO
             String year = allTempleInfo.get(i * 3 + 2) ;
             Locale curLocale = getResources().getConfiguration().locale;
             if (curLocale.equals(Locale.SIMPLIFIED_CHINESE)) {
@@ -645,7 +646,7 @@ public class TempleView extends View {
             allLargeImageIds = ImageCache.getAllImageIds();
             allTempleInfoFileIds = ImageCache.getAllTempleInfoFileIds();
 
-            temples = ImageCache.getTemplesList();
+            //temples = ImageCache.getTemplesList();
             templeObjects = ImageCache.getTempleObjectsList(); // more OO
 
             logo_circle = ImageCache.getLogo();
@@ -687,7 +688,8 @@ public class TempleView extends View {
 
     }
 
-    public void drawTempleLabels(float ts, Bitmap t, Canvas c) {
+//    public void drawTempleLabels(float ts, Bitmap t, Canvas c) {
+    public void drawTempleLabels(float ts, Temple t, Canvas c) { // more OO
 
         float currentTempleSize = sizes.get((int) (ts));
         float currentTempleX = spiralCoordinates.get((int) (ts)).get(0);
@@ -702,7 +704,8 @@ public class TempleView extends View {
         thisTempleLabelPaint.setTextAlign(Paint.Align.CENTER);
         thisTempleLabelPaint.setShadowLayer(20,0,-5,Color.BLACK);
 
-        int thisTempleIndex = temples.indexOf(t);
+//        int thisTempleIndex = temples.indexOf(t);
+        int thisTempleIndex = templeObjects.indexOf(t); // more OO
 
         String thisTempleName = allTempleInfo.get(thisTempleIndex*3);
         Locale curLocale = getResources().getConfiguration().locale;
@@ -751,7 +754,9 @@ public class TempleView extends View {
         selectedYear = s;
     }
 
-    public void actuallyDrawing(float ts, Bitmap t, Canvas c, int thisTempleIndex) {
+//    public void actuallyDrawing(float ts, Bitmap t, Canvas c, int thisTempleIndex) {
+
+    public void actuallyDrawing(float ts, Temple t, Canvas c, int thisTempleIndex) { // more OO
 
         float currentTempleSize = sizes.get((int) (ts));
 
@@ -765,7 +770,8 @@ public class TempleView extends View {
         float newCurrentTempleRadius = currentTempleSize * screenWidth / 2;
 
         currentTempleMatrix.setScale(4 * currentTempleSize, 4 * currentTempleSize);
-        currentTempleMatrix.postTranslate(currentTempleX - t.getWidth()  *currentTempleSize*2, currentTempleY - t.getHeight() * currentTempleSize*2);
+//        currentTempleMatrix.postTranslate(currentTempleX - t.getWidth()  *currentTempleSize*2, currentTempleY - t.getHeight() * currentTempleSize*2);
+        currentTempleMatrix.postTranslate(currentTempleX - t.image.getWidth()  *currentTempleSize*2, currentTempleY - t.image.getHeight() * currentTempleSize*2); // more OO
 
         Paint selectedYearTempleFramePaint = new Paint();
         selectedYearTempleFramePaint.setColor(Color.parseColor("#287a78"));
@@ -788,7 +794,8 @@ public class TempleView extends View {
 
 
 
-        c.drawBitmap(t, currentTempleMatrix, null);
+//        c.drawBitmap(t, currentTempleMatrix, null);
+        c.drawBitmap(t.image, currentTempleMatrix, null); // more OO
 
 
     }
@@ -800,16 +807,16 @@ public class TempleView extends View {
         //Log.d("spiralcoors: ", " in placeallcircles " + spiralCoordinates + " ");
 
         onScreenTemples.clear();
-        for (Bitmap t : temples) {
-            int thisTempleIndex = temples.indexOf(t);
-            float ts = theta - 30 * temples.indexOf(t);
+        for (Temple t : templeObjects) { //more OO: for (Bitmap t : temples) {
+            int thisTempleIndex = templeObjects.indexOf(t); // more OO: int thisTempleIndex = temples.indexOf(t);
+            float ts = theta - 30 * templeObjects.indexOf(t); // more OO: float ts = theta - 30 * temples.indexOf(t);
             if (ts > 0 && ts < spiralCoordinates.size() - 1) {
                 actuallyDrawing(ts, t, c, thisTempleIndex);
                 drawTempleLabels(ts, t, c);
 
                 //add all on screen temples index to a array list once the slider stopped moving,
                 //the following lines of code are copied from method actuallyDrawing(, , );
-                float currentTempleIndex = (float)(temples.indexOf(t));
+                float currentTempleIndex = (float)(templeObjects.indexOf(t)); // more OO: float currentTempleIndex = (float)(temples.indexOf(t));
                 float currentTempleX = spiralCoordinates.get((int) (ts)).get(0);
                 float currentTempleY = spiralCoordinates.get((int) (ts)).get(1);
                 float currentTempleSize = sizes.get((int) (ts));
