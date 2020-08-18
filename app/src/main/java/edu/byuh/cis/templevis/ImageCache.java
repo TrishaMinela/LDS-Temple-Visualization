@@ -5,9 +5,6 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
-
-import edu.byuh.cis.templevis.R;
-
 import java.util.ArrayList;
 
 public class ImageCache {
@@ -18,6 +15,8 @@ public class ImageCache {
     private static ArrayList<Integer> allImageIds;
     private static ArrayList<Integer> allTempleInfoFileIds;
     private static float screenWidth, screenHeight;
+
+
 
     private static ArrayList<Integer> allSpiralImageIds;
 
