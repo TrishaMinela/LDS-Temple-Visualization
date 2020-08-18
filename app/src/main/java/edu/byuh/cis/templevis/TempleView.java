@@ -405,103 +405,8 @@ public class TempleView extends View {
                             if (eachIndex <= 226) {
                                 singleTempleViewOpened = true;
                                 //Log.d("eachIndex is ", eachIndex + " when click on circle");
-                                LinearLayout.LayoutParams nice = new LinearLayout.LayoutParams
-                                        (LinearLayout.LayoutParams.MATCH_PARENT,
-                                                LinearLayout.LayoutParams.MATCH_PARENT, 1);
-                                LinearLayout lnl = new LinearLayout(getContext());
-                                lnl.setOrientation(LinearLayout.VERTICAL);
+                                singleTempleDialog();
 
-                                ImageView singleTempleImageView = new ImageView(getContext());
-                                Bitmap b;
-                                b = loadAndScale(getResources(), allLargeImageIds.get(eachIndex), 10f*initialR);
-                                singleTempleImageView.setImageBitmap(b);
-                                singleTempleImageView.setPadding(0,0,0,0);
-                                singleTempleImageView.setMaxHeight(singleTempleImageView.getWidth());
-
-                                oneTempleInfo = "";
-                                readOneInfoFile(allTempleInfoFileIds.get(eachIndex));
-
-                                TextView singleTempleTextView = new TextView(getContext());
-                                singleTempleTextView.setText(oneTempleInfo);
-                                //singleTempleTextView.setBackgroundColor(Color.BLUE);
-                                singleTempleTextView.setGravity(Gravity.CENTER);
-
-                                ScrollView sv = new ScrollView(getContext());
-                                //sv.setPadding(100,100,100,100);
-                                sv.addView(singleTempleTextView);
-
-
-                                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-
-                                builder.setTitle(allTempleInfo.get(eachIndex*3));
-
-                                lnl.addView(singleTempleImageView);
-                                lnl.addView(sv);
-
-                                singleTempleImageView.setLayoutParams(nice);
-
-                                builder.setView(lnl);
-
-                                builder.setCancelable(true);
-
-                                builder.setPositiveButton(getResources().getString(R.string.website_button), new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int id) {
-                                        //do nothing
-                                    }
-                                });
-
-                                builder.setNegativeButton(getResources().getString(R.string.return_button), new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int id) {
-                                        //set onclick method for this button below
-                                    }
-                                });
-
-                                final AlertDialog dialog = builder.create();
-
-                                dialog.show();
-
-                                // here is where we get templeUrl, to avoid the eachIndex change error
-                                final String templeUrl = allTempleLinks.get(eachIndex);
-
-                                Button btnPositive = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
-                                Button btnNegative = dialog.getButton(AlertDialog.BUTTON_NEGATIVE);
-
-                                LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) btnPositive.getLayoutParams();
-                                layoutParams.weight = 10;
-                                btnPositive.setLayoutParams(layoutParams);
-                                btnNegative.setLayoutParams(layoutParams);
-
-                                dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-                                        //dialog.dismiss();
-                                        //dialog stays when click on website button
-
-                                        // for some reason, i don't why, but each index is changed in here,
-                                        // so we get templeUrl before this, according to the correct eachIndex
-                                        //String templeUrl = allTempleLinks.get(eachIndex);
-                                        //Log.d("eachIndex is ", eachIndex + " when click on website button");
-                                        //Log.d("templeUrl is ", templeUrl + "");
-
-                                        if (templeUrl.equals("" + "\n")) {
-                                            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                                            builder.setTitle("No Link Available");
-                                            builder.setMessage("Temple does not have a website yet");
-                                            builder.setIcon(R.mipmap.ic_launcher_round);
-                                            //点击对话框以外的区域是否让对话框消失
-                                            builder.setCancelable(true);
-                                            final AlertDialog dialog = builder.create();
-                                            dialog.show();
-
-                                        } else {
-                                            Intent eachTemplePage= new Intent();
-                                            eachTemplePage.setAction("android.intent.action.VIEW");
-                                            Uri eachTemplePage_url = Uri.parse(templeUrl);
-                                            eachTemplePage.setData(eachTemplePage_url);
-                                            getContext().startActivity(eachTemplePage);
-                                        }
-                                    }
-                                });
                             } else {
                                 //no link
                                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
@@ -519,6 +424,106 @@ public class TempleView extends View {
             }
         }
         return true;
+    }
+
+    public void singleTempleDialog() {
+        LinearLayout.LayoutParams nice = new LinearLayout.LayoutParams
+                (LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.MATCH_PARENT, 1);
+        LinearLayout lnl = new LinearLayout(getContext());
+        lnl.setOrientation(LinearLayout.VERTICAL);
+
+        ImageView singleTempleImageView = new ImageView(getContext());
+        Bitmap b;
+        b = loadAndScale(getResources(), allLargeImageIds.get(eachIndex), 10f*initialR);
+        singleTempleImageView.setImageBitmap(b);
+        singleTempleImageView.setPadding(0,0,0,0);
+        singleTempleImageView.setMaxHeight(singleTempleImageView.getWidth());
+        
+        oneTempleInfo = "";
+        readOneInfoFile(allTempleInfoFileIds.get(eachIndex));
+
+        TextView singleTempleTextView = new TextView(getContext());
+        singleTempleTextView.setText(oneTempleInfo);
+        //singleTempleTextView.setBackgroundColor(Color.BLUE);
+        singleTempleTextView.setGravity(Gravity.CENTER);
+
+        ScrollView sv = new ScrollView(getContext());
+        //sv.setPadding(100,100,100,100);
+        sv.addView(singleTempleTextView);
+
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+
+        builder.setTitle(allTempleInfo.get(eachIndex*3));
+
+        lnl.addView(singleTempleImageView);
+        lnl.addView(sv);
+
+        singleTempleImageView.setLayoutParams(nice);
+
+        builder.setView(lnl);
+
+        builder.setCancelable(true);
+
+        builder.setPositiveButton(getResources().getString(R.string.website_button), new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                //do nothing
+            }
+        });
+
+        builder.setNegativeButton(getResources().getString(R.string.return_button), new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                //set onclick method for this button below
+            }
+        });
+
+        final AlertDialog dialog = builder.create();
+
+        dialog.show();
+
+        // here is where we get templeUrl, to avoid the eachIndex change error
+        final String templeUrl = allTempleLinks.get(eachIndex);
+
+        Button btnPositive = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
+        Button btnNegative = dialog.getButton(AlertDialog.BUTTON_NEGATIVE);
+
+        LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) btnPositive.getLayoutParams();
+        layoutParams.weight = 10;
+        btnPositive.setLayoutParams(layoutParams);
+        btnNegative.setLayoutParams(layoutParams);
+
+        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //dialog.dismiss();
+                //dialog stays when click on website button
+
+                // for some reason, i don't why, but each index is changed in here,
+                // so we get templeUrl before this, according to the correct eachIndex
+                //String templeUrl = allTempleLinks.get(eachIndex);
+                //Log.d("eachIndex is ", eachIndex + " when click on website button");
+                //Log.d("templeUrl is ", templeUrl + "");
+
+                if (templeUrl.equals("" + "\n")) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                    builder.setTitle("No Link Available");
+                    builder.setMessage("Temple does not have a website yet");
+                    builder.setIcon(R.mipmap.ic_launcher_round);
+                    //点击对话框以外的区域是否让对话框消失
+                    builder.setCancelable(true);
+                    final AlertDialog dialog = builder.create();
+                    dialog.show();
+
+                } else {
+                    Intent eachTemplePage= new Intent();
+                    eachTemplePage.setAction("android.intent.action.VIEW");
+                    Uri eachTemplePage_url = Uri.parse(templeUrl);
+                    eachTemplePage.setData(eachTemplePage_url);
+                    getContext().startActivity(eachTemplePage);
+                }
+            }
+        });
     }
 
     public void orientationJustChanged(boolean b) {
