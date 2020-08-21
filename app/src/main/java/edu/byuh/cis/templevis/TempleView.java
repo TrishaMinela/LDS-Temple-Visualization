@@ -23,6 +23,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -511,21 +512,26 @@ public class TempleView extends View {
 
                 }else if(motionEvent.getAction() == MotionEvent.ACTION_UP){
 
-                    if (System.currentTimeMillis() - timeStamp[0] > 1500) {
-                        realEachIndex = realEachIndex + 1;
+
+                    if (realEachIndex < 225) {
+                        if (System.currentTimeMillis() - timeStamp[0] > 1500) {
+                            realEachIndex = realEachIndex + 1;
 
 //                    b[0] = loadAndScale(getResources(), allLargeImageIds.get(realEachIndex), 10f*initialR);
 //                    singleTempleImageView.setImageBitmap(b[0]);
 
-                        singleTempleImageView.moveImage("left");
-                        singleTempleImageView.updateThreeTemplesBitmapIds(allLargeImageIds.get(realEachIndex), allLargeImageIds.get(realEachIndex - 1), allLargeImageIds.get(realEachIndex + 1));
+                            singleTempleImageView.moveImage("left");
+                            singleTempleImageView.updateThreeTemplesBitmapIds(allLargeImageIds.get(realEachIndex), allLargeImageIds.get(realEachIndex - 1), allLargeImageIds.get(realEachIndex + 1));
 
-                        templeUrl = templeObjects.get(realEachIndex).link;
-                        singleTempleDialogTitleView.setText(allTempleInfo.get(realEachIndex*3));
-                        oneTempleInfo = "";
-                        readOneInfoFile(allTempleInfoFileIds.get(realEachIndex));
-                        singleTempleTextView.setText(oneTempleInfo);
-                        timeStamp[0] = System.currentTimeMillis();
+                            templeUrl = templeObjects.get(realEachIndex).link;
+                            singleTempleDialogTitleView.setText(allTempleInfo.get(realEachIndex*3));
+                            oneTempleInfo = "";
+                            readOneInfoFile(allTempleInfoFileIds.get(realEachIndex));
+                            singleTempleTextView.setText(oneTempleInfo);
+                            timeStamp[0] = System.currentTimeMillis();
+                        }
+                    } else {
+                        Toast.makeText(getContext(), "Dubai Temple is the most recent Temple", Toast.LENGTH_SHORT).show();
                     }
 
 
@@ -550,22 +556,35 @@ public class TempleView extends View {
 
                     // do something
 
-                    if (System.currentTimeMillis() - timeStamp[0] > 1500) {
-                        realEachIndex = realEachIndex - 1;
+                    if (realEachIndex > 0) {
+                        if (System.currentTimeMillis() - timeStamp[0] > 1500) {
+                            realEachIndex = realEachIndex - 1;
 
 //                    b[0] = loadAndScale(getResources(), allLargeImageIds.get(realEachIndex), 10f*initialR);
 //                    singleTempleImageView.setImageBitmap(b[0]);
 
-                        singleTempleImageView.moveImage("right");
-                        singleTempleImageView.updateThreeTemplesBitmapIds(allLargeImageIds.get(realEachIndex), allLargeImageIds.get(realEachIndex - 1), allLargeImageIds.get(realEachIndex + 1));
+                            singleTempleImageView.moveImage("right");
 
-                        templeUrl = templeObjects.get(realEachIndex).link;
-                        singleTempleDialogTitleView.setText(allTempleInfo.get(realEachIndex*3));
-                        oneTempleInfo = "";
-                        readOneInfoFile(allTempleInfoFileIds.get(realEachIndex));
-                        singleTempleTextView.setText(oneTempleInfo);
-                        timeStamp[0] = System.currentTimeMillis();
+                            int lastTempleId = 0;
+                            if (realEachIndex - 1 < 0) {
+                                lastTempleId = allLargeImageIds.get(realEachIndex);
+                            } else {
+                                lastTempleId = allLargeImageIds.get(realEachIndex - 1);
+                            }
+
+                            singleTempleImageView.updateThreeTemplesBitmapIds(allLargeImageIds.get(realEachIndex), lastTempleId, allLargeImageIds.get(realEachIndex + 1));
+
+                            templeUrl = templeObjects.get(realEachIndex).link;
+                            singleTempleDialogTitleView.setText(allTempleInfo.get(realEachIndex*3));
+                            oneTempleInfo = "";
+                            readOneInfoFile(allTempleInfoFileIds.get(realEachIndex));
+                            singleTempleTextView.setText(oneTempleInfo);
+                            timeStamp[0] = System.currentTimeMillis();
+                        }
+                    } else {
+                        Toast.makeText(getContext(), "Kirtland Temple is the oldest Temple", Toast.LENGTH_SHORT).show();
                     }
+
 
 
 
