@@ -10,7 +10,8 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.animation.LinearInterpolator;
+
+import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
 
 import java.util.ArrayList;
 
@@ -125,7 +126,7 @@ public class SingleTempleImage extends View {
         ValueAnimator valueAnimator;
         valueAnimator = ValueAnimator.ofObject(new FloatEvaluator(), x, sign * canvasWidth + (canvasCenterX - imageSize / 2));
         valueAnimator.setDuration(1500);
-        valueAnimator.setInterpolator(new LinearInterpolator());
+        valueAnimator.setInterpolator(new FastOutSlowInInterpolator());
         final float finalSign = sign;
         valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
