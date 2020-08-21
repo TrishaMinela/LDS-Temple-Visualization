@@ -40,6 +40,7 @@ public class SingleTempleImage extends View {
     private Paint textPaint;
     private float canvasWidth;
     private float canvasHeight;
+    private boolean orientationJustChanged = false;
 
     public SingleTempleImage(Context context, int id, int idLast, int idNext) {
         super(context);
@@ -77,9 +78,11 @@ public class SingleTempleImage extends View {
         canvasCenterX = canvasWidth / 2;
         canvasCenterY = canvasHeight / 2;
 
-        imageSize = Math.min(canvasWidth, canvasHeight) * 1f;
+        imageSize = Math.min(canvasWidth, canvasHeight) * 0.9f;
 
-        if (firstTimeDraw) {
+        if (firstTimeDraw || orientationJustChanged) {
+            threeTemples.clear();
+
             x = canvasCenterX - imageSize / 2;
             y = canvasCenterY - imageSize / 2;
 
@@ -97,9 +100,14 @@ public class SingleTempleImage extends View {
             nextTemple.setRole("next");
 
             firstTimeDraw = false;
+            orientationJustChanged = false;
         }
 
-        //c.drawText(currentTemple.link + "hi", 100, 100, textPaint);
+        c.drawText(x + ":x", 100, 100, textPaint);
+        c.drawText(y + ":y", 100, 140, textPaint);
+        c.drawText(imageSize + ":imageSize", 100, 180, textPaint);
+        c.drawText(firstTimeDraw + ":firsttime", 100, 220, textPaint);
+        c.drawText(orientationJustChanged + ":orien", 100, 260, textPaint);
 
         for (Temple t: threeTemples) {
             if (t.role.equals("current")) {
@@ -111,6 +119,18 @@ public class SingleTempleImage extends View {
             }
         }
 
+    }
+
+    public void orientationJustChanged(boolean b) {
+        orientationJustChanged = b;
+
+    }
+
+    public void updatePositionAndSizeOnceOrientationChanged() {
+        invalidate();
+        imageSize = Math.min(canvasWidth, canvasHeight) * 1f;
+        x = canvasCenterX - imageSize / 2;
+        y = canvasCenterY - imageSize / 2;
     }
 
     public void moveImage(String direction) {

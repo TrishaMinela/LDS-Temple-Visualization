@@ -19,6 +19,9 @@ public class Temple {
         link = "";
     }
 
+    public void setSize(float s) {
+        size = s;
+    }
     public void setRole(String r) {
         role = r;
     }
@@ -30,5 +33,6 @@ public class Temple {
     public void changeImage(Bitmap b) {
         image = b;
     }
+
 
 }

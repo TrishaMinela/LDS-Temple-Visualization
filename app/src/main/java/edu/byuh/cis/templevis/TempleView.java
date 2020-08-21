@@ -91,6 +91,7 @@ public class TempleView extends View {
     private String selectedYear;
     private Integer realEachIndex;
     private String templeUrl;
+    private SingleTempleImage singleTempleImageView;
 
 
     public TempleView(Context context) {
@@ -462,7 +463,7 @@ public class TempleView extends View {
 
 
         // single temple image
-        final SingleTempleImage singleTempleImageView = new SingleTempleImage(getContext(), allLargeImageIds.get(eachIndex), allLargeImageIds.get(eachIndex - 1), allLargeImageIds.get(eachIndex + 1));
+        singleTempleImageView = new SingleTempleImage(getContext(), allLargeImageIds.get(eachIndex), allLargeImageIds.get(eachIndex - 1), allLargeImageIds.get(eachIndex + 1));
         singleTempleImageView.setPadding(0,0,0,0);
         //singleTempleImageView.setBackgroundColor(Color.RED);
 
@@ -646,6 +647,11 @@ public class TempleView extends View {
 
     public void orientationJustChanged(boolean b) {
         orientationJustChanged = b;
+        //singleTempleImageView.updatePositionAndSizeOnceOrientationChanged();
+        singleTempleImageView.orientationJustChanged(b);
+        //singleTempleImageView.invalidate();
+
+
     }
 
     public void getWindowSize(float w, float h) {
