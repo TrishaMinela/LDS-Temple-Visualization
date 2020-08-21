@@ -446,6 +446,10 @@ public class TempleView extends View {
                 (LinearLayout.LayoutParams.MATCH_PARENT,
                         LinearLayout.LayoutParams.MATCH_PARENT, 4);
 
+        LinearLayout.LayoutParams wrapContent = new LinearLayout.LayoutParams
+                (LinearLayout.LayoutParams.WRAP_CONTENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT, 1);
+
         LinearLayout lnl = new LinearLayout(getContext());
         lnl.setOrientation(LinearLayout.VERTICAL);
 
@@ -498,6 +502,8 @@ public class TempleView extends View {
         // view last or next temple buttons
         Button left = new Button(getContext());
         left.setWidth((int)screenWidth / 10);
+        left.setText("<");
+        left.setTextSize(20);
         left.setOnTouchListener(new OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
@@ -533,6 +539,8 @@ public class TempleView extends View {
 
         Button right = new Button(getContext());
         right.setWidth((int)screenWidth / 10);
+        right.setText(">");
+        right.setTextSize(20);
         right.setOnTouchListener(new OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
