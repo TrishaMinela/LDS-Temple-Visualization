@@ -468,7 +468,14 @@ public class TempleView extends View {
 
 
         // single temple image
-        singleTempleImageView = new SingleTempleImage(getContext(), allLargeImageIds.get(eachIndex), allLargeImageIds.get(eachIndex - 1), allLargeImageIds.get(eachIndex + 1));
+
+        if (eachIndex == 0) {
+            singleTempleImageView = new SingleTempleImage(getContext(), allLargeImageIds.get(eachIndex), allLargeImageIds.get(eachIndex), allLargeImageIds.get(eachIndex + 1));
+        } else {
+            singleTempleImageView = new SingleTempleImage(getContext(), allLargeImageIds.get(eachIndex), allLargeImageIds.get(eachIndex - 1), allLargeImageIds.get(eachIndex + 1));
+
+        }
+
         singleTempleImageView.setPadding(0,0,0,0);
         //singleTempleImageView.setBackgroundColor(Color.RED);
 
