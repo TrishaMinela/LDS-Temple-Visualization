@@ -531,7 +531,7 @@ public class TempleView extends View {
                             timeStamp[0] = System.currentTimeMillis();
                         }
                     } else {
-                        Toast.makeText(getContext(), "Dubai Temple is the most recent Temple", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), getResources().getString(R.string.dubai_temple_is_the_most_recent_temple), Toast.LENGTH_SHORT).show();
                     }
 
 
@@ -582,7 +582,7 @@ public class TempleView extends View {
                             timeStamp[0] = System.currentTimeMillis();
                         }
                     } else {
-                        Toast.makeText(getContext(), "Kirtland Temple is the oldest Temple", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), getResources().getString(R.string.kirtland_temple_is_the_oldest_temple), Toast.LENGTH_SHORT).show();
                     }
 
 

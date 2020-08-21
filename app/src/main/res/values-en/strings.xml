@@ -55,5 +55,7 @@
     <string name="year">Year</string>
     <string name="first_temple">"First temple: "</string>
     <string name="app_website_link">http://latterdaytemples.litianzhang.com/android-english/</string>
+    <string name="kirtland_temple_is_the_oldest_temple">Kirtland Temple is the oldest Temple</string>
+    <string name="dubai_temple_is_the_most_recent_temple">Dubai Temple is the most recent Temple</string>
 
 </resources>
