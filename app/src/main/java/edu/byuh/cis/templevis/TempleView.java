@@ -1,5 +1,6 @@
 package edu.byuh.cis.templevis;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -89,6 +90,7 @@ public class TempleView extends View {
     private Boolean show_label;
     private String selectedYear;
     private Integer realEachIndex;
+    private String templeUrl;
 
 
     public TempleView(Context context) {
@@ -161,8 +163,14 @@ public class TempleView extends View {
                 BufferedReader br = new BufferedReader(ir);
                 String line;
                 //read each line
+                int atThisLine = 0;
                 while (( line = br.readLine()) != null) {
                     allTempleLinks.add(line+"\n");
+                    if (atThisLine < templeObjects.size()) {
+                        templeObjects.get(atThisLine).setLink(line+"\n");
+                        atThisLine ++;
+                    }
+
                 }
                 allTempleLinksFile.close();
             }
@@ -426,6 +434,7 @@ public class TempleView extends View {
         return true;
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     public void singleTempleDialog() {
 
 
@@ -471,10 +480,17 @@ public class TempleView extends View {
         sv.addView(singleTempleTextView);
 
 
-        // dialog
-        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        // here is where we get templeUrl, to avoid the eachIndex change error
+        //final String templeUrl = allTempleLinks.get(eachIndex);
+        realEachIndex = eachIndex; // we do this because each index is changing for some reason later...
+        templeUrl = templeObjects.get(realEachIndex).link;
 
-        builder.setTitle(allTempleInfo.get(eachIndex*3));
+        final TextView singleTempleDialogTitleView = new TextView(getContext());
+        singleTempleDialogTitleView.setText(allTempleInfo.get(realEachIndex*3));
+        singleTempleDialogTitleView.setTextSize(20);
+        singleTempleDialogTitleView.setPadding(0,20,0,0);
+        singleTempleDialogTitleView.setTextColor(Color.BLACK);
+        singleTempleDialogTitleView.setGravity(Gravity.CENTER);
 
         // view last or next temple buttons
         Button left = new Button(getContext());
@@ -494,6 +510,8 @@ public class TempleView extends View {
                     singleTempleImageView.moveImage("left");
                     singleTempleImageView.updateThreeTemplesBitmapIds(allLargeImageIds.get(realEachIndex), allLargeImageIds.get(realEachIndex - 1), allLargeImageIds.get(realEachIndex + 1));
 
+                    templeUrl = templeObjects.get(realEachIndex).link;
+                    singleTempleDialogTitleView.setText(allTempleInfo.get(realEachIndex*3));
                     oneTempleInfo = "";
                     readOneInfoFile(allTempleInfoFileIds.get(realEachIndex));
                     singleTempleTextView.setText(oneTempleInfo);
@@ -522,6 +540,8 @@ public class TempleView extends View {
                     singleTempleImageView.moveImage("right");
                     singleTempleImageView.updateThreeTemplesBitmapIds(allLargeImageIds.get(realEachIndex), allLargeImageIds.get(realEachIndex - 1), allLargeImageIds.get(realEachIndex + 1));
 
+                    templeUrl = templeObjects.get(realEachIndex).link;
+                    singleTempleDialogTitleView.setText(allTempleInfo.get(realEachIndex*3));
                     oneTempleInfo = "";
                     readOneInfoFile(allTempleInfoFileIds.get(realEachIndex));
                     singleTempleTextView.setText(oneTempleInfo);
@@ -540,6 +560,10 @@ public class TempleView extends View {
         lnlH.addView(left);
         lnlH.addView(singleTempleImageView);
         lnlH.addView(right);
+
+
+        lnl.addView(singleTempleDialogTitleView);
+
         lnl.addView(lnlH);
         //lnlH.setBackgroundColor(Color.GREEN);
 
@@ -550,6 +574,11 @@ public class TempleView extends View {
         right.setLayoutParams(niceFour);
 //        singleTempleImageView.setLayoutParams(nice);
         lnlH.setLayoutParams(nice);
+
+        // dialog
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+
+        //builder.setTitle(allTempleInfo.get(realEachIndex*3));
 
         builder.setView(lnl);
 
@@ -572,9 +601,7 @@ public class TempleView extends View {
 
         dialog.show();
 
-        // here is where we get templeUrl, to avoid the eachIndex change error
-        final String templeUrl = allTempleLinks.get(eachIndex);
-        realEachIndex = eachIndex; // we do this because each index is changing for some reason later...
+
 
         Button btnPositive = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
         Button btnNegative = dialog.getButton(AlertDialog.BUTTON_NEGATIVE);
@@ -742,6 +769,11 @@ public class TempleView extends View {
 
             readLinksFile();
             readInfoFile();
+
+
+//            for (Temple t: templeObjects) {
+//                t.setLink(allTempleLinks.get(templeObjects.indexOf(t)));
+//            }
 
             yearDisplayPaint.setColor(Color.parseColor("#def2f1"));
             yearDisplayPaint.setStyle(Paint.Style.FILL);

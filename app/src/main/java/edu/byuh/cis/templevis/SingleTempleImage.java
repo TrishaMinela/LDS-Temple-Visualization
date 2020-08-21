@@ -37,6 +37,8 @@ public class SingleTempleImage extends View {
     private ArrayList<Temple> threeTemples;
 
     private Paint textPaint;
+    private float canvasWidth;
+    private float canvasHeight;
 
     public SingleTempleImage(Context context, int id, int idLast, int idNext) {
         super(context);
@@ -69,12 +71,12 @@ public class SingleTempleImage extends View {
     @Override
     public void onDraw(Canvas c) {
 
-        float canvasWidth = c.getWidth();
-        float canvasHeight = c.getHeight();
+        canvasWidth = c.getWidth();
+        canvasHeight = c.getHeight();
         canvasCenterX = canvasWidth / 2;
         canvasCenterY = canvasHeight / 2;
 
-        imageSize = Math.min(canvasWidth, canvasHeight);
+        imageSize = Math.min(canvasWidth, canvasHeight) * 1f;
 
         if (firstTimeDraw) {
             x = canvasCenterX - imageSize / 2;
@@ -96,15 +98,15 @@ public class SingleTempleImage extends View {
             firstTimeDraw = false;
         }
 
-        c.drawText(x + "", 100, 100, textPaint);
+        //c.drawText(currentTemple.link + "hi", 100, 100, textPaint);
 
         for (Temple t: threeTemples) {
             if (t.role.equals("current")) {
                 c.drawBitmap(t.image, x, y, null);
             } else if (t.role.equals("last")) {
-                c.drawBitmap(t.image, x - imageSize, y, null);
+                c.drawBitmap(t.image, x - canvasWidth, y, null);
             } else if (t.role.equals("next")) {
-                c.drawBitmap(t.image, x + imageSize, y, null);
+                c.drawBitmap(t.image, x + canvasWidth, y, null);
             }
         }
 
@@ -121,16 +123,16 @@ public class SingleTempleImage extends View {
         }
 
         ValueAnimator valueAnimator;
-        valueAnimator = ValueAnimator.ofObject(new FloatEvaluator(), x, sign * Math.min(canvasCenterX * 2, canvasCenterY * 2));
-        valueAnimator.setDuration(1000);
+        valueAnimator = ValueAnimator.ofObject(new FloatEvaluator(), x, sign * canvasWidth + (canvasCenterX - imageSize / 2));
+        valueAnimator.setDuration(1500);
         valueAnimator.setInterpolator(new LinearInterpolator());
         final float finalSign = sign;
         valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
                 x = (float) animation.getAnimatedValue();
-
-                if(x == finalSign * Math.min(canvasCenterX * 2, canvasCenterY * 2)) {
+                invalidate();
+                if(x == finalSign * canvasWidth + (canvasCenterX - imageSize / 2)) {
                     x = canvasCenterX - imageSize / 2;
                     for (Temple t: threeTemples) {
                         if (t.role.equals("current")) {
@@ -159,7 +161,6 @@ public class SingleTempleImage extends View {
                     }
                 }
 
-                invalidate();
             }
         });
         valueAnimator.start();
