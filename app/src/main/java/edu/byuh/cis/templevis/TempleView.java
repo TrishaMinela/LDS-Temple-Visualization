@@ -19,7 +19,6 @@ import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -45,7 +44,7 @@ public class TempleView extends View {
     private Boolean loadedImages;
     private  float centerX;
     private float centerY;
-    private  float initialR;
+    private float initialR;
     private  float thetaSmall;
     private boolean sliderMoving;
     private static ArrayList<Bitmap> temples;
@@ -89,6 +88,7 @@ public class TempleView extends View {
     private static ArrayList<Integer> allTempleInfoFileIds;
     private Boolean show_label;
     private String selectedYear;
+    private Integer realEachIndex;
 
 
     public TempleView(Context context) {
@@ -432,20 +432,36 @@ public class TempleView extends View {
         LinearLayout.LayoutParams nice = new LinearLayout.LayoutParams
                 (LinearLayout.LayoutParams.MATCH_PARENT,
                         LinearLayout.LayoutParams.MATCH_PARENT, 1);
+        LinearLayout.LayoutParams niceFour = new LinearLayout.LayoutParams
+                (LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.MATCH_PARENT, 4);
+
         LinearLayout lnl = new LinearLayout(getContext());
         lnl.setOrientation(LinearLayout.VERTICAL);
 
-        ImageView singleTempleImageView = new ImageView(getContext());
-        Bitmap b;
-        b = loadAndScale(getResources(), allLargeImageIds.get(eachIndex), 10f*initialR);
-        singleTempleImageView.setImageBitmap(b);
-        singleTempleImageView.setPadding(0,0,0,0);
-        singleTempleImageView.setMaxHeight(singleTempleImageView.getWidth());
+        LinearLayout lnlH = new LinearLayout(getContext());
+        lnlH.setOrientation(LinearLayout.HORIZONTAL);
 
+//        // single temple image
+//        final ImageView singleTempleImageView = new ImageView(getContext());
+//        final Bitmap[] b = new Bitmap[1];
+//        b[0] = loadAndScale(getResources(), allLargeImageIds.get(eachIndex), 10f*initialR);
+//        singleTempleImageView.setImageBitmap(b[0]);
+//        singleTempleImageView.setPadding(0,0,0,0);
+//        singleTempleImageView.setMaxHeight(singleTempleImageView.getWidth());
+//        //singleTempleImageView.setBackgroundColor(Color.RED);
+
+
+        // single temple image
+        final SingleTempleImage singleTempleImageView = new SingleTempleImage(getContext(), allLargeImageIds.get(eachIndex), allLargeImageIds.get(eachIndex - 1), allLargeImageIds.get(eachIndex + 1));
+        singleTempleImageView.setPadding(0,0,0,0);
+        //singleTempleImageView.setBackgroundColor(Color.RED);
+
+        // milestone dates
         oneTempleInfo = "";
         readOneInfoFile(allTempleInfoFileIds.get(eachIndex));
 
-        TextView singleTempleTextView = new TextView(getContext());
+        final TextView singleTempleTextView = new TextView(getContext());
         singleTempleTextView.setText(oneTempleInfo);
         //singleTempleTextView.setBackgroundColor(Color.BLUE);
         singleTempleTextView.setGravity(Gravity.CENTER);
@@ -455,14 +471,85 @@ public class TempleView extends View {
         sv.addView(singleTempleTextView);
 
 
+        // dialog
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
 
         builder.setTitle(allTempleInfo.get(eachIndex*3));
 
-        lnl.addView(singleTempleImageView);
+        // view last or next temple buttons
+        Button left = new Button(getContext());
+        left.setWidth((int)screenWidth / 10);
+        left.setOnTouchListener(new OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                if(motionEvent.getAction() == MotionEvent.ACTION_DOWN){
+
+                }else if(motionEvent.getAction() == MotionEvent.ACTION_UP){
+
+                    realEachIndex = realEachIndex + 1;
+
+//                    b[0] = loadAndScale(getResources(), allLargeImageIds.get(realEachIndex), 10f*initialR);
+//                    singleTempleImageView.setImageBitmap(b[0]);
+
+                    singleTempleImageView.moveImage("left");
+                    singleTempleImageView.updateThreeTemplesBitmapIds(allLargeImageIds.get(realEachIndex), allLargeImageIds.get(realEachIndex - 1), allLargeImageIds.get(realEachIndex + 1));
+
+                    oneTempleInfo = "";
+                    readOneInfoFile(allTempleInfoFileIds.get(realEachIndex));
+                    singleTempleTextView.setText(oneTempleInfo);
+                }
+                return false;
+            }
+        });
+
+
+        Button right = new Button(getContext());
+        right.setWidth((int)screenWidth / 10);
+        right.setOnTouchListener(new OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                if(motionEvent.getAction() == MotionEvent.ACTION_DOWN){
+
+                }else if(motionEvent.getAction() == MotionEvent.ACTION_UP){
+
+                    // do something
+
+                    realEachIndex = realEachIndex - 1;
+
+//                    b[0] = loadAndScale(getResources(), allLargeImageIds.get(realEachIndex), 10f*initialR);
+//                    singleTempleImageView.setImageBitmap(b[0]);
+
+                    singleTempleImageView.moveImage("right");
+                    singleTempleImageView.updateThreeTemplesBitmapIds(allLargeImageIds.get(realEachIndex), allLargeImageIds.get(realEachIndex - 1), allLargeImageIds.get(realEachIndex + 1));
+
+                    oneTempleInfo = "";
+                    readOneInfoFile(allTempleInfoFileIds.get(realEachIndex));
+                    singleTempleTextView.setText(oneTempleInfo);
+
+                }
+                return false;
+            }
+        });
+
+
+
+        //add views
+        //lnl.addView(singleTempleImageView);
+
+        //lnl.addView(left);
+        lnlH.addView(left);
+        lnlH.addView(singleTempleImageView);
+        lnlH.addView(right);
+        lnl.addView(lnlH);
+        //lnlH.setBackgroundColor(Color.GREEN);
+
         lnl.addView(sv);
 
         singleTempleImageView.setLayoutParams(nice);
+        left.setLayoutParams(niceFour);
+        right.setLayoutParams(niceFour);
+//        singleTempleImageView.setLayoutParams(nice);
+        lnlH.setLayoutParams(nice);
 
         builder.setView(lnl);
 
@@ -487,6 +574,7 @@ public class TempleView extends View {
 
         // here is where we get templeUrl, to avoid the eachIndex change error
         final String templeUrl = allTempleLinks.get(eachIndex);
+        realEachIndex = eachIndex; // we do this because each index is changing for some reason later...
 
         Button btnPositive = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
         Button btnNegative = dialog.getButton(AlertDialog.BUTTON_NEGATIVE);
