@@ -139,5 +139,23 @@
 
     </LinearLayout>
 
+    <ImageButton
+        android:id="@+id/slider_left_button"
+        style="?android:attr/buttonBarStyle"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:src="@drawable/left_arrow_large"
+        android:layout_gravity="center_vertical"/>
+
+    <ImageButton
+        android:id="@+id/slider_right_button"
+        style="?android:attr/buttonBarStyle"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:src="@drawable/right_arrow_large"
+        android:layout_gravity="center_vertical"/>
+
 
 </LinearLayout>

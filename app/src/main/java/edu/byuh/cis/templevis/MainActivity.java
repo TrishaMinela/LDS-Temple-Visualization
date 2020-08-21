@@ -9,7 +9,6 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -26,6 +25,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.NumberPicker;
 import android.widget.SeekBar;
@@ -228,50 +228,54 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        final Button leftButton = new Button(this);
-        //leftButton.setBackgroundResource(R.drawable.left_button_arrow);
-
-        // this following is set the foreground of button, when we press, there is a little press down effect on button which is good, but we can see some edges of button which is not good
-        Drawable leftButtonForeground = getResources().getDrawable(R.drawable.left_button_background_svg);
-        //ContextCompat.getDrawable(getApplicationContext(),R.drawable.left_button_arrow);
-        //ResourcesCompat.getDrawable(getResources(), R.drawable.left_button_arrow, null);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            leftButton.setForeground(leftButtonForeground);
-        }
-
-
-
-
+//        final Button leftButton = new Button(this);
+        final ImageButton leftButton = findViewById(R.id.slider_left_button);
         leftButton.setBackgroundColor(Color.parseColor("#007a66"));
+        // arrow color is the same as spiral background #17252a
+
+        //leftButton.setBackgroundResource(R.drawable.left_button_arrow);
+//
+//        Drawable leftButtonForeground = getResources().getDrawable(R.drawable.left_button_background_svg);
+//        //ContextCompat.getDrawable(getApplicationContext(),R.drawable.left_button_arrow);
+//        //ResourcesCompat.getDrawable(getResources(), R.drawable.left_button_arrow, null);
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//            leftButton.setForeground(leftButtonForeground);
+//        }
+//
+//        leftButton.setBackgroundColor(Color.parseColor("#007a66"));
 
         //leftButton.setBackgroundResource(R.drawable.left_button_background_svg);
 
+//        leftButton.setBackgroundColor(Color.parseColor("#007a66"));
+//        leftButton.setBackgroundResource(R.drawable.left_button_background_svg);
 
 
         leftButton.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 if(event.getAction() == MotionEvent.ACTION_DOWN){
+                    leftButton.setBackgroundColor(Color.parseColor("#507a66"));
                     //Toast.makeText(MainActivity.this,"按下了" ,Toast.LENGTH_SHORT).show();
                     //leftButton.setBackgroundColor(Color.parseColor("#17252a"));
                     //leftButton.setBackgroundResource(R.drawable.left_button_background_pressed);
-                    Drawable leftButtonForegroundPressed = getResources().getDrawable(R.drawable.left_button_background_pressed);
-                    //ContextCompat.getDrawable(getApplicationContext(),R.drawable.left_button_arrow);
-                    //ResourcesCompat.getDrawable(getResources(), R.drawable.left_button_arrow, null);
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                        leftButton.setForeground(leftButtonForegroundPressed);
-                    }
+//                    Drawable leftButtonForegroundPressed = getResources().getDrawable(R.drawable.left_button_background_pressed);
+//                    //ContextCompat.getDrawable(getApplicationContext(),R.drawable.left_button_arrow);
+//                    //ResourcesCompat.getDrawable(getResources(), R.drawable.left_button_arrow, null);
+//                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//                        leftButton.setForeground(leftButtonForegroundPressed);
+//                    }
                 }else if(event.getAction() == MotionEvent.ACTION_UP){
                     //Toast.makeText(MainActivity.this,"松开了" + slider.getProgress() ,Toast.LENGTH_SHORT).show();
                     //leftButton.setBackgroundResource(R.drawable.left_button_arrow);
                     //leftButton.setBackgroundResource(R.drawable.left_button_background_svg);
-                    Drawable leftButtonForeground = getResources().getDrawable(R.drawable.left_button_background_svg);
-                    //ContextCompat.getDrawable(getApplicationContext(),R.drawable.left_button_arrow);
-                    //ResourcesCompat.getDrawable(getResources(), R.drawable.left_button_arrow, null);
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                        leftButton.setForeground(leftButtonForeground);
-                    }
+//                    Drawable leftButtonForeground = getResources().getDrawable(R.drawable.left_button_background_svg);
+//                    //ContextCompat.getDrawable(getApplicationContext(),R.drawable.left_button_arrow);
+//                    //ResourcesCompat.getDrawable(getResources(), R.drawable.left_button_arrow, null);
+//                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//                        leftButton.setForeground(leftButtonForeground);
+//                    }
                     //lastProgress = slider.getProgress() - 30;
+                    leftButton.setBackgroundColor(Color.parseColor("#007a66"));
                     if (slider.getProgress() - 30 < 30) {
                         progress = 30;
                     } else {
@@ -288,18 +292,18 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        final  Button rightButton = new Button(this);
+//        final  Button rightButton = new Button(this);
         //rightButton.setBackgroundResource(R.drawable.right_button_arrow);
 
-        Drawable rightButtonForeground = getResources().getDrawable(R.drawable.right_button_background_svg);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            rightButton.setForeground(rightButtonForeground);
-        }
-
-
-
-
+        final ImageButton rightButton = findViewById(R.id.slider_right_button);
         rightButton.setBackgroundColor(Color.parseColor("#007a66"));
+
+//        Drawable rightButtonForeground = getResources().getDrawable(R.drawable.right_button_background_svg);
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//            rightButton.setForeground(rightButtonForeground);
+//        }
+//
+//        rightButton.setBackgroundColor(Color.parseColor("#007a66"));
 
         //rightButton.setBackgroundResource(R.drawable.right_button_background_svg);
 
@@ -307,22 +311,24 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 if(event.getAction() == MotionEvent.ACTION_DOWN){
+                    rightButton.setBackgroundColor(Color.parseColor("#507a66"));
                     //Toast.makeText(MainActivity.this,"按下了" ,Toast.LENGTH_SHORT).show();
                     //rightButton.setBackgroundColor(Color.parseColor("#17252a"));
                     //rightButton.setBackgroundResource(R.drawable.right_button_background_pressed);
-                    Drawable rightButtonForegroundPressed = getResources().getDrawable(R.drawable.right_button_background_pressed);
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                        rightButton.setForeground(rightButtonForegroundPressed);
-                    }
+//                    Drawable rightButtonForegroundPressed = getResources().getDrawable(R.drawable.right_button_background_pressed);
+//                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//                        rightButton.setForeground(rightButtonForegroundPressed);
+//                    }
                 }else if(event.getAction() == MotionEvent.ACTION_UP){
                     //Toast.makeText(MainActivity.this,"松开了" + slider.getProgress() ,Toast.LENGTH_SHORT).show();
                     //rightButton.setBackgroundResource(R.drawable.right_button_arrow);
                     //rightButton.setBackgroundResource(R.drawable.right_button_background_svg);
-                    Drawable rightButtonForeground = getResources().getDrawable(R.drawable.right_button_background_svg);
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                        rightButton.setForeground(rightButtonForeground);
-                    }
+//                    Drawable rightButtonForeground = getResources().getDrawable(R.drawable.right_button_background_svg);
+//                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//                        rightButton.setForeground(rightButtonForeground);
+//                    }
                     //lastProgress = slider.getProgress() + 30;
+                    rightButton.setBackgroundColor(Color.parseColor("#007a66"));
                     if (slider.getProgress() + 30 > 6800) {
                         progress = 6800;
                     } else {
@@ -354,7 +360,7 @@ public class MainActivity extends AppCompatActivity {
         lnlH.setOrientation(LinearLayout.HORIZONTAL);
         lnlH.setBackgroundColor(Color.parseColor("#287a78"));
 
-        //((ViewGroup)leftButton.getParent()).removeView(leftButton);
+        ((ViewGroup)leftButton.getParent()).removeView(leftButton);
         lnlH.addView(leftButton);
 
         //((ViewGroup)rightButton.getParent()).removeView(rightButton);
@@ -363,7 +369,7 @@ public class MainActivity extends AppCompatActivity {
         ((ViewGroup)slider.getParent()).removeView(slider);
         lnlH.addView(slider);
 
-        //((ViewGroup)rightButton.getParent()).removeView(rightButton);
+        ((ViewGroup)rightButton.getParent()).removeView(rightButton);
         lnlH.addView(rightButton);
 
         Integer sliderHeight = (int)(height * 0.1);
