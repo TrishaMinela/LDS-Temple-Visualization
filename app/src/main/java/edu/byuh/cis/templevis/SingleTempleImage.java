@@ -103,11 +103,10 @@ public class SingleTempleImage extends View {
             orientationJustChanged = false;
         }
 
-        c.drawText(x + ":x", 100, 100, textPaint);
-        c.drawText(y + ":y", 100, 140, textPaint);
-        c.drawText(imageSize + ":imageSize", 100, 180, textPaint);
-        c.drawText(firstTimeDraw + ":firsttime", 100, 220, textPaint);
-        c.drawText(orientationJustChanged + ":orien", 100, 260, textPaint);
+//        c.drawText(x + ":x", 100, 100, textPaint);
+//        c.drawText(y + ":y", 100, 140, textPaint);
+//        c.drawText(imageSize + ":imageSize", 100, 180, textPaint);
+//
 
         for (Temple t: threeTemples) {
             if (t.role.equals("current")) {

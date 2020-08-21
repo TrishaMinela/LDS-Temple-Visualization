@@ -493,6 +493,8 @@ public class TempleView extends View {
         singleTempleDialogTitleView.setTextColor(Color.BLACK);
         singleTempleDialogTitleView.setGravity(Gravity.CENTER);
 
+        final long[] timeStamp = new long[1];
+        timeStamp[0] = 0;
         // view last or next temple buttons
         Button left = new Button(getContext());
         left.setWidth((int)screenWidth / 10);
@@ -503,19 +505,26 @@ public class TempleView extends View {
 
                 }else if(motionEvent.getAction() == MotionEvent.ACTION_UP){
 
-                    realEachIndex = realEachIndex + 1;
+                    if (System.currentTimeMillis() - timeStamp[0] > 1500) {
+                        realEachIndex = realEachIndex + 1;
 
 //                    b[0] = loadAndScale(getResources(), allLargeImageIds.get(realEachIndex), 10f*initialR);
 //                    singleTempleImageView.setImageBitmap(b[0]);
 
-                    singleTempleImageView.moveImage("left");
-                    singleTempleImageView.updateThreeTemplesBitmapIds(allLargeImageIds.get(realEachIndex), allLargeImageIds.get(realEachIndex - 1), allLargeImageIds.get(realEachIndex + 1));
+                        singleTempleImageView.moveImage("left");
+                        singleTempleImageView.updateThreeTemplesBitmapIds(allLargeImageIds.get(realEachIndex), allLargeImageIds.get(realEachIndex - 1), allLargeImageIds.get(realEachIndex + 1));
 
-                    templeUrl = templeObjects.get(realEachIndex).link;
-                    singleTempleDialogTitleView.setText(allTempleInfo.get(realEachIndex*3));
-                    oneTempleInfo = "";
-                    readOneInfoFile(allTempleInfoFileIds.get(realEachIndex));
-                    singleTempleTextView.setText(oneTempleInfo);
+                        templeUrl = templeObjects.get(realEachIndex).link;
+                        singleTempleDialogTitleView.setText(allTempleInfo.get(realEachIndex*3));
+                        oneTempleInfo = "";
+                        readOneInfoFile(allTempleInfoFileIds.get(realEachIndex));
+                        singleTempleTextView.setText(oneTempleInfo);
+                        timeStamp[0] = System.currentTimeMillis();
+                    }
+
+
+
+
                 }
                 return false;
             }
@@ -533,19 +542,24 @@ public class TempleView extends View {
 
                     // do something
 
-                    realEachIndex = realEachIndex - 1;
+                    if (System.currentTimeMillis() - timeStamp[0] > 1500) {
+                        realEachIndex = realEachIndex - 1;
 
 //                    b[0] = loadAndScale(getResources(), allLargeImageIds.get(realEachIndex), 10f*initialR);
 //                    singleTempleImageView.setImageBitmap(b[0]);
 
-                    singleTempleImageView.moveImage("right");
-                    singleTempleImageView.updateThreeTemplesBitmapIds(allLargeImageIds.get(realEachIndex), allLargeImageIds.get(realEachIndex - 1), allLargeImageIds.get(realEachIndex + 1));
+                        singleTempleImageView.moveImage("right");
+                        singleTempleImageView.updateThreeTemplesBitmapIds(allLargeImageIds.get(realEachIndex), allLargeImageIds.get(realEachIndex - 1), allLargeImageIds.get(realEachIndex + 1));
 
-                    templeUrl = templeObjects.get(realEachIndex).link;
-                    singleTempleDialogTitleView.setText(allTempleInfo.get(realEachIndex*3));
-                    oneTempleInfo = "";
-                    readOneInfoFile(allTempleInfoFileIds.get(realEachIndex));
-                    singleTempleTextView.setText(oneTempleInfo);
+                        templeUrl = templeObjects.get(realEachIndex).link;
+                        singleTempleDialogTitleView.setText(allTempleInfo.get(realEachIndex*3));
+                        oneTempleInfo = "";
+                        readOneInfoFile(allTempleInfoFileIds.get(realEachIndex));
+                        singleTempleTextView.setText(oneTempleInfo);
+                        timeStamp[0] = System.currentTimeMillis();
+                    }
+
+
 
                 }
                 return false;
