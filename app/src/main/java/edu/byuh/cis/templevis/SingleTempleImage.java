@@ -125,11 +125,33 @@ public class SingleTempleImage extends View {
 
     }
 
-    public void updatePositionAndSizeOnceOrientationChanged() {
-        invalidate();
-        imageSize = Math.min(canvasWidth, canvasHeight) * 1f;
+    public void endOfAnimationAction() {
         x = canvasCenterX - imageSize / 2;
-        y = canvasCenterY - imageSize / 2;
+        for (Temple t: threeTemples) {
+            if (t.role.equals("current")) {
+                t.setRole("last");
+            } else if (t.role.equals("last")) {
+                t.setRole("next");
+            } else if (t.role.equals("next")) {
+                t.setRole("current");
+            }
+        }
+        id = idStore;
+        idLast = idLastStore;
+        idNext = idNextStore;
+        Bitmap b = loadAndScale(getResources(), id, imageSize);
+        Bitmap bLast = loadAndScale(getResources(), idLast, imageSize);
+        Bitmap bNext = loadAndScale(getResources(), idNext, imageSize);
+
+        for (Temple t: threeTemples) {
+            if (t.role.equals("current")) {
+                t.changeImage(b);
+            } else if (t.role.equals("last")) {
+                t.changeImage(bLast);
+            } else if (t.role.equals("next")) {
+                t.changeImage(bNext);
+            }
+        }
     }
 
     public void moveImage(String direction) {
@@ -152,37 +174,17 @@ public class SingleTempleImage extends View {
             public void onAnimationUpdate(ValueAnimator animation) {
                 //getResources().getConfiguration().orientation
 
-
-                x = (float) animation.getAnimatedValue();
-                invalidate();
-                if(x == finalSign * canvasWidth + (canvasCenterX - imageSize / 2)) {
-                    x = canvasCenterX - imageSize / 2;
-                    for (Temple t: threeTemples) {
-                        if (t.role.equals("current")) {
-                            t.setRole("last");
-                        } else if (t.role.equals("last")) {
-                            t.setRole("next");
-                        } else if (t.role.equals("next")) {
-                            t.setRole("current");
-                        }
-                    }
-                    id = idStore;
-                    idLast = idLastStore;
-                    idNext = idNextStore;
-                    Bitmap b = loadAndScale(getResources(), id, imageSize);
-                    Bitmap bLast = loadAndScale(getResources(), idLast, imageSize);
-                    Bitmap bNext = loadAndScale(getResources(), idNext, imageSize);
-
-                    for (Temple t: threeTemples) {
-                        if (t.role.equals("current")) {
-                            t.changeImage(b);
-                        } else if (t.role.equals("last")) {
-                            t.changeImage(bLast);
-                        } else if (t.role.equals("next")) {
-                            t.changeImage(bNext);
-                        }
+                if (orientationJustChanged) {
+                    endOfAnimationAction();
+                } else {
+                    x = (float) animation.getAnimatedValue();
+                    invalidate();
+                    if(x == finalSign * canvasWidth + (canvasCenterX - imageSize / 2)) {
+                       endOfAnimationAction();
                     }
                 }
+
+
 
             }
         });

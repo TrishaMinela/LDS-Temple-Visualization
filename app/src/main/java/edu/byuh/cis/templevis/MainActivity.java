@@ -468,19 +468,20 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
+        //if (!tv.sliderMovingOrAnimationInProgress()) {
+            tv.orientationJustChanged(TRUE);
+        //}
+        tv.resetStaticCoordinatesGet();
         Log.d("1"," -- onConfigurationChanged");
-        if(newConfig.orientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT){
-            //切换到竖屏
-            //修改布局文件
-            tv.orientationJustChanged(TRUE);
-
-            //Log.d("1"," -- onConfigurationChanged  可以在竖屏方向 to do something");
-        }else{
-            //切换到横屏
-            //修改布局文件
-            tv.orientationJustChanged(TRUE);
-            //Log.d("1"," -- onConfigurationChanged  可以在横屏方向 to do something");
-        }
+//        if(newConfig.orientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT){
+//            //切换到竖屏
+//            tv.orientationJustChanged(TRUE);
+//            //Log.d("1"," -- onConfigurationChanged  可以在竖屏方向 to do something");
+//        }else{
+//            //切换到横屏
+//            tv.orientationJustChanged(TRUE);
+//            //Log.d("1"," -- onConfigurationChanged  可以在横屏方向 to do something");
+//        }
     }
 
     @Override

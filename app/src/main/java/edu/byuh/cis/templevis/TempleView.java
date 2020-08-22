@@ -93,6 +93,7 @@ public class TempleView extends View {
     private Integer realEachIndex;
     private String templeUrl;
     private SingleTempleImage singleTempleImageView;
+    private int staticCoordinatesGet = 0;
 
 
     public TempleView(Context context) {
@@ -142,6 +143,10 @@ public class TempleView extends View {
     public float getLastProgress() {
         //Log.d("theta", " is " + theta + " ");
         return theta;
+    }
+
+    public boolean sliderMovingOrAnimationInProgress() {
+        return sliderMoving;
     }
 
     public void sliderStart(boolean s) {
@@ -701,8 +706,6 @@ public class TempleView extends View {
         }
 
         //singleTempleImageView.invalidate();
-
-
     }
 
     public void getWindowSize(float w, float h) {
@@ -710,6 +713,9 @@ public class TempleView extends View {
         windowHeight = h;
     }
 
+    public void resetStaticCoordinatesGet() {
+        staticCoordinatesGet = 0;
+    }
     @Override
     public void onDraw(Canvas c) {
         thetaSmall = theta / 4;
@@ -734,19 +740,19 @@ public class TempleView extends View {
         //Log.d("CENTER Y ", centerY + " ");
         initialR = screenWidth / 10;
         initialRForLocation = ultimateScreenWidth / 10;
-        if (orientationJustChanged == TRUE) {
-            spiralCoordinates.clear();
-            sizes.clear();
-            getCoordinates();
-            getSizes();
-            orientationJustChanged = FALSE;
-            //Log.d("coordinates and sizes ", " just reset ");
-            //Log.d("orChanged coorSize ", " ++++++++++++++++ "
-                    //+ spiralCoordinates.size() + " "
-                    //+ sizes.size());
-            //Log.d("spiralCoordinates", spiralCoordinates + " ");
-            //Log.d("sizes", sizes + " ");
-        }
+//        if (orientationJustChanged == TRUE) {
+//            spiralCoordinates.clear();
+//            sizes.clear();
+//            getCoordinates();
+//            getSizes();
+//            orientationJustChanged = FALSE;
+//            //Log.d("coordinates and sizes ", " just reset ");
+//            //Log.d("orChanged coorSize ", " ++++++++++++++++ "
+//                    //+ spiralCoordinates.size() + " "
+//                    //+ sizes.size());
+//            //Log.d("spiralCoordinates", spiralCoordinates + " ");
+//            //Log.d("sizes", sizes + " ");
+//        }
         //when app first launch this got called.
         if (coordinatesAndSizesUpdated == FALSE) {
             getCoordinates();
@@ -783,6 +789,12 @@ public class TempleView extends View {
         }
         lastSpiralEffectHolder = spiral_effect;
 
+        if (spiral_effect.equalsIgnoreCase("static") && staticCoordinatesGet <= 10) {
+            spiralCoordinates.clear();
+            getCoordinates();
+            staticCoordinatesGet += 1;
+        }
+
         if (spiral_effect.equalsIgnoreCase("spin")) {
             spiralCoordinates.clear();
             getCoordinatesRotateRegular();
@@ -794,6 +806,20 @@ public class TempleView extends View {
             getCoordinatesThreeD();
         }
         //Log.d("getCoordinatesAndSizes", "again!!!!!!!!!!" + " ");
+
+        if (orientationJustChanged == TRUE) {
+            spiralCoordinates.clear();
+            //sizes.clear();
+            getCoordinates();
+            //getSizes();
+            orientationJustChanged = FALSE;
+            //Log.d("coordinates and sizes ", " just reset ");
+            //Log.d("orChanged coorSize ", " ++++++++++++++++ "
+                    //+ spiralCoordinates.size() + " "
+                    //+ sizes.size());
+            //Log.d("spiralCoordinates", spiralCoordinates + " ");
+            //Log.d("sizes", sizes + " ");
+        }
 
         //c.drawColor(Color.parseColor("#66ccff"));
 
