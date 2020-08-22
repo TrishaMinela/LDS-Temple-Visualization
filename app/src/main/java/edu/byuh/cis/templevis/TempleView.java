@@ -726,6 +726,7 @@ public class TempleView extends View {
             screenHeight = c.getHeight();
             centerX = screenWidth / 2 + 3 * screenWidth / 16;
             centerY = screenHeight / 2;
+            ultimateScreenWidth = Math.min(windowHeight, windowWidth);
             yearDisplayPaint.setTextSize((int)(2 * screenHeight / 25));
         } else if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
             screenWidth = c.getWidth();
@@ -740,21 +741,34 @@ public class TempleView extends View {
         //Log.d("CENTER Y ", centerY + " ");
         initialR = screenWidth / 10;
         initialRForLocation = ultimateScreenWidth / 10;
-//        if (orientationJustChanged == TRUE) {
-//            spiralCoordinates.clear();
-//            sizes.clear();
-//            getCoordinates();
-//            getSizes();
-//            orientationJustChanged = FALSE;
-//            //Log.d("coordinates and sizes ", " just reset ");
-//            //Log.d("orChanged coorSize ", " ++++++++++++++++ "
-//                    //+ spiralCoordinates.size() + " "
-//                    //+ sizes.size());
-//            //Log.d("spiralCoordinates", spiralCoordinates + " ");
-//            //Log.d("sizes", sizes + " ");
-//        }
+
+        String spiral_effect = PrefsActivity.getSpiralEffectPref(getContext());
+        show_label = PrefsActivity.getShowLabelPref(getContext());
+        //Log.d("spiral effect ", spiral_effect + " ");
+
+        if (spiral_effect.equalsIgnoreCase("static") && staticCoordinatesGet <= 10) {
+            spiralCoordinates.clear();
+            getCoordinates();
+            staticCoordinatesGet += 1;
+        }
+
+
+        if (orientationJustChanged == TRUE) {
+            spiralCoordinates.clear();
+            //sizes.clear();
+            getCoordinates();
+            //getSizes();
+            orientationJustChanged = FALSE;
+            //Log.d("coordinates and sizes ", " just reset ");
+            //Log.d("orChanged coorSize ", " ++++++++++++++++ "
+                    //+ spiralCoordinates.size() + " "
+                    //+ sizes.size());
+            //Log.d("spiralCoordinates", spiralCoordinates + " ");
+            //Log.d("sizes", sizes + " ");
+        }
         //when app first launch this got called.
         if (coordinatesAndSizesUpdated == FALSE) {
+            spiralCoordinates.clear();
             getCoordinates();
             getSizes();
             coordinatesAndSizesUpdated = TRUE;
@@ -766,9 +780,7 @@ public class TempleView extends View {
             //Log.d("screenWidth", screenWidth + " ");
             //Log.d("screenHeight", screenHeight + " ");
         }
-        String spiral_effect = PrefsActivity.getSpiralEffectPref(getContext());
-        show_label = PrefsActivity.getShowLabelPref(getContext());
-        //Log.d("spiral effect ", spiral_effect + " ");
+
 
         // we need to update the coordinates when switching to static mode from other effect. other wise coordinates for other effect will be kept.
         if (spiral_effect.equalsIgnoreCase("static")) {
@@ -789,11 +801,6 @@ public class TempleView extends View {
         }
         lastSpiralEffectHolder = spiral_effect;
 
-        if (spiral_effect.equalsIgnoreCase("static") && staticCoordinatesGet <= 10) {
-            spiralCoordinates.clear();
-            getCoordinates();
-            staticCoordinatesGet += 1;
-        }
 
         if (spiral_effect.equalsIgnoreCase("spin")) {
             spiralCoordinates.clear();
@@ -807,19 +814,7 @@ public class TempleView extends View {
         }
         //Log.d("getCoordinatesAndSizes", "again!!!!!!!!!!" + " ");
 
-        if (orientationJustChanged == TRUE) {
-            spiralCoordinates.clear();
-            //sizes.clear();
-            getCoordinates();
-            //getSizes();
-            orientationJustChanged = FALSE;
-            //Log.d("coordinates and sizes ", " just reset ");
-            //Log.d("orChanged coorSize ", " ++++++++++++++++ "
-                    //+ spiralCoordinates.size() + " "
-                    //+ sizes.size());
-            //Log.d("spiralCoordinates", spiralCoordinates + " ");
-            //Log.d("sizes", sizes + " ");
-        }
+
 
         //c.drawColor(Color.parseColor("#66ccff"));
 
