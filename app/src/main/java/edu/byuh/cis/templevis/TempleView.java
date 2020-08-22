@@ -5,7 +5,6 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -276,6 +275,7 @@ public class TempleView extends View {
         return Bitmap.createScaledBitmap(original, (int)newWidth, (int)newHeight, true);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public boolean onTouchEvent(MotionEvent m) {
         float touchX= m.getX();;
@@ -659,6 +659,23 @@ public class TempleView extends View {
 
         final AlertDialog dialog = builder.create();
 
+        dialog.show();
+        //dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+        WindowManager.LayoutParams params = dialog.getWindow().getAttributes();
+
+//        int h = 0;
+//        int w = 0;
+//        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+//           h = (int)(Math.min(windowHeight, windowWidth));
+//           w = (int)Math.min(windowHeight, windowWidth);
+//        } else {
+//            h = (int)(Math.min(windowHeight, windowWidth) );
+//            w = (int)Math.min(windowHeight, windowWidth);
+//        }
+
+        params.height = (int)(Math.min(windowHeight, windowWidth) * 0.9); // h;
+        params.width = (int)(Math.min(windowHeight, windowWidth) * 0.9); // w;
+        dialog.getWindow().setAttributes(params);
         dialog.show();
 
 
