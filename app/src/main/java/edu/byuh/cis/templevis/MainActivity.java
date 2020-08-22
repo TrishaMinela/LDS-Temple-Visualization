@@ -168,6 +168,9 @@ public class MainActivity extends AppCompatActivity {
         //slider.setBackgroundColor(Color.parseColor("#202224"));
         slider.setBackgroundColor(Color.parseColor("#287a78"));
         slider.setProgress(5550);
+        //slider.setBackgroundColor(Color.parseColor("#292d30"));
+
+        //android:progressDrawable="@drawable/slider"
 
         timA = new MyTimer();
 
@@ -382,9 +385,9 @@ public class MainActivity extends AppCompatActivity {
         ((ViewGroup)sliderLabelNoTextTwo.getParent()).removeView(sliderLabelNoTextTwo);
         lnlSlider.addView(sliderLabelNoTextTwo);
 
-        sliderLabelNoText.setLayoutParams(one);
+        sliderLabelNoText.setLayoutParams(two);
         slider.setLayoutParams(one);
-        sliderLabelNoTextTwo.setLayoutParams(one);
+        sliderLabelNoTextTwo.setLayoutParams(two);
 
         lnlSlider.setLayoutParams(one);
 
