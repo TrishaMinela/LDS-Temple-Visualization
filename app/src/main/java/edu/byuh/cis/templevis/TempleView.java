@@ -1124,10 +1124,10 @@ public class TempleView extends View {
 
         //when q += 12f, top lines circles next to each other the whole time\
         //must change the same time as getCoordinates()
-        for (float q = topCoordinateInSpiralX; q < screenWidth*1.25; q += 48f) {
+        for (float q = 0; q < 20; q += 1) {
 
             ArrayList<Float> oneSpiralCoordinateTop = new ArrayList<>();
-            oneSpiralCoordinateTop.add(q);
+            oneSpiralCoordinateTop.add(topCoordinateInSpiralX + q * 20);
             oneSpiralCoordinateTop.add(topCoordinateInSpiralY);
 
             ArrayList<Float> oneSpiralCoordinateTopCopy = new ArrayList<>();
@@ -1323,10 +1323,10 @@ public class TempleView extends View {
 
         //when q += 12f, top lines circles next to each other the whole time\
         //must change the same time as getCoordinates()
-        for (float q = topCoordinateInSpiralX; q < screenWidth*1.25; q += 48f) {
+        for (float q = 0; q < 20; q += 1) {
 
             ArrayList<Float> oneSpiralCoordinateTop = new ArrayList<>();
-            oneSpiralCoordinateTop.add(q);
+            oneSpiralCoordinateTop.add(topCoordinateInSpiralX + q * 20);
             oneSpiralCoordinateTop.add(topCoordinateInSpiralY);
 
             ArrayList<Float> oneSpiralCoordinateTopCopy = new ArrayList<>();
@@ -1367,8 +1367,11 @@ public class TempleView extends View {
 
         //when q += 12f, top lines circles next to each other the whole time
         //must change the same time as getCoordinates()
-        for (float q = topCoordinateInSpiralX; q < screenWidth*2; q += 48f) {
+        for (float q = 0; q < 20; q += 1) {
             sizes.add(largestSizeInSpiral);
+//            if (sizes.size() >= spiralCoordinates.size()) {
+//                break;
+//            }
         }
 
 
