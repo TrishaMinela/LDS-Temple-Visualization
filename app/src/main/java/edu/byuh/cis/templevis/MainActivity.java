@@ -169,8 +169,6 @@ public class MainActivity extends AppCompatActivity {
         slider.setBackgroundColor(Color.parseColor("#287a78"));
         slider.setProgress(5550);
 
-
-
         timA = new MyTimer();
 
         progress = 5550;
@@ -354,7 +352,7 @@ public class MainActivity extends AppCompatActivity {
 
         leftButton.setLayoutParams(two);
         rightButton.setLayoutParams(two);
-        slider.setLayoutParams(one);
+//        slider.setLayoutParams(one);
 
         lnlH = new LinearLayout(this);
         lnlH.setOrientation(LinearLayout.HORIZONTAL);
@@ -366,14 +364,41 @@ public class MainActivity extends AppCompatActivity {
         //((ViewGroup)rightButton.getParent()).removeView(rightButton);
         //lnlH.addView(rightButton);
 
+        LinearLayout lnlSlider = new LinearLayout(this);
+        lnlSlider.setOrientation(LinearLayout.VERTICAL);
+
+        LinearLayout sliderLabelNoText = findViewById(R.id.sliderLabelNoText);
+        sliderLabelNoText.setBackgroundColor(Color.parseColor("#287a78"));
+
+        ((ViewGroup)sliderLabelNoText.getParent()).removeView(sliderLabelNoText);
+        lnlSlider.addView(sliderLabelNoText);
+
         ((ViewGroup)slider.getParent()).removeView(slider);
-        lnlH.addView(slider);
+        lnlSlider.addView(slider);
+
+        LinearLayout sliderLabelNoTextTwo = findViewById(R.id.sliderLabelNoTextTwo);
+        sliderLabelNoTextTwo.setBackgroundColor(Color.parseColor("#287a78"));
+
+        ((ViewGroup)sliderLabelNoTextTwo.getParent()).removeView(sliderLabelNoTextTwo);
+        lnlSlider.addView(sliderLabelNoTextTwo);
+
+        sliderLabelNoText.setLayoutParams(one);
+        slider.setLayoutParams(one);
+        sliderLabelNoTextTwo.setLayoutParams(one);
+
+        lnlSlider.setLayoutParams(one);
+
+        //((ViewGroup)slider.getParent()).removeView(slider);
+        lnlH.addView(lnlSlider);
+
+
 
         ((ViewGroup)rightButton.getParent()).removeView(rightButton);
         lnlH.addView(rightButton);
 
         Integer sliderHeight = (int)(height * 0.1);
         lnlH.setMinimumHeight(sliderHeight);
+
 
         // any setting button size is not working, because it's match parent linear layout already.
         //leftButton.setWidth((int)(width*0.2));
@@ -388,13 +413,12 @@ public class MainActivity extends AppCompatActivity {
 //        leftButton.setWidth(leftButton.getHeight());
 //        rightButton.setWidth(rightButton.getHeight());
 
-        LinearLayout sliderLabel = findViewById(R.id.sliderLabel);
-        //sliderLabel.setBackgroundColor(Color.parseColor("#669cff"));
-        //sliderLabel.setBackgroundColor(Color.parseColor("#202224"));
-        sliderLabel.setBackgroundColor(Color.parseColor("#287a78"));
+//        LinearLayout sliderLabel = findViewById(R.id.sliderLabel);
+//        //sliderLabel.setBackgroundColor(Color.parseColor("#669cff"));
+//        //sliderLabel.setBackgroundColor(Color.parseColor("#202224"));
+//        sliderLabel.setBackgroundColor(Color.parseColor("#287a78"));
 
-        LinearLayout sliderLabelNoText = findViewById(R.id.sliderLabelNoText);
-        sliderLabelNoText.setBackgroundColor(Color.parseColor("#287a78"));
+
 
         lnl = new LinearLayout(this);
         lnl.setOrientation(LinearLayout.VERTICAL);

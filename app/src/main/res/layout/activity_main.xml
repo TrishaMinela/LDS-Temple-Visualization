@@ -63,7 +63,7 @@
             android:layout_gravity="center"
             android:layout_weight="1"
             android:gravity="start"
-            android:textSize="20sp"
+            android:textSize="5sp"
             android:text="    "
             android:textColor="#3d4245"/>
 
@@ -73,7 +73,7 @@
             android:layout_gravity="center"
             android:layout_weight="3"
             android:gravity="center"
-            android:textSize="20sp"
+            android:textSize="5sp"
             android:text="   "
             android:textColor="#3d4245"/>
 
@@ -83,11 +83,52 @@
             android:layout_gravity="center"
             android:layout_weight="1"
             android:gravity="end"
-            android:textSize="20sp"
+            android:textSize="5sp"
             android:text="    "
             android:textColor="#3d4245"/>
 
     </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/sliderLabelNoTextTwo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="start"
+            android:textSize="5sp"
+            android:text="    "
+            android:textColor="#3d4245"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="3"
+            android:gravity="center"
+            android:textSize="5sp"
+            android:text="   "
+            android:textColor="#3d4245"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="end"
+            android:textSize="5sp"
+            android:text="    "
+            android:textColor="#3d4245"/>
+
+    </LinearLayout>
+
 
     <SeekBar
         android:id="@+id/seekBar3"
@@ -97,7 +138,8 @@
         android:progress="0"
         android:progressDrawable="@drawable/slider"
         android:thumb="@drawable/slider_button"
-        android:visibility="visible" />
+        android:visibility="visible"
+        android:maxHeight="35px"/>
 
     <LinearLayout
         android:id="@+id/imageShow"
