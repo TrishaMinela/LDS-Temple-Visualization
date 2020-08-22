@@ -399,7 +399,14 @@ public class MainActivity extends AppCompatActivity {
         ((ViewGroup)rightButton.getParent()).removeView(rightButton);
         lnlH.addView(rightButton);
 
-        Integer sliderHeight = (int)(height * 0.1);
+        Integer sliderHeight = 0;
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            sliderHeight = (int)(height * 0.1);
+        } else {
+           sliderHeight = (int)(height * 0.06);
+        }
+
+
         lnlH.setMinimumHeight(sliderHeight);
 
 
