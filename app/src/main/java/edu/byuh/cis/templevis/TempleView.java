@@ -696,7 +696,10 @@ public class TempleView extends View {
     public void orientationJustChanged(boolean b) {
         orientationJustChanged = b;
         //singleTempleImageView.updatePositionAndSizeOnceOrientationChanged();
-        singleTempleImageView.orientationJustChanged(b);
+        if (singleTempleImageView != null) { // the rotate phone without clicking on a temple
+            singleTempleImageView.orientationJustChanged(b);
+        }
+
         //singleTempleImageView.invalidate();
 
 

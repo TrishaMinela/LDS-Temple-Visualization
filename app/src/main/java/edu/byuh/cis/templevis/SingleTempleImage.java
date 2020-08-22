@@ -150,6 +150,9 @@ public class SingleTempleImage extends View {
         valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
+                //getResources().getConfiguration().orientation
+
+
                 x = (float) animation.getAnimatedValue();
                 invalidate();
                 if(x == finalSign * canvasWidth + (canvasCenterX - imageSize / 2)) {
