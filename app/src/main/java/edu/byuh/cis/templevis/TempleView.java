@@ -98,6 +98,7 @@ public class TempleView extends View {
     private String templeUrl;
     private SingleTempleImage singleTempleImageView;
     private int staticCoordinatesGet = 0;
+    private AlertDialog singleTempleDialog;
 
 
     public TempleView(Context context) {
@@ -635,7 +636,7 @@ public class TempleView extends View {
 //        singleTempleImageView.setLayoutParams(nice);
         lnlH.setLayoutParams(nice);
 
-        // dialog
+        // singleTempleDialog
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
 
         //builder.setTitle(allTempleInfo.get(realEachIndex*3));
@@ -657,42 +658,44 @@ public class TempleView extends View {
             }
         });
 
-        final AlertDialog dialog = builder.create();
+        singleTempleDialog = builder.create();
 
-        dialog.show();
-        //dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
-        WindowManager.LayoutParams params = dialog.getWindow().getAttributes();
+        singleTempleDialog.show();
+        //singleTempleDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+        WindowManager.LayoutParams params = singleTempleDialog.getWindow().getAttributes();
 
-//        int h = 0;
-//        int w = 0;
-//        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
-//           h = (int)(Math.min(windowHeight, windowWidth));
-//           w = (int)Math.min(windowHeight, windowWidth);
-//        } else {
-//            h = (int)(Math.min(windowHeight, windowWidth) );
-//            w = (int)Math.min(windowHeight, windowWidth);
-//        }
+        int h = 0;
+        int w = 0;
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+            h = (int)(Math.min(windowHeight, windowWidth) * 1.2);
+            w = (int)Math.min(windowHeight, windowWidth);
+        } else {
+            h = (int)(Math.min(windowHeight, windowWidth) * 0.9);
+            w = (int)Math.min(windowHeight, windowWidth);
+        }
 
-        params.height = (int)(Math.min(windowHeight, windowWidth) * 0.9); // h;
-        params.width = (int)(Math.min(windowHeight, windowWidth) * 0.9); // w;
-        dialog.getWindow().setAttributes(params);
-        dialog.show();
+//        params.height = (int)(Math.min(windowHeight, windowWidth) * 0.9); // h;
+//        params.width = (int)(Math.min(windowHeight, windowWidth) * 0.9); // w;
+        params.height = h;
+        params.width =  w;
+        singleTempleDialog.getWindow().setAttributes(params);
+        singleTempleDialog.show();
 
 
 
-        Button btnPositive = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
-        Button btnNegative = dialog.getButton(AlertDialog.BUTTON_NEGATIVE);
+        Button btnPositive = singleTempleDialog.getButton(AlertDialog.BUTTON_POSITIVE);
+        Button btnNegative = singleTempleDialog.getButton(AlertDialog.BUTTON_NEGATIVE);
 
         LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) btnPositive.getLayoutParams();
         layoutParams.weight = 10;
         btnPositive.setLayoutParams(layoutParams);
         btnNegative.setLayoutParams(layoutParams);
 
-        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
+        singleTempleDialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //dialog.dismiss();
-                //dialog stays when click on website button
+                //singleTempleDialog.dismiss();
+                //singleTempleDialog stays when click on website button
 
                 // for some reason, i don't why, but each index is changed in here,
                 // so we get templeUrl before this, according to the correct eachIndex
@@ -727,8 +730,24 @@ public class TempleView extends View {
         if (singleTempleImageView != null) { // the rotate phone without clicking on a temple
             singleTempleImageView.orientationJustChanged(b);
         }
-
         //singleTempleImageView.invalidate();
+
+        // reset single temple dialog size according to screen size once orientation change happens
+        WindowManager.LayoutParams params = singleTempleDialog.getWindow().getAttributes();
+        int h = 0;
+        int w = 0;
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+            h = (int)(Math.min(windowHeight, windowWidth) * 1.2);
+            w = (int)Math.min(windowHeight, windowWidth);
+        } else {
+            h = (int)(Math.min(windowHeight, windowWidth) * 0.9);
+            w = (int)Math.min(windowHeight, windowWidth);
+        }
+        params.height = h;
+        params.width =  w;
+        singleTempleDialog.getWindow().setAttributes(params);
+
+
     }
 
     public void getWindowSize(float w, float h) {
