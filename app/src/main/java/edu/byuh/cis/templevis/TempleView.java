@@ -533,7 +533,7 @@ public class TempleView extends View {
 
 
                     if (realEachIndex < 225) {
-                        if (System.currentTimeMillis() - timeStamp[0] > 1500) {
+                        if (System.currentTimeMillis() - timeStamp[0] > 1550) {
                             realEachIndex = realEachIndex + 1;
 
 //                    b[0] = loadAndScale(getResources(), allLargeImageIds.get(realEachIndex), 10f*initialR);
@@ -576,7 +576,7 @@ public class TempleView extends View {
                     // do something
 
                     if (realEachIndex > 0) {
-                        if (System.currentTimeMillis() - timeStamp[0] > 1500) {
+                        if (System.currentTimeMillis() - timeStamp[0] > 1550) {
                             realEachIndex = realEachIndex - 1;
 
 //                    b[0] = loadAndScale(getResources(), allLargeImageIds.get(realEachIndex), 10f*initialR);
