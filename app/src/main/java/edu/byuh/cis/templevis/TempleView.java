@@ -6,9 +6,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Matrix;
@@ -51,25 +48,15 @@ public class TempleView extends View {
     private  float centerX;
     private float centerY;
     private float initialR;
-    private  float thetaSmall;
     private boolean sliderMoving;
-    private static ArrayList<Bitmap> temples;
-
     private static ArrayList<Temple> templeObjects; // more OO be more object oriented
-
     private ArrayList<ArrayList<Float>> onScreenTemples;
     private ArrayList<Float> oneOnScreenTemple;
     private ArrayList<ArrayList<Float>> spiralCoordinates;
-    private Boolean gotTheFirstSpiralCoordinate = false;
     private ArrayList<Float> sizes;
-    private ArrayList<Float> sizes2;
-    private Bitmap logo_circle;
     private ArrayList<String> allTempleLinks;
     private ArrayList<String> allTempleInfo;
     public ArrayList<String> allYears;
-
-    private float sliderProgress;
-    private float thetaPre;
     private int eachIndex;
     private Matrix currentTempleMatrix;
     private float topCoordinateInSpiralX;
@@ -84,10 +71,8 @@ public class TempleView extends View {
     private long downTime;
     private float ultimateScreenWidth;
     private float initialRForLocation;
-    private boolean firstLaunch;
     private float windowWidth;
     private float windowHeight;
-    private static ArrayList<Integer> allSpiralImageIds;
     private String lastSpiralEffectHolder;
     private static ArrayList<Integer> allLargeImageIds;
     private String oneTempleInfo;
@@ -120,27 +105,21 @@ public class TempleView extends View {
         loadedImages = false;
         spiralCoordinates = new ArrayList<>();
         sizes = new ArrayList<>();
-        sizes2 = new ArrayList<>();
         onScreenTemples = new ArrayList<>();
         oneOnScreenTemple = new ArrayList<>();
         allTempleLinks = new ArrayList<>();
         allTempleInfo = new ArrayList<>();
         allYears = new ArrayList<>();
         theta = 5550;
-        thetaPre = 0;
         currentTempleMatrix = new Matrix();
         coordinatesAndSizesUpdated = FALSE;
         orientationJustChanged = FALSE;
         movingCoordinatesLastTime = new ArrayList<>();
         yearDisplayPaint = new Paint();
-        firstLaunch = TRUE;
-        allSpiralImageIds = new ArrayList<>();
         selectedYear = "";
-
     }
 
     public void setDegree(int sliderP) {
-        sliderProgress = sliderP;
         theta = sliderP;
         //Log.d("theta is ", theta + " ***************************************************************************************");
     }
@@ -182,7 +161,6 @@ public class TempleView extends View {
                         templeObjects.get(atThisLine).setLink(line+"\n");
                         atThisLine ++;
                     }
-
                 }
                 allTempleLinksFile.close();
             }
@@ -263,17 +241,9 @@ public class TempleView extends View {
                 year = year.substring(year.length()-5);
                 //英文
             }
-
             temporary.add(year.substring(0,4));
         }
         return temporary;
-    }
-
-    private Bitmap loadAndScale(Resources res, int id, float newWidth) {
-        Bitmap original = BitmapFactory.decodeResource(res, id);
-        float aspectRatio = (float)original.getHeight()/(float)original.getWidth();
-        float newHeight = newWidth * aspectRatio;
-        return Bitmap.createScaledBitmap(original, (int)newWidth, (int)newHeight, true);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -312,23 +282,12 @@ public class TempleView extends View {
             movingCoordinatesLastTime.add(movingY);
             //Log.d("xy displacementFLT ", xDisplacementFromLastMove + " " + yDisplacementFromLastMove);
 
-            boolean topLeft = (touchY <= 9 * screenHeight / 20 && touchX <= screenWidth / 2);
-            boolean topRight = (touchY <= 9 * screenHeight / 20 && touchX > screenWidth / 2);
-            boolean bottomLeft = (touchY < 9 * screenHeight / 10 && touchY > 9 * screenHeight / 20 && touchX <= screenWidth / 2);
-            boolean bottomRight = (touchY < 9 * screenHeight / 10 && touchY > 9 * screenHeight / 20 && touchX > screenWidth / 2);
-
             boolean top = (touchY <= centerY);
             boolean bottom = (touchY < 9 * screenHeight / 10 && touchY > centerY);
-            boolean left = (touchX <= centerX);
-            boolean right = (touchX > centerX);
 
             boolean leftThirdVertical = (touchX <= centerX - screenWidth / 6 );
             boolean middleThirdVertical = (touchX > centerX - screenWidth / 6 && touchX < centerX + screenWidth / 6);
             boolean rightThirdVertical = (touchX >= centerX + screenWidth / 6 );
-
-            boolean middleColumnNarrowVertical = (touchX > centerX - screenWidth / 20 && touchX < centerX + screenWidth / 20);
-
-            //Log.d("topLeft? ",  topLeft + " ");
 
             int moveTheta = 10;
 
@@ -404,8 +363,6 @@ public class TempleView extends View {
             float y = m.getY();
             //Toast.makeText(getContext(), "touched a circle when UP at " + x + " " + y, Toast.LENGTH_SHORT).show();
 
-            float distanceToCenter = (float) (Math.sqrt(Math.pow(Math.abs(x - centerX), 2) + Math.pow(Math.abs(y - centerY), 2)));
-
             if (y < 9 * screenHeight / 10 && period < 100) {
                 boolean singleTempleViewOpened = false;
 
@@ -427,7 +384,6 @@ public class TempleView extends View {
                                 singleTempleViewOpened = true;
                                 //Log.d("eachIndex is ", eachIndex + " when click on circle");
                                 singleTempleDialog();
-
                             } else {
                                 //no link
                                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
@@ -469,18 +425,6 @@ public class TempleView extends View {
         LinearLayout lnlH = new LinearLayout(getContext());
         lnlH.setOrientation(LinearLayout.HORIZONTAL);
 
-//        // single temple image
-//        final ImageView singleTempleImageView = new ImageView(getContext());
-//        final Bitmap[] b = new Bitmap[1];
-//        b[0] = loadAndScale(getResources(), allLargeImageIds.get(eachIndex), 10f*initialR);
-//        singleTempleImageView.setImageBitmap(b[0]);
-//        singleTempleImageView.setPadding(0,0,0,0);
-//        singleTempleImageView.setMaxHeight(singleTempleImageView.getWidth());
-//        //singleTempleImageView.setBackgroundColor(Color.RED);
-
-
-        // single temple image
-
         if (eachIndex == 0) {
             singleTempleImageView = new SingleTempleImage(getContext(), allLargeImageIds.get(eachIndex), allLargeImageIds.get(eachIndex), allLargeImageIds.get(eachIndex + 1));
         } else {
@@ -503,7 +447,6 @@ public class TempleView extends View {
         ScrollView sv = new ScrollView(getContext());
         //sv.setPadding(100,100,100,100);
         sv.addView(singleTempleTextView);
-
 
         // here is where we get templeUrl, to avoid the eachIndex change error
         //final String templeUrl = allTempleLinks.get(eachIndex);
@@ -528,20 +471,13 @@ public class TempleView extends View {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 if(motionEvent.getAction() == MotionEvent.ACTION_DOWN){
-
+                    // do nothing
                 }else if(motionEvent.getAction() == MotionEvent.ACTION_UP){
-
-
                     if (realEachIndex < 225) {
                         if (System.currentTimeMillis() - timeStamp[0] > 1550) {
                             realEachIndex = realEachIndex + 1;
-
-//                    b[0] = loadAndScale(getResources(), allLargeImageIds.get(realEachIndex), 10f*initialR);
-//                    singleTempleImageView.setImageBitmap(b[0]);
-
                             singleTempleImageView.moveImage("left");
                             singleTempleImageView.updateThreeTemplesBitmapIds(allLargeImageIds.get(realEachIndex), allLargeImageIds.get(realEachIndex - 1), allLargeImageIds.get(realEachIndex + 1));
-
                             templeUrl = templeObjects.get(realEachIndex).link;
                             singleTempleDialogTitleView.setText(allTempleInfo.get(realEachIndex*3));
                             oneTempleInfo = "";
@@ -552,15 +488,10 @@ public class TempleView extends View {
                     } else {
                         Toast.makeText(getContext(), getResources().getString(R.string.dubai_temple_is_the_most_recent_temple), Toast.LENGTH_SHORT).show();
                     }
-
-
-
-
                 }
                 return false;
             }
         });
-
 
         Button right = new Button(getContext());
         right.setWidth((int)screenWidth / 10);
@@ -570,29 +501,20 @@ public class TempleView extends View {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 if(motionEvent.getAction() == MotionEvent.ACTION_DOWN){
-
+                    // do nothing
                 }else if(motionEvent.getAction() == MotionEvent.ACTION_UP){
-
                     // do something
-
                     if (realEachIndex > 0) {
                         if (System.currentTimeMillis() - timeStamp[0] > 1550) {
                             realEachIndex = realEachIndex - 1;
-
-//                    b[0] = loadAndScale(getResources(), allLargeImageIds.get(realEachIndex), 10f*initialR);
-//                    singleTempleImageView.setImageBitmap(b[0]);
-
                             singleTempleImageView.moveImage("right");
-
                             int lastTempleId = 0;
                             if (realEachIndex - 1 < 0) {
                                 lastTempleId = allLargeImageIds.get(realEachIndex);
                             } else {
                                 lastTempleId = allLargeImageIds.get(realEachIndex - 1);
                             }
-
                             singleTempleImageView.updateThreeTemplesBitmapIds(allLargeImageIds.get(realEachIndex), lastTempleId, allLargeImageIds.get(realEachIndex + 1));
-
                             templeUrl = templeObjects.get(realEachIndex).link;
                             singleTempleDialogTitleView.setText(allTempleInfo.get(realEachIndex*3));
                             oneTempleInfo = "";
@@ -603,67 +525,43 @@ public class TempleView extends View {
                     } else {
                         Toast.makeText(getContext(), getResources().getString(R.string.kirtland_temple_is_the_oldest_temple), Toast.LENGTH_SHORT).show();
                     }
-
-
-
-
                 }
                 return false;
             }
         });
 
-
-
-        //add views
-        //lnl.addView(singleTempleImageView);
-
-        //lnl.addView(left);
         lnlH.addView(left);
         lnlH.addView(singleTempleImageView);
         lnlH.addView(right);
-
-
         lnl.addView(singleTempleDialogTitleView);
-
         lnl.addView(lnlH);
         //lnlH.setBackgroundColor(Color.GREEN);
-
         lnl.addView(sv);
-
         singleTempleImageView.setLayoutParams(nice);
         left.setLayoutParams(niceFour);
         right.setLayoutParams(niceFour);
-//        singleTempleImageView.setLayoutParams(nice);
         lnlH.setLayoutParams(nice);
-
         // singleTempleDialog
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-
         //builder.setTitle(allTempleInfo.get(realEachIndex*3));
-
         builder.setView(lnl);
         builder.setCancelable(true);
-
         builder.setCancelable(true);
-
         builder.setPositiveButton(getResources().getString(R.string.website_button), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 //do nothing
             }
         });
-
         builder.setNegativeButton(getResources().getString(R.string.return_button), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 //set onclick method for this button below
             }
         });
-
         singleTempleDialog = builder.create();
-
         singleTempleDialog.show();
+
         //singleTempleDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
         WindowManager.LayoutParams params = singleTempleDialog.getWindow().getAttributes();
-
         int h = 0;
         int w = 0;
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
@@ -673,15 +571,10 @@ public class TempleView extends View {
             h = (int)(Math.min(windowHeight, windowWidth) * 0.9);
             w = (int)Math.min(windowHeight, windowWidth);
         }
-
-//        params.height = (int)(Math.min(windowHeight, windowWidth) * 0.9); // h;
-//        params.width = (int)(Math.min(windowHeight, windowWidth) * 0.9); // w;
         params.height = h;
         params.width =  w;
         singleTempleDialog.getWindow().setAttributes(params);
         singleTempleDialog.show();
-
-
 
         Button btnPositive = singleTempleDialog.getButton(AlertDialog.BUTTON_POSITIVE);
         Button btnNegative = singleTempleDialog.getButton(AlertDialog.BUTTON_NEGATIVE);
@@ -746,8 +639,6 @@ public class TempleView extends View {
         params.height = h;
         params.width =  w;
         singleTempleDialog.getWindow().setAttributes(params);
-
-
     }
 
     public void getWindowSize(float w, float h) {
@@ -760,7 +651,6 @@ public class TempleView extends View {
     }
     @Override
     public void onDraw(Canvas c) {
-        thetaSmall = theta / 4;
         //Toast.makeText(getContext(), "onscreen temples" + onScreenTemples.size(), Toast.LENGTH_SHORT).show();
         //Log.d("onscreen temples ", "" + onScreenTemples.size());
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
@@ -854,9 +744,6 @@ public class TempleView extends View {
             spiralCoordinates.clear();
             getCoordinatesThreeD();
         }
-        //Log.d("getCoordinatesAndSizes", "again!!!!!!!!!!" + " ");
-
-
 
         //c.drawColor(Color.parseColor("#66ccff"));
 
@@ -884,8 +771,6 @@ public class TempleView extends View {
 
             //temples = ImageCache.getTemplesList();
             templeObjects = ImageCache.getTempleObjectsList(); // more OO
-
-            logo_circle = ImageCache.getLogo();
 
             readLinksFile();
             readInfoFile();
@@ -916,16 +801,6 @@ public class TempleView extends View {
             yearDisplay(c);
         }
 
-//        Matrix logoMatrix = new Matrix();
-//        logoMatrix.postScale(2 * 2 * initialR / screenWidth, 2 * 2 * initialR / screenWidth);
-//        Bitmap newLogoCircle = Bitmap.createBitmap(logo_circle, 0, 0, logo_circle.getWidth(), logo_circle.getHeight(), logoMatrix, true);
-//        c.drawBitmap(newLogoCircle, screenWidth / 6000 * theta, screenHeight / 6000 * theta, null);
-
-        //Log.d("all sizes : ", sizes + " ");
-        //Log.d("all sizes : ", spiralCoordinates + " ");
-        //Log.d("x y coordinate", "spiralCoordinates are " + spiralCoordinates);
-
-        //drawSpiral(c);
 
     }
 
@@ -1439,20 +1314,7 @@ public class TempleView extends View {
 //                break;
 //            }
         }
-
-
         Collections.reverse(sizes);
-    }
-
-    public void drawMiddleCircle(Canvas c) {
-        //draw middle image ********************************
-        //float hh = logo_circle.getHeight();
-        //c.drawText("hh is " + hh + " ", 0, screenHeight - 200, redPaint);
-        //c.drawBitmap(logo_circle, centerX, centerY, null);
-        Matrix logoMatrix = new Matrix();
-        logoMatrix.postScale(2 * 2 * initialR / screenWidth, 2 * 2 * initialR / screenWidth);
-        Bitmap newLogoCircle = Bitmap.createBitmap(logo_circle, 0, 0, logo_circle.getWidth(), logo_circle.getHeight(), logoMatrix, true);
-        c.drawBitmap(newLogoCircle, centerX - newLogoCircle.getWidth() / 2, centerY - newLogoCircle.getHeight() / 2, null);
     }
 
     public void drawSpiral(Canvas c) {

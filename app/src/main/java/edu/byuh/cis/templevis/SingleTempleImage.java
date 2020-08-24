@@ -8,7 +8,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.view.MotionEvent;
 import android.view.View;
 
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
@@ -52,8 +51,6 @@ public class SingleTempleImage extends View {
 
         textPaint = new Paint();
         textPaint.setTextSize(50);
-
-
     }
 
     private Bitmap loadAndScale(Resources res, int id, float newWidth) {
@@ -68,7 +65,6 @@ public class SingleTempleImage extends View {
         this.idLastStore = idLast;
         this.idNextStore = idNext;
     }
-
 
     @Override
     public void onDraw(Canvas c) {
@@ -117,12 +113,10 @@ public class SingleTempleImage extends View {
                 c.drawBitmap(t.image, x + canvasWidth, y, null);
             }
         }
-
     }
 
     public void orientationJustChanged(boolean b) {
         orientationJustChanged = b;
-
     }
 
     public void endOfAnimationAction() {
@@ -172,8 +166,6 @@ public class SingleTempleImage extends View {
         valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
-                //getResources().getConfiguration().orientation
-
                 if (orientationJustChanged) {
                     endOfAnimationAction();
                 } else {
@@ -183,31 +175,23 @@ public class SingleTempleImage extends View {
                        endOfAnimationAction();
                     }
                 }
-
-
-
             }
         });
         valueAnimator.start();
 
     }
 
-    @Override
-    public boolean onTouchEvent(MotionEvent m) {
-        float touchX= m.getX();;
-        float touchY= m.getY();;
-        if (m.getAction() == MotionEvent.ACTION_DOWN) {
-
-        }
-
-        if (m.getAction() == MotionEvent.ACTION_MOVE) {
-
-
-        }
-
-        if (m.getAction() == MotionEvent.ACTION_UP) {
-
-        }
-        return true;
-    }
+    // maybe useful later
+//    @Override
+//    public boolean onTouchEvent(MotionEvent m) {
+//        float touchX= m.getX();;
+//        float touchY= m.getY();;
+//        if (m.getAction() == MotionEvent.ACTION_DOWN) {
+//        }
+//        if (m.getAction() == MotionEvent.ACTION_MOVE) {
+//        }
+//        if (m.getAction() == MotionEvent.ACTION_UP) {
+//        }
+//        return true;
+//    }
 }

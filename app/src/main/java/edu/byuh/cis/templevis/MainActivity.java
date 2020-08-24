@@ -6,7 +6,6 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Build;
@@ -229,26 +228,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-//        final Button leftButton = new Button(this);
         final ImageButton leftButton = findViewById(R.id.slider_left_button);
         leftButton.setBackgroundColor(Color.parseColor("#007a66"));
         // arrow color is the same as spiral background #17252a
-
-        //leftButton.setBackgroundResource(R.drawable.left_button_arrow);
-//
-//        Drawable leftButtonForeground = getResources().getDrawable(R.drawable.left_button_background_svg);
-//        //ContextCompat.getDrawable(getApplicationContext(),R.drawable.left_button_arrow);
-//        //ResourcesCompat.getDrawable(getResources(), R.drawable.left_button_arrow, null);
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-//            leftButton.setForeground(leftButtonForeground);
-//        }
-//
-//        leftButton.setBackgroundColor(Color.parseColor("#007a66"));
-
-        //leftButton.setBackgroundResource(R.drawable.left_button_background_svg);
-
-//        leftButton.setBackgroundColor(Color.parseColor("#007a66"));
-//        leftButton.setBackgroundResource(R.drawable.left_button_background_svg);
 
 
         leftButton.setOnTouchListener(new View.OnTouchListener() {
@@ -256,26 +238,7 @@ public class MainActivity extends AppCompatActivity {
             public boolean onTouch(View v, MotionEvent event) {
                 if(event.getAction() == MotionEvent.ACTION_DOWN){
                     leftButton.setBackgroundColor(Color.parseColor("#507a66"));
-                    //Toast.makeText(MainActivity.this,"按下了" ,Toast.LENGTH_SHORT).show();
-                    //leftButton.setBackgroundColor(Color.parseColor("#17252a"));
-                    //leftButton.setBackgroundResource(R.drawable.left_button_background_pressed);
-//                    Drawable leftButtonForegroundPressed = getResources().getDrawable(R.drawable.left_button_background_pressed);
-//                    //ContextCompat.getDrawable(getApplicationContext(),R.drawable.left_button_arrow);
-//                    //ResourcesCompat.getDrawable(getResources(), R.drawable.left_button_arrow, null);
-//                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-//                        leftButton.setForeground(leftButtonForegroundPressed);
-//                    }
                 }else if(event.getAction() == MotionEvent.ACTION_UP){
-                    //Toast.makeText(MainActivity.this,"松开了" + slider.getProgress() ,Toast.LENGTH_SHORT).show();
-                    //leftButton.setBackgroundResource(R.drawable.left_button_arrow);
-                    //leftButton.setBackgroundResource(R.drawable.left_button_background_svg);
-//                    Drawable leftButtonForeground = getResources().getDrawable(R.drawable.left_button_background_svg);
-//                    //ContextCompat.getDrawable(getApplicationContext(),R.drawable.left_button_arrow);
-//                    //ResourcesCompat.getDrawable(getResources(), R.drawable.left_button_arrow, null);
-//                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-//                        leftButton.setForeground(leftButtonForeground);
-//                    }
-                    //lastProgress = slider.getProgress() - 30;
                     leftButton.setBackgroundColor(Color.parseColor("#007a66"));
                     if (slider.getProgress() - 30 < 30) {
                         progress = 30;
@@ -291,51 +254,21 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-
-//        final  Button rightButton = new Button(this);
-        //rightButton.setBackgroundResource(R.drawable.right_button_arrow);
-
         final ImageButton rightButton = findViewById(R.id.slider_right_button);
         rightButton.setBackgroundColor(Color.parseColor("#007a66"));
-
-//        Drawable rightButtonForeground = getResources().getDrawable(R.drawable.right_button_background_svg);
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-//            rightButton.setForeground(rightButtonForeground);
-//        }
-//
-//        rightButton.setBackgroundColor(Color.parseColor("#007a66"));
-
-        //rightButton.setBackgroundResource(R.drawable.right_button_background_svg);
 
         rightButton.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 if(event.getAction() == MotionEvent.ACTION_DOWN){
                     rightButton.setBackgroundColor(Color.parseColor("#507a66"));
-                    //Toast.makeText(MainActivity.this,"按下了" ,Toast.LENGTH_SHORT).show();
-                    //rightButton.setBackgroundColor(Color.parseColor("#17252a"));
-                    //rightButton.setBackgroundResource(R.drawable.right_button_background_pressed);
-//                    Drawable rightButtonForegroundPressed = getResources().getDrawable(R.drawable.right_button_background_pressed);
-//                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-//                        rightButton.setForeground(rightButtonForegroundPressed);
-//                    }
                 }else if(event.getAction() == MotionEvent.ACTION_UP){
-                    //Toast.makeText(MainActivity.this,"松开了" + slider.getProgress() ,Toast.LENGTH_SHORT).show();
-                    //rightButton.setBackgroundResource(R.drawable.right_button_arrow);
-                    //rightButton.setBackgroundResource(R.drawable.right_button_background_svg);
-//                    Drawable rightButtonForeground = getResources().getDrawable(R.drawable.right_button_background_svg);
-//                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-//                        rightButton.setForeground(rightButtonForeground);
-//                    }
-                    //lastProgress = slider.getProgress() + 30;
                     rightButton.setBackgroundColor(Color.parseColor("#007a66"));
                     if (slider.getProgress() + 30 > 6800) {
                         progress = 6800;
                     } else {
                         progress = slider.getProgress() + 30;
                     }
-                    //progress = slider.getProgress() + 30;
                     slider.setProgress(lastProgress);
                     tv.setDegree(slider.getProgress());
                     tv.invalidate();
@@ -344,7 +277,6 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
-
 
         LinearLayout.LayoutParams one = new LinearLayout.LayoutParams
                 (LinearLayout.LayoutParams.MATCH_PARENT,
@@ -355,17 +287,12 @@ public class MainActivity extends AppCompatActivity {
 
         leftButton.setLayoutParams(two);
         rightButton.setLayoutParams(two);
-//        slider.setLayoutParams(one);
-
         lnlH = new LinearLayout(this);
         lnlH.setOrientation(LinearLayout.HORIZONTAL);
         lnlH.setBackgroundColor(Color.parseColor("#287a78"));
 
         ((ViewGroup)leftButton.getParent()).removeView(leftButton);
         lnlH.addView(leftButton);
-
-        //((ViewGroup)rightButton.getParent()).removeView(rightButton);
-        //lnlH.addView(rightButton);
 
         LinearLayout lnlSlider = new LinearLayout(this);
         lnlSlider.setOrientation(LinearLayout.VERTICAL);
@@ -414,49 +341,14 @@ public class MainActivity extends AppCompatActivity {
         //leftButton.setWidth((int)(width*0.2));
         //leftButton.setWidth(lnlH.getHeight());
 
-//        if (leftButton.getWidth() > leftButton.getHeight()) {
-//            leftButton.setWidth(leftButton.getHeight());
-//        } else {
-//            leftButton.setHeight(leftButton.getWidth());
-//        }
-
-//        leftButton.setWidth(leftButton.getHeight());
-//        rightButton.setWidth(rightButton.getHeight());
-
-//        LinearLayout sliderLabel = findViewById(R.id.sliderLabel);
-//        //sliderLabel.setBackgroundColor(Color.parseColor("#669cff"));
-//        //sliderLabel.setBackgroundColor(Color.parseColor("#202224"));
-//        sliderLabel.setBackgroundColor(Color.parseColor("#287a78"));
-
-
-
         lnl = new LinearLayout(this);
         lnl.setOrientation(LinearLayout.VERTICAL);
         lnl.addView(tv);
 
-//        ((ViewGroup)sliderLabelNoText.getParent()).removeView(sliderLabelNoText);
-//        lnl.addView(sliderLabelNoText);
-
-//        ((ViewGroup)slider.getParent()).removeView(slider);
-//        lnl.addView(slider);
-
-        //((ViewGroup)lnlH.getParent()).removeView(lnlH);
         lnl.addView(lnlH);
+        setContentView(lnl);
 
-//        ((ViewGroup)sliderLabel.getParent()).removeView(sliderLabel);
-//        lnl.addView(sliderLabel);
-
-
-        if (getResources().getConfiguration().orientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT) {
-            setContentView(lnl);
-        } else {
-            setContentView(lnl);
-            //finish();
-        }
-
-        //setContentView(lnl);
     }
-
 
     @Override
     public void onDestroy() {
@@ -478,9 +370,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        //if (!tv.sliderMovingOrAnimationInProgress()) {
-            tv.orientationJustChanged(TRUE);
-        //}
+        tv.orientationJustChanged(TRUE);
         tv.resetStaticCoordinatesGet();
         Log.d("1"," -- onConfigurationChanged");
 //        if(newConfig.orientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT){
@@ -576,11 +466,6 @@ public class MainActivity extends AppCompatActivity {
 
         final NumberPicker yearPickerPicker = new NumberPicker(this);
 
-        //yearPickerPicker.setDisplayedValues(s);
-        //yearPickerPicker.setMinValue(0);
-        //yearPickerPicker.setMaxValue(10);
-        //String[] test = new String[]{"北京","上海","广州","深圳"};
-
         final ArrayList<String> allYearsWithoutDuplicates = new ArrayList<>();
         for (int i=0; i<tv.allYears.size(); i++) {
             String toBeAdded = tv.allYears.get(i);
@@ -594,7 +479,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         // i have to use this for loop to covert allYears arraylist to String[], I used toArray() on the arraylist, but did work
-        //ArrayList<String> temporary = new ArrayList<>();
         final String[] temporary = new String[allYearsWithoutDuplicates.size()];
         for (int i = 0; i < allYearsWithoutDuplicates.size(); i++) {
             temporary[i] = allYearsWithoutDuplicates.get(i);
@@ -610,9 +494,6 @@ public class MainActivity extends AppCompatActivity {
         yearPickerPicker.setValue(selectedYearIndex);
         selectedYear = "2020"; // we need this here, other wise, selectedYear is null when first time open year yearPickerPicker dialog and not moving the yearPickerPicker when passed in TempleView through method.
         //yearPickerPicker.setTextColor(Color.GRAY);
-
-
-
 
         Locale curLocale = getResources().getConfiguration().locale;
         if (curLocale.equals(Locale.SIMPLIFIED_CHINESE)) {
@@ -671,13 +552,6 @@ public class MainActivity extends AppCompatActivity {
         // user cannot enter a value
         //yearPickerPicker.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
 
-//
-//        if(getWindow().getAttributes().softInputMode == WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE){
-//            Toast.makeText(MainActivity.this, "显示", Toast.LENGTH_SHORT).show();
-//        }else {
-//            Toast.makeText(MainActivity.this, "没显示", Toast.LENGTH_SHORT).show();
-//        }
-//
         yearPickerDialogBuilder.setPositiveButton(getResources().getString(R.string.view), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 // this enables year yearPickerPicker setOnValueChangedListener get called when click on positive button after entering a value.
@@ -711,8 +585,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-
         final AlertDialog dialog = yearPickerDialogBuilder.create();
         dialog.show();
 
@@ -723,7 +595,6 @@ public class MainActivity extends AppCompatActivity {
         layoutParams.weight = 10;
         btnPositive.setLayoutParams(layoutParams);
         btnNegative.setLayoutParams(layoutParams);
-
 
         // these will override the onclick above
 //        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
@@ -741,8 +612,6 @@ public class MainActivity extends AppCompatActivity {
 //
 //            }
 //        });
-
-
 
     }
 
