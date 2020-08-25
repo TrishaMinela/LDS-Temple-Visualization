@@ -465,7 +465,7 @@ public class TempleView extends View {
         // view last or next temple buttons
         Button left = new Button(getContext());
         left.setWidth((int)screenWidth / 10);
-        left.setText("<");
+        left.setText(">");
         left.setTextSize(20);
         left.setOnTouchListener(new OnTouchListener() {
             @Override
@@ -495,7 +495,7 @@ public class TempleView extends View {
 
         Button right = new Button(getContext());
         right.setWidth((int)screenWidth / 10);
-        right.setText(">");
+        right.setText("<");
         right.setTextSize(20);
         right.setOnTouchListener(new OnTouchListener() {
             @Override
@@ -530,9 +530,10 @@ public class TempleView extends View {
             }
         });
 
-        lnlH.addView(left);
+        // the left button is actually on the right and the right button is actually on the left.
+        lnlH.addView(right); // lnlH.addView(left);
         lnlH.addView(singleTempleImageView);
-        lnlH.addView(right);
+        lnlH.addView(left); // lnlH.addView(right);
         lnl.addView(singleTempleDialogTitleView);
         lnl.addView(lnlH);
         //lnlH.setBackgroundColor(Color.GREEN);
