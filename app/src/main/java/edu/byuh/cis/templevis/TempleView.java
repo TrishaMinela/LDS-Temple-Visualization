@@ -622,23 +622,23 @@ public class TempleView extends View {
         //singleTempleImageView.updatePositionAndSizeOnceOrientationChanged();
         if (singleTempleImageView != null) { // the rotate phone without clicking on a temple
             singleTempleImageView.orientationJustChanged(b);
-        }
-        //singleTempleImageView.invalidate();
+            //singleTempleImageView.invalidate();
 
-        // reset single temple dialog size according to screen size once orientation change happens
-        WindowManager.LayoutParams params = singleTempleDialog.getWindow().getAttributes();
-        int h = 0;
-        int w = 0;
-        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
-            h = (int)(Math.min(windowHeight, windowWidth) * 1.2);
-            w = (int)Math.min(windowHeight, windowWidth);
-        } else {
-            h = (int)(Math.min(windowHeight, windowWidth) * 0.9);
-            w = (int)Math.min(windowHeight, windowWidth);
+            // reset single temple dialog size according to screen size once orientation change happens
+            WindowManager.LayoutParams params = singleTempleDialog.getWindow().getAttributes();
+            int h = 0;
+            int w = 0;
+            if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+                h = (int)(Math.min(windowHeight, windowWidth) * 1.2);
+                w = (int)Math.min(windowHeight, windowWidth);
+            } else {
+                h = (int)(Math.min(windowHeight, windowWidth) * 0.9);
+                w = (int)Math.min(windowHeight, windowWidth);
+            }
+            params.height = h;
+            params.width =  w;
+            singleTempleDialog.getWindow().setAttributes(params);
         }
-        params.height = h;
-        params.width =  w;
-        singleTempleDialog.getWindow().setAttributes(params);
     }
 
     public void getWindowSize(float w, float h) {
