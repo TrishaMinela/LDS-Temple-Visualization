@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">后期圣殿</string>
+    <string name="app_name">圣殿时光线</string>
 
     <string-array name="SpiralEffect">
         <item>默认</item>

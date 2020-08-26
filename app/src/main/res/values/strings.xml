@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Latter-day Temples</string>
+    <string name="app_name">Temples Timeline</string>
 
     <string-array name="SpiralEffect">
         <item>Default</item>
