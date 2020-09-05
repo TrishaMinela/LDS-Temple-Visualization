@@ -470,6 +470,7 @@ public class MainActivity extends AppCompatActivity {
         listView.setAdapter(allTempleNamesAdapter);
         listView.setTextFilterEnabled(true);
         listView.setPadding(10,10,10,10);
+        listView.setBackgroundColor(Color.parseColor("#ffffee"));
 
 
         LinearLayout.LayoutParams nice = new LinearLayout.LayoutParams
@@ -697,6 +698,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+        yearPickerPicker.setBackgroundColor(Color.parseColor("#ffffee"));
 
         LinearLayout yearPickerView = new LinearLayout(this);
         yearPickerView.setOrientation(LinearLayout.VERTICAL);

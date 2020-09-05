@@ -556,7 +556,8 @@ public class TempleView extends View {
 
         lnl.addView(singleTempleDialogTitleView);
 
-
+        lnlH.setBackgroundColor(Color.parseColor("#ffffee"));
+        sv.setBackgroundColor(Color.parseColor("#ffffee"));
 
         lnl.addView(lnlH);
         //lnlH.setBackgroundColor(Color.GREEN);
