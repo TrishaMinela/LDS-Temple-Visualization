@@ -3,6 +3,7 @@ package edu.byuh.cis.templevis;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -13,6 +14,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.text.Html;
+import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -23,10 +25,16 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.NumberPicker;
+import android.widget.SearchView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -42,6 +50,7 @@ import java.util.Locale;
 import static android.graphics.Color.BLUE;
 import static android.graphics.Color.GREEN;
 import static android.graphics.Color.RED;
+import static android.graphics.Color.YELLOW;
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
 
@@ -70,6 +79,9 @@ public class MainActivity extends AppCompatActivity {
     private AlertDialog.Builder yearPickerDialogBuilder;
     private boolean yearPickerDialogDismissedByPositiveButton;
     private String spaceDependingOnLanguage = "";
+    private int width;
+    private int height;
+    private AlertDialog searchDialog;
 
     public class MyTimer extends Handler {
 
@@ -147,11 +159,12 @@ public class MainActivity extends AppCompatActivity {
         selectedYearIndex = 52;
 
 
+
         WindowManager manager = this.getWindowManager();
         DisplayMetrics outMetrics = new DisplayMetrics();
         manager.getDefaultDisplay().getMetrics(outMetrics);
-        int width = outMetrics.widthPixels;
-        int height = outMetrics.heightPixels;
+        width = outMetrics.widthPixels;
+        height = outMetrics.heightPixels;
         //Log.d("window Width", width + " ");
         //Log.d("window Height", height + " ");
 
@@ -162,6 +175,7 @@ public class MainActivity extends AppCompatActivity {
         tv = new TempleView(this);
         tv.getWindowSize(width, height);
         tv.setLayoutParams(nice);
+
         slider = findViewById(R.id.seekBar3);
         //slider.setBackgroundColor(Color.parseColor("#669cff"));
         //slider.setBackgroundColor(Color.parseColor("#202224"));
@@ -382,6 +396,7 @@ public class MainActivity extends AppCompatActivity {
 //            tv.orientationJustChanged(TRUE);
 //            //Log.d("1"," -- onConfigurationChanged  可以在横屏方向 to do something");
 //        }
+       //setDialogSize(searchDialog);
     }
 
     @Override
@@ -394,6 +409,10 @@ public class MainActivity extends AppCompatActivity {
         item.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);//主要是这句话
         //item.setOnMenuItemClickListener(listener);//添加监听事件
         item.setIcon(R.drawable.calendar);//设置图标
+
+        MenuItem itemSearch=menu.add(0,YELLOW,0,"hello");
+        itemSearch.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);//主要是这句话
+        itemSearch.setIcon(R.drawable.search_icon);//设置图标
 
         return true;
     }
@@ -419,9 +438,148 @@ public class MainActivity extends AppCompatActivity {
             case BLUE:
                 showYearPickerDialog();
                 break;
+            case YELLOW:
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    showSearchDialog();
+                }
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public void showSearchDialog() {
+
+        //Toast.makeText(mContext, "allTempleNames length is: " + tv.allTempleNames.size(), Toast.LENGTH_SHORT).show();
+
+        final ArrayAdapter<String> allTempleNamesAdapter = new ArrayAdapter<String>(
+                MainActivity.this,   // Context上下文
+                android.R.layout.simple_list_item_1,  // 子项布局id
+                tv.allTempleNames
+        );
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        //builder.setTitle(getResources().getString(R.string.app_name));
+
+        final SearchView searchView = new SearchView(this);
+        searchView.setIconifiedByDefault(false);
+        searchView.setQueryHint(getResources().getString(R.string.type_in_here_to_search_a_temple));
+        searchView.setPadding(10,30,10,10);
+
+        final ListView listView = new ListView(this);
+        listView.setAdapter(allTempleNamesAdapter);
+        listView.setTextFilterEnabled(true);
+        listView.setPadding(10,10,10,10);
+
+
+        LinearLayout.LayoutParams nice = new LinearLayout.LayoutParams
+                (LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.MATCH_PARENT, 1);
+
+        listView.setLayoutParams(nice);
+
+        //listView.setBackgroundColor(RED);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            // 当点击搜索按钮时触发该方法
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            // 当搜索内容改变时触发该方法
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                Filter filter = ((Filterable) allTempleNamesAdapter).getFilter();
+                if (!TextUtils.isEmpty(newText)){
+                    //listView.setFilterText(newText);
+                    filter.filter(newText);
+                }else{
+                    //listView.clearTextFilter();
+                    filter.filter(null);
+                }
+                return false;
+            }
+        });
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O_MR1)
+            @Override
+            public void onItemClick(AdapterView<?> arg0, View arg1, int position,
+                                    long positionId) {//arg1为当前的view，用当前的view
+                //Toast.makeText(mContext, "list position and positionId are: " + position + " " + positionId, Toast.LENGTH_SHORT).show();
+                searchView.setQuery(allTempleNamesAdapter.getItem(position), false);
+            }
+        });
+
+
+
+        LinearLayout searchDialogView = new LinearLayout(this);
+        searchDialogView.setOrientation(LinearLayout.VERTICAL);
+        searchDialogView.addView(searchView);
+        searchDialogView.addView(listView);
+
+        builder.setView(searchDialogView);
+        //builder.setIcon(R.mipmap.ic_launcher_round);
+        builder.setCancelable(true);
+
+        builder.setPositiveButton(getResources().getString(R.string.view), new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                int targetTempleSliderProgress = tv.allTempleNames.indexOf(searchView.getQuery().toString()) * 30 + 150;
+                if (targetTempleSliderProgress >= 6800) {
+                    targetTempleSliderProgress = 6800;
+                }
+                tv.setSelectedTempleIndex(tv.allTempleNames.indexOf(searchView.getQuery().toString()));
+
+                Toast.makeText(mContext, searchView.getQuery() + " at progress " + targetTempleSliderProgress, Toast.LENGTH_SHORT).show();
+                //we can use this selected year value to update spiral
+                progress = targetTempleSliderProgress;
+                slider.setProgress(lastProgress);
+                tv.setDegree(slider.getProgress());
+                tv.invalidate();
+            }
+        });
+
+        builder.setNegativeButton(getResources().getString(R.string.return_button), new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                // do nothing
+            }
+        });
+
+        searchDialog = builder.create();
+        searchDialog.show();
+
+//        setDialogSize(searchDialog);
+
+        Button btnPositive = searchDialog.getButton(AlertDialog.BUTTON_POSITIVE);
+        Button btnNegative = searchDialog.getButton(AlertDialog.BUTTON_NEGATIVE);
+
+        LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) btnPositive.getLayoutParams();
+        layoutParams.weight = 10;
+        btnPositive.setLayoutParams(layoutParams);
+        btnNegative.setLayoutParams(layoutParams);
+
+    }
+
+    private void setDialogSize(Dialog dialog) {
+        dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+        WindowManager.LayoutParams params = dialog.getWindow().getAttributes();
+        int h = 0;
+        int w = 0;
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+            h = (int)(Math.max(width, height) * 0.6);
+            w = (int)(Math.min(width, height) * 0.9);
+        } else {
+            h = (int)((Math.min(width, height))* 0.9);
+            w = (int)(Math.max(width, height) * 0.9);
+        }
+        params.height = h;
+        params.width =  w;
+        dialog.getWindow().setAttributes(params);
+        dialog.show();
+    }
+
+
 
     public void showAboutDialog() {
 
@@ -539,10 +697,12 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+
         LinearLayout yearPickerView = new LinearLayout(this);
         yearPickerView.setOrientation(LinearLayout.VERTICAL);
         yearPickerView.addView(tx);
         yearPickerView.addView(yearPickerPicker);
+
 
 
         //builder.setTitle("hi");

@@ -57,6 +57,7 @@ public class TempleView extends View {
     private ArrayList<String> allTempleLinks;
     private ArrayList<String> allTempleInfo;
     public ArrayList<String> allYears;
+    public ArrayList<String> allTempleNames;
     private int eachIndex;
     private Matrix currentTempleMatrix;
     private float topCoordinateInSpiralX;
@@ -84,6 +85,7 @@ public class TempleView extends View {
     private SingleTempleImage singleTempleImageView;
     private int staticCoordinatesGet = 0;
     private AlertDialog singleTempleDialog;
+    private int selectedTempleIndex = -1;
 
 
     public TempleView(Context context) {
@@ -110,6 +112,7 @@ public class TempleView extends View {
         allTempleLinks = new ArrayList<>();
         allTempleInfo = new ArrayList<>();
         allYears = new ArrayList<>();
+        allTempleNames = new ArrayList<>();
         theta = 5550;
         currentTempleMatrix = new Matrix();
         coordinatesAndSizesUpdated = FALSE;
@@ -127,6 +130,10 @@ public class TempleView extends View {
     public float getLastProgress() {
         //Log.d("theta", " is " + theta + " ");
         return theta;
+    }
+
+    public void setSelectedTempleIndex(int i) {
+        selectedTempleIndex = i;
     }
 
     public boolean sliderMovingOrAnimationInProgress() {
@@ -215,6 +222,7 @@ public class TempleView extends View {
                 }
                 allTempleInfoFile.close();
                 allYears = getAllYearsFromAllTempleInfo(allTempleInfo);
+                allTempleNames = getAllTempleNamesFromAllTempleInfo(allTempleInfo);
             }
         }
         catch (java.io.FileNotFoundException e)
@@ -245,6 +253,17 @@ public class TempleView extends View {
         }
         return temporary;
     }
+
+    public ArrayList<String> getAllTempleNamesFromAllTempleInfo(ArrayList<String> allTempleInfoPassIn) {
+        ArrayList<String> temporary = new ArrayList<>();
+        for (int i = 0; i < templeObjects.size(); i++) { // more OO
+            String name = allTempleInfo.get(i * 3 + 0) ;
+            temporary.add(name);
+        }
+        return temporary;
+    }
+
+
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -534,10 +553,15 @@ public class TempleView extends View {
         lnlH.addView(right); // lnlH.addView(left);
         lnlH.addView(singleTempleImageView);
         lnlH.addView(left); // lnlH.addView(right);
+
         lnl.addView(singleTempleDialogTitleView);
+
+
+
         lnl.addView(lnlH);
         //lnlH.setBackgroundColor(Color.GREEN);
         lnl.addView(sv);
+
         singleTempleImageView.setLayoutParams(nice);
         left.setLayoutParams(niceFour);
         right.setLayoutParams(niceFour);
@@ -891,6 +915,10 @@ public class TempleView extends View {
 
         } else {
             // do nothing
+        }
+
+        if (selectedTempleIndex == thisTempleIndex) {
+            c.drawCircle(t.x, t.y, newCurrentTempleRadius * 1.1f , selectedYearTempleFramePaint);
         }
 
 //        c.drawBitmap(t, currentTempleMatrix, null);
