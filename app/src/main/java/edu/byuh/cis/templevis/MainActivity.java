@@ -396,7 +396,10 @@ public class MainActivity extends AppCompatActivity {
 //            tv.orientationJustChanged(TRUE);
 //            //Log.d("1"," -- onConfigurationChanged  可以在横屏方向 to do something");
 //        }
-       //setDialogSize(searchDialog);
+        if (searchDialog != null) {
+            setDialogSize(searchDialog);
+        }
+
     }
 
     @Override
@@ -550,7 +553,9 @@ public class MainActivity extends AppCompatActivity {
         searchDialog = builder.create();
         searchDialog.show();
 
-//        setDialogSize(searchDialog);
+        if (searchDialog != null) {
+            setDialogSize(searchDialog);
+        }
 
         Button btnPositive = searchDialog.getButton(AlertDialog.BUTTON_POSITIVE);
         Button btnNegative = searchDialog.getButton(AlertDialog.BUTTON_NEGATIVE);
@@ -563,7 +568,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setDialogSize(Dialog dialog) {
-        dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+
+        //dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+
+
+
         WindowManager.LayoutParams params = dialog.getWindow().getAttributes();
         int h = 0;
         int w = 0;
@@ -572,12 +581,14 @@ public class MainActivity extends AppCompatActivity {
             w = (int)(Math.min(width, height) * 0.9);
         } else {
             h = (int)((Math.min(width, height))* 0.9);
-            w = (int)(Math.max(width, height) * 0.9);
+            w = (int)(Math.max(width, height) * 0.5);
         }
-        params.height = h;
+        //params.height = h;
         params.width =  w;
         dialog.getWindow().setAttributes(params);
         dialog.show();
+
+
     }
 
 
