@@ -442,9 +442,8 @@ public class MainActivity extends AppCompatActivity {
                 showYearPickerDialog();
                 break;
             case YELLOW:
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    showSearchDialog();
-                }
+                showSearchDialog();
+
                 break;
         }
         return super.onOptionsItemSelected(item);
