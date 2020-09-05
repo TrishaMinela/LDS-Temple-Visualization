@@ -450,7 +450,7 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
+
     public void showSearchDialog() {
 
         //Toast.makeText(mContext, "allTempleNames length is: " + tv.allTempleNames.size(), Toast.LENGTH_SHORT).show();
@@ -535,7 +535,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 tv.setSelectedTempleIndex(tv.allTempleNames.indexOf(searchView.getQuery().toString()));
 
-                Toast.makeText(mContext, searchView.getQuery() + " at progress " + targetTempleSliderProgress, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(mContext, searchView.getQuery() + " at progress " + targetTempleSliderProgress, Toast.LENGTH_SHORT).show();
                 //we can use this selected year value to update spiral
                 progress = targetTempleSliderProgress;
                 slider.setProgress(lastProgress);
