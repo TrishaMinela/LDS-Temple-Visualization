@@ -25,6 +25,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -467,6 +468,7 @@ public class MainActivity extends AppCompatActivity {
         searchView.setIconifiedByDefault(false);
         searchView.setQueryHint(getResources().getString(R.string.type_in_here_to_search_a_temple));
         searchView.setPadding(10,30,10,10);
+        searchView.setImeOptions(EditorInfo.IME_FLAG_NO_EXTRACT_UI);
 
         final ListView listView = new ListView(this);
         listView.setAdapter(allTempleNamesAdapter);
