@@ -530,7 +530,8 @@ public class MainActivity extends AppCompatActivity {
 
         builder.setPositiveButton(getResources().getString(R.string.view), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
-                int targetTempleSliderProgress = tv.allTempleNames.indexOf(searchView.getQuery().toString()) * 30 + 150;
+                int thisIndex = tv.allTempleNames.indexOf(searchView.getQuery().toString());
+                int targetTempleSliderProgress = tv.spiral_effect.equalsIgnoreCase("static") ?  thisIndex * 30 + 30 : thisIndex * 30 + 150;
                 if (targetTempleSliderProgress >= 6800) {
                     targetTempleSliderProgress = 6800;
                 }

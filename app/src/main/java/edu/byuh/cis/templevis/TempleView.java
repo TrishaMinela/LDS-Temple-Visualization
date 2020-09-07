@@ -86,6 +86,7 @@ public class TempleView extends View {
     private int staticCoordinatesGet = 0;
     private AlertDialog singleTempleDialog;
     private int selectedTempleIndex = -1;
+    public String spiral_effect;
 
 
     public TempleView(Context context) {
@@ -700,7 +701,7 @@ public class TempleView extends View {
         initialR = screenWidth / 10;
         initialRForLocation = ultimateScreenWidth / 10;
 
-        String spiral_effect = PrefsActivity.getSpiralEffectPref(getContext());
+        spiral_effect = PrefsActivity.getSpiralEffectPref(getContext());
         show_label = PrefsActivity.getShowLabelPref(getContext());
         //Log.d("spiral effect ", spiral_effect + " ");
 
