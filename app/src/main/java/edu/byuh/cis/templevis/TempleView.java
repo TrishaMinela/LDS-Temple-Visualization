@@ -13,10 +13,12 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.net.Uri;
 import android.os.Build;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -562,7 +564,14 @@ public class TempleView extends View {
 
         lnl.addView(lnlH);
         //lnlH.setBackgroundColor(Color.GREEN);
-        lnl.addView(sv);
+        //lnl.addView(sv);
+
+        singleTempleTextView.setBackgroundColor(Color.parseColor("#ffffee"));
+        ((ViewGroup)singleTempleTextView.getParent()).removeView(singleTempleTextView);
+        lnl.addView(singleTempleTextView);
+        //singleTempleTextView.setBackgroundColor(Color.RED);
+        singleTempleTextView.setHeight((int)(Math.min(screenWidth, screenHeight) * 0.2));
+        singleTempleTextView.setMovementMethod(ScrollingMovementMethod.getInstance());
 
         singleTempleImageView.setLayoutParams(nice);
         left.setLayoutParams(niceFour);
