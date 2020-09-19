@@ -206,13 +206,13 @@ public class MainActivity extends AppCompatActivity {
                         } else {
                             tv.setDegree(i);
                             tv.invalidate();
-                            Log.d("slider", "slider moved by hand");
+                            //Log.d("slider", "slider moved by hand");
                         }
                         progress = i;
                     } else {
                         slider.setProgress(lastProgress);
                     }
-                    Log.d("progress", "IN oProgressChanged is " + i + " ");
+                    //Log.d("progress", "IN oProgressChanged is " + i + " ");
                 //}
 
 

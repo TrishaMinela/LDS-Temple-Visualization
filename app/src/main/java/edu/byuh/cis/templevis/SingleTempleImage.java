@@ -30,6 +30,10 @@ public class SingleTempleImage extends View {
     private int idLastStore;
     private int idNextStore;
 
+    private Bitmap b;
+    private Bitmap bLast;
+    private Bitmap bNext;
+
     private Temple currentTemple;
     private Temple lastTemple;
     private Temple nextTemple;
@@ -82,9 +86,9 @@ public class SingleTempleImage extends View {
             x = canvasCenterX - imageSize / 2;
             y = canvasCenterY - imageSize / 2;
 
-            Bitmap b = loadAndScale(getResources(), id, imageSize);
-            Bitmap bLast = loadAndScale(getResources(), idLast, imageSize);
-            Bitmap bNext = loadAndScale(getResources(), idNext, imageSize);
+            b = loadAndScale(getResources(), id, imageSize);
+            bLast = loadAndScale(getResources(), idLast, imageSize);
+            bNext = loadAndScale(getResources(), idNext, imageSize);
             currentTemple = new Temple(b, 0f, 0f, 0f);
             lastTemple = new Temple(bLast, 0f, 0f, 0f);
             nextTemple = new Temple(bNext, 0f, 0f, 0f);
@@ -120,6 +124,11 @@ public class SingleTempleImage extends View {
     }
 
     public void endOfAnimationAction() {
+
+        b.recycle();
+        bLast.recycle();
+        bNext.recycle();
+
         x = canvasCenterX - imageSize / 2;
         for (Temple t: threeTemples) {
             if (t.role.equals("current")) {
@@ -133,9 +142,9 @@ public class SingleTempleImage extends View {
         id = idStore;
         idLast = idLastStore;
         idNext = idNextStore;
-        Bitmap b = loadAndScale(getResources(), id, imageSize);
-        Bitmap bLast = loadAndScale(getResources(), idLast, imageSize);
-        Bitmap bNext = loadAndScale(getResources(), idNext, imageSize);
+        b = loadAndScale(getResources(), id, imageSize);
+        bLast = loadAndScale(getResources(), idLast, imageSize);
+        bNext = loadAndScale(getResources(), idNext, imageSize);
 
         for (Temple t: threeTemples) {
             if (t.role.equals("current")) {
@@ -172,7 +181,7 @@ public class SingleTempleImage extends View {
                     x = (float) animation.getAnimatedValue();
                     invalidate();
                     if(x == finalSign * canvasWidth + (canvasCenterX - imageSize / 2)) {
-                       endOfAnimationAction();
+                        endOfAnimationAction();
                     }
                 }
             }
