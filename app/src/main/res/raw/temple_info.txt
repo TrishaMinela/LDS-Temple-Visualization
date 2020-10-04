@@ -556,13 +556,25 @@ nothing here
 Layton Utah Temple
 nothing here 
 0000
-Harare Zimbabwe Temple
-nothing here 
-1111
 Alabang Philippines Temple
 nothing here 
-1111
+0000
+Auckland New Zealand Temple
+nothing here 
+0000
+Feather River California Temple
+nothing here 
+0000
+Orem Utah Temple
+nothing here 
+0000
+San Pedro Sula Honduras Temple
+nothing here 
+0000
 Brasilia Brazil Temple
+nothing here 
+0000
+Harare Zimbabwe Temple
 nothing here 
 1111
 Nairobi Kenya Temple
@@ -581,12 +593,6 @@ Cagayan de Oro Philippines Temple
 nothing here 
 1111
 Russia Temple
-nothing here 
-1111
-Auckland New Zealand Temple
-nothing here 
-1111
-Feather River California Temple
 nothing here 
 1111
 Washington County Utah Temple
@@ -622,16 +628,10 @@ nothing here
 Neiafu Tonga Temple
 nothing here 
 1111
-San Pedro Sula Honduras Temple
-nothing here 
-1111
 Antofagasta Chile Temple
 nothing here 
 1111
 Budapest Hungary Temple
-nothing here 
-1111
-Orem Utah Temple
 nothing here 
 1111
 McAllen Texas Temple
@@ -676,10 +676,6 @@ nothing here
 Dubai United Arab Emirates Temple
 nothing here 
 1111
-Shanghai China Temple
-nothing here 
-1111
-
 
 
 

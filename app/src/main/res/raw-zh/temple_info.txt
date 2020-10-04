@@ -556,13 +556,25 @@ Richmond Virginia Temple
 Layton Utah Temple
 
 0000
-津巴布韦哈拉雷圣殿
+菲律宾大马尼拉区圣殿
 
-1111
-Alabang Philippines Temple
+0000
+Auckland New Zealand Temple
 
-1111
+0000
+Feather River California Temple
+
+0000
+Orem Utah Temple
+
+0000
+San Pedro Sula Honduras Temple
+
+0000
 巴西巴西利亚圣殿
+
+0000
+津巴布韦哈拉雷圣殿
 
 1111
 肯亚奈洛比圣殿
@@ -581,12 +593,6 @@ Cagayan de Oro Philippines Temple
 
 1111
 Russia Temple
-
-1111
-Auckland New Zealand Temple
-
-1111
-Feather River California Temple
 
 1111
 Washington County Utah Temple
@@ -622,16 +628,10 @@ Okinawa City Okinawa Temple
 Neiafu Tonga Temple
 
 1111
-San Pedro Sula Honduras Temple
-
-1111
 Antofagasta Chile Temple
 
 1111
 Budapest Hungary Temple
-
-1111
-Orem Utah Temple
 
 1111
 McAllen Texas Temple
@@ -674,9 +674,6 @@ Syracuse Utah Temple
 
 1111
 Dubai United Arab Emirates Temple
-
-1111
-中国上海圣殿
 
 1111
 

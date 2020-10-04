@@ -14,9 +14,9 @@ adding new temples or adjust orders:
 
 declare a temple bitmap object
 load and scale bitmap in "init"
-create templesObejcts list in "getTempleObjectsList"
-store all images large version in "getAllImageIds"
-store all temple info in "getAllTempleInfoFileIds"
+create templesObejcts list in "getTempleObjectsList" [order matters!]
+store all images large version in "getAllImageIds" [order matters!]
+store all temple info in "getAllTempleInfoFileIds" [order matters!]
 
 in res folder:
 add new temple images in drawable:
@@ -24,6 +24,7 @@ add new temple images in drawable:
     large: 500*500
 add new temple info files in raw (multiple langugaes)
 update temple_info file, that is a summary of all temples
+update all_temple_links file
 
  */
 
@@ -512,6 +513,7 @@ public class ImageCache {
         templeObjectList.add(new Temple(arequipa_peru_temple, 0f, 0f, 0f));
         templeObjectList.add(new Temple(durban_south_africa_temple, 0f, 0f, 0f));
 
+        // under construction
         templeObjectList.add(new Temple(winnipeg_manitoba_temple, 0f, 0f, 0f));
         templeObjectList.add(new Temple(rio_de_janeiro_brazil_temple, 0f, 0f, 0f));
         templeObjectList.add(new Temple(abidjan_ivory_coast_temple, 0f, 0f, 0f));
@@ -528,18 +530,21 @@ public class ImageCache {
         templeObjectList.add(new Temple(puebla_mexico_temple, 0f, 0f, 0f));
         templeObjectList.add(new Temple(richmond_virginia_temple, 0f, 0f, 0f));
         templeObjectList.add(new Temple(layton_utah_temple, 0f, 0f, 0f));
-
-        templeObjectList.add(new Temple(harare_zimbabwe_temple, 0f, 0f, 0f));
         templeObjectList.add(new Temple(alabang_philippines_temple, 0f, 0f, 0f));
+        templeObjectList.add(new Temple(auckland_new_zealand_temple, 0f, 0f, 0f));
+        templeObjectList.add(new Temple(feather_river_california_temple, 0f, 0f, 0f));
+        templeObjectList.add(new Temple(orem_utah_temple, 0f, 0f, 0f));
+        templeObjectList.add(new Temple(san_pedro_sula_honduras_temple, 0f, 0f, 0f));
         templeObjectList.add(new Temple(brasilia_brazil_temple, 0f, 0f, 0f));
+
+        // announced
+        templeObjectList.add(new Temple(harare_zimbabwe_temple, 0f, 0f, 0f));
         templeObjectList.add(new Temple(nairobi_kenya_temple, 0f, 0f, 0f));
         templeObjectList.add(new Temple(bengaluru_india_temple, 0f, 0f, 0f));
         templeObjectList.add(new Temple(salta_argentina_temple, 0f, 0f, 0f));
         templeObjectList.add(new Temple(managua_nicaragua_temple, 0f, 0f, 0f));
         templeObjectList.add(new Temple(cagayan_de_oro_philippines_temple, 0f, 0f, 0f));
         templeObjectList.add(new Temple(russia_temple, 0f, 0f, 0f));
-        templeObjectList.add(new Temple(auckland_new_zealand_temple, 0f, 0f, 0f));
-        templeObjectList.add(new Temple(feather_river_california_temple, 0f, 0f, 0f));
         templeObjectList.add(new Temple(washington_county_utah_temple, 0f, 0f, 0f));
         templeObjectList.add(new Temple(phnom_penh_cambodia_temple, 0f, 0f, 0f));
         templeObjectList.add(new Temple(mendoza_argentina_temple, 0f, 0f, 0f));
@@ -551,10 +556,8 @@ public class ImageCache {
         templeObjectList.add(new Temple(pago_pago_american_samoa_temple, 0f, 0f, 0f));
         templeObjectList.add(new Temple(okinawa_city_okinawa_temple, 0f, 0f, 0f));
         templeObjectList.add(new Temple(neiafu_tonga_temple, 0f, 0f, 0f));
-        templeObjectList.add(new Temple(san_pedro_sula_honduras_temple, 0f, 0f, 0f));
         templeObjectList.add(new Temple(antofagasta_chile_temple, 0f, 0f, 0f));
         templeObjectList.add(new Temple(budapest_hungary_temple, 0f, 0f, 0f));
-        templeObjectList.add(new Temple(orem_utah_temple, 0f, 0f, 0f));
         templeObjectList.add(new Temple(mcallen_texas_temple, 0f, 0f, 0f));
         templeObjectList.add(new Temple(taylorsville_utah_temple, 0f, 0f, 0f));
         templeObjectList.add(new Temple(freetown_sierra_leone_temple, 0f, 0f, 0f));
@@ -749,7 +752,6 @@ public class ImageCache {
         allImageIds.add(R.drawable.durban_south_africa_temple_large);
 
         //temples under construction
-
         allImageIds.add(R.drawable.winnipeg_manitoba_temple_large);
         allImageIds.add(R.drawable.rio_de_janeiro_brazil_temple_large);
         allImageIds.add(R.drawable.abidjan_ivory_coast_temple_large);
@@ -766,20 +768,21 @@ public class ImageCache {
         allImageIds.add(R.drawable.puebla_mexico_temple_large);
         allImageIds.add(R.drawable.richmond_virginia_temple_large);
         allImageIds.add(R.drawable.layton_utah_temple_large);
+        allImageIds.add(R.drawable.alabang_philippines_temple_large);
+        allImageIds.add(R.drawable.auckland_new_zealand_temple_large);
+        allImageIds.add(R.drawable.feather_river_california_temple_large);
+        allImageIds.add(R.drawable.orem_utah_temple_large);
+        allImageIds.add(R.drawable.san_pedro_sula_honduras_temple_large);
+        allImageIds.add(R.drawable.brasilia_brazil_temple_large);
 
         //announced temples
-
         allImageIds.add(R.drawable.harare_zimbabwe_temple_large);
-        allImageIds.add(R.drawable.alabang_philippines_temple_large);
-        allImageIds.add(R.drawable.brasilia_brazil_temple_large);
         allImageIds.add(R.drawable.nairobi_kenya_temple_large);
         allImageIds.add(R.drawable.bengaluru_india_temple_large);
         allImageIds.add(R.drawable.salta_argentina_temple_large);
         allImageIds.add(R.drawable.managua_nicaragua_temple_large);
         allImageIds.add(R.drawable.cagayan_de_oro_philippines_temple_large);
         allImageIds.add(R.drawable.russia_temple_large);
-        allImageIds.add(R.drawable.auckland_new_zealand_temple_large);
-        allImageIds.add(R.drawable.feather_river_california_temple_large);
         allImageIds.add(R.drawable.washington_county_utah_temple_large);
         allImageIds.add(R.drawable.phnom_penh_cambodia_temple_large);
         allImageIds.add(R.drawable.mendoza_argentina_temple_large);
@@ -791,10 +794,8 @@ public class ImageCache {
         allImageIds.add(R.drawable.pago_pago_american_samoa_temple_large);
         allImageIds.add(R.drawable.okinawa_city_okinawa_temple_large);
         allImageIds.add(R.drawable.neiafu_tonga_temple_large);
-        allImageIds.add(R.drawable.san_pedro_sula_honduras_temple_large);
         allImageIds.add(R.drawable.antofagasta_chile_temple_large);
         allImageIds.add(R.drawable.budapest_hungary_temple_large);
-        allImageIds.add(R.drawable.orem_utah_temple_large);
         allImageIds.add(R.drawable.mcallen_texas_temple_large);
         allImageIds.add(R.drawable.taylorsville_utah_temple_large);
         allImageIds.add(R.drawable.freetown_sierra_leone_temple_large);
@@ -1008,20 +1009,22 @@ public class ImageCache {
         allTempleInfoFileIds.add(R.raw.puebla_mexico_temple);
         allTempleInfoFileIds.add(R.raw.richmond_virginia_temple);
         allTempleInfoFileIds.add(R.raw.layton_utah_temple);
+        allTempleInfoFileIds.add(R.raw.alabang_philippines_temple);
+        allTempleInfoFileIds.add(R.raw.auckland_new_zealand_temple);
+        allTempleInfoFileIds.add(R.raw.feather_river_california_temple);
+        allTempleInfoFileIds.add(R.raw.orem_utah_temple);
+        allTempleInfoFileIds.add(R.raw.san_pedro_sula_honduras_temple);
+        allTempleInfoFileIds.add(R.raw.brasilia_brazil_temple);
 
         //announced temples
 
         allTempleInfoFileIds.add(R.raw.harare_zimbabwe_temple);
-        allTempleInfoFileIds.add(R.raw.alabang_philippines_temple);
-        allTempleInfoFileIds.add(R.raw.brasilia_brazil_temple);
         allTempleInfoFileIds.add(R.raw.nairobi_kenya_temple);
         allTempleInfoFileIds.add(R.raw.bengaluru_india_temple);
         allTempleInfoFileIds.add(R.raw.salta_argentina_temple);
         allTempleInfoFileIds.add(R.raw.managua_nicaragua_temple);
         allTempleInfoFileIds.add(R.raw.cagayan_de_oro_philippines_temple);
         allTempleInfoFileIds.add(R.raw.russia_temple);
-        allTempleInfoFileIds.add(R.raw.auckland_new_zealand_temple);
-        allTempleInfoFileIds.add(R.raw.feather_river_california_temple);
         allTempleInfoFileIds.add(R.raw.washington_county_utah_temple);
         allTempleInfoFileIds.add(R.raw.phnom_penh_cambodia_temple);
         allTempleInfoFileIds.add(R.raw.mendoza_argentina_temple);
@@ -1033,10 +1036,8 @@ public class ImageCache {
         allTempleInfoFileIds.add(R.raw.pago_pago_american_samoa_temple);
         allTempleInfoFileIds.add(R.raw.okinawa_city_okinawa_temple);
         allTempleInfoFileIds.add(R.raw.neiafu_tonga_temple);
-        allTempleInfoFileIds.add(R.raw.san_pedro_sula_honduras_temple);
         allTempleInfoFileIds.add(R.raw.antofagasta_chile_temple);
         allTempleInfoFileIds.add(R.raw.budapest_hungary_temple);
-        allTempleInfoFileIds.add(R.raw.orem_utah_temple);
         allTempleInfoFileIds.add(R.raw.mcallen_texas_temple);
         allTempleInfoFileIds.add(R.raw.taylorsville_utah_temple);
         allTempleInfoFileIds.add(R.raw.freetown_sierra_leone_temple);
