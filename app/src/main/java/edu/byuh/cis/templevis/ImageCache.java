@@ -305,7 +305,7 @@ public class ImageCache {
         tooele_valley_utah_temple = loadAndScale(res, R.drawable.tooele_valley_utah_temple, w);
         washington_county_utah_temple = loadAndScale(res, R.drawable.washington_county_utah_temple, w);
 
-        shanghai_china_temple = loadAndScale(res,R.drawable.shanghai_china_temple,w);
+        //shanghai_china_temple = loadAndScale(res,R.drawable.shanghai_china_temple,w);
     }
 
     private static Bitmap loadAndScale(Resources res, int id, float newWidth) {
@@ -788,7 +788,7 @@ public class ImageCache {
         allImageIds.add(R.drawable.syracuse_utah_temple_large);
         allImageIds.add(R.drawable.dubai_united_arab_emirates_temple_large);
 
-        allImageIds.add(R.drawable.shanghai_china_temple_large);
+        //allImageIds.add(R.drawable.shanghai_china_temple_large);
 
         return allImageIds;
     }
@@ -1030,7 +1030,7 @@ public class ImageCache {
         allTempleInfoFileIds.add(R.raw.syracuse_utah_temple);
         allTempleInfoFileIds.add(R.raw.dubai_united_arab_emirates_temple);
 
-        allTempleInfoFileIds.add(R.raw.shanghai_china_temple);
+        //allTempleInfoFileIds.add(R.raw.shanghai_china_temple);
 
         return allTempleInfoFileIds;
 

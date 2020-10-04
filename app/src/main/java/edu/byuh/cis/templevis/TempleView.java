@@ -449,9 +449,10 @@ public class TempleView extends View {
 
         if (eachIndex == 0) {
             singleTempleImageView = new SingleTempleImage(getContext(), allLargeImageIds.get(eachIndex), allLargeImageIds.get(eachIndex), allLargeImageIds.get(eachIndex + 1));
+        } else if (eachIndex == 225){
+            singleTempleImageView = new SingleTempleImage(getContext(), allLargeImageIds.get(eachIndex), allLargeImageIds.get(eachIndex - 1), allLargeImageIds.get(eachIndex));
         } else {
             singleTempleImageView = new SingleTempleImage(getContext(), allLargeImageIds.get(eachIndex), allLargeImageIds.get(eachIndex - 1), allLargeImageIds.get(eachIndex + 1));
-
         }
 
         singleTempleImageView.setPadding(0,0,0,0);
@@ -494,12 +495,18 @@ public class TempleView extends View {
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 if(motionEvent.getAction() == MotionEvent.ACTION_DOWN){
                     // do nothing
+                    //Toast.makeText(getContext(), realEachIndex.toString(), Toast.LENGTH_SHORT).show();
                 }else if(motionEvent.getAction() == MotionEvent.ACTION_UP){
                     if (realEachIndex < 225) {
                         if (System.currentTimeMillis() - timeStamp[0] > 1550) {
                             realEachIndex = realEachIndex + 1;
                             singleTempleImageView.moveImage("left");
-                            singleTempleImageView.updateThreeTemplesBitmapIds(allLargeImageIds.get(realEachIndex), allLargeImageIds.get(realEachIndex - 1), allLargeImageIds.get(realEachIndex + 1));
+                            //Log.d("realEachIndex is ", realEachIndex.toString());
+                            if (realEachIndex == 225) {
+                                singleTempleImageView.updateThreeTemplesBitmapIds(allLargeImageIds.get(realEachIndex), allLargeImageIds.get(realEachIndex - 1), allLargeImageIds.get(realEachIndex));
+                            } else {
+                                singleTempleImageView.updateThreeTemplesBitmapIds(allLargeImageIds.get(realEachIndex), allLargeImageIds.get(realEachIndex - 1), allLargeImageIds.get(realEachIndex + 1));
+                            }
                             templeUrl = templeObjects.get(realEachIndex).link;
                             singleTempleDialogTitleView.setText(allTempleInfo.get(realEachIndex*3));
                             oneTempleInfo = "";
