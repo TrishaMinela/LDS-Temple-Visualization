@@ -402,7 +402,7 @@ public class TempleView extends View {
                         //Toast.makeText(getContext(), "how many onScreenTemples last time? " + onScreenTemples.size(), Toast.LENGTH_SHORT).show();
                         //Log.d("singleTempleViewOpen? ", singleTempleViewOpened + "");
                         if (singleTempleViewOpened == false) {
-                            if (eachIndex <= 226) {
+                            if (eachIndex <= templeObjects.size()) {
                                 singleTempleViewOpened = true;
                                 //Log.d("eachIndex is ", eachIndex + " when click on circle");
                                 singleTempleDialog();
@@ -449,7 +449,7 @@ public class TempleView extends View {
 
         if (eachIndex == 0) {
             singleTempleImageView = new SingleTempleImage(getContext(), allLargeImageIds.get(eachIndex), allLargeImageIds.get(eachIndex), allLargeImageIds.get(eachIndex + 1));
-        } else if (eachIndex == 225){
+        } else if (eachIndex == templeObjects.size() - 1){
             singleTempleImageView = new SingleTempleImage(getContext(), allLargeImageIds.get(eachIndex), allLargeImageIds.get(eachIndex - 1), allLargeImageIds.get(eachIndex));
         } else {
             singleTempleImageView = new SingleTempleImage(getContext(), allLargeImageIds.get(eachIndex), allLargeImageIds.get(eachIndex - 1), allLargeImageIds.get(eachIndex + 1));
@@ -497,12 +497,12 @@ public class TempleView extends View {
                     // do nothing
                     //Toast.makeText(getContext(), realEachIndex.toString(), Toast.LENGTH_SHORT).show();
                 }else if(motionEvent.getAction() == MotionEvent.ACTION_UP){
-                    if (realEachIndex < 225) {
+                    if (realEachIndex < templeObjects.size() - 1) {
                         if (System.currentTimeMillis() - timeStamp[0] > 1550) {
                             realEachIndex = realEachIndex + 1;
                             singleTempleImageView.moveImage("left");
                             //Log.d("realEachIndex is ", realEachIndex.toString());
-                            if (realEachIndex == 225) {
+                            if (realEachIndex == templeObjects.size() - 1) {
                                 singleTempleImageView.updateThreeTemplesBitmapIds(allLargeImageIds.get(realEachIndex), allLargeImageIds.get(realEachIndex - 1), allLargeImageIds.get(realEachIndex));
                             } else {
                                 singleTempleImageView.updateThreeTemplesBitmapIds(allLargeImageIds.get(realEachIndex), allLargeImageIds.get(realEachIndex - 1), allLargeImageIds.get(realEachIndex + 1));

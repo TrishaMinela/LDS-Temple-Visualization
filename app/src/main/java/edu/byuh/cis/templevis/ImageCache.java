@@ -7,6 +7,28 @@ import android.graphics.BitmapFactory;
 
 import java.util.ArrayList;
 
+/*
+Instructions for maintainance
+
+adding new temples or adjust orders:
+
+declare a temple bitmap object
+load and scale bitmap in "init"
+create templesObejcts list in "getTempleObjectsList"
+store all images large version in "getAllImageIds"
+store all temple info in "getAllTempleInfoFileIds"
+
+in res folder:
+add new temple images in drawable:
+    small: 200*200
+    large: 500*500
+add new temple info files in raw (multiple langugaes)
+update temple_info file, that is a summary of all temples
+
+ */
+
+
+
 public class ImageCache {
 
     private static ArrayList<Integer> allImageIds;
