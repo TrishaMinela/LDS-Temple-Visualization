@@ -675,9 +675,13 @@ public class MainActivity extends AppCompatActivity {
         selectedYear = "2020"; // we need this here, other wise, selectedYear is null when first time open year yearPickerPicker dialog and not moving the yearPickerPicker when passed in TempleView through method.
         //yearPickerPicker.setTextColor(Color.GRAY);
 
-        Locale curLocale = getResources().getConfiguration().locale;
-        if (curLocale.equals(Locale.SIMPLIFIED_CHINESE)) {
-            // do nothing //中文
+//        Locale curLocale = getResources().getConfiguration().locale;
+        String curLan = getResources().getConfiguration().locale.getLanguage();
+
+
+//        if (curLocale.equals(Locale.SIMPLIFIED_CHINESE)) {
+        if (curLan.equals("zh")) {
+        // do nothing //中文
         } else {
             spaceDependingOnLanguage = " "; //英文
         }
@@ -686,7 +690,8 @@ public class MainActivity extends AppCompatActivity {
         // this text view is the title
         final TextView tx = new TextView(this);
         tx.setGravity(Gravity.CENTER);
-        if (curLocale.equals(Locale.SIMPLIFIED_CHINESE)) {
+//        if (curLocale.equals(Locale.SIMPLIFIED_CHINESE)) {
+        if (curLan.equals("zh")) {
             yearPickerString = getResources().getString(R.string.view) + " " + "2020" + " " + getResources().getString(R.string.year) + getResources().getString(R.string.view_temples_dedicated_In); //英文
             // 中文
         } else {
@@ -703,8 +708,10 @@ public class MainActivity extends AppCompatActivity {
                 selectedYear = temporary[i1]; // pass this selected value to dialog button, we can use a field so that it can be accessed from inner class
                 selectedYearIndex = i1;
                 if (temporary[i1].length() == 4) {
-                    Locale curLocale = getResources().getConfiguration().locale;
-                    if (curLocale.equals(Locale.SIMPLIFIED_CHINESE)) {
+//                    Locale curLocale = getResources().getConfiguration().locale;
+                    String curLan = getResources().getConfiguration().locale.getLanguage();
+//                    if (curLocale.equals(Locale.SIMPLIFIED_CHINESE)) {
+                    if (curLan.equals("zh")) {
                         yearPickerString = getResources().getString(R.string.view) + " " + temporary[i1] + " " + getResources().getString(R.string.year) + getResources().getString(R.string.view_temples_dedicated_In); //英文
                         // 中文
                     } else {

@@ -248,14 +248,27 @@ public class TempleView extends View {
 //        for (int i = 0; i < temples.size(); i++) {
         for (int i = 0; i < templeObjects.size(); i++) { // more OO
             String year = allTempleInfo.get(i * 3 + 2) ;
-            Locale curLocale = getResources().getConfiguration().locale;
-            if (curLocale.equals(Locale.SIMPLIFIED_CHINESE)) {
+//            Locale curLocale = getResources().getConfiguration().locale;
+//            if (curLocale.equals(Locale.SIMPLIFIED_CHINESE)) {
+//                // do nothing //中文
+//                year = year;
+//            } else {
+//                year = year.substring(year.length()-5);
+//                //英文
+//            }
+
+            String curLan = getResources().getConfiguration().locale.getLanguage();
+            if (curLan.equals("zh")) {
                 // do nothing //中文
                 year = year;
             } else {
                 year = year.substring(year.length()-5);
                 //英文
             }
+
+
+
+
             temporary.add(year.substring(0,4));
         }
         return temporary;
@@ -868,16 +881,31 @@ public class TempleView extends View {
 
         String thisTempleName = allTempleInfo.get(thisTempleIndex*3);
         Locale curLocale = getResources().getConfiguration().locale;
+        String curLan = getResources().getConfiguration().locale.getLanguage();
+        //Log.d("current language: ", curLan);
 
         String thisTempleLocation = "";
         //通过Locale的equals方法，判断出当前语言环境
-        if (curLocale.equals(Locale.SIMPLIFIED_CHINESE)) {
+        //Log.d("thisTempleName: ", thisTempleName);
+//        if (curLocale.equals(Locale.SIMPLIFIED_CHINESE)) {
+//            //中文
+//            thisTempleLocation = thisTempleName.substring(0, thisTempleName.length() - 3);
+//            //Log.d("language: ", "zh");
+//        } else {
+//            //英文
+//            //Log.d("language: ", "en");
+//            thisTempleLocation = thisTempleName.substring(0, thisTempleName.length() - 7);
+//        }
+
+        if (curLan.equals("zh")) {
             //中文
             thisTempleLocation = thisTempleName.substring(0, thisTempleName.length() - 3);
         } else {
             //英文
             thisTempleLocation = thisTempleName.substring(0, thisTempleName.length() - 7);
         }
+
+
         //String thisTempleLocation = thisTempleName ;//.substring(0, thisTempleName.length() - 7);
 
         String[] thisTempleLocationWords = thisTempleLocation.split(" ");
@@ -1008,9 +1036,20 @@ public class TempleView extends View {
         String startYear = allTempleInfo.get((int)(lastOnScreenTempleIndex) * 3 + 2) ;
 
 
+        String curLan = getResources().getConfiguration().locale.getLanguage();
 
         Locale curLocale = getResources().getConfiguration().locale;
-        if (curLocale.equals(Locale.SIMPLIFIED_CHINESE)) {
+//        if (curLocale.equals(Locale.SIMPLIFIED_CHINESE)) {
+//            // do nothing //中文
+//            startYear = startYear.substring(0,4);
+//            endYear = endYear.substring(0,4);
+//        } else {
+//            startYear = startYear.substring(startYear.length()-5);
+//            endYear = endYear.substring(endYear.length()-5);
+//            //英文
+//        }
+
+        if (curLan.equals("zh")) {
             // do nothing //中文
             startYear = startYear.substring(0,4);
             endYear = endYear.substring(0,4);
@@ -1047,8 +1086,8 @@ public class TempleView extends View {
         String endYear = allTempleInfo.get((int)(firstOnScreenTempleIndex) * 3 + 2);
         String startYear = allTempleInfo.get((int)(lastOnScreenTempleIndex) * 3 + 2) ;
 
-        Locale curLocale = getResources().getConfiguration().locale;
-        if (curLocale.equals(Locale.SIMPLIFIED_CHINESE)) {
+        String curLan = getResources().getConfiguration().locale.getLanguage();
+        if (curLan.equals("zh")) {
             // do nothing //中文
             startYear = startYear.substring(0,4);
             endYear = endYear.substring(0,4);
@@ -1057,6 +1096,33 @@ public class TempleView extends View {
             endYear = endYear.substring(endYear.length()-5);
             //英文
         }
+
+
+//        Locale curLocale = getResources().getConfiguration().locale;
+//        if (curLocale.equals(Locale.SIMPLIFIED_CHINESE)) {
+//            // do nothing //中文
+//            startYear = startYear.substring(0,4);
+//            endYear = endYear.substring(0,4);
+//        } else {
+//            startYear = startYear.substring(startYear.length()-5);
+//            endYear = endYear.substring(endYear.length()-5);
+//            //英文
+//        }
+
+
+
+
+
+            //String curLan = getResources().getConfiguration().locale.getLanguage();
+            if (curLan.equals("zh")) {
+                // do nothing //中文
+                startYear = startYear.substring(0,4);
+                endYear = endYear.substring(0,4);
+            } else {
+                startYear = startYear.substring(startYear.length()-5);
+                endYear = endYear.substring(endYear.length()-5);
+                //英文
+            }
 
         if (theta <= 40){
             c.drawText(getResources().getString(R.string.first_temple), 6.5f * screenWidth / 4, 18 * screenHeight / 40, yearDisplayPaint);
