@@ -499,8 +499,12 @@ public class TempleView extends View {
         singleTempleDialogTitleView.setPadding(0,20,0,0);
         singleTempleDialogTitleView.setTextColor(Color.BLACK);
         singleTempleDialogTitleView.setGravity(Gravity.CENTER);
-        singleTempleDialogTitleView.setHeight((int)(Math.min(screenWidth, screenHeight) * 0.1));
-        singleTempleDialogTitleView.setMaxLines(1);
+        //singleTempleDialogTitleView.setHeight((int)(Math.min(screenWidth, screenHeight) * 0.1));
+        //singleTempleDialogTitleView.setMaxLines(1);
+        //singleTempleDialogTitleView.setAutoSizeTextTypeWithDefaults(TextView.AUTO_SIZE_TEXT_TYPE_UNIFORM);
+        //singleTempleDialogTitleView.setPadding(1, 1, 1, 1);
+        singleTempleDialogTitleView.setHeight((int)(Math.min(screenWidth, screenHeight) * 0.15));
+        //singleTempleDialogTitleView.setMovementMethod(ScrollingMovementMethod.getInstance());
 
         final long[] timeStamp = new long[1];
         timeStamp[0] = 0;
