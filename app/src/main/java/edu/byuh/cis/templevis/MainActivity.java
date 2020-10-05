@@ -83,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
     private int width;
     private int height;
     private AlertDialog searchDialog;
+    private int sliderMax;
 
     public class MyTimer extends Handler {
 
@@ -181,6 +182,12 @@ public class MainActivity extends AppCompatActivity {
         //slider.setBackgroundColor(Color.parseColor("#669cff"));
         //slider.setBackgroundColor(Color.parseColor("#202224"));
         slider.setBackgroundColor(Color.parseColor("#287a78"));
+
+
+
+        sliderMax = tv.howManyTemples * 30;
+        slider.setMax(sliderMax);
+
         slider.setProgress(5550);
         //slider.setBackgroundColor(Color.parseColor("#292d30"));
 
@@ -189,6 +196,7 @@ public class MainActivity extends AppCompatActivity {
         timA = new MyTimer();
 
         progress = 5550;
+
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             slider.setMin(30);
@@ -279,8 +287,8 @@ public class MainActivity extends AppCompatActivity {
                     rightButton.setBackgroundColor(Color.parseColor("#507a66"));
                 }else if(event.getAction() == MotionEvent.ACTION_UP){
                     rightButton.setBackgroundColor(Color.parseColor("#007a66"));
-                    if (slider.getProgress() + 30 > 6800) {
-                        progress = 6800;
+                    if (slider.getProgress() + 30 > sliderMax) {
+                        progress = sliderMax;
                     } else {
                         progress = slider.getProgress() + 30;
                     }
@@ -532,8 +540,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int id) {
                 int thisIndex = tv.allTempleNames.indexOf(searchView.getQuery().toString());
                 int targetTempleSliderProgress = tv.spiral_effect.equalsIgnoreCase("static") ?  thisIndex * 30 + 30 : thisIndex * 30 + 150;
-                if (targetTempleSliderProgress >= 6800) {
-                    targetTempleSliderProgress = 6800;
+                if (targetTempleSliderProgress >= sliderMax) {
+                    targetTempleSliderProgress = sliderMax;
                 }
                 tv.setSelectedTempleIndex(tv.allTempleNames.indexOf(searchView.getQuery().toString()));
 

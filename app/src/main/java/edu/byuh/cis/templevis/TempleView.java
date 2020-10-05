@@ -42,6 +42,8 @@ import static java.lang.Boolean.TRUE;
 
 public class TempleView extends View {
 
+    public int howManyTemples = 232;
+    private int sliderMax;
     private Paint bluePaint, redPaint, spiralPaint, yearDisplayPaint;
     private float screenWidth, screenHeight;
     public float theta;
@@ -51,7 +53,7 @@ public class TempleView extends View {
     private float centerY;
     private float initialR;
     private boolean sliderMoving;
-    private static ArrayList<Temple> templeObjects; // more OO be more object oriented
+    public ArrayList<Temple> templeObjects; // more OO be more object oriented
     private ArrayList<ArrayList<Float>> onScreenTemples;
     private ArrayList<Float> oneOnScreenTemple;
     private ArrayList<ArrayList<Float>> spiralCoordinates;
@@ -123,6 +125,8 @@ public class TempleView extends View {
         movingCoordinatesLastTime = new ArrayList<>();
         yearDisplayPaint = new Paint();
         selectedYear = "";
+        sliderMax = howManyTemples * 30;
+
     }
 
     public void setDegree(int sliderP) {
@@ -313,7 +317,7 @@ public class TempleView extends View {
 
             int moveTheta = 10;
 
-            boolean thetaMaxReached = theta >= 6800;
+            boolean thetaMaxReached = theta >= sliderMax;
             boolean thetaMinReached = theta <= 30;
 
             if (leftThirdVertical) {

@@ -95,7 +95,19 @@ public class ImageCache {
             taylorsville_utah_temple,
             tooele_valley_utah_temple,
             washington_county_utah_temple,
-            shanghai_china_temple;
+            shanghai_china_temple,
+
+    // October 2020 announced temples
+            tarawa_kiribati_temple,
+            port_vila_vanuatu_temple,
+            lindon_utah_temple,
+            greater_guatemala_city_guatemala_temple,
+            sao_paulo_east_brazil_temple,
+            santa_cruz_bolivia_temple
+
+    ;
+
+
 
     public static void init(Resources res, float w2, float h) {
         float w = w2 / 4;
@@ -327,6 +339,15 @@ public class ImageCache {
         taylorsville_utah_temple = loadAndScale(res, R.drawable.taylorsville_utah_temple, w);
         tooele_valley_utah_temple = loadAndScale(res, R.drawable.tooele_valley_utah_temple, w);
         washington_county_utah_temple = loadAndScale(res, R.drawable.washington_county_utah_temple, w);
+
+        // October 2020 announced temples
+
+        tarawa_kiribati_temple = loadAndScale(res, R.drawable.tarawa_kiribati_temple, w);
+        port_vila_vanuatu_temple = loadAndScale(res, R.drawable.port_vila_vanuatu_temple, w);
+        lindon_utah_temple = loadAndScale(res, R.drawable.lindon_utah_temple, w);
+        greater_guatemala_city_guatemala_temple = loadAndScale(res, R.drawable.greater_guatemala_city_guatemala_temple, w);
+        sao_paulo_east_brazil_temple = loadAndScale(res, R.drawable.sao_paulo_east_brazil_temple, w);
+        santa_cruz_bolivia_temple = loadAndScale(res, R.drawable.santa_cruz_bolivia_temple, w);
 
         //shanghai_china_temple = loadAndScale(res,R.drawable.shanghai_china_temple,w);
     }
@@ -573,6 +594,16 @@ public class ImageCache {
         templeObjectList.add(new Temple(syracuse_utah_temple, 0f, 0f, 0f));
         templeObjectList.add(new Temple(dubai_united_arab_emirates_temple, 0f, 0f, 0f));
 
+        // October 2020 announced temples
+
+        templeObjectList.add(new Temple(tarawa_kiribati_temple, 0f, 0f, 0f));
+        templeObjectList.add(new Temple(port_vila_vanuatu_temple, 0f, 0f, 0f));
+        templeObjectList.add(new Temple(lindon_utah_temple, 0f, 0f, 0f));
+        templeObjectList.add(new Temple(greater_guatemala_city_guatemala_temple, 0f, 0f, 0f));
+        templeObjectList.add(new Temple(sao_paulo_east_brazil_temple, 0f, 0f, 0f));
+        templeObjectList.add(new Temple(santa_cruz_bolivia_temple, 0f, 0f, 0f));
+
+
         return templeObjectList;
     }
 
@@ -812,6 +843,17 @@ public class ImageCache {
         allImageIds.add(R.drawable.dubai_united_arab_emirates_temple_large);
 
         //allImageIds.add(R.drawable.shanghai_china_temple_large);
+
+        // October 2020 announced temples
+
+        allImageIds.add(R.drawable.tarawa_kiribati_temple_large);
+        allImageIds.add(R.drawable.port_vila_vanuatu_temple_large);
+        allImageIds.add(R.drawable.lindon_utah_temple_large);
+        allImageIds.add(R.drawable.greater_guatemala_city_guatemala_temple_large);
+        allImageIds.add(R.drawable.sao_paulo_east_brazil_temple_large);
+        allImageIds.add(R.drawable.santa_cruz_bolivia_temple_large);
+
+
 
         return allImageIds;
     }
@@ -1054,6 +1096,17 @@ public class ImageCache {
         allTempleInfoFileIds.add(R.raw.dubai_united_arab_emirates_temple);
 
         //allTempleInfoFileIds.add(R.raw.shanghai_china_temple);
+
+
+        // October 2020 announced temples
+        allTempleInfoFileIds.add(R.raw.tarawa_kiribati_temple);
+        allTempleInfoFileIds.add(R.raw.port_vila_vanuatu_temple);
+        allTempleInfoFileIds.add(R.raw.lindon_utah_temple);
+        allTempleInfoFileIds.add(R.raw.greater_guatemala_city_guatemala_temple);
+        allTempleInfoFileIds.add(R.raw.sao_paulo_east_brazil_temple);
+        allTempleInfoFileIds.add(R.raw.santa_cruz_bolivia_temple);
+
+
 
         return allTempleInfoFileIds;
 
