@@ -46,7 +46,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Locale;
 
 import static android.graphics.Color.BLUE;
 import static android.graphics.Color.GREEN;
@@ -150,9 +149,13 @@ public class MainActivity extends AppCompatActivity {
         super.setContentView(R.layout.activity_main);
         mContext = MainActivity.this;
 
+        tv = new TempleView(this);
+        sliderMax = tv.howManyTemples * 30;
+
+        Toast.makeText(mContext, sliderMax + "", Toast.LENGTH_SHORT).show();
 
         //(245, 300, 325, 340, 380, 420, 450, 490, 520, 540, 570, 610, 680, 715, 750, 780, 810, 850, 890, 1070, 1290, 1430, 1520, 1540, 1575, 1630, 1660, 1700, 1710, 1755, 1850, 1890, 2315, 3330, 3540, 3720, 3800, 3850, 3950, 4030, 4110, 4200, 4300, 4400, 4520, 4540, 4650, 4785, 4935, 5100, 5110, 5320, 5330, 5800, 6990)
-        List<Integer> temporaryHolder = Arrays.asList(245, 300, 325, 340, 380, 420, 450, 490, 520, 540, 570, 610, 680, 715, 750, 780, 810, 850, 890, 1070, 1290, 1430, 1520, 1540, 1575, 1630, 1660, 1700, 1710, 1755, 1850, 1890, 2315, 3330, 3540, 3720, 3800, 3850, 3950, 4030, 4110, 4200, 4300, 4400, 4520, 4540, 4650, 4785, 4935, 5100, 5110, 5320, 5330, 5800, 6990);
+        List<Integer> temporaryHolder = Arrays.asList(245, 300, 325, 340, 380, 420, 450, 490, 520, 540, 570, 610, 680, 715, 750, 780, 810, 850, 890, 1070, 1290, 1430, 1520, 1540, 1575, 1630, 1660, 1700, 1710, 1755, 1850, 1890, 2315, 3330, 3540, 3720, 3800, 3850, 3950, 4030, 4110, 4200, 4300, 4400, 4520, 4540, 4650, 4785, 4935, 5100, 5110, 5320, 5330, 6000, 7160);
         for (int i : temporaryHolder) {
             templeYearsThetaFriends.add(i);
         }
@@ -174,7 +177,7 @@ public class MainActivity extends AppCompatActivity {
                 (LinearLayout.LayoutParams.MATCH_PARENT,
                         LinearLayout.LayoutParams.MATCH_PARENT, 1);
 
-        tv = new TempleView(this);
+
         tv.getWindowSize(width, height);
         tv.setLayoutParams(nice);
 
@@ -185,7 +188,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        sliderMax = tv.howManyTemples * 30;
+
         slider.setMax(sliderMax);
 
         slider.setProgress(5550);
