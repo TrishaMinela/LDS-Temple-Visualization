@@ -149,6 +149,8 @@ public class MainActivity extends AppCompatActivity {
         super.setContentView(R.layout.activity_main);
         mContext = MainActivity.this;
 
+
+
         tv = new TempleView(this);
         sliderMax = tv.howManyTemples * 30;
 

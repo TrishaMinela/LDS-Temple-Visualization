@@ -822,6 +822,8 @@ public class TempleView extends View {
             loadedImages = true;
             //get the temple images in array list
 
+            ResourceCache resourceCache = new ResourceCache(getContext());
+
             //when app launches, images are loaded according to screen width
             //when launches landscape, according to window height
             float temp;
