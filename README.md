@@ -3,7 +3,7 @@ Latter-day Temples Visualization
 
 #### [Latter-day Temples Visualization Android App](https://litianzhang.com/latter-day-temples-visualization-android-app/)
 
-### Instructions for maintenance
+# Instructions for maintenance
 
 ## adding new temples: 
 1. declare a temple bitmap object at position 1 (search for positions 1)
@@ -13,7 +13,7 @@ Latter-day Temples Visualization
 4. store all images large version in "getAllImageIds" method [order matters!]
 5. store all temple info in "getAllTempleInfoFileIds" method [order matters!]
 
-# in res folder:
+### in res folder:
 6. add new temple images in drawable:
     1. small: 200*200
     2. large: 500*500
