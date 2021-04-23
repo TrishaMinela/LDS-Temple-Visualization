@@ -3,6 +3,8 @@ Latter-day Temples Visualization
 
 #### [Latter-day Temples Visualization Android App](https://litianzhang.com/latter-day-temples-visualization-android-app/)
 
+#### Temples order is based on [Temples List](https://www.churchofjesuschrist.org/temples/list?lang=eng)
+
 # Instructions for maintenance
 
 ## adding new temples: 
