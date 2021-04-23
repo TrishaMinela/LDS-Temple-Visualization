@@ -105,11 +105,31 @@ public class ImageCache {
             lindon_utah_temple,
             greater_guatemala_city_guatemala_temple,
             sao_paulo_east_brazil_temple,
-            santa_cruz_bolivia_temple;
+            santa_cruz_bolivia_temple,
 
-    // TODO position 1: declare new temples,
+    // April 2021 announced temples
+            oslo_norway_temple,
+            brussels_belgium_temple,
+            vienna_austria_temple,
+            kumasi_ghana_temple,
+            beira_mozambique_temple,
+            cape_town_south_africa_temple,
+            singapore_republic_of_singapore_temple,
+            belo_horizonte_brazil_temple,
+            cali_colombia_temple,
+            querétaro_mexico_temple,
+            torreón_mexico_temple,
+            helena_montana_temple,
+            casper_wyoming_temple,
+            grand_junction_colorado_temple,
+            farmington_new_mexico_temple,
+            burley_idaho_temple,
+            eugene_oregon_temple,
+            elko_nevada_temple,
+            yorba_linda_california_temple,
+            smithfield_utah_temple;
 
-
+    // TODO position 1: declare new temples
 
     public static void init(Resources res, float w2, float h) {
         float w = w2 / 4;
@@ -606,6 +626,7 @@ public class ImageCache {
         templeObjectList.add(new Temple(sao_paulo_east_brazil_temple, 0f, 0f, 0f));
         templeObjectList.add(new Temple(santa_cruz_bolivia_temple, 0f, 0f, 0f));
 
+        // April 2021 announced temples
 
         return templeObjectList;
     }
