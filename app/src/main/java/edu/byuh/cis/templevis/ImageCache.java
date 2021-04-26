@@ -137,13 +137,13 @@ public class ImageCache {
 
         kirtland_temple = loadAndScale(res, R.drawable.kirtland_temple, w);
         old_nauvoo_temple = loadAndScale(res, R.drawable.old_nauvoo_temple, w);
-        st_george_temple = loadAndScale(res, R.drawable.st_george_temple, w);
-        logan_temple = loadAndScale(res, R.drawable.logan_temple, w);
-        manti_temple = loadAndScale(res, R.drawable.manti_temple, w);
+        st_george_temple = loadAndScale(res, R.drawable.st_george_utah_temple, w);
+        logan_temple = loadAndScale(res, R.drawable.logan_utah_temple, w);
+        manti_temple = loadAndScale(res, R.drawable.manti_utah_temple, w);
         salt_lake_temple = loadAndScale(res, R.drawable.salt_lake_temple, w);
         laie_hawaii_temple = loadAndScale(res, R.drawable.laie_hawaii_temple, w);
         cardston_alberta_temple = loadAndScale(res, R.drawable.cardston_alberta_temple, w);
-        mesa_temple = loadAndScale(res, R.drawable.mesa_temple, w);
+        mesa_temple = loadAndScale(res, R.drawable.mesa_arizona_temple, w);
         idaho_falls_temple = loadAndScale(res, R.drawable.idaho_falls_temple, w);
         bern_switzerland_temple = loadAndScale(res, R.drawable.bern_switzerland_temple, w);
         los_angeles_temple = loadAndScale(res, R.drawable.los_angeles_temple, w);
@@ -638,13 +638,13 @@ public class ImageCache {
 
         allImageIds.add(R.drawable.kirtland_temple_large);
         allImageIds.add(R.drawable.old_nauvoo_temple_large);
-        allImageIds.add(R.drawable.st_george_temple_large);
-        allImageIds.add(R.drawable.logan_temple_large);
-        allImageIds.add(R.drawable.manti_temple_large);
+        allImageIds.add(R.drawable.st_george_utah_temple_large);
+        allImageIds.add(R.drawable.logan_utah_temple_large);
+        allImageIds.add(R.drawable.manti_utah_temple_large);
         allImageIds.add(R.drawable.salt_lake_temple_large);
         allImageIds.add(R.drawable.laie_hawaii_temple_large);
         allImageIds.add(R.drawable.cardston_alberta_temple_large);
-        allImageIds.add(R.drawable.mesa_temple_large);
+        allImageIds.add(R.drawable.mesa_arizona_temple_large);
         allImageIds.add(R.drawable.idaho_falls_temple_large);
         allImageIds.add(R.drawable.bern_switzerland_temple_large);
         allImageIds.add(R.drawable.los_angeles_temple_large);

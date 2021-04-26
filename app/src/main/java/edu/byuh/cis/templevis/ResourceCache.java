@@ -15,17 +15,25 @@ public class ResourceCache {
 
     Integer testIdentifier;
     private ArrayList<String> templeNames = new ArrayList<>();
+    public  ArrayList<Integer> smallImageIdentifiers = new ArrayList<>();
 
     public ResourceCache(Context context) {
 
         testIdentifier = context.getResources().getIdentifier("antofagasta_chile_temple", "drawable", "edu.byuh.cis.templevis");
-
         Log.d("identifier 11111", testIdentifier + "");
         Log.d("identifier 22222", R.drawable.antofagasta_chile_temple + "");
 
         readInfoFile(context);
 
         Log.d("temple names", templeNames.toString());
+
+        for (String s:templeNames) {
+            Integer identifier = context.getResources().getIdentifier(s.substring(0,s.length()-1), "drawable", "edu.byuh.cis.templevis");
+            smallImageIdentifiers.add(identifier);
+            Log.d("identifier", identifier + " is " + s);
+
+        }
+
 
     }
 
