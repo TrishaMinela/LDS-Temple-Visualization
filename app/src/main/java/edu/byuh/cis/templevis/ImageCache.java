@@ -131,6 +131,7 @@ public class ImageCache {
 
     // TODO position 1: declare new temples
 
+
     public static void init(Resources res, float w2, float h) {
         float w = w2 / 4;
 
