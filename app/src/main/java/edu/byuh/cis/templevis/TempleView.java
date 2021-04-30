@@ -715,8 +715,14 @@ public class TempleView extends View {
     public void resetStaticCoordinatesGet() {
         staticCoordinatesGet = 0;
     }
+
     @Override
     public void onDraw(Canvas c) {
+
+        if(templeObjects != null) {
+            Log.d("temples number", templeObjects.size() + "");
+        }
+
         //Toast.makeText(getContext(), "onscreen temples" + onScreenTemples.size(), Toast.LENGTH_SHORT).show();
         //Log.d("onscreen temples ", "" + onScreenTemples.size());
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {

@@ -190,8 +190,8 @@ public class ImageCache {
         vernal_temple = loadAndScale(res, R.drawable.vernal_utah_temple, w);
         preston_england_temple = loadAndScale(res, R.drawable.preston_england_temple, w);
         monticello_utah_temple = loadAndScale(res, R.drawable.monticello_utah_temple, w);
-        anchorage_alaska_temple = loadAndScale(res, R.drawable.anchorage_alaska_temple, w);
-        colonia_juarez_mexico_temple = loadAndScale(res, R.drawable.colonia_juarez_mexico_temple, w);
+        anchorage_alaska_temple = loadAndScale(res, R.drawable.anchorage_alaskan_temple, w);
+        colonia_juarez_mexico_temple = loadAndScale(res, R.drawable.colonia_juarez_chihuahua_mexico_temple, w);
         madrid_spain_temple = loadAndScale(res, R.drawable.madrid_spain_temple, w);
         bogota_colombia_temple = loadAndScale(res, R.drawable.bogota_colombia_temple, w);
         guayaquil_ecuador_temple = loadAndScale(res, R.drawable.guayaquil_ecuador_temple, w);
@@ -211,7 +211,7 @@ public class ImageCache {
         hermosillo_sonora_mexico_temple = loadAndScale(res, R.drawable.hermosillo_sonora_mexico_temple, w);
         albuquerque_temple = loadAndScale(res, R.drawable.albuquerque_new_mexico_temple, w);
         oaxaca_mexico_temple = loadAndScale(res, R.drawable.oaxaca_mexico_temple, w);
-        tuxtla_guitierrez_mexico_temple = loadAndScale(res, R.drawable.tuxtla_guitierrez_mexico_temple, w);
+        tuxtla_guitierrez_mexico_temple = loadAndScale(res, R.drawable.tuxtla_gutierrez_mexico_temple, w);
         louisville_temple = loadAndScale(res, R.drawable.louisville_kentucky_temple, w);
         palmyra_temple = loadAndScale(res, R.drawable.palmyra_new_york_temple, w);
         fresno_temple = loadAndScale(res, R.drawable.fresno_california_temple, w);
@@ -231,7 +231,7 @@ public class ImageCache {
         merida_mexico_temple = loadAndScale(res, R.drawable.merida_mexico_temple, w);
         veracruz_mexico_temple = loadAndScale(res, R.drawable.veracruz_mexico_temple, w);
         baton_rouge_louisiana_temple = loadAndScale(res, R.drawable.baton_rouge_louisiana_temple, w);
-        oklahoma_city_temple = loadAndScale(res, R.drawable.oklahoma_city_temple, w);
+        oklahoma_city_temple = loadAndScale(res, R.drawable.oklahoma_city_oklahoma_temple, w);
         caracas_venezuela_temple = loadAndScale(res, R.drawable.caracas_venezuela_temple, w);
         houston_texas_temple = loadAndScale(res, R.drawable.houston_texas_temple, w);
         birmingham_alabama_temple = loadAndScale(res, R.drawable.birmingham_alabama_temple, w);
@@ -276,7 +276,7 @@ public class ImageCache {
         kansas_city_temple = loadAndScale(res, R.drawable.kansas_city_missouri_temple, w);
         manaus_brazil_temple = loadAndScale(res, R.drawable.manaus_brazil_temple, w);
         brigham_city_utah_temple = loadAndScale(res, R.drawable.brigham_city_utah_temple, w);
-        calgary_alberta_lds_temple = loadAndScale(res, R.drawable.calgary_alberta_lds_temple, w);
+        calgary_alberta_lds_temple = loadAndScale(res, R.drawable.calgary_alberta_temple, w);
         tegucigalpa_honduras_temple = loadAndScale(res, R.drawable.tegucigalpa_honduras_temple, w);
         gilbert_arizona_temple = loadAndScale(res, R.drawable.gilbert_arizona_temple, w);
         fort_lauderdale_florida_temple = loadAndScale(res, R.drawable.fort_lauderdale_florida_temple, w);
@@ -301,7 +301,7 @@ public class ImageCache {
         rome_italy_temple = loadAndScale(res, R.drawable.rome_italy_temple, w);
         kinshasa_temple = loadAndScale(res, R.drawable.kinshasa_democratic_republic_of_the_congo_temple, w);
         fortaleza_brazil_temple = loadAndScale(res, R.drawable.fortaleza_brazil_temple, w);
-        haiti_temple_exterior = loadAndScale(res, R.drawable.haiti_temple_exterior, w);
+        haiti_temple_exterior = loadAndScale(res, R.drawable.port_au_prince_haiti_temple, w);
         lisbon_portugal_temple = loadAndScale(res, R.drawable.lisbon_portugal_temple, w);
         arequipa_peru_temple = loadAndScale(res, R.drawable.arequipa_peru_temple, w);
         durban_south_africa_temple = loadAndScale(res, R.drawable.durban_south_africa_temple, w);
@@ -691,8 +691,8 @@ public class ImageCache {
         allImageIds.add(R.drawable.vernal_utah_temple_large);
         allImageIds.add(R.drawable.preston_england_temple_large);
         allImageIds.add(R.drawable.monticello_utah_temple_large);
-        allImageIds.add(R.drawable.anchorage_alaska_temple_large);
-        allImageIds.add(R.drawable.colonia_juarez_mexico_temple_large);
+        allImageIds.add(R.drawable.anchorage_alaskan_temple_large);
+        allImageIds.add(R.drawable.colonia_juarez_chihuahua_mexico_temple_large);
         allImageIds.add(R.drawable.madrid_spain_temple_large);
         allImageIds.add(R.drawable.bogota_colombia_temple_large);
         allImageIds.add(R.drawable.guayaquil_ecuador_temple_large);
@@ -712,7 +712,7 @@ public class ImageCache {
         allImageIds.add(R.drawable.hermosillo_sonora_mexico_temple_large);
         allImageIds.add(R.drawable.albuquerque_new_mexico_temple_large);
         allImageIds.add(R.drawable.oaxaca_mexico_temple_large);
-        allImageIds.add(R.drawable.tuxtla_guitierrez_mexico_temple_large);
+        allImageIds.add(R.drawable.tuxtla_gutierrez_mexico_temple_large);
         allImageIds.add(R.drawable.louisville_kentucky_temple_large);
         allImageIds.add(R.drawable.palmyra_new_york_temple_large);
         allImageIds.add(R.drawable.fresno_california_temple_large);
@@ -732,7 +732,7 @@ public class ImageCache {
         allImageIds.add(R.drawable.merida_mexico_temple_large);
         allImageIds.add(R.drawable.veracruz_mexico_temple_large);
         allImageIds.add(R.drawable.baton_rouge_louisiana_temple_large);
-        allImageIds.add(R.drawable.oklahoma_city_temple_large);
+        allImageIds.add(R.drawable.oklahoma_city_oklahoma_temple_large);
         allImageIds.add(R.drawable.caracas_venezuela_temple_large);
         allImageIds.add(R.drawable.houston_texas_temple_large);
         allImageIds.add(R.drawable.birmingham_alabama_temple_large);
@@ -777,7 +777,7 @@ public class ImageCache {
         allImageIds.add(R.drawable.kansas_city_missouri_temple_large);
         allImageIds.add(R.drawable.manaus_brazil_temple_large);
         allImageIds.add(R.drawable.brigham_city_utah_temple_large);
-        allImageIds.add(R.drawable.calgary_alberta_lds_temple_large);
+        allImageIds.add(R.drawable.calgary_alberta_temple_large);
         allImageIds.add(R.drawable.tegucigalpa_honduras_temple_large);
         allImageIds.add(R.drawable.gilbert_arizona_temple_large);
         allImageIds.add(R.drawable.fort_lauderdale_florida_temple_large);
@@ -802,7 +802,7 @@ public class ImageCache {
         allImageIds.add(R.drawable.rome_italy_temple_large);
         allImageIds.add(R.drawable.kinshasa_democratic_republic_of_the_congo_temple_large);
         allImageIds.add(R.drawable.fortaleza_brazil_temple_large);
-        allImageIds.add(R.drawable.haiti_temple_exterior_large);
+        allImageIds.add(R.drawable.port_au_prince_haiti_temple_large);
         allImageIds.add(R.drawable.lisbon_portugal_temple_large);
         allImageIds.add(R.drawable.arequipa_peru_temple_large);
         allImageIds.add(R.drawable.durban_south_africa_temple_large);

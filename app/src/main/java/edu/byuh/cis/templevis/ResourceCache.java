@@ -25,7 +25,7 @@ public class ResourceCache {
 
         readInfoFile(context);
 
-        Log.d("temple names", templeNames.toString());
+        Log.d("temples count", templeNames.size() + "");
 
         for (String s:templeNames) {
             Integer identifier = context.getResources().getIdentifier(s.substring(0,s.length()-1), "drawable", "edu.byuh.cis.templevis");
