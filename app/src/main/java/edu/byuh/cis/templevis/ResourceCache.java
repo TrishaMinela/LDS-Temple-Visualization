@@ -20,8 +20,8 @@ public class ResourceCache {
     public ResourceCache(Context context) {
 
         testIdentifier = context.getResources().getIdentifier("antofagasta_chile_temple", "drawable", "edu.byuh.cis.templevis");
-        Log.d("identifier 11111", testIdentifier + "");
-        Log.d("identifier 22222", R.drawable.antofagasta_chile_temple + "");
+//        Log.d("identifier 11111", testIdentifier + "");
+//        Log.d("identifier 22222", R.drawable.antofagasta_chile_temple + "");
 
         readInfoFile(context);
 
@@ -29,10 +29,17 @@ public class ResourceCache {
 
         for (String s:templeNames) {
             Integer identifier = context.getResources().getIdentifier(s.substring(0,s.length()-1), "drawable", "edu.byuh.cis.templevis");
-            smallImageIdentifiers.add(identifier);
+            if (identifier != 0) {
+                smallImageIdentifiers.add(identifier);
+            } else {
+                smallImageIdentifiers.add(context.getResources().getIdentifier("no_image", "drawable", "edu.byuh.cis.templevis"));
+            }
+
             Log.d("identifier", identifier + " is " + s);
 
         }
+
+        Log.d("identifiers", smallImageIdentifiers.toString());
 
 
     }

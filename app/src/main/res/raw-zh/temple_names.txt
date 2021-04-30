@@ -230,4 +230,3 @@ port_vila_vanuatu_temple
 lindon_utah_temple
 greater_guatemala_city_guatemala_temple
 sao_paulo_brazil_east_temple
-santa_cruz_bolivia_temple
