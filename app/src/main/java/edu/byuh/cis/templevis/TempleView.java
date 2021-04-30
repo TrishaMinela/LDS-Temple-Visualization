@@ -837,14 +837,20 @@ public class TempleView extends View {
                 temp = screenWidth;
             }
 
-            ResourceCache resourceCache = new ResourceCache(getContext());
+            ResourceCache resourceCache = new ResourceCache(getContext(), temp);
 
 
             ImageCache.init(getResources(), temp, screenHeight);
             allLargeImageIds = ImageCache.getAllImageIds();
             allTempleInfoFileIds = ImageCache.getAllTempleInfoFileIds();
             //temples = ImageCache.getTemplesList();
-            templeObjects = ImageCache.getTempleObjectsList(); // more OO
+
+            // replacing this line
+//            templeObjects = ImageCache.getTempleObjectsList(); // more OO
+            // with
+            templeObjects = resourceCache.templeObjects;
+
+//            Log.d("old templeObjects size", templeObjects.size() + "");
 
             readLinksFile();
             readInfoFile();

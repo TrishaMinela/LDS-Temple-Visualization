@@ -2,6 +2,8 @@ package edu.byuh.cis.templevis;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.util.Log;
 
 import java.io.BufferedReader;
@@ -13,13 +15,14 @@ import java.util.ArrayList;
 
 public class ResourceCache {
 
-    Integer testIdentifier;
+//    Integer testIdentifier;
     private ArrayList<String> templeNames = new ArrayList<>();
     public  ArrayList<Integer> smallImageIdentifiers = new ArrayList<>();
+    public  ArrayList<Temple> templeObjects = new ArrayList<>();
 
-    public ResourceCache(Context context) {
+    public ResourceCache(Context context, float w2) {
 
-        testIdentifier = context.getResources().getIdentifier("antofagasta_chile_temple", "drawable", "edu.byuh.cis.templevis");
+//        testIdentifier = context.getResources().getIdentifier("antofagasta_chile_temple", "drawable", "edu.byuh.cis.templevis");
 //        Log.d("identifier 11111", testIdentifier + "");
 //        Log.d("identifier 22222", R.drawable.antofagasta_chile_temple + "");
 
@@ -34,12 +37,18 @@ public class ResourceCache {
             } else {
                 smallImageIdentifiers.add(context.getResources().getIdentifier("no_image", "drawable", "edu.byuh.cis.templevis"));
             }
-
             Log.d("identifier", identifier + " is " + s);
-
         }
 
         Log.d("identifiers", smallImageIdentifiers.toString());
+
+        float w = w2 / 4;
+
+        for (int i:smallImageIdentifiers) {
+            Bitmap temple = loadAndScale(context.getResources(),i, w);
+            templeObjects.add(new Temple(temple, 0f, 0f, 0f));
+        }
+        Log.d("templeObjects size", templeObjects.size() + "");
 
 
     }
@@ -68,6 +77,13 @@ public class ResourceCache {
             Log.d("File", e.getMessage());
         }
 
+    }
+
+    private static Bitmap loadAndScale(Resources res, int id, float newWidth) {
+        Bitmap original = BitmapFactory.decodeResource(res, id);
+        float aspectRatio = (float)original.getHeight()/(float)original.getWidth();
+        float newHeight = newWidth * aspectRatio;
+        return Bitmap.createScaledBitmap(original, (int)newWidth, (int)newHeight, true);
     }
 
 }
