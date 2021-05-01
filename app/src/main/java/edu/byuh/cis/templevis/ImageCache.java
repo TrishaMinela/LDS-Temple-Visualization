@@ -371,6 +371,8 @@ public class ImageCache {
         sao_paulo_east_brazil_temple = loadAndScale(res, R.drawable.sao_paulo_east_brazil_temple, w);
         santa_cruz_bolivia_temple = loadAndScale(res, R.drawable.santa_cruz_bolivia_temple, w);
 
+        oslo_norway_temple = loadAndScale(res, R.drawable.oslo_norway_temple, w);
+
         //shanghai_china_temple = loadAndScale(res,R.drawable.shanghai_china_temple,w);
 
     }
@@ -625,6 +627,7 @@ public class ImageCache {
         templeObjectList.add(new Temple(greater_guatemala_city_guatemala_temple, 0f, 0f, 0f));
         templeObjectList.add(new Temple(sao_paulo_east_brazil_temple, 0f, 0f, 0f));
         templeObjectList.add(new Temple(santa_cruz_bolivia_temple, 0f, 0f, 0f));
+        templeObjectList.add(new Temple(oslo_norway_temple, 0f, 0f, 0f));
 
         // April 2021 announced temples
 
@@ -876,6 +879,7 @@ public class ImageCache {
         allImageIds.add(R.drawable.greater_guatemala_city_guatemala_temple_large);
         allImageIds.add(R.drawable.sao_paulo_east_brazil_temple_large);
         allImageIds.add(R.drawable.santa_cruz_bolivia_temple_large);
+        allImageIds.add(R.drawable.oslo_norway_temple_large);
 
 
 
@@ -1129,6 +1133,7 @@ public class ImageCache {
         allTempleInfoFileIds.add(R.raw.greater_guatemala_city_guatemala_temple);
         allTempleInfoFileIds.add(R.raw.sao_paulo_east_brazil_temple);
         allTempleInfoFileIds.add(R.raw.santa_cruz_bolivia_temple);
+        allTempleInfoFileIds.add(R.raw.oslo_norway_temple);
 
 
 

@@ -42,7 +42,7 @@ import static java.lang.Boolean.TRUE;
 
 public class TempleView extends View {
 
-    public int howManyTemples = 232;
+    public int howManyTemples = 233;
     private int sliderMax;
     private Paint bluePaint, redPaint, spiralPaint, yearDisplayPaint;
     private float screenWidth, screenHeight;
