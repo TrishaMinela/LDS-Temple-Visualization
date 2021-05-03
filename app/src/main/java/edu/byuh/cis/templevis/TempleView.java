@@ -854,6 +854,9 @@ public class TempleView extends View {
 
             readLinksFile();
             readInfoFile();
+            allTempleNames = resourceCache.templeNames;
+            Log.d("allyears", allYears.toString());
+//            Log.d("allnames", allTempleNames.toString());
 
 
 //            for (Temple t: templeObjects) {

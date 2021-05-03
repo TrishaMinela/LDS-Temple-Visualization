@@ -11,12 +11,14 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class ResourceCache {
 
 //    Integer testIdentifier;
-    private ArrayList<String> templeNames = new ArrayList<>();
+    private ArrayList<String> templeDrawableNames = new ArrayList<>();
+    public ArrayList<String> templeNames = new ArrayList<>();
     public  ArrayList<Integer> smallImageIdentifiers = new ArrayList<>();
     public  ArrayList<Temple> templeObjects = new ArrayList<>();
 
@@ -26,21 +28,31 @@ public class ResourceCache {
 //        Log.d("identifier 11111", testIdentifier + "");
 //        Log.d("identifier 22222", R.drawable.antofagasta_chile_temple + "");
 
-        readInfoFile(context);
+        readNameFile(context);
 
-        Log.d("temples count", templeNames.size() + "");
+        Log.d("temples count", templeDrawableNames.size() + "");
 
-        for (String s:templeNames) {
+        for (String s: templeDrawableNames) {
             Integer identifier = context.getResources().getIdentifier(s.substring(0,s.length()-1), "drawable", "edu.byuh.cis.templevis");
             if (identifier != 0) {
                 smallImageIdentifiers.add(identifier);
             } else {
                 smallImageIdentifiers.add(context.getResources().getIdentifier("no_image", "drawable", "edu.byuh.cis.templevis"));
             }
-            Log.d("identifier", identifier + " is " + s);
+//            Log.d("identifier", identifier + " is " + s);
+
+            String[] templeNameList = s.split("_");
+            String templeName = "";
+            for(int i = 0; i < templeNameList.length; i++) {
+                String word = templeNameList[i];
+                word = word.substring(0, 1).toUpperCase() + word.substring(1);
+                templeName = templeName + " " + word;
+            }
+            templeNames.add(templeName.substring(1, templeName.length()-1));
         }
 
         Log.d("identifiers", smallImageIdentifiers.toString());
+        Log.d("temple names", templeNames.toString());
 
         float w = w2 / 4;
 
@@ -53,7 +65,7 @@ public class ResourceCache {
 
     }
 
-    public void readInfoFile(Context context) {
+    public void readNameFile(Context context) {
         try {
             InputStream templeNamesFile = context.getResources().openRawResource(R.raw.temple_names);
             if (templeNamesFile != null)
@@ -63,7 +75,7 @@ public class ResourceCache {
                 String line;
                 //read each line
                 while (( line = br.readLine()) != null) {
-                    templeNames.add(line+"\n");
+                    templeDrawableNames.add(line+"\n");
                 }
                 templeNamesFile.close();
             }
