@@ -11,13 +11,14 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class ResourceCache {
 
 //    Integer testIdentifier;
+    private ArrayList<String> templeInfo = new ArrayList<>();
     private ArrayList<String> templeDrawableNames = new ArrayList<>();
+    private ArrayList<String> templeYears = new ArrayList<>();
     public ArrayList<String> templeNames = new ArrayList<>();
     public  ArrayList<Integer> smallImageIdentifiers = new ArrayList<>();
     public  ArrayList<Temple> templeObjects = new ArrayList<>();
@@ -28,12 +29,18 @@ public class ResourceCache {
 //        Log.d("identifier 11111", testIdentifier + "");
 //        Log.d("identifier 22222", R.drawable.antofagasta_chile_temple + "");
 
-        readNameFile(context);
+        readInfoFile(context);
+        for (String s: templeInfo) {
+            templeDrawableNames.add(s.substring(0, s.length()-6));
+            templeYears.add(s.substring(s.length()-5, s.length()-1));
+        }
 
-        Log.d("temples count", templeDrawableNames.size() + "");
+        Log.d("temples count", templeInfo.size() + "");
+        Log.d("temples drawable names", templeDrawableNames.toString());
+        Log.d("temples years", templeYears.toString());
 
         for (String s: templeDrawableNames) {
-            Integer identifier = context.getResources().getIdentifier(s.substring(0,s.length()-1), "drawable", "edu.byuh.cis.templevis");
+            Integer identifier = context.getResources().getIdentifier(s, "drawable", "edu.byuh.cis.templevis");
             if (identifier != 0) {
                 smallImageIdentifiers.add(identifier);
             } else {
@@ -48,7 +55,7 @@ public class ResourceCache {
                 word = word.substring(0, 1).toUpperCase() + word.substring(1);
                 templeName = templeName + " " + word;
             }
-            templeNames.add(templeName.substring(1, templeName.length()-1));
+            templeNames.add(templeName.substring(1, templeName.length()-6));
         }
 
         Log.d("identifiers", smallImageIdentifiers.toString());
@@ -65,19 +72,19 @@ public class ResourceCache {
 
     }
 
-    public void readNameFile(Context context) {
+    public void readInfoFile(Context context) {
         try {
-            InputStream templeNamesFile = context.getResources().openRawResource(R.raw.temple_names);
-            if (templeNamesFile != null)
+            InputStream templeInfosFile = context.getResources().openRawResource(R.raw.temple_names);
+            if (templeInfosFile != null)
             {
-                InputStreamReader ir = new InputStreamReader(templeNamesFile);
+                InputStreamReader ir = new InputStreamReader(templeInfosFile);
                 BufferedReader br = new BufferedReader(ir);
                 String line;
                 //read each line
                 while (( line = br.readLine()) != null) {
-                    templeDrawableNames.add(line+"\n");
+                    templeInfo.add(line+"\n");
                 }
-                templeNamesFile.close();
+                templeInfosFile.close();
             }
         }
         catch (FileNotFoundException e)
