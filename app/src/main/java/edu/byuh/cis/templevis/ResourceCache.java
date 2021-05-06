@@ -18,7 +18,7 @@ public class ResourceCache {
 //    Integer testIdentifier;
     private ArrayList<String> templeInfo = new ArrayList<>();
     private ArrayList<String> templeDrawableNames = new ArrayList<>();
-    private ArrayList<String> templeYears = new ArrayList<>();
+    public ArrayList<String> templeYears = new ArrayList<>();
     public ArrayList<String> templeNames = new ArrayList<>();
     public  ArrayList<Integer> smallImageIdentifiers = new ArrayList<>();
     public  ArrayList<Temple> templeObjects = new ArrayList<>();
@@ -55,7 +55,7 @@ public class ResourceCache {
                 word = word.substring(0, 1).toUpperCase() + word.substring(1);
                 templeName = templeName + " " + word;
             }
-            templeNames.add(templeName.substring(1, templeName.length()-6));
+            templeNames.add(templeName.substring(1, templeName.length()));
         }
 
         Log.d("identifiers", smallImageIdentifiers.toString());
