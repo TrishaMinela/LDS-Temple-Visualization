@@ -159,36 +159,36 @@ public class TempleView extends View {
         sliderMoving = s;
     }
 
-    public void readLinksFile() {
-        try {
-            InputStream allTempleLinksFile =  getContext().getResources().openRawResource(R.raw.all_temple_links);
-            if (allTempleLinksFile != null)
-            {
-                InputStreamReader ir = new InputStreamReader(allTempleLinksFile);
-                BufferedReader br = new BufferedReader(ir);
-                String line;
-                //read each line
-                int atThisLine = 0;
-                while (( line = br.readLine()) != null) {
-                    allTempleLinks.add(line+"\n");
-                    if (atThisLine < templeObjects.size()) {
-                        templeObjects.get(atThisLine).setLink(line+"\n");
-                        atThisLine ++;
-                    }
-                }
-                allTempleLinksFile.close();
-            }
-        }
-        catch (java.io.FileNotFoundException e)
-        {
-            Log.d("TestFile", "The File doesn't not exist.");
-        }
-        catch (IOException e)
-        {
-            Log.d("TestFile", e.getMessage());
-        }
-        //Log.d("allTempleLinks is ", allTempleLinks.get(1) + "");
-    }
+//    public void readLinksFile() {
+//        try {
+//            InputStream allTempleLinksFile =  getContext().getResources().openRawResource(R.raw.all_temple_links);
+//            if (allTempleLinksFile != null)
+//            {
+//                InputStreamReader ir = new InputStreamReader(allTempleLinksFile);
+//                BufferedReader br = new BufferedReader(ir);
+//                String line;
+//                //read each line
+//                int atThisLine = 0;
+//                while (( line = br.readLine()) != null) {
+//                    allTempleLinks.add(line+"\n");
+//                    if (atThisLine < templeObjects.size()) {
+//                        templeObjects.get(atThisLine).setLink(line+"\n");
+//                        atThisLine ++;
+//                    }
+//                }
+//                allTempleLinksFile.close();
+//            }
+//        }
+//        catch (java.io.FileNotFoundException e)
+//        {
+//            Log.d("TestFile", "The File doesn't not exist.");
+//        }
+//        catch (IOException e)
+//        {
+//            Log.d("TestFile", e.getMessage());
+//        }
+//        //Log.d("allTempleLinks is ", allTempleLinks.get(1) + "");
+//    }
 
     public void readOneInfoFile(int id) {
         try {
@@ -864,7 +864,10 @@ public class TempleView extends View {
 
 //            Log.d("old templeObjects size", templeObjects.size() + "");
 
-            readLinksFile();
+//            readLinksFile();
+
+//            allTempleLinks = resourceCache.allTempleLinks;
+
 //            readInfoFile();
             allTempleNames = resourceCache.templeNames;
             allYears = resourceCache.templeYears;

@@ -20,6 +20,7 @@ public class ResourceCache {
     private ArrayList<String> templeDrawableNames = new ArrayList<>();
     public ArrayList<Integer> templeLargeDrawableIds = new ArrayList<>();
     public ArrayList<String> templeYears = new ArrayList<>();
+    public ArrayList<String> allTempleLinks = new ArrayList<>();
     public ArrayList<String> templeNames = new ArrayList<>();
     public  ArrayList<Integer> smallImageIdentifiers = new ArrayList<>();
     public  ArrayList<Temple> templeObjects = new ArrayList<>();
@@ -64,11 +65,21 @@ public class ResourceCache {
                 templeName = templeName + " " + word;
             }
             templeNames.add(templeName.substring(1, templeName.length()));
+
+            String[] templeLinkList = s.split("_");
+            String templeLink = "";
+            for(int i = 0; i < templeLinkList.length; i++) {
+                String word = templeLinkList[i];
+                word = word.substring(0, 1) + word.substring(1);
+                templeLink = templeLink + "-" + word;
+            }
+            allTempleLinks.add("https://www.churchofjesuschrist.org/temples/details/" + templeLink.substring(1,templeLink.length()) + "?lang=eng");
         }
 
         Log.d("small identifiers", smallImageIdentifiers.toString());
         Log.d("temple names", templeNames.toString());
         Log.d("large identifiers", templeLargeDrawableIds.toString());
+        Log.d("temple links", allTempleLinks.toString());
 
         float w = w2 / 4;
 
@@ -77,6 +88,11 @@ public class ResourceCache {
             templeObjects.add(new Temple(temple, 0f, 0f, 0f));
         }
         Log.d("templeObjects size", templeObjects.size() + "");
+
+        for(Temple temple: templeObjects) {
+            // TODO, update some broken links later.
+            temple.setLink(allTempleLinks.get(templeObjects.indexOf(temple)));
+        }
 
 
     }
