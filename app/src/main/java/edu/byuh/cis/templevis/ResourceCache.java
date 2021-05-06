@@ -18,6 +18,7 @@ public class ResourceCache {
 //    Integer testIdentifier;
     private ArrayList<String> templeInfo = new ArrayList<>();
     private ArrayList<String> templeDrawableNames = new ArrayList<>();
+    public ArrayList<Integer> templeLargeDrawableIds = new ArrayList<>();
     public ArrayList<String> templeYears = new ArrayList<>();
     public ArrayList<String> templeNames = new ArrayList<>();
     public  ArrayList<Integer> smallImageIdentifiers = new ArrayList<>();
@@ -46,6 +47,13 @@ public class ResourceCache {
             } else {
                 smallImageIdentifiers.add(context.getResources().getIdentifier("no_image", "drawable", "edu.byuh.cis.templevis"));
             }
+
+            Integer largeIdentifier = context.getResources().getIdentifier(s + "_large", "drawable", "edu.byuh.cis.templevis");
+            if (largeIdentifier != 0) {
+                templeLargeDrawableIds.add(largeIdentifier);
+            } else {
+                templeLargeDrawableIds.add(context.getResources().getIdentifier("no_image", "drawable", "edu.byuh.cis.templevis"));
+            }
 //            Log.d("identifier", identifier + " is " + s);
 
             String[] templeNameList = s.split("_");
@@ -58,8 +66,9 @@ public class ResourceCache {
             templeNames.add(templeName.substring(1, templeName.length()));
         }
 
-        Log.d("identifiers", smallImageIdentifiers.toString());
+        Log.d("small identifiers", smallImageIdentifiers.toString());
         Log.d("temple names", templeNames.toString());
+        Log.d("large identifiers", templeLargeDrawableIds.toString());
 
         float w = w2 / 4;
 

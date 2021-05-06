@@ -844,8 +844,17 @@ public class TempleView extends View {
 
 
             ImageCache.init(getResources(), temp, screenHeight);
-            allLargeImageIds = ImageCache.getAllImageIds();
+//            allLargeImageIds = ImageCache.getAllImageIds();
+
+            allLargeImageIds = resourceCache.templeLargeDrawableIds;
+
             allTempleInfoFileIds = ImageCache.getAllTempleInfoFileIds();
+
+            for(int i=0; i<allLargeImageIds.size(); i++) {
+                allTempleInfoFileIds.add(R.raw.albuquerque_temple);
+            }
+
+
             //temples = ImageCache.getTemplesList();
 
             // replacing this line
