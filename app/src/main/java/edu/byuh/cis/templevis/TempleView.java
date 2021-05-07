@@ -908,12 +908,18 @@ public class TempleView extends View {
         float newCurrentTempleRadius = t.size * screenWidth / 2;
 
         Paint thisTempleLabelPaint = new Paint();
-
         thisTempleLabelPaint.setColor(Color.parseColor("#def2f1"));
         thisTempleLabelPaint.setStyle(Paint.Style.FILL);
         thisTempleLabelPaint.setTextSize((int)(newCurrentTempleRadius / 5));
         thisTempleLabelPaint.setTextAlign(Paint.Align.CENTER);
         thisTempleLabelPaint.setShadowLayer(20,0,-5,Color.BLACK);
+
+        Paint thisTempleLabelPaintNoImage = new Paint();
+        thisTempleLabelPaintNoImage.setColor(Color.rgb(0, 0, 0));
+        thisTempleLabelPaintNoImage.setStyle(Paint.Style.FILL);
+        thisTempleLabelPaintNoImage.setTextSize((int)(newCurrentTempleRadius / 4));
+        thisTempleLabelPaintNoImage.setTextAlign(Paint.Align.CENTER);
+//        thisTempleLabelPaintNoImage.setShadowLayer(20,0,-5,Color.BLACK);
 
 //        int thisTempleIndex = temples.indexOf(t);
         int thisTempleIndex = templeObjects.indexOf(t); // more OO
@@ -962,25 +968,29 @@ public class TempleView extends View {
             for (int i = thisTempleLocationWords.length / 2; i < thisTempleLocationWords.length ; i ++) {
                 thisTempleNameTwo += thisTempleLocationWords[i] + " ";
             }
-        } else { // if there are odd number of words in location, then first line has one more line than second line
-            for (int i = 0; i < thisTempleLocationWords.length / 2 + 1; i ++) {
+        } else { // if there are odd number of words in location, then second line has one more line than first line
+            for (int i = 0; i < thisTempleLocationWords.length / 2; i ++) {
                 thisTempleNameOne += thisTempleLocationWords[i] + " ";
             }
-            for (int i = thisTempleLocationWords.length / 2 + 1; i < thisTempleLocationWords.length ; i ++) {
+            for (int i = thisTempleLocationWords.length / 2; i < thisTempleLocationWords.length ; i ++) {
                 thisTempleNameTwo += thisTempleLocationWords[i] + " ";
             }
         }
 
 //        if (sliderMoving == false && ts < 200 && thisTempleIndex < 185 && show_label) {
-        if (sliderMoving == false  && ts < 200 && show_label) {
+        if (sliderMoving == false  && show_label) {
             //c.drawText(thisTempleName, currentTempleX, currentTempleY + newCurrentTempleRadius + thisTempleLabelPaint.getTextSize(), thisTempleLabelPaint);
 
             if(t.hasImage) {
-                c.drawText(thisTempleNameOne, t.x, t.y + newCurrentTempleRadius - thisTempleLabelPaint.getTextSize(), thisTempleLabelPaint);
-                c.drawText(thisTempleNameTwo, t.x, t.y + newCurrentTempleRadius, thisTempleLabelPaint);
+                if(ts < 200) {
+                    c.drawText(thisTempleNameOne, t.x, t.y + newCurrentTempleRadius - thisTempleLabelPaint.getTextSize(), thisTempleLabelPaint);
+                    c.drawText(thisTempleNameTwo, t.x, t.y + newCurrentTempleRadius, thisTempleLabelPaint);
+                }
             } else {
-                c.drawText(thisTempleNameOne, t.x, t.y, thisTempleLabelPaint);
-                c.drawText(thisTempleNameTwo, t.x, t.y + thisTempleLabelPaint.getTextSize(), thisTempleLabelPaint);
+                c.drawText(thisTempleNameOne, t.x, t.y, thisTempleLabelPaintNoImage);
+                c.drawText(thisTempleNameTwo, t.x, t.y + thisTempleLabelPaintNoImage.getTextSize(), thisTempleLabelPaintNoImage);
+//                c.drawText("No Image", t.x, t.y + newCurrentTempleRadius, thisTempleLabelPaintNoImage);
+
             }
         }
     }
