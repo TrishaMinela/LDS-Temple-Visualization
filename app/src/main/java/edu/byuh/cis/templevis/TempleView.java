@@ -81,7 +81,7 @@ public class TempleView extends View {
     private String lastSpiralEffectHolder;
     private static ArrayList<Integer> allLargeImageIds;
     private String oneTempleInfo;
-    private static ArrayList<Integer> allTempleInfoFileIds;
+    private static ArrayList<Integer> allTempleInfoFileIds = new ArrayList<>();
     private Boolean show_label;
     private String selectedYear;
     private Integer realEachIndex;
@@ -843,12 +843,12 @@ public class TempleView extends View {
             ResourceCache resourceCache = new ResourceCache(getContext(), temp);
 
 
-            ImageCache.init(getResources(), temp, screenHeight);
+//            ImageCache.init(getResources(), temp, screenHeight);
 //            allLargeImageIds = ImageCache.getAllImageIds();
 
             allLargeImageIds = resourceCache.templeLargeDrawableIds;
 
-            allTempleInfoFileIds = ImageCache.getAllTempleInfoFileIds();
+//            allTempleInfoFileIds = ImageCache.getAllTempleInfoFileIds();
 
             for(int i=0; i<allLargeImageIds.size(); i++) {
                 allTempleInfoFileIds.add(R.raw.albuquerque_temple);
@@ -1134,16 +1134,16 @@ public class TempleView extends View {
         String endYear = allYears.get((int)(firstOnScreenTempleIndex));
         String startYear = allYears.get((int)(lastOnScreenTempleIndex)) ;
 
-        String curLan = getResources().getConfiguration().locale.getLanguage();
-        if (curLan.equals("zh")) {
-            // do nothing //中文
-            startYear = startYear.substring(0,4);
-            endYear = endYear.substring(0,4);
-        } else {
-            startYear = startYear.substring(startYear.length()-5);
-            endYear = endYear.substring(endYear.length()-5);
-            //英文
-        }
+//        String curLan = getResources().getConfiguration().locale.getLanguage();
+//        if (curLan.equals("zh")) {
+//            // do nothing //中文
+//            startYear = startYear.substring(0,4);
+//            endYear = endYear.substring(0,4);
+//        } else {
+//            startYear = startYear.substring(startYear.length()-5);
+//            endYear = endYear.substring(endYear.length()-5);
+//            //英文
+//        }
 
 
 //        Locale curLocale = getResources().getConfiguration().locale;
@@ -1162,15 +1162,15 @@ public class TempleView extends View {
 
 
             //String curLan = getResources().getConfiguration().locale.getLanguage();
-            if (curLan.equals("zh")) {
-                // do nothing //中文
-                startYear = startYear.substring(0,4);
-                endYear = endYear.substring(0,4);
-            } else {
-                startYear = startYear.substring(startYear.length()-5);
-                endYear = endYear.substring(endYear.length()-5);
-                //英文
-            }
+//            if (curLan.equals("zh")) {
+//                // do nothing //中文
+//                startYear = startYear.substring(0,4);
+//                endYear = endYear.substring(0,4);
+//            } else {
+//                startYear = startYear.substring(startYear.length()-5);
+//                endYear = endYear.substring(endYear.length()-5);
+//                //英文
+//            }
 
         if (theta <= 40){
             c.drawText(getResources().getString(R.string.first_temple), 6.5f * screenWidth / 4, 18 * screenHeight / 40, yearDisplayPaint);

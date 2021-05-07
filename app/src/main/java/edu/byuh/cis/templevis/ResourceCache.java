@@ -53,7 +53,7 @@ public class ResourceCache {
             if (largeIdentifier != 0) {
                 templeLargeDrawableIds.add(largeIdentifier);
             } else {
-                templeLargeDrawableIds.add(context.getResources().getIdentifier("no_image", "drawable", "edu.byuh.cis.templevis"));
+                templeLargeDrawableIds.add(context.getResources().getIdentifier("no_image_large", "drawable", "edu.byuh.cis.templevis"));
             }
 //            Log.d("identifier", identifier + " is " + s);
 
