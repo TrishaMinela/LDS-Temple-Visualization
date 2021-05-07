@@ -31,6 +31,9 @@ public class ResourceCache {
 //        Log.d("identifier 11111", testIdentifier + "");
 //        Log.d("identifier 22222", R.drawable.antofagasta_chile_temple + "");
 
+
+        Integer noImageIdentifier = context.getResources().getIdentifier("no_image", "drawable", "edu.byuh.cis.templevis");
+
         readInfoFile(context);
         for (String s: templeInfo) {
             templeDrawableNames.add(s.substring(0, s.length()-6));
@@ -85,7 +88,12 @@ public class ResourceCache {
 
         for (int i:smallImageIdentifiers) {
             Bitmap temple = loadAndScale(context.getResources(),i, w);
-            templeObjects.add(new Temple(temple, 0f, 0f, 0f));
+
+            if(i == noImageIdentifier) {
+                templeObjects.add(new Temple(temple, 0f, 0f, 0f, false));
+            } else {
+                templeObjects.add(new Temple(temple, 0f, 0f, 0f, true));
+            }
         }
         Log.d("templeObjects size", templeObjects.size() + "");
 

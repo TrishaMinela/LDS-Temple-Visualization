@@ -9,6 +9,17 @@ public class Temple {
     Float y;
     String role;
     String link;
+    Boolean hasImage;
+
+    public Temple(Bitmap imageP, Float sizeP, Float xP, Float yP, Boolean hi) {
+        image = imageP;
+        size = sizeP;
+        x = xP;
+        y = yP;
+        role = "";
+        link = "";
+        hasImage = hi;
+    }
 
     public Temple(Bitmap imageP, Float sizeP, Float xP, Float yP) {
         image = imageP;
@@ -18,7 +29,6 @@ public class Temple {
         role = "";
         link = "";
     }
-
     public void setRole(String r) {
         role = r;
     }
