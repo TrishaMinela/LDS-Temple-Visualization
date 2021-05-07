@@ -14,7 +14,7 @@ Latter-day Temples Visualization
 ## Adding new temples: 
 
 ### in code: 
-1. in TempleView.java, adjust fieldp howManyTemples to the number of total temples 
+1. in TempleView.java, adjust field howManyTemples to the number of total temples 
 
 ### in res folder:
 2. add new temple webp images in drawable:
