@@ -24,7 +24,7 @@ public class ResourceCache {
     public ArrayList<String> templeNames = new ArrayList<>();
     public  ArrayList<Integer> smallImageIdentifiers = new ArrayList<>();
     public  ArrayList<Temple> templeObjects = new ArrayList<>();
-
+    public  ArrayList<Integer>  allTempleInfoFileIds = new ArrayList<>();
     public ResourceCache(Context context, float w2) {
 
 //        testIdentifier = context.getResources().getIdentifier("antofagasta_chile_temple", "drawable", "edu.byuh.cis.templevis");
@@ -41,8 +41,8 @@ public class ResourceCache {
         }
 
         Log.d("temples count", templeInfo.size() + "");
-        Log.d("temples drawable names", templeDrawableNames.toString());
-        Log.d("temples years", templeYears.toString());
+//        Log.d("temples drawable names", templeDrawableNames.toString());
+//        Log.d("temples years", templeYears.toString());
 
         for (String s: templeDrawableNames) {
             Integer identifier = context.getResources().getIdentifier(s, "drawable", "edu.byuh.cis.templevis");
@@ -59,6 +59,16 @@ public class ResourceCache {
                 templeLargeDrawableIds.add(context.getResources().getIdentifier("no_image_large", "drawable", "edu.byuh.cis.templevis"));
             }
 //            Log.d("identifier", identifier + " is " + s);
+
+            Integer infoFileIdentifier = context.getResources().getIdentifier(s, "raw", "edu.byuh.cis.templevis");
+            if (infoFileIdentifier != 0) {
+                allTempleInfoFileIds.add(infoFileIdentifier);
+            } else {
+                allTempleInfoFileIds.add(context.getResources().getIdentifier("no_info", "raw", "edu.byuh.cis.templevis"));
+            }
+
+            Log.d(s, infoFileIdentifier + "");
+            // TODO rename raw files for those 0's
 
             String[] templeNameList = s.split("_");
             String templeName = "";
@@ -79,10 +89,11 @@ public class ResourceCache {
             allTempleLinks.add("https://www.churchofjesuschrist.org/temples/details/" + templeLink.substring(1,templeLink.length()) + "?lang=eng");
         }
 
-        Log.d("small identifiers", smallImageIdentifiers.toString());
-        Log.d("temple names", templeNames.toString());
-        Log.d("large identifiers", templeLargeDrawableIds.toString());
-        Log.d("temple links", allTempleLinks.toString());
+//        Log.d("small identifiers", smallImageIdentifiers.toString());
+//        Log.d("temple names", templeNames.toString());
+//        Log.d("large identifiers", templeLargeDrawableIds.toString());
+//        Log.d("temple links", allTempleLinks.toString());
+//        Log.d("temple info file ids", allTempleInfoFileIds.toString());
 
         float w = w2 / 4;
 
