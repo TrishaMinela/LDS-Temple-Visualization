@@ -68,8 +68,8 @@ public class ResourceCache {
                 allTempleInfoFileIds.add(context.getResources().getIdentifier("no_info", "raw", "edu.byuh.cis.templevis"));
             }
 
-            Log.d(s, infoFileIdentifier + " " + (infoFileIdentifier == 0 ?  "------" + context.getResources().getIdentifier("no_info", "raw", "edu.byuh.cis.templevis") : " "));
-            // TODO rename raw files for those 0's
+//            Log.d(s, infoFileIdentifier + " " + (infoFileIdentifier == 0 ?  "------" + context.getResources().getIdentifier("no_info", "raw", "edu.byuh.cis.templevis") : " "));
+            // rename raw files for those 0's
 
             String[] templeNameList = s.split("_");
             String templeName = "";
@@ -87,13 +87,19 @@ public class ResourceCache {
                 word = word.substring(0, 1) + word.substring(1);
                 templeLink = templeLink + "-" + word;
             }
-            allTempleLinks.add("https://www.churchofjesuschrist.org/temples/details/" + templeLink.substring(1,templeLink.length()) + "?lang=eng");
+            // TODO, update some broken links later.
+
+            templeLink = "https://www.churchofjesuschrist.org/temples/details/" + templeLink.substring(1,templeLink.length()) + "?lang=eng";
+
+            Log.d(s, templeLink);
+
+            allTempleLinks.add(templeLink);
         }
 
 //        Log.d("small identifiers", smallImageIdentifiers.toString());
 //        Log.d("temple names", templeNames.toString());
 //        Log.d("large identifiers", templeLargeDrawableIds.toString());
-//        Log.d("temple links", allTempleLinks.toString());
+//          Log.d("temple links", allTempleLinks.toString());
 //        Log.d("temple info file ids", allTempleInfoFileIds.toString());
 
         float w = w2 / 4;
@@ -110,7 +116,6 @@ public class ResourceCache {
         Log.d("templeObjects size", templeObjects.size() + "");
 
         for(Temple temple: templeObjects) {
-            // TODO, update some broken links later.
             temple.setLink(allTempleLinks.get(templeObjects.indexOf(temple)));
         }
 

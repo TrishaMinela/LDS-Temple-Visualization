@@ -240,8 +240,8 @@ cape_town_south_africa_temple 1111
 singapore_republic_of_singapore_temple 1111
 belo_horizonte_brazil_temple 1111
 cali_colombia_temple 1111
-querétaro_mexico_temple 1111
-torreón_mexico_temple 1111
+queretaro_mexico_temple 1111
+torreon_mexico_temple 1111
 helena_montana_temple 1111
 casper_wyoming_temple 1111
 grand_junction_colorado_temple 1111
