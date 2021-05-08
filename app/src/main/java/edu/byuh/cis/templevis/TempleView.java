@@ -850,9 +850,11 @@ public class TempleView extends View {
 
 //            allTempleInfoFileIds = ImageCache.getAllTempleInfoFileIds();
 
-            for(int i=0; i<allLargeImageIds.size(); i++) {
-                allTempleInfoFileIds.add(R.raw.albuquerque_temple);
-            }
+//            for(int i=0; i<allLargeImageIds.size(); i++) {
+//                allTempleInfoFileIds.add(R.raw.albuquerque_temple);
+//            }
+
+            allTempleInfoFileIds = resourceCache.allTempleInfoFileIds;
 
 
             //temples = ImageCache.getTemplesList();

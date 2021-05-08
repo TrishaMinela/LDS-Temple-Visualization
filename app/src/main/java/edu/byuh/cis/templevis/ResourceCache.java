@@ -25,6 +25,7 @@ public class ResourceCache {
     public  ArrayList<Integer> smallImageIdentifiers = new ArrayList<>();
     public  ArrayList<Temple> templeObjects = new ArrayList<>();
     public  ArrayList<Integer>  allTempleInfoFileIds = new ArrayList<>();
+
     public ResourceCache(Context context, float w2) {
 
 //        testIdentifier = context.getResources().getIdentifier("antofagasta_chile_temple", "drawable", "edu.byuh.cis.templevis");
@@ -67,7 +68,7 @@ public class ResourceCache {
                 allTempleInfoFileIds.add(context.getResources().getIdentifier("no_info", "raw", "edu.byuh.cis.templevis"));
             }
 
-            Log.d(s, infoFileIdentifier + "");
+            Log.d(s, infoFileIdentifier + " " + (infoFileIdentifier == 0 ?  "------" + context.getResources().getIdentifier("no_info", "raw", "edu.byuh.cis.templevis") : " "));
             // TODO rename raw files for those 0's
 
             String[] templeNameList = s.split("_");
