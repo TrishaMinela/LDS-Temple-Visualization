@@ -948,8 +948,8 @@ public class TempleView extends View {
         if (curLan.equals("zh")) {
             //中文
 //            thisTempleLocation = thisTempleName.substring(0, thisTempleName.length() - 3);
-            // TODO bug to fix later, in chinese mode, lable will just say lable (标签)
-            thisTempleLocation = "标签";
+            // TODO bug to fix later, in chinese mode, lable will just say lable ()
+            thisTempleLocation = "";
 
         } else {
             //英文
@@ -980,13 +980,15 @@ public class TempleView extends View {
         }
 
 //        if (sliderMoving == false && ts < 200 && thisTempleIndex < 185 && show_label) {
-        if (sliderMoving == false  && show_label) {
+        if (show_label) {
             //c.drawText(thisTempleName, currentTempleX, currentTempleY + newCurrentTempleRadius + thisTempleLabelPaint.getTextSize(), thisTempleLabelPaint);
 
             if(t.hasImage) {
                 if(ts < 200) {
-                    c.drawText(thisTempleNameOne, t.x, t.y + newCurrentTempleRadius - thisTempleLabelPaint.getTextSize(), thisTempleLabelPaint);
-                    c.drawText(thisTempleNameTwo, t.x, t.y + newCurrentTempleRadius, thisTempleLabelPaint);
+                    if (sliderMoving == false) {
+                        c.drawText(thisTempleNameOne, t.x, t.y + newCurrentTempleRadius - thisTempleLabelPaint.getTextSize(), thisTempleLabelPaint);
+                        c.drawText(thisTempleNameTwo, t.x, t.y + newCurrentTempleRadius, thisTempleLabelPaint);
+                    }
                 }
             } else {
                 c.drawText(thisTempleNameOne, t.x, t.y, thisTempleLabelPaintNoImage);
