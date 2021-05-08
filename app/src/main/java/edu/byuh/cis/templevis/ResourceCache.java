@@ -89,7 +89,27 @@ public class ResourceCache {
             }
             // TODO, update some broken links later.
 
-            templeLink = "https://www.churchofjesuschrist.org/temples/details/" + templeLink.substring(1,templeLink.length()) + "?lang=eng";
+//            templeLink = "https://www.churchofjesuschrist.org/temples/details/" + templeLink.substring(1,templeLink.length()) + "?lang=eng";
+//
+//            if (templeLink.contains("kirtland-temple")) {
+//                templeLink = "https://www.kirtlandtemple.org/";
+//            } else if (templeLink.contains("old-nauvoo-temple")) {
+//                templeLink = "https://www.churchofjesuschrist.org/temples/details/nauvoo-illinois-temple?lang=eng";
+//            } else if (templeLink.contains("st-george-utah-temple")) {
+//                templeLink = "https://www.churchofjesuschrist.org/temples/details/st.-george-utah-temple?lang=eng";
+//            } else if (templeLink.contains("")) {
+//                templeLink = "";
+//            } else if (templeLink.contains("")) {
+//                templeLink = "";
+//            } else if (templeLink.contains("")) {
+//                templeLink = "";
+//            } else if (templeLink.contains("")) {
+//                templeLink = "";
+//            } else if (templeLink.contains("")) {
+//                templeLink = "";
+//            }
+//
+            templeLink = "https://www.churchofjesuschrist.org/search?lang=eng&query=" + s;
 
             Log.d(s, templeLink);
 
