@@ -251,4 +251,4 @@ eugene_oregon_temple 1111
 elko_nevada_temple 1111
 yorba_linda_california_temple 1111
 smithfield_utah_temple 1111
-ephraim_utah_templ 1111
+ephraim_utah_temple 1111

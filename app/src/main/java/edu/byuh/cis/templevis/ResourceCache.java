@@ -68,7 +68,7 @@ public class ResourceCache {
                 allTempleInfoFileIds.add(context.getResources().getIdentifier("no_info", "raw", "edu.byuh.cis.templevis"));
             }
 
-//            Log.d(s, infoFileIdentifier + " " + (infoFileIdentifier == 0 ?  "------" + context.getResources().getIdentifier("no_info", "raw", "edu.byuh.cis.templevis") : " "));
+            Log.d(s, infoFileIdentifier + " " + (infoFileIdentifier == 0 ?  "------" + context.getResources().getIdentifier("no_info", "raw", "edu.byuh.cis.templevis") : " "));
             // rename raw files for those 0's
 
             String[] templeNameList = s.split("_");
@@ -87,7 +87,7 @@ public class ResourceCache {
                 word = word.substring(0, 1) + word.substring(1);
                 templeLink = templeLink + "-" + word;
             }
-            // TODO, update some broken links later.
+            // update some broken links later.
 
 //            templeLink = "https://www.churchofjesuschrist.org/temples/details/" + templeLink.substring(1,templeLink.length()) + "?lang=eng";
 //
@@ -111,7 +111,7 @@ public class ResourceCache {
 //
             templeLink = "https://www.churchofjesuschrist.org/search?lang=eng&query=" + s;
 
-            Log.d(s, templeLink);
+//            Log.d(s, templeLink);
 
             allTempleLinks.add(templeLink);
         }
