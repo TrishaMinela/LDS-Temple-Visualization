@@ -42,7 +42,7 @@ import static java.lang.Boolean.TRUE;
 
 public class TempleView extends View {
 
-    public int howManyTemples = 233;
+    public int howManyTemples = 254;
     private int sliderMax;
     private Paint bluePaint, redPaint, spiralPaint, yearDisplayPaint;
     private float screenWidth, screenHeight;
@@ -59,7 +59,7 @@ public class TempleView extends View {
     private ArrayList<ArrayList<Float>> spiralCoordinates;
     private ArrayList<Float> sizes;
     private ArrayList<String> allTempleLinks;
-    private ArrayList<String> allTempleInfo;
+//    private ArrayList<String> allTempleInfo;
     public ArrayList<String> allYears;
     public ArrayList<String> allTempleNames;
     private int eachIndex;
@@ -81,7 +81,7 @@ public class TempleView extends View {
     private String lastSpiralEffectHolder;
     private static ArrayList<Integer> allLargeImageIds;
     private String oneTempleInfo;
-    private static ArrayList<Integer> allTempleInfoFileIds;
+    private static ArrayList<Integer> allTempleInfoFileIds = new ArrayList<>();
     private Boolean show_label;
     private String selectedYear;
     private Integer realEachIndex;
@@ -115,7 +115,7 @@ public class TempleView extends View {
         onScreenTemples = new ArrayList<>();
         oneOnScreenTemple = new ArrayList<>();
         allTempleLinks = new ArrayList<>();
-        allTempleInfo = new ArrayList<>();
+//        allTempleInfo = new ArrayList<>();
         allYears = new ArrayList<>();
         allTempleNames = new ArrayList<>();
         theta = 5550;
@@ -159,50 +159,50 @@ public class TempleView extends View {
         sliderMoving = s;
     }
 
-    public void readLinksFile() {
-        try {
-            InputStream allTempleLinksFile =  getContext().getResources().openRawResource(R.raw.all_temple_links);
-            if (allTempleLinksFile != null)
-            {
-                InputStreamReader ir = new InputStreamReader(allTempleLinksFile);
-                BufferedReader br = new BufferedReader(ir);
-                String line;
-                //read each line
-                int atThisLine = 0;
-                while (( line = br.readLine()) != null) {
-                    allTempleLinks.add(line+"\n");
-                    if (atThisLine < templeObjects.size()) {
-                        templeObjects.get(atThisLine).setLink(line+"\n");
-                        atThisLine ++;
-                    }
-                }
-                allTempleLinksFile.close();
-            }
-        }
-        catch (java.io.FileNotFoundException e)
-        {
-            Log.d("TestFile", "The File doesn't not exist.");
-        }
-        catch (IOException e)
-        {
-            Log.d("TestFile", e.getMessage());
-        }
-        //Log.d("allTempleLinks is ", allTempleLinks.get(1) + "");
-    }
+//    public void readLinksFile() {
+//        try {
+//            InputStream allTempleLinksFile =  getContext().getResources().openRawResource(R.raw.all_temple_links);
+//            if (allTempleLinksFile != null)
+//            {
+//                InputStreamReader ir = new InputStreamReader(allTempleLinksFile);
+//                BufferedReader br = new BufferedReader(ir);
+//                String line;
+//                //read each line
+//                int atThisLine = 0;
+//                while (( line = br.readLine()) != null) {
+//                    allTempleLinks.add(line+"\n");
+//                    if (atThisLine < templeObjects.size()) {
+//                        templeObjects.get(atThisLine).setLink(line+"\n");
+//                        atThisLine ++;
+//                    }
+//                }
+//                allTempleLinksFile.close();
+//            }
+//        }
+//        catch (java.io.FileNotFoundException e)
+//        {
+//            Log.d("TestFile", "The File doesn't not exist.");
+//        }
+//        catch (IOException e)
+//        {
+//            Log.d("TestFile", e.getMessage());
+//        }
+//        //Log.d("allTempleLinks is ", allTempleLinks.get(1) + "");
+//    }
 
     public void readOneInfoFile(int id) {
         try {
-            InputStream allTempleInfoFile =  this.getResources().openRawResource(id);
-            if (allTempleInfoFile != null)
+            InputStream oneTempleInfoFile =  this.getResources().openRawResource(id);
+            if (oneTempleInfoFile != null)
             {
-                InputStreamReader ir = new InputStreamReader(allTempleInfoFile);
+                InputStreamReader ir = new InputStreamReader(oneTempleInfoFile);
                 BufferedReader br = new BufferedReader(ir);
                 String line;
                 //read each line
                 while (( line = br.readLine()) != null) {
                     oneTempleInfo = oneTempleInfo + line+"\n";
                 }
-                allTempleInfoFile.close();
+                oneTempleInfoFile.close();
             }
         }
         catch (java.io.FileNotFoundException e)
@@ -215,73 +215,73 @@ public class TempleView extends View {
         }
     }
 
-    public void readInfoFile() {
-        try {
-            InputStream allTempleInfoFile =  this.getResources().openRawResource(R.raw.temple_info);
-            if (allTempleInfoFile != null)
-            {
-                InputStreamReader ir = new InputStreamReader(allTempleInfoFile);
-                BufferedReader br = new BufferedReader(ir);
-                String line;
-                //read each line
-                while (( line = br.readLine()) != null) {
-                    allTempleInfo.add(line+"\n");
-                }
-                allTempleInfoFile.close();
-                allYears = getAllYearsFromAllTempleInfo(allTempleInfo);
-                allTempleNames = getAllTempleNamesFromAllTempleInfo(allTempleInfo);
-            }
-        }
-        catch (java.io.FileNotFoundException e)
-        {
-            Log.d("TestFile", "The File doesn't not exist.");
-        }
-        catch (IOException e)
-        {
-            Log.d("TestFile", e.getMessage());
-        }
-
-    }
-
-    public ArrayList<String> getAllYearsFromAllTempleInfo(ArrayList<String> allTempleInfoPassIn) {
-        ArrayList<String> temporary = new ArrayList<>();
-//        for (int i = 0; i < temples.size(); i++) {
-        for (int i = 0; i < templeObjects.size(); i++) { // more OO
-            String year = allTempleInfo.get(i * 3 + 2) ;
-//            Locale curLocale = getResources().getConfiguration().locale;
-//            if (curLocale.equals(Locale.SIMPLIFIED_CHINESE)) {
-//                // do nothing //中文
-//                year = year;
-//            } else {
-//                year = year.substring(year.length()-5);
-//                //英文
+//    public void readInfoFile() {
+//        try {
+//            InputStream allTempleInfoFile =  this.getResources().openRawResource(R.raw.temple_info);
+//            if (allTempleInfoFile != null)
+//            {
+//                InputStreamReader ir = new InputStreamReader(allTempleInfoFile);
+//                BufferedReader br = new BufferedReader(ir);
+//                String line;
+//                //read each line
+//                while (( line = br.readLine()) != null) {
+//                    allTempleInfo.add(line+"\n");
+//                }
+//                allTempleInfoFile.close();
+//                allYears = getAllYearsFromAllTempleInfo(allTempleInfo);
+//                allTempleNames = getAllTempleNamesFromAllTempleInfo(allTempleInfo);
 //            }
+//        }
+//        catch (java.io.FileNotFoundException e)
+//        {
+//            Log.d("TestFile", "The File doesn't not exist.");
+//        }
+//        catch (IOException e)
+//        {
+//            Log.d("TestFile", e.getMessage());
+//        }
+//
+//    }
 
-            String curLan = getResources().getConfiguration().locale.getLanguage();
-            if (curLan.equals("zh")) {
-                // do nothing //中文
-                year = year;
-            } else {
-                year = year.substring(year.length()-5);
-                //英文
-            }
-
-
-
-
-            temporary.add(year.substring(0,4));
-        }
-        return temporary;
-    }
-
-    public ArrayList<String> getAllTempleNamesFromAllTempleInfo(ArrayList<String> allTempleInfoPassIn) {
-        ArrayList<String> temporary = new ArrayList<>();
-        for (int i = 0; i < templeObjects.size(); i++) { // more OO
-            String name = allTempleInfo.get(i * 3 + 0) ;
-            temporary.add(name);
-        }
-        return temporary;
-    }
+//    public ArrayList<String> getAllYearsFromAllTempleInfo(ArrayList<String> allTempleInfoPassIn) {
+//        ArrayList<String> temporary = new ArrayList<>();
+////        for (int i = 0; i < temples.size(); i++) {
+//        for (int i = 0; i < templeObjects.size(); i++) { // more OO
+//            String year = allTempleInfo.get(i * 3 + 2) ;
+////            Locale curLocale = getResources().getConfiguration().locale;
+////            if (curLocale.equals(Locale.SIMPLIFIED_CHINESE)) {
+////                // do nothing //中文
+////                year = year;
+////            } else {
+////                year = year.substring(year.length()-5);
+////                //英文
+////            }
+//
+////            String curLan = getResources().getConfiguration().locale.getLanguage();
+////            if (curLan.equals("zh")) {
+////                // do nothing //中文
+////                year = year;
+////            } else {
+////                year = year.substring(year.length()-5);
+////                //英文
+////            }
+//
+//
+//
+//
+//            temporary.add(year.substring(0,4));
+//        }
+//        return temporary;
+//    }
+//
+//    public ArrayList<String> getAllTempleNamesFromAllTempleInfo(ArrayList<String> allTempleInfoPassIn) {
+//        ArrayList<String> temporary = new ArrayList<>();
+//        for (int i = 0; i < templeObjects.size(); i++) { // more OO
+//            String name = allTempleInfo.get(i * 3 + 0) ;
+//            temporary.add(name);
+//        }
+//        return temporary;
+//    }
 
 
 
@@ -494,7 +494,8 @@ public class TempleView extends View {
         templeUrl = templeObjects.get(realEachIndex).link;
 
         final TextView singleTempleDialogTitleView = new TextView(getContext());
-        singleTempleDialogTitleView.setText(allTempleInfo.get(realEachIndex*3));
+//        singleTempleDialogTitleView.setText(allTempleInfo.get(realEachIndex*3));
+        singleTempleDialogTitleView.setText(allTempleNames.get(realEachIndex));
         singleTempleDialogTitleView.setTextSize(20);
         singleTempleDialogTitleView.setPadding(0,20,0,0);
         singleTempleDialogTitleView.setTextColor(Color.BLACK);
@@ -531,7 +532,8 @@ public class TempleView extends View {
                                 singleTempleImageView.updateThreeTemplesBitmapIds(allLargeImageIds.get(realEachIndex), allLargeImageIds.get(realEachIndex - 1), allLargeImageIds.get(realEachIndex + 1));
                             }
                             templeUrl = templeObjects.get(realEachIndex).link;
-                            singleTempleDialogTitleView.setText(allTempleInfo.get(realEachIndex*3));
+//                            singleTempleDialogTitleView.setText(allTempleInfo.get(realEachIndex*3));
+                            singleTempleDialogTitleView.setText(allTempleNames.get(realEachIndex));
                             oneTempleInfo = "";
                             readOneInfoFile(allTempleInfoFileIds.get(realEachIndex));
                             singleTempleTextView.setText(oneTempleInfo);
@@ -568,7 +570,8 @@ public class TempleView extends View {
                             }
                             singleTempleImageView.updateThreeTemplesBitmapIds(allLargeImageIds.get(realEachIndex), lastTempleId, allLargeImageIds.get(realEachIndex + 1));
                             templeUrl = templeObjects.get(realEachIndex).link;
-                            singleTempleDialogTitleView.setText(allTempleInfo.get(realEachIndex*3));
+//                            singleTempleDialogTitleView.setText(allTempleInfo.get(realEachIndex*3));
+                            singleTempleDialogTitleView.setText(allTempleNames.get(realEachIndex));
                             oneTempleInfo = "";
                             readOneInfoFile(allTempleInfoFileIds.get(realEachIndex));
                             singleTempleTextView.setText(oneTempleInfo);
@@ -715,8 +718,14 @@ public class TempleView extends View {
     public void resetStaticCoordinatesGet() {
         staticCoordinatesGet = 0;
     }
+
     @Override
     public void onDraw(Canvas c) {
+
+//        if(templeObjects != null) {
+//            Log.d("temples number", templeObjects.size() + "");
+//        }
+
         //Toast.makeText(getContext(), "onscreen temples" + onScreenTemples.size(), Toast.LENGTH_SHORT).show();
         //Log.d("onscreen temples ", "" + onScreenTemples.size());
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
@@ -822,8 +831,6 @@ public class TempleView extends View {
             loadedImages = true;
             //get the temple images in array list
 
-            ResourceCache resourceCache = new ResourceCache(getContext());
-
             //when app launches, images are loaded according to screen width
             //when launches landscape, according to window height
             float temp;
@@ -832,16 +839,42 @@ public class TempleView extends View {
             } else {
                 temp = screenWidth;
             }
-            ImageCache.init(getResources(), temp, screenHeight);
 
-            allLargeImageIds = ImageCache.getAllImageIds();
-            allTempleInfoFileIds = ImageCache.getAllTempleInfoFileIds();
+            ResourceCache resourceCache = new ResourceCache(getContext(), temp);
+
+
+//            ImageCache.init(getResources(), temp, screenHeight);
+//            allLargeImageIds = ImageCache.getAllImageIds();
+
+            allLargeImageIds = resourceCache.templeLargeDrawableIds;
+
+//            allTempleInfoFileIds = ImageCache.getAllTempleInfoFileIds();
+
+//            for(int i=0; i<allLargeImageIds.size(); i++) {
+//                allTempleInfoFileIds.add(R.raw.albuquerque_temple);
+//            }
+
+            allTempleInfoFileIds = resourceCache.allTempleInfoFileIds;
+
 
             //temples = ImageCache.getTemplesList();
-            templeObjects = ImageCache.getTempleObjectsList(); // more OO
 
-            readLinksFile();
-            readInfoFile();
+            // replacing this line
+//            templeObjects = ImageCache.getTempleObjectsList(); // more OO
+            // with
+            templeObjects = resourceCache.templeObjects;
+
+//            Log.d("old templeObjects size", templeObjects.size() + "");
+
+//            readLinksFile();
+
+//            allTempleLinks = resourceCache.allTempleLinks;
+
+//            readInfoFile();
+            allTempleNames = resourceCache.templeNames;
+            allYears = resourceCache.templeYears;
+//            Log.d("allyears", allYears.toString());
+//            Log.d("allnames", allTempleNames.toString());
 
 
 //            for (Temple t: templeObjects) {
@@ -877,17 +910,24 @@ public class TempleView extends View {
         float newCurrentTempleRadius = t.size * screenWidth / 2;
 
         Paint thisTempleLabelPaint = new Paint();
-
         thisTempleLabelPaint.setColor(Color.parseColor("#def2f1"));
         thisTempleLabelPaint.setStyle(Paint.Style.FILL);
         thisTempleLabelPaint.setTextSize((int)(newCurrentTempleRadius / 5));
         thisTempleLabelPaint.setTextAlign(Paint.Align.CENTER);
         thisTempleLabelPaint.setShadowLayer(20,0,-5,Color.BLACK);
 
+        Paint thisTempleLabelPaintNoImage = new Paint();
+        thisTempleLabelPaintNoImage.setColor(Color.rgb(0, 0, 0));
+        thisTempleLabelPaintNoImage.setStyle(Paint.Style.FILL);
+        thisTempleLabelPaintNoImage.setTextSize((int)(newCurrentTempleRadius / 4));
+        thisTempleLabelPaintNoImage.setTextAlign(Paint.Align.CENTER);
+//        thisTempleLabelPaintNoImage.setShadowLayer(20,0,-5,Color.BLACK);
+
 //        int thisTempleIndex = temples.indexOf(t);
         int thisTempleIndex = templeObjects.indexOf(t); // more OO
 
-        String thisTempleName = allTempleInfo.get(thisTempleIndex*3);
+//        String thisTempleName = allTempleInfo.get(thisTempleIndex*3);
+        String thisTempleName = allTempleNames.get(thisTempleIndex);
         Locale curLocale = getResources().getConfiguration().locale;
         String curLan = getResources().getConfiguration().locale.getLanguage();
         //Log.d("current language: ", curLan);
@@ -907,7 +947,10 @@ public class TempleView extends View {
 
         if (curLan.equals("zh")) {
             //中文
-            thisTempleLocation = thisTempleName.substring(0, thisTempleName.length() - 3);
+//            thisTempleLocation = thisTempleName.substring(0, thisTempleName.length() - 3);
+            // TODO bug to fix later, in chinese mode, lable will just say lable ()
+            thisTempleLocation = "";
+
         } else {
             //英文
             thisTempleLocation = thisTempleName.substring(0, thisTempleName.length() - 7);
@@ -927,19 +970,32 @@ public class TempleView extends View {
             for (int i = thisTempleLocationWords.length / 2; i < thisTempleLocationWords.length ; i ++) {
                 thisTempleNameTwo += thisTempleLocationWords[i] + " ";
             }
-        } else { // if there are odd number of words in location, then first line has one more line than second line
-            for (int i = 0; i < thisTempleLocationWords.length / 2 + 1; i ++) {
+        } else { // if there are odd number of words in location, then second line has one more line than first line
+            for (int i = 0; i < thisTempleLocationWords.length / 2; i ++) {
                 thisTempleNameOne += thisTempleLocationWords[i] + " ";
             }
-            for (int i = thisTempleLocationWords.length / 2 + 1; i < thisTempleLocationWords.length ; i ++) {
+            for (int i = thisTempleLocationWords.length / 2; i < thisTempleLocationWords.length ; i ++) {
                 thisTempleNameTwo += thisTempleLocationWords[i] + " ";
             }
         }
 
-        if (sliderMoving == false && ts < 200 && thisTempleIndex < 185 && show_label) {
+//        if (sliderMoving == false && ts < 200 && thisTempleIndex < 185 && show_label) {
+        if (show_label) {
             //c.drawText(thisTempleName, currentTempleX, currentTempleY + newCurrentTempleRadius + thisTempleLabelPaint.getTextSize(), thisTempleLabelPaint);
-            c.drawText(thisTempleNameOne, t.x, t.y + newCurrentTempleRadius - thisTempleLabelPaint.getTextSize(), thisTempleLabelPaint);
-            c.drawText(thisTempleNameTwo, t.x, t.y + newCurrentTempleRadius, thisTempleLabelPaint);
+
+            if(t.hasImage) {
+                if(ts < 200) {
+                    if (sliderMoving == false) {
+                        c.drawText(thisTempleNameOne, t.x, t.y + newCurrentTempleRadius - thisTempleLabelPaint.getTextSize(), thisTempleLabelPaint);
+                        c.drawText(thisTempleNameTwo, t.x, t.y + newCurrentTempleRadius, thisTempleLabelPaint);
+                    }
+                }
+            } else {
+                c.drawText(thisTempleNameOne, t.x, t.y, thisTempleLabelPaintNoImage);
+                c.drawText(thisTempleNameTwo, t.x, t.y + thisTempleLabelPaintNoImage.getTextSize(), thisTempleLabelPaintNoImage);
+//                c.drawText("No Image", t.x, t.y + newCurrentTempleRadius, thisTempleLabelPaintNoImage);
+
+            }
         }
     }
 
@@ -1040,8 +1096,10 @@ public class TempleView extends View {
             firstOnScreenTempleIndex = (onScreenTemples.get(0).get(0));
         }
 
-        String endYear = allTempleInfo.get((int)(firstOnScreenTempleIndex) * 3 + 2);
-        String startYear = allTempleInfo.get((int)(lastOnScreenTempleIndex) * 3 + 2) ;
+//        String endYear = allTempleInfo.get((int)(firstOnScreenTempleIndex) * 3 + 2);
+//        String startYear = allTempleInfo.get((int)(lastOnScreenTempleIndex) * 3 + 2) ;
+        String endYear = allYears.get((int)(firstOnScreenTempleIndex));
+        String startYear = allYears.get((int)(lastOnScreenTempleIndex)) ;
 
 
         String curLan = getResources().getConfiguration().locale.getLanguage();
@@ -1056,16 +1114,16 @@ public class TempleView extends View {
 //            endYear = endYear.substring(endYear.length()-5);
 //            //英文
 //        }
-
-        if (curLan.equals("zh")) {
-            // do nothing //中文
-            startYear = startYear.substring(0,4);
-            endYear = endYear.substring(0,4);
-        } else {
-            startYear = startYear.substring(startYear.length()-5);
-            endYear = endYear.substring(endYear.length()-5);
-            //英文
-        }
+//
+//        if (curLan.equals("zh")) {
+//            // do nothing //中文
+//            startYear = startYear.substring(0,4);
+//            endYear = endYear.substring(0,4);
+//        } else {
+//            startYear = startYear.substring(startYear.length()-5);
+//            endYear = endYear.substring(endYear.length()-5);
+//            //英文
+//        }
 
 
 
@@ -1091,19 +1149,22 @@ public class TempleView extends View {
             lastOnScreenTempleIndex = (onScreenTemples.get(onScreenTemples.size()-1).get(0));
             firstOnScreenTempleIndex = (onScreenTemples.get(0).get(0));
         }
-        String endYear = allTempleInfo.get((int)(firstOnScreenTempleIndex) * 3 + 2);
-        String startYear = allTempleInfo.get((int)(lastOnScreenTempleIndex) * 3 + 2) ;
+//        String endYear = allTempleInfo.get((int)(firstOnScreenTempleIndex) * 3 + 2);
+//        String startYear = allTempleInfo.get((int)(lastOnScreenTempleIndex) * 3 + 2) ;
 
-        String curLan = getResources().getConfiguration().locale.getLanguage();
-        if (curLan.equals("zh")) {
-            // do nothing //中文
-            startYear = startYear.substring(0,4);
-            endYear = endYear.substring(0,4);
-        } else {
-            startYear = startYear.substring(startYear.length()-5);
-            endYear = endYear.substring(endYear.length()-5);
-            //英文
-        }
+        String endYear = allYears.get((int)(firstOnScreenTempleIndex));
+        String startYear = allYears.get((int)(lastOnScreenTempleIndex)) ;
+
+//        String curLan = getResources().getConfiguration().locale.getLanguage();
+//        if (curLan.equals("zh")) {
+//            // do nothing //中文
+//            startYear = startYear.substring(0,4);
+//            endYear = endYear.substring(0,4);
+//        } else {
+//            startYear = startYear.substring(startYear.length()-5);
+//            endYear = endYear.substring(endYear.length()-5);
+//            //英文
+//        }
 
 
 //        Locale curLocale = getResources().getConfiguration().locale;
@@ -1122,15 +1183,15 @@ public class TempleView extends View {
 
 
             //String curLan = getResources().getConfiguration().locale.getLanguage();
-            if (curLan.equals("zh")) {
-                // do nothing //中文
-                startYear = startYear.substring(0,4);
-                endYear = endYear.substring(0,4);
-            } else {
-                startYear = startYear.substring(startYear.length()-5);
-                endYear = endYear.substring(endYear.length()-5);
-                //英文
-            }
+//            if (curLan.equals("zh")) {
+//                // do nothing //中文
+//                startYear = startYear.substring(0,4);
+//                endYear = endYear.substring(0,4);
+//            } else {
+//                startYear = startYear.substring(startYear.length()-5);
+//                endYear = endYear.substring(endYear.length()-5);
+//                //英文
+//            }
 
         if (theta <= 40){
             c.drawText(getResources().getString(R.string.first_temple), 6.5f * screenWidth / 4, 18 * screenHeight / 40, yearDisplayPaint);

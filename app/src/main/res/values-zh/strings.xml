@@ -25,7 +25,7 @@
     <string name="lds_temples">后期圣殿！</string>
     <string name="future_temples">即将奉献的圣殿</string>
 
-    <string name="about_content_one">此应用由杨百翰大学夏威夷分校学生张力天在杰弗里·德拉普尔教授指导下编写。</string>
+    <string name="about_content_one">此应用由杨百翰大学夏威夷分校学生林梓芊，阿比盖尔·史密斯，张力天在杰弗里·德拉普尔教授指导下编写。</string>
     <string name="about_content_two">访问应用网站</string>
     <string name="about_content_three">圣殿图片知识版权由耶稣基督后期圣徒教会所有，此应用在经其许可的条件下使用。</string>
     <string name="about_content_four">此应用是由杨百翰大学夏威夷分校资助的研究项目，但其内容由其开发人员负责。此应用不是耶稣基督后期圣徒教会的\"官方\"出版物</string>
@@ -57,7 +57,7 @@
     <string name="first_temple">第一座圣殿奉献于：</string>
     <string name="app_website_link">http://latterdaytemples.litianzhang.com/android-chinese/</string>
     <string name="kirtland_temple_is_the_oldest_temple">嘉德兰圣殿是第一座圣殿</string>
-    <string name="dubai_temple_is_the_most_recent_temple">Santa Cruz Bolivia 圣殿是最近宣布的圣殿</string>
+    <string name="dubai_temple_is_the_most_recent_temple">这座圣殿是最近宣布的圣殿</string>
     <string name="type_in_here_to_search_a_temple">在此输入以搜索圣殿</string>
 
 </resources>
