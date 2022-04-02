@@ -247,7 +247,7 @@ casper_wyoming_temple 1111
 grand_junction_colorado_temple 1111
 farmington_new_mexico_temple 1111
 burley_idaho_temple 1111
-eugene_oregon_temple 1111
+willamette_valley_oregon_temple 1111
 elko_nevada_temple 1111
 yorba_linda_california_temple 1111
 smithfield_utah_temple 1111
