@@ -13,14 +13,14 @@ Latter-day Temples Visualization
 
 ## Adding new temples: 
 
-### in code: 
-1. in TempleView.java, adjust field howManyTemples to the number of total temples 
+### in res/raw folder:
+add new temple to the end of temple_names.txt. If adding multiple, add them in the order announced. Follow the format of the other temple names in the file.
 
-### in res folder:
+### in res/drawable folder:
 2. add new temple webp images in drawable:
     1. small: 200*200
     2. large: 500*500
+Images should be cropped into circles.
 
-
-## Adjust temple orders: 
-1. adjust orders in temple_info.txt in raw
+### in TempleView.java:
+in TempleView.java, adjust field howManyTemples to the number of total temples. This will be equal to the number of lines in temple_names.txt
