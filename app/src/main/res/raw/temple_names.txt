@@ -263,7 +263,7 @@ la_paz_bolivia_temple 1111
 santiago_west_chile_temple 1111
 fort_worth_texas_temple 1111
 cody_wyoming_temple 1111
-rexburg_north_idaho_temple 1111
+teton_river_idaho_temple 1111
 heber_valley_utah_temple 1111
 wellington_new_zealand_temple 1111
 brazzaville_republic_of_the_congo_temple 1111
