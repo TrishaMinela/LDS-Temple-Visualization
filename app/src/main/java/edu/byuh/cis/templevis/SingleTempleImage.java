@@ -9,9 +9,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.view.View;
-
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
-
 import java.util.ArrayList;
 
 
@@ -57,7 +55,8 @@ public class SingleTempleImage extends View {
         textPaint.setTextSize(50);
     }
 
-    private Bitmap loadAndScale(Resources res, int id, float newWidth) {
+    private Bitmap loadAndScale(Resources res, int id, float newWidth) { //TODO generate images here?
+
         Bitmap original = BitmapFactory.decodeResource(res, id);
         float aspectRatio = (float)original.getHeight()/(float)original.getWidth();
         float newHeight = newWidth * aspectRatio;
@@ -86,10 +85,11 @@ public class SingleTempleImage extends View {
             x = canvasCenterX - imageSize / 2;
             y = canvasCenterY - imageSize / 2;
 
-            b = loadAndScale(getResources(), id, imageSize);
+
+            b = loadAndScale(getResources(), id, imageSize); //id shows the current temple selected. idLast is the id of the temple inward on the spiral, and idNext is outward
             bLast = loadAndScale(getResources(), idLast, imageSize);
             bNext = loadAndScale(getResources(), idNext, imageSize);
-            currentTemple = new Temple(b, 0f, 0f, 0f);
+            currentTemple = new Temple(b, 0f, 0f, 0f); //where temple objects are created
             lastTemple = new Temple(bLast, 0f, 0f, 0f);
             nextTemple = new Temple(bNext, 0f, 0f, 0f);
             threeTemples.add(currentTemple);

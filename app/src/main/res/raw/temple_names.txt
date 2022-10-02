@@ -206,7 +206,7 @@ mendoza_argentina_temple 0000
 nairobi_kenya_temple 1111
 managua_nicaragua_temple 1111
 cagayan_de_oro_philippines_temple 1111
-russia_administration_building 1111
+russia_temple 1111
 phnom_penh_cambodia_temple 1111
 salvador_brazil_temple 1111
 lagos_nigeria_temple 1111
