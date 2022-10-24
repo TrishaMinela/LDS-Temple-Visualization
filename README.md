@@ -14,10 +14,14 @@ Latter-day Temples Visualization
 ## Adding new temples: 
 
 ### in res/raw folder:
-add new temple to the end of temple_names.txt. If adding multiple, add them in the order announced. Follow the format of the other temple names in the file.
+1. add new temple to the end of temple_names.txt. If adding multiple, add them in the order announced. Follow the format of the other temple names in the file.
+
+2. add a text file for each temple into each of these three folders: raw, raw-en, and raw-zh. Name each file following the naming convention used in the templenames.txt, and add the .txt extension. If you're using Linux, I recommend the "touch" command, which will let you create all your files at once in each folder.
+
+3. Fill the new text files with relevant information, like any announcement, groundbreaking, or dedication dates. Follow the format found in existing temple files.
 
 ### in res/drawable folder:
-2. add new temple webp images in drawable:
+add new temple webp images in drawable:
     1. small: 200*200
     2. large: 500*500
 Images should be cropped into circles.
