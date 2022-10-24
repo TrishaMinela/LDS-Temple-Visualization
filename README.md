@@ -21,9 +21,9 @@ Latter-day Temples Visualization
 3. Fill the new text files with relevant information, like any announcement, groundbreaking, or dedication dates. Follow the format found in existing temple files.
 
 ### in res/drawable folder:
-add new temple webp images in drawable:
-    1. small: 200*200
-    2. large: 500*500
+add new temple webp images in drawable: <br/>
+    1. small: 200*200 <br/>
+    2. large: 500*500 <br/>
 Images should be cropped into circles.
 
 ### in TempleView.java:
