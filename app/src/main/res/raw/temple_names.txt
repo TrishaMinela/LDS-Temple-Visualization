@@ -289,7 +289,7 @@ eket_nigeria_temple 1111
 chiclayo_peru_temple 1111
 buenos_aires_city_center_argentina_temple 1111
 londrina_brazil_temple 1111
-riberão_prêto_brazil_temple 1111
+riberao_preto_brazil_temple 1111
 huehuetenango_guatemala_temple 1111
 jacksonville_florida_temple 1111
 grand_rapids_michigan_temple 1111
