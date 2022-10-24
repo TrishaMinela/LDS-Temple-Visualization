@@ -22,8 +22,8 @@ Latter-day Temples Visualization
 
 ### in res/drawable folder:
 add new temple webp images in drawable: <br/>
-    1. small: 200*200 <br/>
-    2. large: 500*500 <br/>
+    1. small: 200x200 <br/>
+    2. large: 500x500 <br/>
 Images should be cropped into circles.
 
 ### in TempleView.java:
