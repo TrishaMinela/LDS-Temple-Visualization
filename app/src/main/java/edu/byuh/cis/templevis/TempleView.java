@@ -25,9 +25,7 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.RequiresApi;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -42,7 +40,7 @@ import static java.lang.Boolean.TRUE;
 
 public class TempleView extends View {
 
-    public int howManyTemples = 302; //TODO can we make it count the number of lines in temple_names.txt?
+    public int howManyTemples;
     private int sliderMax;
     private Paint bluePaint, redPaint, spiralPaint, yearDisplayPaint;
     private float screenWidth, screenHeight;
@@ -95,7 +93,7 @@ public class TempleView extends View {
 
     public TempleView(Context context) {
         super(context);
-
+        howManyTemples = countTemples(context);
         bluePaint = new Paint();
         bluePaint.setColor(Color.parseColor("#17252a"));
         bluePaint.setStyle(Paint.Style.FILL);
@@ -1538,6 +1536,24 @@ public class TempleView extends View {
         //draw the spiral ****************************************
         c.drawPath(spiralLine, spiralPaint);
         //Toast.makeText(getContext(), count + " ", Toast.LENGTH_SHORT).show();
+    }
+
+    public static int countTemples(Context context){ // returns the number of temples in temple_names.txt
+        int count = 0;                               // manually inputting a number should no longer be necessary
+        BufferedReader br = null;
+        InputStream inputStream = context.getResources().openRawResource(R.raw.temple_names);
+        try {
+
+            br = new BufferedReader(new InputStreamReader(inputStream));
+            while (br.readLine() != null){
+                count ++;
+            }
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return count;
     }
 
 }
