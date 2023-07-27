@@ -29,4 +29,4 @@ Images should be cropped into circles.
 ### in TempleView.java:
 in TempleView.java, adjust field howManyTemples to the number of total temples. This will be equal to the number of lines in temple_names.txt
 
-UPDATE ---> This should no longer be necessary through the implementation of the countTemples fucntion. The number of temples should be retrieved by itself from the temple_names.txt file in raw
+UPDATE ---> This should no longer be necessary through the implementation of the countTemples function. The number of temples should be retrieved by itself from the temple_names.txt file in raw
