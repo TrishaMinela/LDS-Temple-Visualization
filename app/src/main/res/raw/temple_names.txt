@@ -177,7 +177,7 @@ bangkok_thailand_temple 2023
 yigo_guam_temple 2022
 praia_cape_verde_temple 2022
 san_juan_puerto_rico_temple 2023
-quito_ecuador_temple 0000
+quito_ecuador_temple 2022
 lima_peru_los_olivos_temple 0000
 belem_brazil_temple 0000
 saratoga_springs_utah_temple 0000
