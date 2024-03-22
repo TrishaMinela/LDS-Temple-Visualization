@@ -30,3 +30,6 @@ Images should be cropped into circles.
 in TempleView.java, adjust field howManyTemples to the number of total temples. This will be equal to the number of lines in temple_names.txt
 
 UPDATE ---> This should no longer be necessary through the implementation of the countTemples function. The number of temples should be retrieved by itself from the temple_names.txt file in raw
+
+# Message below added in 2024 Mar because I'm seeing recenty some pull requests to this repo: 
+Aloha! Thanks for checking out Temples Timeline Android version. Maybe you are a student interested in this app or anyone came across, anyway if you are introduced here by Brother Draper (or any other processors at BYU-H) and/or want to work on this app, please contact me at litian_zhang17@163.com and let me know your email, I can add you to the project! 
