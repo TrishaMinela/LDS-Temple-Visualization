@@ -186,7 +186,7 @@ public class MainActivity extends AppCompatActivity {
         slider = findViewById(R.id.seekBar3);
         //slider.setBackgroundColor(Color.parseColor("#669cff"));
         //slider.setBackgroundColor(Color.parseColor("#202224"));
-        slider.setBackgroundColor(Color.parseColor("#287a78"));
+        slider.setBackgroundColor(Color.parseColor("#ffffff"));
 
 
 
@@ -257,7 +257,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         final ImageButton leftButton = findViewById(R.id.slider_left_button);
-        leftButton.setBackgroundColor(Color.parseColor("#007a66"));
+        leftButton.setBackgroundColor(Color.parseColor("#000000"));
         // arrow color is the same as spiral background #17252a
 
 
@@ -265,9 +265,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 if(event.getAction() == MotionEvent.ACTION_DOWN){
-                    leftButton.setBackgroundColor(Color.parseColor("#507a66"));
+                    leftButton.setBackgroundColor(Color.parseColor("#000000"));
                 }else if(event.getAction() == MotionEvent.ACTION_UP){
-                    leftButton.setBackgroundColor(Color.parseColor("#007a66"));
+                    leftButton.setBackgroundColor(Color.parseColor("#000000"));
                     if (slider.getProgress() - 30 < 30) {
                         progress = 30;
                     } else {
@@ -283,15 +283,15 @@ public class MainActivity extends AppCompatActivity {
         });
 
         final ImageButton rightButton = findViewById(R.id.slider_right_button);
-        rightButton.setBackgroundColor(Color.parseColor("#007a66"));
+        rightButton.setBackgroundColor(Color.parseColor("#000000"));
 
         rightButton.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 if(event.getAction() == MotionEvent.ACTION_DOWN){
-                    rightButton.setBackgroundColor(Color.parseColor("#507a66"));
+                    rightButton.setBackgroundColor(Color.parseColor("#000000"));
                 }else if(event.getAction() == MotionEvent.ACTION_UP){
-                    rightButton.setBackgroundColor(Color.parseColor("#007a66"));
+                    rightButton.setBackgroundColor(Color.parseColor("#000000"));
                     if (slider.getProgress() + 30 > sliderMax) {
                         progress = sliderMax;
                     } else {
@@ -317,7 +317,7 @@ public class MainActivity extends AppCompatActivity {
         rightButton.setLayoutParams(two);
         lnlH = new LinearLayout(this);
         lnlH.setOrientation(LinearLayout.HORIZONTAL);
-        lnlH.setBackgroundColor(Color.parseColor("#287a78"));
+        lnlH.setBackgroundColor(Color.parseColor("#ffffff"));
 
         ((ViewGroup)leftButton.getParent()).removeView(leftButton);
         lnlH.addView(leftButton);
@@ -326,7 +326,7 @@ public class MainActivity extends AppCompatActivity {
         lnlSlider.setOrientation(LinearLayout.VERTICAL);
 
         LinearLayout sliderLabelNoText = findViewById(R.id.sliderLabelNoText);
-        sliderLabelNoText.setBackgroundColor(Color.parseColor("#287a78"));
+        sliderLabelNoText.setBackgroundColor(Color.parseColor("#ffffff"));
 
         ((ViewGroup)sliderLabelNoText.getParent()).removeView(sliderLabelNoText);
         lnlSlider.addView(sliderLabelNoText);
@@ -335,7 +335,7 @@ public class MainActivity extends AppCompatActivity {
         lnlSlider.addView(slider);
 
         LinearLayout sliderLabelNoTextTwo = findViewById(R.id.sliderLabelNoTextTwo);
-        sliderLabelNoTextTwo.setBackgroundColor(Color.parseColor("#287a78"));
+        sliderLabelNoTextTwo.setBackgroundColor(Color.parseColor("#ffffff"));
 
         ((ViewGroup)sliderLabelNoTextTwo.getParent()).removeView(sliderLabelNoTextTwo);
         lnlSlider.addView(sliderLabelNoTextTwo);
@@ -487,7 +487,7 @@ public class MainActivity extends AppCompatActivity {
         listView.setAdapter(allTempleNamesAdapter);
         listView.setTextFilterEnabled(true);
         listView.setPadding(10,10,10,10);
-        listView.setBackgroundColor(Color.parseColor("#ffffee"));
+        listView.setBackgroundColor(Color.parseColor("#ffffff"));
 
 
         LinearLayout.LayoutParams nice = new LinearLayout.LayoutParams
@@ -731,7 +731,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        yearPickerPicker.setBackgroundColor(Color.parseColor("#ffffee"));
+        yearPickerPicker.setBackgroundColor(Color.parseColor("#000000"));
 
         LinearLayout yearPickerView = new LinearLayout(this);
         yearPickerView.setOrientation(LinearLayout.VERTICAL);

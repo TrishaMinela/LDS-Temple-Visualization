@@ -7,7 +7,8 @@
     android:layout_height="200dp"
     android:orientation="horizontal"
     android:visibility="visible"
-    tools:context="edu.byuh.cis.templevis.MainActivity">
+    tools:context="edu.byuh.cis.templevis.MainActivity"
+    android:background="@android:color/white">
 
     <LinearLayout
         android:id="@+id/sliderLabel"
@@ -134,7 +135,7 @@
         android:id="@+id/seekBar3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
+        android:background="@color/colorPrimary"
         android:progress="0"
         android:progressDrawable="@drawable/slider"
         android:thumb="@drawable/slider_button"
@@ -188,7 +189,9 @@
         android:layout_weight="1"
         android:layout_height="match_parent"
         android:src="@drawable/left_arrow_large"
-        android:layout_gravity="center_vertical"/>
+        android:layout_gravity="center_vertical"
+        android:background="@android:color/black"
+        android:tint="@android:color/white"/>
 
     <ImageButton
         android:id="@+id/slider_right_button"
@@ -197,7 +200,9 @@
         android:layout_weight="1"
         android:layout_height="match_parent"
         android:src="@drawable/right_arrow_large"
-        android:layout_gravity="center_vertical"/>
+        android:layout_gravity="center_vertical"
+        android:background="@android:color/black"
+        android:tint="@android:color/white"/>
 
 
 </LinearLayout>

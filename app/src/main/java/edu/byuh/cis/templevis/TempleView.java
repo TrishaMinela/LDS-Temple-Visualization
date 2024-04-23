@@ -42,7 +42,7 @@ public class TempleView extends View {
 
     public int howManyTemples;
     private int sliderMax;
-    private Paint bluePaint, redPaint, spiralPaint, yearDisplayPaint;
+    private Paint blackPaint, greyPaint, spiralPaint, yearDisplayPaint;
     private float screenWidth, screenHeight;
     public float theta;
     private Path spiralLine;
@@ -94,16 +94,18 @@ public class TempleView extends View {
     public TempleView(Context context) {
         super(context);
         howManyTemples = countTemples(context);
-        bluePaint = new Paint();
-        bluePaint.setColor(Color.parseColor("#17252a"));
-        bluePaint.setStyle(Paint.Style.FILL);
-        bluePaint.setTextSize(35);
-        redPaint = new Paint();
-        redPaint.setColor(Color.RED);
-        redPaint.setStyle(Paint.Style.FILL);
-        redPaint.setTextSize(60);
+        blackPaint = new Paint();
+        blackPaint.setColor(Color.BLACK);
+        blackPaint.setStyle(Paint.Style.FILL);
+        blackPaint.setTextSize(35);
+
+        greyPaint = new Paint();
+        greyPaint.setColor(Color.parseColor("#808080")); // Using a shade of grey
+        greyPaint.setStyle(Paint.Style.FILL);
+        greyPaint.setTextSize(60);
+
         spiralPaint = new Paint();
-        spiralPaint.setColor(Color.RED);
+        spiralPaint.setColor(Color.parseColor("#808080"));
         spiralPaint.setStyle(Paint.Style.STROKE);
         spiralPaint.setStrokeWidth(5);
         spiralLine = new Path();
@@ -590,14 +592,14 @@ public class TempleView extends View {
 
         lnl.addView(singleTempleDialogTitleView);
 
-        lnlH.setBackgroundColor(Color.parseColor("#ffffee"));
-        sv.setBackgroundColor(Color.parseColor("#ffffee"));
+        lnlH.setBackgroundColor(Color.parseColor("#ffffff"));
+        sv.setBackgroundColor(Color.parseColor("#ffffff"));
 
         lnl.addView(lnlH);
         //lnlH.setBackgroundColor(Color.GREEN);
         //lnl.addView(sv);
 
-        singleTempleTextView.setBackgroundColor(Color.parseColor("#ffffee"));
+        singleTempleTextView.setBackgroundColor(Color.parseColor("#ffffff"));
         ((ViewGroup)singleTempleTextView.getParent()).removeView(singleTempleTextView);
         lnl.addView(singleTempleTextView);
         //singleTempleTextView.setBackgroundColor(Color.RED);
@@ -822,7 +824,7 @@ public class TempleView extends View {
 
         //Temple View Background color
         //c.drawColor(Color.parseColor("#24292b"));
-        c.drawColor(Color.parseColor("#17252a"));
+        c.drawColor(Color.parseColor("#FFFFFF"));
 
         //we just want to load the images once, we don't have to load it every time when we re-draw. otherwise the program is gonna be so slow
         if (loadedImages == false) {
@@ -879,7 +881,7 @@ public class TempleView extends View {
 //                t.setLink(allTempleLinks.get(templeObjects.indexOf(t)));
 //            }
 
-            yearDisplayPaint.setColor(Color.parseColor("#def2f1"));
+            yearDisplayPaint.setColor(Color.parseColor("#000000"));
             yearDisplayPaint.setStyle(Paint.Style.FILL);
             yearDisplayPaint.setTextAlign(Paint.Align.CENTER);
         }
@@ -908,7 +910,7 @@ public class TempleView extends View {
         float newCurrentTempleRadius = t.size * screenWidth / 2;
 
         Paint thisTempleLabelPaint = new Paint();
-        thisTempleLabelPaint.setColor(Color.parseColor("#def2f1"));
+        thisTempleLabelPaint.setColor(Color.parseColor("#000000"));
         thisTempleLabelPaint.setStyle(Paint.Style.FILL);
         thisTempleLabelPaint.setTextSize((int)(newCurrentTempleRadius / 5));
         thisTempleLabelPaint.setTextAlign(Paint.Align.CENTER);
@@ -1011,7 +1013,7 @@ public class TempleView extends View {
         currentTempleMatrix.postTranslate(t.x - t.image.getWidth()  * t.size * 2, t.y - t.image.getHeight() * t.size * 2); // more OO
 
         Paint selectedYearTempleFramePaint = new Paint();
-        selectedYearTempleFramePaint.setColor(Color.parseColor("#287a78"));
+        selectedYearTempleFramePaint.setColor(Color.parseColor("#000000"));
         selectedYearTempleFramePaint.setStyle(Paint.Style.FILL);
         if (selectedYear.equals("Temples under construction") || selectedYear.equals("建设中的圣殿")) {
             selectedYear = "0000";
@@ -1138,7 +1140,7 @@ public class TempleView extends View {
     }
 
     public void yearDisplayLandscape(Canvas c) {
-        c.drawRect( 5 * screenWidth / 4, 0, 2 * screenWidth, screenHeight, bluePaint);
+        c.drawRect( 5 * screenWidth / 4, 0, 2 * screenWidth, screenHeight, blackPaint);
         float firstOnScreenTempleIndex = 0;
         float lastOnScreenTempleIndex = 0;
 
