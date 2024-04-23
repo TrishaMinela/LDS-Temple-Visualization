@@ -1,0 +1,61 @@
+<resources>
+    <string name="app_name">Cronología de Templos</string>
+
+    <string-array name="SpiralEffect">
+        <item>Por defecto</item>
+        <item>Girar</item>
+        <item>Zoom</item>
+        <item>3D</item>
+    </string-array>
+    <string-array name="SpiralEffect_value">
+        <item>estático</item>
+        <item>girar</item>
+        <item>zoom</item>
+        <item>tridimensional</item>
+    </string-array>
+
+    <string name="SpiralEffectTitle">Efecto Espiral</string>
+    <string name="SpiralEffectSummary">Selecciona un estilo de animación para la espiral</string>
+
+    <string name="settings">Configuración</string>
+    <string name="about">Acerca de</string>
+
+    <string name="years_of_temples">Años de Templos:</string>
+    <string name="welcome_to_view">Bienvenido a la Vista</string>
+    <string name="lds_temples">¡Templos SUD!</string>
+    <string name="future_temples">Templos Futuros</string>
+
+    <string name="about_content_one">Programación por Tsz Chin Lam, Abigail Hyde y Litian Zhang bajo la supervisión del Dr. Geoffrey Draper en la Brigham Young University&#8212;Hawaii.</string>
+    <string name="about_content_two">Visita el sitio web de la aplicación</string>
+    <string name="about_content_three">Las fotos del templo están protegidas por derechos de autor de Intellectual Reserve, Inc. Utilizadas con permiso.</string>
+    <string name="about_content_four">Esta aplicación es un proyecto de investigación financiado por la Brigham Young University&#8212;Hawaii, sin embargo, el contenido es responsabilidad de sus desarrolladores. Esta aplicación no es una publicación "oficial" de la Iglesia de Jesucristo de los Santos de los Últimos Días.</string>
+
+    <string name="return_button">Descartar</string>
+    <string name="website_button">Sitio web</string>
+
+    <string-array name="language_prefs">
+        <item>中文</item>
+        <item>Inglés</item>
+    </string-array>
+    <string-array name="language_prefs_value">
+        <item>chino</item>
+        <item>inglés</item>
+    </string-array>
+
+    <string name="language_prefs_title">Idioma</string>
+    <string name="language_prefs_summary">establecer el idioma de visualización</string>
+
+    <string name="show_label_title">Etiqueta del Templo</string>
+    <string name="show_label_on">Los nombres de los templos se mostrarán para templos más grandes</string>
+    <string name="show_label_off">Los nombres de los templos no se mostrarán para ningún templo</string>
+    <string name="temples_under_construction">Templos en construcción</string>
+    <string name="view_temples_dedicated_In">"Ver templos dedicados en "</string>
+    <string name="view">Ver</string>
+    <string name="you_didnt_pick_any_year">Ningún año seleccionado</string>
+    <string name="year">Año</string>
+    <string name="first_temple">"Primer templo: "</string>
+    <string name="app_website_link">http://latterdaytemples.litianzhang.com/android-english/</string>
+    <string name="kirtland_temple_is_the_oldest_temple">El Templo de Kirtland es el templo más antiguo</string>
+    <string name="dubai_temple_is_the_most_recent_temple">Este templo es el más reciente</string>
+    <string name="type_in_here_to_search_a_temple">Escribe aquí para buscar un templo</string>
+</resources>

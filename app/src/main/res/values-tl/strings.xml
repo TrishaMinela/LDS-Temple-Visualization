@@ -1,0 +1,61 @@
+<resources>
+    <string name="app_name">Timeline ng Mga Templo</string>
+
+    <string-array name="SpiralEffect">
+        <item>Default</item>
+        <item>Spin</item>
+        <item>Zoom</item>
+        <item>3D</item>
+    </string-array>
+    <string-array name="SpiralEffect_value">
+        <item>static</item>
+        <item>spin</item>
+        <item>zoom</item>
+        <item>threeD</item>
+    </string-array>
+
+    <string name="SpiralEffectTitle">Epekto ng Paggulong</string>
+    <string name="SpiralEffectSummary">Pumili ng istilo ng animasyon para sa spiral</string>
+
+    <string name="settings">Mga Setting</string>
+    <string name="about">Tungkol</string>
+
+    <string name="years_of_temples">Mga Taon ng Templo:</string>
+    <string name="welcome_to_view">Maligayang Pagdating sa View</string>
+    <string name="lds_temples">Mga Templo ng LDS!</string>
+    <string name="future_temples">Mga Hinaharap na Templo</string>
+
+    <string name="about_content_one">Programado nina Tsz Chin Lam, Abigail Hyde, at Litian Zhang sa ilalim ng pangangasiwa ni Dr. Geoffrey Draper sa Brigham Young University&#8212;Hawaii.</string>
+    <string name="about_content_two">Bisitahin ang website ng app</string>
+    <string name="about_content_three">Ang mga larawan ng templo ay may karapatan ng Intellectual Reserve, Inc. Ginamit sa pahintulot.</string>
+    <string name="about_content_four">Ang app na ito ay isang proyektong pananaliksik na pinansyalan ng Brigham Young University&#8212;Hawaii, ngunit ang nilalaman ay ang pananagutan ng mga tagapag-develop. Ang app na ito ay hindi opisyal na publikasyon ng Simbahan ni Jesucristo ng mga Banal sa mga Huling Araw.</string>
+
+    <string name="return_button">I-dismiss</string>
+    <string name="website_button">Website</string>
+
+    <string-array name="language_prefs">
+        <item>中文</item>
+        <item>Ingles</item>
+    </string-array>
+    <string-array name="language_prefs_value">
+        <item>chinese</item>
+        <item>english</item>
+    </string-array>
+
+    <string name="language_prefs_title">Wika</string>
+    <string name="language_prefs_summary">Itakda ang wika ng display</string>
+
+    <string name="show_label_title">Label ng Templo</string>
+    <string name="show_label_on">Ipapakita ang pangalan ng templo para sa mas malalaking templo</string>
+    <string name="show_label_off">Hindi ipapakita ang pangalan ng templo para sa anumang templo</string>
+    <string name="temples_under_construction">Mga Templo sa Ilalim ng Konstruksyon</string>
+    <string name="view_temples_dedicated_In">"Tingnan ang mga templo na itinalaga noong "</string>
+    <string name="view">Tingnan</string>
+    <string name="you_didnt_pick_any_year">Walang taon na pinili</string>
+    <string name="year">Taon</string>
+    <string name="first_temple">"Unang templo: "</string>
+    <string name="app_website_link">http://latterdaytemples.litianzhang.com/android-english/</string>
+    <string name="kirtland_temple_is_the_oldest_temple">Ang Kirtland Temple ang pinakamatandang templo</string>
+    <string name="dubai_temple_is_the_most_recent_temple">Ang templo na ito ang pinakabagong templo</string>
+    <string name="type_in_here_to_search_a_temple">Mag-type dito para hanapin ang isang templo</string>
+</resources>

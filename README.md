@@ -7,7 +7,7 @@ Latter-day Temples Visualization
 
 #### Temples order is based on [This Website](https://churchofjesuschristtemples.org/temples/chronology/)
 
-#### Developed by professors and students at [Brigham Young Univerisity Hawawii](https://www.byuh.edu/)
+#### Developed by professors and students at [Brigham Young University Hawawii](https://www.byuh.edu/)
 
 # Instructions for maintenance
 
